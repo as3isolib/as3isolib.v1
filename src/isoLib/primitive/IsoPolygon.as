@@ -5,7 +5,6 @@ package isoLib.primitive
 	import flash.display.Graphics;
 	
 	import isoLib.core.IsoType;
-	import isoLib.core.Isometric;
 	
 	public class IsoPolygon extends IsoShape
 	{
@@ -21,9 +20,9 @@ package isoLib.primitive
 			return true;
 		}
 		
-		override public function renderWireframe ():void
+		override protected function renderGeometry():void
 		{
-			var g:Graphics = gfx;
+			var g:Graphics = graphics;
 			
 			g.clear();
 			g.moveTo(pts[0].x, pts[0].y);
@@ -45,16 +44,6 @@ package isoLib.primitive
 			
 			if (type == IsoType.SOLID || type == IsoType.SHADED)
 				g.endFill();
-		}
-		
-		override public function renderSolid ():void
-		{
-			renderWireframe();
-		}
-		
-		override public function renderShaded ():void
-		{
-			renderWireframe();
 		}
 	}
 }

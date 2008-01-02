@@ -1,8 +1,8 @@
-package isoLib.core
+package isoLib.utils
 {
 	import com.jwopitz.geom.Pt;
 	
-	public class Isometric
+	public class IsoUtil
 	{
 		public static function isoToMap (pt:Pt, createNew:Boolean = false):Pt
 		{

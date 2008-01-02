@@ -2,7 +2,7 @@ package isoLib.primitive
 {
 	import com.jwopitz.geom.Pt;
 	
-	import isoLib.core.Isometric;
+	import isoLib.utils.IsoUtil;
 	
 	public class IsoSquare extends IsoShape
 	{
@@ -40,14 +40,14 @@ package isoLib.primitive
 				
 			var pt:Pt;
 			for each (pt in pts)
-				Isometric.mapToIso(pt);
+				IsoUtil.mapToIso(pt);
 				
 			return true;
 		}
 		
 		protected var iso:IsoPolygon;
 		
-		override public function renderWireframe ():void
+		override protected function renderGeometry ():void
 		{
 			if (!iso)
 			{
@@ -55,26 +55,15 @@ package isoLib.primitive
 				addChild(iso);
 			}
 			
-			iso.gfx = gfx;
 			iso.pts = pts;
 			iso.type = type;
-			iso.lineAlphas = lineAlphas;
-			iso.lineColors = lineColors;
-			iso.lineThicknesses = lineThicknesses;
-			iso.faceAlphas = faceAlphas;
-			iso.faceColors = faceColors;
+			iso.lineAlphas = [lineAlphas[0]];
+			iso.lineColors = [lineColors[0]];
+			iso.lineThicknesses = [lineThicknesses[0]];
+			iso.faceAlphas = [faceAlphas[0]];
+			iso.faceColors = [faceColors[0]];
 			
 			iso.render();
-		}
-		
-		override public function renderShaded ():void
-		{
-			renderWireframe();
-		}
-		
-		override public function renderSolid ():void
-		{
-			renderWireframe();
 		}
 	}
 }

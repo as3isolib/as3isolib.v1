@@ -6,9 +6,9 @@ package isoLib.primitive
 	import flash.display.Sprite;
 	
 	import isoLib.core.IsoType;
-	import isoLib.core.Isometric;
+	import isoLib.utils.IsoUtil;
 
-	public class IsoShape extends Sprite implements IIsoPrimitive, IIsoRenderer
+	public class IsoShape extends Sprite implements IIsoPrimitive
 	{
 		//////////////////////////////////////////////////////
 		// ISO Z
@@ -107,8 +107,6 @@ package isoLib.primitive
 		 */
 		public function set isoLength (value:Number):void
 		{
-			value = Math.abs(value);
-			
 			if (isometricLength != value)
 			{
 				isometricLength = value;
@@ -137,8 +135,6 @@ package isoLib.primitive
 		 */
 		public function set isoWidth (value:Number):void
 		{
-			value = Math.abs(value);
-			
 			if (isometricWidth != value)
 			{
 				isometricWidth = value;
@@ -167,8 +163,6 @@ package isoLib.primitive
 		 */
 		public function set isoHeight (value:Number):void
 		{
-			value = Math.abs(value);
-			
 			if (isometricHeight != value)
 			{
 				isometricHeight = value;
@@ -215,17 +209,10 @@ package isoLib.primitive
 		}
 		
 		//////////////////////////////////////////////////////
-		// TARGET GRAPHICS
+		// AUTO UPDATE
 		//////////////////////////////////////////////////////
 		
-		public var gfx:Graphics;
-		
 		public var autoUpdate:Boolean = false;
-		
-		public function IsoShape ()
-		{
-			gfx = this.graphics;
-		}
 		
 		//////////////////////////////////////////////////////
 		// OVERRIDES X/Y
@@ -252,7 +239,7 @@ package isoLib.primitive
 		protected function updateIsoFromMap ():void
 		{
 			var mapPt:Pt = new Pt(super.x, super.y, 0);
-			var isoPt:Pt = Isometric.mapToIso(mapPt, true);
+			var isoPt:Pt = IsoUtil.mapToIso(mapPt, true);
 			
 			isometricX = isoPt.x;
 			isometricY = isoPt.y;
@@ -266,7 +253,7 @@ package isoLib.primitive
 		public function reposition ():void
 		{
 			var iso2mapPt:Pt = new Pt(isoX, isoY, isoZ);
-			Isometric.mapToIso(iso2mapPt);
+			IsoUtil.mapToIso(iso2mapPt);
 			
 			super.x = iso2mapPt.x;
 			super.y = iso2mapPt.y;
@@ -276,28 +263,7 @@ package isoLib.primitive
 		{
 			var passedPointLogicInspection:Boolean = pointLogic();
 			if (passedPointLogicInspection)
-			{
-				switch (type)
-				{
-					case IsoType.SHADED:
-					{
-						renderShaded();
-						break;
-					}
-					
-					case IsoType.SOLID:
-					{
-						renderSolid();
-						break;
-					}
-					
-					case IsoType.WIREFRAME:
-					default:
-					{
-						renderWireframe();
-					}
-				}
-			}
+				renderGeometry();
 			
 			else
 				throw new Error("Render phase failed pointLogic inspection.  Please make sure that the IsoShape instance has all the necessary properties to render properly.");
@@ -311,15 +277,7 @@ package isoLib.primitive
 			return true;
 		}
 		
-		public function renderSolid ():void
-		{
-		}
-		
-		public function renderWireframe ():void
-		{
-		}
-		
-		public function renderShaded ():void
+		protected function renderGeometry ():void
 		{
 		}
 		
@@ -331,7 +289,7 @@ package isoLib.primitive
 		 * @private
 		 */
 		[ArrayElementType("uint")]
-		protected var lineThicknessesArray:Array = [0];
+		protected var lineThicknessesArray:Array = [0, 0, 0, 0, 0, 0];
 		
 		public function get lineThicknesses ():Array
 		{
@@ -350,7 +308,7 @@ package isoLib.primitive
 		 * @private
 		 */
 		[ArrayElementType("uint")]
-		protected var lineColorArray:Array = [0x000000];
+		protected var lineColorArray:Array = [0x000000, 0x000000, 0x000000, 0x000000, 0x000000, 0x000000,];
 		
 		public function get lineColors ():Array
 		{
@@ -372,7 +330,7 @@ package isoLib.primitive
 		 * @private
 		 */
 		[ArrayElementType("Number")]
-		protected var lineAlphasArray:Array = [1.0];
+		protected var lineAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 		
 		public function get lineAlphas ():Array
 		{
@@ -398,7 +356,7 @@ package isoLib.primitive
 		 * @private
 		 */
 		[ArrayElementType("uint")]
-		protected var faceColorArray:Array = [0xC0C0C0];
+		protected var faceColorArray:Array = [0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF];
 		
 		public function get faceColors ():Array
 		{
@@ -420,7 +378,7 @@ package isoLib.primitive
 		 * @private
 		 */
 		[ArrayElementType("Number")]
-		protected var faceAlphasArray:Array = [1.0];
+		protected var faceAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 		
 		public function get faceAlphas ():Array
 		{
