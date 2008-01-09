@@ -1,6 +1,8 @@
 package isoLib.primitive
 {
-	public class IsoCube extends IsoShape
+	import isoLib.core.shape.Primitive;
+	
+	public class IsoCube extends Primitive
 	{
 		protected var sq0:IsoSquare = new IsoSquare();
 		protected var sq1:IsoSquare = new IsoSquare();
@@ -21,37 +23,37 @@ package isoLib.primitive
 		
 		override protected function validateGeometry ():Boolean
 		{
-			return (isoWidth <= 0 && isoLength <= 0 && isoHeight <= 0)? false: true;
+			return (width <= 0 && length <= 0 && height <= 0)? false: true;
 		}
 		
 		override protected function renderGeometry ():void
 		{
 			//bottom face
-			sq0.isoWidth = isoWidth;
-			sq0.isoLength = isoLength;
+			sq0.width = width;
+			sq0.length = length;
 			
 			//back-left face
-			sq1.isoLength = isoLength;
-			sq1.isoHeight = isoHeight;
+			sq1.length = length;
+			sq1.height = height;
 			
 			//back-right face
-			sq2.isoWidth = isoWidth;
-			sq2.isoHeight = isoHeight;
+			sq2.width = width;
+			sq2.height = height;
 			
 			//front-left face
-			sq3.isoWidth = isoWidth;
-			sq3.isoHeight = isoHeight;
-			sq3.isoY = isoLength;
+			sq3.width = width;
+			sq3.height = height;
+			sq3.y = length;
 			
 			//front-right face
-			sq4.isoLength = isoLength;
-			sq4.isoHeight = isoHeight;
-			sq4.isoX = isoWidth;
+			sq4.length = length;
+			sq4.height = height;
+			sq4.x = width;
 			
 			//top face
-			sq5.isoWidth = isoWidth;
-			sq5.isoLength = isoLength;
-			sq5.isoZ = isoHeight;
+			sq5.width = width;
+			sq5.length = length;
+			sq5.z = height;
 			
 			//now apply all common properties
 			var sq:IsoSquare;
@@ -59,7 +61,7 @@ package isoLib.primitive
 			var c:int;
 			for (i; i >= 0; i--)
 			{
-				sq = IsoSquare(getChildAt(i));
+				sq = IsoSquare(children[i]);
 				
 				//styling
 				sq.lineAlphas = [lineAlphas[c]];
@@ -70,7 +72,6 @@ package isoLib.primitive
 				sq.solidColors = [solidColors[c]];
 				sq.type = type;
 				
-				sq.render();
 				c++;
 			}			
 		}

@@ -4,9 +4,11 @@ package isoLib.primitive
 	
 	import flash.display.Graphics;
 	
-	import isoLib.core.IsoType;
+	import isoLib.core.shape.IsoType;
+	import isoLib.core.shape.Primitive;
+	import isoLib.utils.IsoUtil;
 	
-	public class IsoPolygon extends IsoShape
+	public class IsoPolygon extends Primitive
 	{
 		override protected function validateGeometry ():Boolean
 		{
@@ -20,9 +22,16 @@ package isoLib.primitive
 			return true;
 		}
 		
+		public function convertPts ():void
+		{
+			var pt:Pt;
+			for each (pt in pts)
+				IsoUtil.mapToIso(pt);
+		}
+		
 		override protected function renderGeometry():void
 		{
-			var g:Graphics = graphics;
+			var g:Graphics = container.graphics;
 			
 			g.clear();
 			g.moveTo(pts[0].x, pts[0].y);

@@ -1,6 +1,6 @@
-package isoLib.primitive
+package isoLib.core.shape
 {
-	public interface IStyleClient
+	public interface IStylable
 	{
 		function get faceAlphas ():Array;
 		function set faceAlphas (value:Array):void;

@@ -1,4 +1,4 @@
-package isoLib.core
+package isoLib.core.shape
 {
 	public final class IsoType
 	{

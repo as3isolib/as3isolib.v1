@@ -2,9 +2,10 @@ package isoLib.primitive
 {
 	import com.jwopitz.geom.Pt;
 	
+	import isoLib.core.shape.Primitive;
 	import isoLib.utils.IsoUtil;
 	
-	public class IsoSquare extends IsoShape
+	public class IsoSquare extends Primitive
 	{
 		override protected function validateGeometry ():Boolean
 		{
@@ -12,27 +13,27 @@ package isoLib.primitive
 			pts.push(new Pt(0, 0, 0));
 			
 			//width x length
-			if (isoWidth > 0 && isoLength > 0 && isoHeight <= 0)
+			if (width > 0 && length > 0 && height <= 0)
 			{
-				pts.push(new Pt(isoWidth, 0, 0));
-				pts.push(new Pt(isoWidth, isoLength, 0));
-				pts.push(new Pt(0, isoLength, 0));
+				pts.push(new Pt(width, 0, 0));
+				pts.push(new Pt(width, length, 0));
+				pts.push(new Pt(0, length, 0));
 			}
 			
 			//width x height
-			else if (isoWidth > 0 && isoLength <= 0 && isoHeight > 0)
+			else if (width > 0 && length <= 0 && height > 0)
 			{
-				pts.push(new Pt(isoWidth, 0, 0));
-				pts.push(new Pt(isoWidth, 0, isoHeight));
-				pts.push(new Pt(0, 0, isoHeight));
+				pts.push(new Pt(width, 0, 0));
+				pts.push(new Pt(width, 0, height));
+				pts.push(new Pt(0, 0, height));
 			}
 			
 			//length x height
-			else if (isoWidth <= 0 && isoLength > 0 && isoHeight > 0)
+			else if (width <= 0 && length > 0 && height > 0)
 			{
-				pts.push(new Pt(0, isoLength, 0));
-				pts.push(new Pt(0, isoLength, isoHeight));
-				pts.push(new Pt(0, 0, isoHeight));
+				pts.push(new Pt(0, length, 0));
+				pts.push(new Pt(0, length, height));
+				pts.push(new Pt(0, 0, height));
 			}
 			
 			else
