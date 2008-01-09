@@ -2,7 +2,7 @@ package isoLib.primitive
 {
 	import isoLib.core.IIsoRenderer;
 	
-	public interface IIsoPrimitive extends IIsoRenderer
+	public interface IIsoPrimitive extends IIsoRenderer, IStyleClient
 	{
 		function get isoX ():Number;
 		function set isoX (value:Number):void;

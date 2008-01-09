@@ -19,7 +19,7 @@ package isoLib.primitive
 			addChild(sq5);
 		}
 		
-		override protected function pointLogic ():Boolean
+		override protected function validateGeometry ():Boolean
 		{
 			return (isoWidth <= 0 && isoLength <= 0 && isoHeight <= 0)? false: true;
 		}
@@ -55,21 +55,23 @@ package isoLib.primitive
 			
 			//now apply all common properties
 			var sq:IsoSquare;
-			var i:int;
-			var l:int = numChildren;
-			for (i; i < l; i++)
+			var i:int = numChildren - 1;
+			var c:int;
+			for (i; i >= 0; i--)
 			{
 				sq = IsoSquare(getChildAt(i));
 				
 				//styling
-				sq.lineAlphas = [lineAlphas[i]];
-				sq.lineColors = [lineColors[i]];
-				sq.lineThicknesses = [lineThicknesses[i]];
-				sq.faceAlphas = [faceAlphas[i]];
-				sq.faceColors = [faceColors[i]];
+				sq.lineAlphas = [lineAlphas[c]];
+				sq.lineColors = [lineColors[c]];
+				sq.lineThicknesses = [lineThicknesses[c]];
+				sq.faceAlphas = [faceAlphas[c]];
+				sq.shadedColors = [shadedColors[c]];
+				sq.solidColors = [solidColors[c]];
 				sq.type = type;
 				
 				sq.render();
+				c++;
 			}			
 		}
 	}

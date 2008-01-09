@@ -6,7 +6,7 @@ package isoLib.primitive
 	
 	public class IsoSquare extends IsoShape
 	{
-		override protected function pointLogic ():Boolean
+		override protected function validateGeometry ():Boolean
 		{
 			pts = [];
 			pts.push(new Pt(0, 0, 0));
@@ -61,7 +61,8 @@ package isoLib.primitive
 			iso.lineColors = [lineColors[0]];
 			iso.lineThicknesses = [lineThicknesses[0]];
 			iso.faceAlphas = [faceAlphas[0]];
-			iso.faceColors = [faceColors[0]];
+			iso.solidColors = [solidColors[0]];
+			iso.shadedColors = [shadedColors[0]];
 			
 			iso.render();
 		}

@@ -261,8 +261,7 @@ package isoLib.primitive
 		
 		public function render ():void
 		{
-			var passedPointLogicInspection:Boolean = pointLogic();
-			if (passedPointLogicInspection)
+			if (validateGeometry())
 				renderGeometry();
 			
 			else
@@ -272,7 +271,7 @@ package isoLib.primitive
 		[ArrayElementType("com.jwopitz.geom.Pt")]
 		public var pts:Array = [];
 		
-		protected function pointLogic ():Boolean
+		protected function validateGeometry ():Boolean
 		{
 			return true;
 		}
@@ -356,19 +355,41 @@ package isoLib.primitive
 		 * @private
 		 */
 		[ArrayElementType("uint")]
-		protected var faceColorArray:Array = [0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF];
+		protected var solidColorArray:Array = [0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF];
 		
-		public function get faceColors ():Array
+		public function get solidColors ():Array
 		{
-			return faceColorArray;
+			return solidColorArray;
 		}
 		
 		/**
 		 * @private
 		 */
-		public function set faceColors (value:Array):void
+		public function set solidColors (value:Array):void
 		{
-			faceColorArray = value;
+			solidColorArray = value;
+			
+			if (autoUpdate)
+				render();
+		}
+		
+		/**
+		 * @private
+		 */
+		[ArrayElementType("uint")]
+		protected var shadedColorArray:Array = [0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF];
+		
+		public function get shadedColors ():Array
+		{
+			return shadedColorArray;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set shadedColors (value:Array):void
+		{
+			shadedColorArray = value;
 			
 			if (autoUpdate)
 				render();

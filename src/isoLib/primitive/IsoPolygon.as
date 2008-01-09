@@ -8,7 +8,7 @@ package isoLib.primitive
 	
 	public class IsoPolygon extends IsoShape
 	{
-		override protected function pointLogic ():Boolean
+		override protected function validateGeometry ():Boolean
 		{
 			if (pts.length <= 2)
 				return false;
@@ -28,10 +28,10 @@ package isoLib.primitive
 			g.moveTo(pts[0].x, pts[0].y);
 			
 			if (type == IsoType.SOLID)
-				g.beginFill(0xFFFFFF, faceAlphas[0]);
+				g.beginFill(solidColors[0], faceAlphas[0]);
 				
 			else if (type == IsoType.SHADED)
-				g.beginFill(faceColors[0], faceAlphas[0]);
+				g.beginFill(shadedColors[0], faceAlphas[0]);
 			
 			g.lineStyle(lineThicknesses[0], lineColors[0], lineAlphas[0]);
 			
