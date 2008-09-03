@@ -1,6 +1,8 @@
 package isoLib.core.shape
 {
-	public interface IPrimitive
+	import isoLib.core.sceneGraph.INode;
+	
+	public interface IPrimitive extends INode
 	{
 		function get x ():Number;
 		function set x (value:Number):void;
@@ -22,5 +24,13 @@ package isoLib.core.shape
 		
 		function get type ():String;
 		function set type (value:String):void;
+		
+		function get geometryInvalidated ():Boolean;
+		function get positionInvalidated ():Boolean;
+		function get stylesInvalidated ():Boolean;
+		
+		function invalidateGeometry ():void;
+		function invalidatePosition ():void;
+		function invalidateStyles ():void;
 	}
 }

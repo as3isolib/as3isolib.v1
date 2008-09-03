@@ -4,21 +4,29 @@ package isoLib.primitive
 	
 	public class IsoCube extends Primitive
 	{
-		protected var sq0:IsoSquare = new IsoSquare();
-		protected var sq1:IsoSquare = new IsoSquare();
-		protected var sq2:IsoSquare = new IsoSquare();
-		protected var sq3:IsoSquare = new IsoSquare();
-		protected var sq4:IsoSquare = new IsoSquare();
-		protected var sq5:IsoSquare = new IsoSquare();
+		protected var sq0:IsoSquare;
+		protected var sq1:IsoSquare;
+		protected var sq2:IsoSquare;
+		protected var sq3:IsoSquare;
+		protected var sq4:IsoSquare;
+		protected var sq5:IsoSquare;
 		
-		public function IsoCube ()
-		{			
-			addChild(sq0);
-			addChild(sq1);
-			addChild(sq2);
-			addChild(sq3);
-			addChild(sq4);
-			addChild(sq5);
+		override protected function createChildren ():void
+		{
+			super.createChildren();
+			
+			var sq:IsoSquare;
+			var i:uint;
+			for (i; i < 6; i++)
+			{
+				if (this['sq' + i] == null)
+				{
+					sq = new IsoSquare();
+					this['sq' + i] = sq;
+				}
+				
+				addChild(sq);
+			}
 		}
 		
 		override protected function validateGeometry ():Boolean
@@ -73,7 +81,7 @@ package isoLib.primitive
 				sq.type = type;
 				
 				c++;
-			}			
+			}		
 		}
 	}
 }

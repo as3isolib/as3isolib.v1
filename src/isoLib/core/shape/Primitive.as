@@ -2,8 +2,13 @@ package isoLib.core.shape
 {
 	import com.jwopitz.geom.Pt;
 	
+	import flash.filters.DropShadowFilter;
+	
+	import isoLib.core.isolib_internal;
 	import isoLib.core.sceneGraph.Node;
 	import isoLib.utils.IsoUtil;
+	
+	use namespace isolib_internal;
 
 	public class Primitive extends Node implements IPrimitive, IStylable
 	{
@@ -29,26 +34,62 @@ package isoLib.core.shape
 				
 				renderGeometry();
 				
-				geometryInvalidated = false;
-				stylesInvalidated = false;
+				_geometryInvalidated = false;
+				_stylesInvalidated = false;
 			}
 			
 			if (positionInvalidated)
 			{
 				validatePosition();
-				positionInvalidated = false;
+				_positionInvalidated = false;
 			}
 			
 			super.render(recursive);
 		}
 		
 		////////////////////////////////////////////////////////////////////////
-		//	VALIDATION
+		//	INVALIDATION
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var geometryInvalidated:Boolean = false; //for width, length, height or style changes, will require geometry validation
-		protected var positionInvalidated:Boolean = false; //for x, y, z or depth changes, will require position validation		
-		protected var stylesInvalidated:Boolean = false; //for various style changes, will require style validation
+		private var _geometryInvalidated:Boolean = false; //for width, length, height or style changes, will require geometry validation
+		
+		public function get geometryInvalidated ():Boolean
+		{
+			return _geometryInvalidated;
+		}
+		
+		public function invalidateGeometry ():void
+		{
+			_geometryInvalidated = true;
+		}
+		
+		private var _stylesInvalidated:Boolean = false; //for x, y, z or depth changes, will require position validation		
+		
+		public function get stylesInvalidated ():Boolean
+		{
+			return _stylesInvalidated;
+		}
+		
+		public function invalidateStyles ():void
+		{
+			_stylesInvalidated = true;
+		}
+		
+		private var _positionInvalidated:Boolean = false; //for various style changes, will require style validation
+		
+		public function get positionInvalidated ():Boolean
+		{
+			return _positionInvalidated;
+		}
+		
+		public function invalidatePosition ():void
+		{
+			 _positionInvalidated = true
+		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	VALIDATION
+		////////////////////////////////////////////////////////////////////////		
 		
 		protected function validateGeometry ():Boolean
 		{
@@ -85,7 +126,7 @@ package isoLib.core.shape
 			if (geometryPts != value)
 			{
 				geometryPts = value;
-				geometryInvalidated = true;
+				invalidateGeometry();
 				
 				if (autoUpdate)
 					render();
@@ -116,7 +157,7 @@ package isoLib.core.shape
 			if (isoType != value)
 			{
 				isoType = value;
-				geometryInvalidated = true;
+				invalidateGeometry();
 				
 				if (autoUpdate)
 					render();
@@ -141,7 +182,7 @@ package isoLib.core.shape
 			if (isoWidth != value)
 			{
 				isoWidth = value;
-				geometryInvalidated = true;
+				invalidateGeometry();
 				
 				if (autoUpdate)
 					render();
@@ -166,7 +207,7 @@ package isoLib.core.shape
 			if (isoLength != value)
 			{
 				isoLength = value;
-				geometryInvalidated = true;
+				invalidateGeometry();
 				
 				if (autoUpdate)
 					render();
@@ -191,8 +232,7 @@ package isoLib.core.shape
 			if (isoHeight != value)
 			{
 				isoHeight = value;
-				geometryInvalidated = true;
-				
+				invalidateGeometry();				
 				if (autoUpdate)
 					render();
 			}
@@ -214,7 +254,7 @@ package isoLib.core.shape
 			if (isoX != value)
 			{
 				isoX = value;
-				positionInvalidated = true;
+				invalidatePosition();
 				
 				if (autoUpdate)
 					render();
@@ -232,12 +272,12 @@ package isoLib.core.shape
 			return isoY;
 		}
 		
-		public function set y( value:Number):void
+		public function set y (value:Number):void
 		{
 			if (isoY != value)
 			{
 				isoY = value;
-				positionInvalidated = true;
+				invalidatePosition();
 				
 				if (autoUpdate)
 					render();
@@ -260,7 +300,7 @@ package isoLib.core.shape
 			if (isoZ != value)
 			{
 				isoZ = value;
-				positionInvalidated = true;
+				invalidatePosition();
 				
 				if (autoUpdate)
 					render();
@@ -284,7 +324,7 @@ package isoLib.core.shape
 			if (lineThicknessesArray != value)
 			{
 				lineThicknessesArray = value;
-				stylesInvalidated = true;
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -304,7 +344,7 @@ package isoLib.core.shape
 			if (lineColorArray != value)
 			{
 				lineColorArray = value;
-				stylesInvalidated = true;
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -324,7 +364,7 @@ package isoLib.core.shape
 			if (lineAlphasArray != value)
 			{
 				lineAlphasArray = value;
-				stylesInvalidated = true;
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -336,7 +376,7 @@ package isoLib.core.shape
 		//////////////////////////////////////////////////////
 		
 		[ArrayElementType("uint")]
-		protected var solidColorArray:Array = [0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF];
+		protected var solidColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff];
 		
 		public function get solidColors ():Array
 		{
@@ -348,7 +388,7 @@ package isoLib.core.shape
 			if (solidColorArray != value)
 			{
 				solidColorArray = value;
-				stylesInvalidated = true;
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -356,7 +396,7 @@ package isoLib.core.shape
 		}
 		
 		[ArrayElementType("uint")]
-		protected var shadedColorArray:Array = [0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF, 0xFFFFFF];
+		protected var shadedColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff];
 		
 		public function get shadedColors ():Array
 		{
@@ -368,7 +408,7 @@ package isoLib.core.shape
 			if (shadedColorArray != value)
 			{
 				shadedColorArray = value;
-				stylesInvalidated = true;
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -388,7 +428,7 @@ package isoLib.core.shape
 			if (faceAlphasArray != value)
 			{
 				faceAlphasArray = value;
-				stylesInvalidated = true;
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();

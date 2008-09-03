@@ -65,7 +65,6 @@ package isoLib.utils
 		
 		public static function mapYToIsoY (pt:Pt):Number
 		{
-			var z:Number;
 			return 0.5 * (pt.x + pt.y) - pt.z;
 		}
 		

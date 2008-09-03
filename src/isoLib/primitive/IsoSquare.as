@@ -7,6 +7,19 @@ package isoLib.primitive
 	
 	public class IsoSquare extends Primitive
 	{
+		protected var iso:IsoPolygon;
+		
+		override protected function createChildren ():void
+		{
+			super.createChildren();
+			
+			if (!iso)
+			{
+				iso = new IsoPolygon();
+				addChild(iso);
+			}
+		}
+		
 		override protected function validateGeometry ():Boolean
 		{
 			pts = [];
@@ -46,16 +59,8 @@ package isoLib.primitive
 			return true;
 		}
 		
-		protected var iso:IsoPolygon;
-		
 		override protected function renderGeometry ():void
-		{
-			if (!iso)
-			{
-				iso = new IsoPolygon();
-				addChild(iso);
-			}
-			
+		{			
 			iso.pts = pts;
 			iso.type = type;
 			iso.lineAlphas = [lineAlphas[0]];

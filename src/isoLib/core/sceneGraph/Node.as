@@ -1,16 +1,28 @@
 package isoLib.core.sceneGraph
 {
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
+	import eDpLib.events.EventDispatcherProxy;
+	
 	import flash.display.Sprite;
-
-	public class Node extends EventDispatcher implements INode
+	
+	public class Node extends EventDispatcherProxy implements INode
 	{
+		////////////////////////////////////////////////////////////////////////
+		//	CONSTRUCTOR
+		////////////////////////////////////////////////////////////////////////
+		
+		public function Node ()
+		{
+			super();
+			proxyTarget = container;
+			
+			createChildren();
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	ID
 		////////////////////////////////////////////////////////////////////////
 		
-		private static var _IDCount:uint = 0;
+		static private var _IDCount:uint = 0;
 		
 		public const UID:uint = _IDCount++;
 		protected var setID:String;
@@ -18,7 +30,7 @@ package isoLib.core.sceneGraph
 		public function get id ():String
 		{
 			return (setID == null || setID == "")?
-				UID.toString():
+				"Node" + UID.toString():
 				setID;
 		}
 		
@@ -33,11 +45,11 @@ package isoLib.core.sceneGraph
 		
 		public function render (recursive:Boolean = true):void
 		{
-			if (recursive)
+			if (recursive && hasParent)
 			{
 				var child:INode;
 				for each (child in children)
-					child.render();
+					child.render(recursive);
 			}
 		}
 		
@@ -58,6 +70,21 @@ package isoLib.core.sceneGraph
 		}
 		
 		////////////////////////////////////////////////////////////////////////
+		//	DEPTH
+		////////////////////////////////////////////////////////////////////////
+		
+		protected var nodeDepth:int = -1;
+		
+		public function get depth ():int
+		{
+			if (hasParent)
+				return parent.container.getChildIndex(container);
+			
+			else
+				return -1;
+		}
+		
+		////////////////////////////////////////////////////////////////////////
 		//	CONTAINER
 		////////////////////////////////////////////////////////////////////////
 		
@@ -66,8 +93,11 @@ package isoLib.core.sceneGraph
 		public function get container ():Sprite
 		{
 			if (!spriteContainer)
+			{
 				spriteContainer = new Sprite();
-				
+				spriteContainer.buttonMode = true;
+			}
+			
 			return spriteContainer;
 		}
 		
@@ -83,7 +113,17 @@ package isoLib.core.sceneGraph
 			return children.length;
 		}
 		
+		protected function createChildren ():void
+		{
+			//will be overridden by subclasses
+		}
+		
 		public function addChild (child:INode):void
+		{
+			addChildAt(child, numChildren);
+		}
+		
+		public function addChildAt (child:INode, index:uint):void
 		{
 			//if it already exists here, do nothing
 			if (getChildByID(child.id))
@@ -97,9 +137,18 @@ package isoLib.core.sceneGraph
 			}
 			
 			Node(child).parentNode = this;
+			container.addChildAt(child.container, index);
 			
-			container.addChild(child.container);
 			children.push(child);
+		}
+		
+		public function setChildIndex (child:INode, index:uint):void
+		{
+			if (child.hasParent)
+			{
+				var p:INode = child.parent;
+				p.container.setChildIndex(child.container, index);
+			}
 		}
 		
 		public function removeChild (child:INode):INode
