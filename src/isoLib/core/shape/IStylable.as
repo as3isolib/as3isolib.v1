@@ -19,5 +19,24 @@ package isoLib.core.shape
 		
 		function get solidColors ():Array;
 		function set solidColors (value:Array):void;
+		
+		//////////////////////////////////////////////////////////////////
+		//	TYPE
+		//////////////////////////////////////////////////////////////////
+		
+		/**
+		 * @private
+		 */
+		function get type ():String;
+		
+		/**
+		 * Indicates what kind of rendering/styles to apply to the IPrimitive during the validation phases.
+		 * 
+		 * @see isolib.core.shape.IsoType
+		 */
+		function set type (value:String):void;
+			
+		function get filters ():Array;
+		function set filters (value:Array):void;
 	}
 }

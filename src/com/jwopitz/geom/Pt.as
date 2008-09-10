@@ -1,10 +1,12 @@
 ﻿package com.jwopitz.geom
 {
-	import flash.geom.Point;
-	
-	public class Pt extends Point
+	public class Pt
 	{		
-		public static function distance (ptA:Pt, ptB:Pt):Number
+		///////////////////////////////////////////////
+		//	CALCULATIONS
+		///////////////////////////////////////////////
+		
+		static public function distance (ptA:Pt, ptB:Pt):Number
 		{
 			var tx:Number = ptB.x - ptA.x;
 			var ty:Number = ptB.y - ptA.y;
@@ -13,7 +15,7 @@
 			return Math.sqrt(tx * tx + ty * ty + tz * tz);
 		}
 		
-		public static function theta (ptA:Pt, ptB:Pt):Number
+		static public function theta (ptA:Pt, ptB:Pt):Number
 		{
 			var tx:Number = ptB.x - ptA.x;
 			var ty:Number = ptB.y - ptA.y;
@@ -28,12 +30,12 @@
 			return radians;
 		}
 		
-		public static function angle (ptA:Pt, ptB:Pt):Number
+		static public function angle (ptA:Pt, ptB:Pt):Number
 		{
 			return theta(ptA, ptB) * 180 / Math.PI;
 		}
 		
-		public static function polar (originPt:Pt, radius:Number, theta:Number):Pt
+		static public function polar (originPt:Pt, radius:Number, theta:Number):Pt
 		{
 			var nx:Number = originPt.x + Math.cos(theta) * radius;
 			var ny:Number = originPt.y + Math.sin(theta) * radius;
@@ -41,7 +43,7 @@
 			return new Pt(nx, ny, 0);
 		}
 		
-		public static function interpolate (ptA:Pt, ptB:Pt, f:Number):Pt
+		static public function interpolate (ptA:Pt, ptB:Pt, f:Number):Pt
 		{
 			if (f <= 0)
 				return ptA;
@@ -56,11 +58,24 @@
 			return new Pt(nx, ny, nz);
 		}
 		
+		///////////////////////////////////////////////
+		//	X, Y, Z
+		///////////////////////////////////////////////
+		
+		public var x:Number = 0;
+		public var y:Number = 0;
 		public var z:Number = 0;
+		
+		///////////////////////////////////////////////
+		//	CONSTRUCTOR
+		///////////////////////////////////////////////
 		
 		public function Pt (x:Number = 0, y:Number = 0, z:Number = 0)
 		{
-			super(x, y);
+			super();
+			
+			this.x = x;
+			this.y = y;
 			this.z = z;
 		}
 	}

@@ -2,15 +2,19 @@ package isoLib.core.shape
 {
 	import com.jwopitz.geom.Pt;
 	
-	import flash.filters.DropShadowFilter;
+	import flash.utils.getDefinitionByName;
+	import flash.utils.getQualifiedClassName;
 	
+	import isoLib.bounds.IBounds;
+	import isoLib.bounds.PrimitiveBounds;
 	import isoLib.core.isolib_internal;
-	import isoLib.core.sceneGraph.Node;
+	import isoLib.core.sceneGraph.INode;
+	import isoLib.core.sceneGraph.IsoContainer;
 	import isoLib.utils.IsoUtil;
 	
 	use namespace isolib_internal;
 
-	public class Primitive extends Node implements IPrimitive, IStylable
+	public class Primitive extends IsoContainer implements IPrimitive
 	{
 		////////////////////////////////////////////////////////////////////////
 		//	VARIOUS FLAGS
@@ -47,10 +51,37 @@ package isoLib.core.shape
 			super.render(recursive);
 		}
 		
+		///////////////////////////////////////////////////////////////////////////////
+		//	OVERRIDES
+		///////////////////////////////////////////////////////////////////////////////
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function addChildAt (child:INode, index:uint):void
+		{
+			if (child is IPrimitive)
+			{
+				super.addChildAt(child, index);
+				container.addChildAt(IPrimitive(child).container, index);			
+			}
+			
+			else
+				throw new Error ("parameter child is not of type IPrimitive");
+		}
+		
+		override public function setChildIndex (child:INode, index:uint):void
+		{
+			
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	INVALIDATION
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @private
+		 */
 		private var _geometryInvalidated:Boolean = false; //for width, length, height or style changes, will require geometry validation
 		
 		public function get geometryInvalidated ():Boolean
@@ -87,6 +118,19 @@ package isoLib.core.shape
 			 _positionInvalidated = true
 		}
 		
+		private var _depthInvalidated:Boolean = false;
+		
+		public function get depthInvalidated ():Boolean
+		{
+			return _depthInvalidated;
+		}
+		
+		public function invalidateDepth ():void
+		{
+			_depthInvalidated = true;
+			_positionInvalidated = true;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	VALIDATION
 		////////////////////////////////////////////////////////////////////////		
@@ -98,12 +142,13 @@ package isoLib.core.shape
 		
 		protected function renderGeometry ():void
 		{
+			
 		}
 		
 		protected function validatePosition ():void
 		{
 			var pt:Pt = new Pt(x, y, z);
-			IsoUtil.mapToIso(pt);
+			IsoUtil.isoToScreen(pt);
 			
 			container.x = pt.x;
 			container.y = pt.y;
@@ -165,10 +210,74 @@ package isoLib.core.shape
 		}
 		
 		////////////////////////////////////////////////////////////////////////
+		//	ORIENTATION
+		////////////////////////////////////////////////////////////////////////
+		
+		/**
+		 * @private
+		 */
+		private var isoOrientation:String = IsoOrientation.NONE;
+		
+		/**
+		 * @private
+		 */
+		public function get orientation ():String
+		{
+			return isoOrientation
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set orientation (value:String):void
+		{
+			//to be overridden by subclasses
+		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	BOUNDS
+		////////////////////////////////////////////////////////////////////////
+		
+		override public function get bounds ():IBounds
+		{
+			return new PrimitiveBounds(this);
+		}
+		
+		public function get left ():Number
+		{
+			return x;
+		}
+		
+		public function get right ():Number
+		{
+			return x + width;
+		}
+		
+		public function get front ():Number
+		{
+			return y + length
+		}
+		
+		public function get back ():Number
+		{
+			return y;
+		}
+		
+		public function get top ():Number
+		{
+			return z + height;
+		}
+		
+		public function get bottom ():Number
+		{
+			return z;
+		}
+		
+		////////////////////////////////////////////////////////////////////////
 		//	WIDTH
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var isoWidth:Number = 0;
+		private var isoWidth:Number = 0;
 		
 		public function get width ():Number
 		{
@@ -178,7 +287,6 @@ package isoLib.core.shape
 		public function set width (value:Number):void
 		{	
 			value = Math.abs(value);
-					
 			if (isoWidth != value)
 			{
 				isoWidth = value;
@@ -193,7 +301,7 @@ package isoLib.core.shape
 		//	LENGTH
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var isoLength:Number = 0;
+		private var isoLength:Number = 0;
 		
 		public function get length ():Number
 		{
@@ -203,7 +311,6 @@ package isoLib.core.shape
 		public function set length (value:Number):void
 		{
 			value = Math.abs(value);
-					
 			if (isoLength != value)
 			{
 				isoLength = value;
@@ -218,7 +325,7 @@ package isoLib.core.shape
 		//	HEIGHT
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var isoHeight:Number = 0;
+		private var isoHeight:Number = 0;
 		
 		public function get height ():Number
 		{
@@ -227,8 +334,7 @@ package isoLib.core.shape
 		
 		public function set height (value:Number):void
 		{
-			value = Math.abs(value);
-					
+			value = Math.abs(value);	
 			if (isoHeight != value)
 			{
 				isoHeight = value;
@@ -242,7 +348,7 @@ package isoLib.core.shape
 		//	X
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var isoX:Number = 0;
+		private var isoX:Number = 0;
 		
 		public function get x ():Number
 		{
@@ -251,6 +357,7 @@ package isoLib.core.shape
 		
 		public function set x (value:Number):void
 		{
+			value = Math.round(value);
 			if (isoX != value)
 			{
 				isoX = value;
@@ -261,11 +368,16 @@ package isoLib.core.shape
 			}
 		}
 		
+		public function get screenX ():int
+		{
+			return IsoUtil.isoToScreen(new Pt(left, front, bottom)).x;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	Y
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var isoY:Number = 0;
+		private var isoY:Number = 0;
 		
 		public function get y ():Number
 		{
@@ -274,6 +386,7 @@ package isoLib.core.shape
 		
 		public function set y (value:Number):void
 		{
+			value = Math.round(value);
 			if (isoY != value)
 			{
 				isoY = value;
@@ -284,11 +397,16 @@ package isoLib.core.shape
 			}
 		}
 		
+		public function get screenY ():int
+		{
+			return IsoUtil.isoToScreen(new Pt(right, front, bottom)).y;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	Z
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var isoZ:Number = 0;
+		private var isoZ:Number = 0;
 		
 		public function get z ():Number
 		{
@@ -297,10 +415,12 @@ package isoLib.core.shape
 		
 		public function set z (value:Number):void
 		{
+			value = Math.round(value);
 			if (isoZ != value)
 			{
 				isoZ = value;
 				invalidatePosition();
+				invalidateDepth();
 				
 				if (autoUpdate)
 					render();
@@ -308,11 +428,41 @@ package isoLib.core.shape
 		}
 		
 		//////////////////////////////////////////////////////
+		// DEPTH
+		//////////////////////////////////////////////////////
+		
+		private var isoDepth:int;
+		
+		public function get depth ():int
+		{
+			return isoDepth;
+		}
+		
+		public function set depth (value:int):void
+		{
+			isoDepth = value;
+		}
+		
+		//////////////////////////////////////////////////////
+		// FILTERS
+		//////////////////////////////////////////////////////
+		
+		public function get filters ():Array
+		{
+			return container.filters;
+		}
+		
+		public function set filters (value:Array):void
+		{
+			container.filters = value;
+		}
+		
+		//////////////////////////////////////////////////////
 		// LINE STYLES
 		//////////////////////////////////////////////////////
 		
 		[ArrayElementType("uint")]
-		protected var lineThicknessesArray:Array = [0, 0, 0, 0, 0, 0];
+		private var lineThicknessesArray:Array = [0, 0, 0, 0, 0, 0];
 		
 		public function get lineThicknesses ():Array
 		{
@@ -332,7 +482,7 @@ package isoLib.core.shape
 		}
 		
 		[ArrayElementType("uint")]
-		protected var lineColorArray:Array = [0x000000, 0x000000, 0x000000, 0x000000, 0x000000, 0x000000,];
+		private var lineColorArray:Array = [0x000000, 0x000000, 0x000000, 0x000000, 0x000000, 0x000000,];
 		
 		public function get lineColors ():Array
 		{
@@ -352,7 +502,7 @@ package isoLib.core.shape
 		}
 		
 		[ArrayElementType("Number")]
-		protected var lineAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+		private var lineAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 		
 		public function get lineAlphas ():Array
 		{
@@ -376,7 +526,7 @@ package isoLib.core.shape
 		//////////////////////////////////////////////////////
 		
 		[ArrayElementType("uint")]
-		protected var solidColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff];
+		private var solidColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff];
 		
 		public function get solidColors ():Array
 		{
@@ -396,7 +546,7 @@ package isoLib.core.shape
 		}
 		
 		[ArrayElementType("uint")]
-		protected var shadedColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff];
+		private var shadedColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xcccccc, 0xcccccc];
 		
 		public function get shadedColors ():Array
 		{
@@ -416,7 +566,7 @@ package isoLib.core.shape
 		}
 		
 		[ArrayElementType("Number")]
-		protected var faceAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+		private var faceAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 		
 		public function get faceAlphas ():Array
 		{
@@ -433,6 +583,33 @@ package isoLib.core.shape
 				if (autoUpdate)
 					render();
 			}
+		}
+		
+		//////////////////////////////////////////////////////////////////
+		//	CLONE
+		//////////////////////////////////////////////////////////////////
+		
+		public function clone ():IPrimitive
+		{
+			var className:String = getQualifiedClassName(this).replace("::", ".");
+			var classReference:Class = getDefinitionByName(className) as Class;
+			
+			var copy:IPrimitive = new classReference();
+			copy.type = this.type;
+			
+			copy.width = this.width;
+			copy.length = this.length;
+			copy.height = this.height;
+			
+			copy.lineAlphas = this.lineAlphas;
+			copy.lineColors = this.lineColors;
+			copy.lineThicknesses = this.lineThicknesses;
+			
+			copy.faceAlphas = this.faceAlphas;
+			copy.solidColors = this.solidColors;
+			copy.shadedColors = this.shadedColors;
+			
+			return copy;
 		}
 	}
 }

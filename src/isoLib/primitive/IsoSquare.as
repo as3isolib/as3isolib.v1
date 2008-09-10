@@ -54,7 +54,7 @@ package isoLib.primitive
 				
 			var pt:Pt;
 			for each (pt in pts)
-				IsoUtil.mapToIso(pt);
+				IsoUtil.isoToScreen(pt);
 				
 			return true;
 		}

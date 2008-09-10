@@ -10,6 +10,9 @@ package isoLib.primitive
 	
 	public class IsoPolygon extends Primitive
 	{
+		/**
+		 * @inheritDoc
+		 */
 		override protected function validateGeometry ():Boolean
 		{
 			if (pts.length <= 2)
@@ -22,13 +25,19 @@ package isoLib.primitive
 			return true;
 		}
 		
-		public function convertPts ():void
+		/**
+		 * Since IsoPolygons comprise the base structure for other isometric primitives it is necessary to delay conversion of the points in some instances.
+		 */
+		/* public function convertPts ():void
 		{
 			var pt:Pt;
 			for each (pt in pts)
 				IsoUtil.mapToIso(pt);
-		}
+		} */
 		
+		/**
+		 * @inheritDoc
+		 */
 		override protected function renderGeometry():void
 		{
 			var g:Graphics = container.graphics;

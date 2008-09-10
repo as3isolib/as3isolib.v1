@@ -13,7 +13,6 @@ package isoLib.core.sceneGraph
 		public function Node ()
 		{
 			super();
-			proxyTarget = container;
 			
 			createChildren();
 		}
@@ -22,11 +21,24 @@ package isoLib.core.sceneGraph
 		//	ID
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @private
+		 */
 		static private var _IDCount:uint = 0;
 		
+		/**
+		 * @private
+		 */
 		public const UID:uint = _IDCount++;
+		
+		/**
+		 * @private
+		 */
 		protected var setID:String;
 		
+		/**
+		 * @private
+		 */
 		public function get id ():String
 		{
 			return (setID == null || setID == "")?
@@ -40,20 +52,6 @@ package isoLib.core.sceneGraph
 		}
 		
 		////////////////////////////////////////////////////////////////////////
-		//	RENDER
-		////////////////////////////////////////////////////////////////////////
-		
-		public function render (recursive:Boolean = true):void
-		{
-			if (recursive && hasParent)
-			{
-				var child:INode;
-				for each (child in children)
-					child.render(recursive);
-			}
-		}
-		
-		////////////////////////////////////////////////////////////////////////
 		//	PARENT
 		////////////////////////////////////////////////////////////////////////
 		
@@ -62,6 +60,9 @@ package isoLib.core.sceneGraph
 			return parentNode? true: false;
 		}
 		
+		/**
+		 * @private
+		 */
 		protected var parentNode:INode;
 		
 		public function get parent():INode
@@ -70,41 +71,12 @@ package isoLib.core.sceneGraph
 		}
 		
 		////////////////////////////////////////////////////////////////////////
-		//	DEPTH
-		////////////////////////////////////////////////////////////////////////
-		
-		protected var nodeDepth:int = -1;
-		
-		public function get depth ():int
-		{
-			if (hasParent)
-				return parent.container.getChildIndex(container);
-			
-			else
-				return -1;
-		}
-		
-		////////////////////////////////////////////////////////////////////////
-		//	CONTAINER
-		////////////////////////////////////////////////////////////////////////
-		
-		protected var spriteContainer:Sprite;
-		
-		public function get container ():Sprite
-		{
-			if (!spriteContainer)
-			{
-				spriteContainer = new Sprite();
-				spriteContainer.buttonMode = true;
-			}
-			
-			return spriteContainer;
-		}
-		
-		////////////////////////////////////////////////////////////////////////
 		//	CHILD METHODS
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @private
+		 */
 		[ArrayElementType("isoLib.core.sceneGraph.INode")]
 		protected var children:Array = [];
 		
@@ -137,18 +109,63 @@ package isoLib.core.sceneGraph
 			}
 			
 			Node(child).parentNode = this;
-			container.addChildAt(child.container, index);
-			
 			children.push(child);
+		}
+		
+		public function getChildAt (index:uint):INode
+		{
+			if (index >= numChildren)
+				throw new Error("");
+			
+			else
+				return INode(children[index]);
+		}
+		
+		public function getChildIndex (child:INode):int
+		{
+			var i:int;
+			while (i < numChildren)
+			{
+				if (child == children[i])
+					return i;
+				
+				i++;
+			}
+			
+			return -1;
 		}
 		
 		public function setChildIndex (child:INode, index:uint):void
 		{
-			if (child.hasParent)
+			var i:int = getChildIndex(child);
+			if (i > -1)
 			{
-				var p:INode = child.parent;
-				p.container.setChildIndex(child.container, index);
+				children.splice(i, 1); //remove it form the array
+				
+				//now let's check to see if it really did remove the correct choice - this may not be necessary but I get OCD about crap like this
+				var c:INode;
+				var notRemoved:Boolean = false;
+				for each (c in children)
+				{
+					if (c == child)
+						notRemoved = true;
+				}
+				
+				if (notRemoved)
+				{
+					throw new Error("");
+					return;
+				}
+				
+				if (index >= numChildren)
+					children.push(child);
+				
+				else
+					children.splice(index, 0, child);
 			}
+			
+			else
+				throw new Error("");
 		}
 		
 		public function removeChild (child:INode):INode
@@ -159,7 +176,7 @@ package isoLib.core.sceneGraph
 		public function removeChildAt (index:uint):INode
 		{				
 			var child:INode;
-			if (index >= children.length)
+			if (index >= numChildren)
 				return null;
 				
 			else
@@ -173,9 +190,6 @@ package isoLib.core.sceneGraph
 			var child:INode = getChildByID(id);
 			if (child)
 			{
-				//remove child.container from parent's container
-				container.removeChild(child.container);
-				
 				//remove parent ref
 				Node(child).parentNode = null;
 				
@@ -198,10 +212,7 @@ package isoLib.core.sceneGraph
 		{
 			var child:INode;
 			for each (child in children)
-			{
-				container.removeChild(child.container);
 				Node(child).parentNode = null;
-			}
 			
 			children = [];
 		}
