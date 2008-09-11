@@ -16,8 +16,8 @@ package isoLib.core.shape
 		//	POSITION
 		//////////////////////////////////////////////////////////////////
 		
-		function get depth ():int;
-		function set depth (value:int):void;
+		function get depth ():Number;
+		function set depth (value:Number):void;
 		
 		function get screenX ():int;
 		function get screenY ():int;

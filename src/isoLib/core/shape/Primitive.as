@@ -431,14 +431,14 @@ package isoLib.core.shape
 		// DEPTH
 		//////////////////////////////////////////////////////
 		
-		private var isoDepth:int;
+		private var isoDepth:Number;
 		
-		public function get depth ():int
+		public function get depth ():Number
 		{
 			return isoDepth;
 		}
 		
-		public function set depth (value:int):void
+		public function set depth (value:Number):void
 		{
 			isoDepth = value;
 		}
