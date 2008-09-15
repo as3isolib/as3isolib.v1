@@ -167,7 +167,7 @@ package eDpLib.events
 		 * 
 		 * An array of events to check against that could be dispatched from an interactive target.
 		 */
-		private var _interceptedEventTypes:Array = generateEventTypes();
+		public var interceptedEventTypes:Array = generateEventTypes();
 		
 		/**
 		 * Creates an array of interactive object events to check against during event proxying.
@@ -226,7 +226,7 @@ package eDpLib.events
 		private function checkForInteceptedEventType (type:String):Boolean
 		{
 			var evtType:String;
-			for each (evtType in _interceptedEventTypes)
+			for each (evtType in interceptedEventTypes)
 			{
 				if (type == evtType)
 					return true;
@@ -247,6 +247,7 @@ package eDpLib.events
 		{
 			evt.stopImmediatePropagation(); //prevent from further bubbling up thru display list
 			var pEvt:ProxyEvent = new ProxyEvent(proxy, evt);
+			pEvt.proxyTarget = proxyTarget;
 			
 			var func:Function;
 			var listeners:Array;
@@ -394,7 +395,11 @@ package eDpLib.events
 		 */
 		public function dispatchEvent (event:Event):Boolean
 		{
-			return eventDispatcher.dispatchEvent(event);
+			if (checkForInteceptedEventType(event.type))
+				return proxyTarget.dispatchEvent(new ProxyEvent(this, event));
+				
+			else
+				return eventDispatcher.dispatchEvent(event);
 		}
 		
 	}

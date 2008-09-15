@@ -1,9 +1,12 @@
 package isoLib.core.sceneGraph
 {
+	import eDpLib.events.ProxyEvent;
+	
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.Event;
 	
 	import isoLib.bounds.IBounds;
-	import isoLib.bounds.PrimitiveBounds;
 
 	public class IsoContainer extends Node implements IRenderer
 	{
@@ -16,7 +19,12 @@ package isoLib.core.sceneGraph
 			if (child is IRenderer)
 			{
 				super.addChildAt(child, index);
-				container.addChildAt(IRenderer(child).container, index);
+				
+				/* if (child is IsoContainer)
+					container.addChildAt(IsoContainer(child).mainContainer, index); //we are going to hit some RTEs with this for now
+				
+				else */
+					container.addChildAt(IRenderer(child).container, index);
 			}
 			
 			else
@@ -34,7 +42,12 @@ package isoLib.core.sceneGraph
 			else
 			{
 				super.setChildIndex(child, index);
-				container.setChildIndex(IRenderer(child).container, index);
+				
+				/* if (child is IsoContainer)
+					container.setChildIndex(IsoContainer(child).mainContainer, index); //we are going to hit some RTEs with this for now
+				
+				else
+					 */container.setChildIndex(IRenderer(child).container, index);
 			}
 		}
 		
@@ -42,7 +55,13 @@ package isoLib.core.sceneGraph
 		{
 			var child:INode = super.removeChildByID(id);
 			if (child && child is IRenderer)
-				container.removeChild(IRenderer(child).container);
+			{
+				/* if (child is IsoContainer)
+					container.removeChild(IsoContainer(child).mainContainer);
+					
+				else
+					 */container.removeChild(IRenderer(child).container);			
+			}
 			
 			return child;
 		}
@@ -51,14 +70,79 @@ package isoLib.core.sceneGraph
 		{
 			var child:IRenderer;
 			for each (child in children)
-				container.removeChild(child.container);
+			{
+				/* if (child is IsoContainer)
+					container.removeChild(IsoContainer(child).mainContainer);
+				
+				else
+					 */container.removeChild(child.container);
+			}
 			
 			super.removeAllChildren();
 		}
 		
 		////////////////////////////////////////////////////////////////////////
-		//	CONTAINER
+		//	CONTAINERS
 		////////////////////////////////////////////////////////////////////////
+		
+			//	BACKGROUND
+			////////////////////////////////////////////////////////////////////////
+		
+		/* protected var backgroundContainer:Sprite;
+		
+		public function get background ():Sprite
+		{
+			if (!backgroundContainer)
+			{
+				backgroundContainer = new Sprite();
+				mainContainer.addChildAt(backgroundContainer, 0);
+			}
+			
+			return backgroundContainer
+		}
+		
+		public function set background (value:Sprite):void
+		{
+			if (backgroundContainer != value)
+			{
+				if (backgroundContainer)
+					mainContainer.removeChild(backgroundContainer);
+				
+				foregroundContainer = value;
+				mainContainer.addChildAt(backgroundContainer, 0);
+			}
+		} */
+		
+			//	FORGROUND
+			////////////////////////////////////////////////////////////////////////
+		
+		/* protected var foregroundContainer:Sprite;
+		
+		public function get foreground ():Sprite
+		{
+			if (!foregroundContainer)
+			{
+				foregroundContainer = new Sprite();
+				mainContainer.addChild(foregroundContainer);
+			}
+			
+			return foregroundContainer
+		}
+		
+		public function set forground (value:Sprite):void
+		{
+			if (foregroundContainer != value)
+			{
+				if (foregroundContainer)
+					mainContainer.removeChild(foregroundContainer);
+				
+				foregroundContainer = value;
+				mainContainer.addChild(foregroundContainer);
+			}
+		} */
+		
+			//	OBJECTS
+			////////////////////////////////////////////////////////////////////////
 		
 		protected var spriteContainer:Sprite;
 		
@@ -73,6 +157,18 @@ package isoLib.core.sceneGraph
 			
 			return spriteContainer;
 		}
+		
+		/*
+		main structure should be like so:
+		
+			* mainContainer
+				* backgroundContainer - INodes
+				* objects -  INodes
+				* foregroundContainer - INodes
+				* overlay gfx
+		*/
+		
+		//protected var mainContainer:Sprite;
 		
 		///////////////////////////////////////////////////////////////////////////////
 		//	BOUNDS
@@ -95,7 +191,7 @@ package isoLib.core.sceneGraph
 		 */
 		public function render (recursive:Boolean = true):void
 		{
-			if (recursive && hasParent)
+			if (recursive)
 			{
 				var child:IRenderer;
 				for each (child in children)
@@ -111,7 +207,20 @@ package isoLib.core.sceneGraph
 		{
 			super();
 			
+			//mainContainer = new Sprite();
+			//mainContainer.addChild(container);
+			
 			proxyTarget = container;
-		}		
+		}
+		
+		override public function dispatchEvent (event:Event):Boolean
+		{
+			//so we can make use of the bubbling events via the display list
+			if (event.bubbles)
+				return proxyTarget.dispatchEvent(new ProxyEvent(this, event));
+				
+			else
+				return super.dispatchEvent(event);
+		}
 	}
 }

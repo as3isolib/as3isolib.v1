@@ -5,7 +5,7 @@ package isoLib.primitive
 	import isoLib.core.shape.Primitive;
 	import isoLib.utils.IsoUtil;
 	
-	public class IsoSquare extends Primitive
+	public class IsoRectangle extends Primitive
 	{
 		protected var iso:IsoPolygon;
 		
@@ -62,7 +62,7 @@ package isoLib.primitive
 		override protected function renderGeometry ():void
 		{			
 			iso.pts = pts;
-			iso.type = type;
+			iso.renderStyle = renderStyle;
 			iso.lineAlphas = [lineAlphas[0]];
 			iso.lineColors = [lineColors[0]];
 			iso.lineThicknesses = [lineThicknesses[0]];

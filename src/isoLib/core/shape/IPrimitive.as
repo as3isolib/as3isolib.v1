@@ -4,7 +4,7 @@ package isoLib.core.shape
 	import isoLib.core.sceneGraph.INode;
 	import isoLib.core.sceneGraph.IRenderer;
 	
-	public interface IPrimitive extends INode, IRenderer, IStylable
+	public interface IPrimitive extends INode, IRenderer, IIsoStyleClient
 	{
 		//////////////////////////////////////////////////////////////////
 		//	BOUNDS

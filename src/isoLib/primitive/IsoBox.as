@@ -2,31 +2,46 @@ package isoLib.primitive
 {
 	import isoLib.core.shape.Primitive;
 	
-	public class IsoCube extends Primitive
+	public class IsoBox extends Primitive
 	{
-		protected var sq0:IsoSquare;
-		protected var sq1:IsoSquare;
-		protected var sq2:IsoSquare;
-		protected var sq3:IsoSquare;
-		protected var sq4:IsoSquare;
-		protected var sq5:IsoSquare;
+		public function IsoBox ()
+		{
+			super();
+			
+			lineThicknesses = [0, 0, 0, 3, 3, 3];
+			shadedColors = [0xffffff, 0xffffff, 0xcccccc, 0xffffff, 0xcccccc, 0x000000];
+		}
+		
+		protected var sq0:IsoRectangle;
+		protected var sq1:IsoRectangle;
+		protected var sq2:IsoRectangle;
+		protected var sq3:IsoRectangle;
+		protected var sq4:IsoRectangle;
+		protected var sq5:IsoRectangle;
 		
 		override protected function createChildren ():void
 		{
 			super.createChildren();
 			
-			var sq:IsoSquare;
+			var sq:IsoRectangle;
 			var i:uint;
 			for (i; i < 6; i++)
 			{
 				if (this['sq' + i] == null)
 				{
-					sq = new IsoSquare();
+					sq = new IsoRectangle();
 					this['sq' + i] = sq;
 				}
 				
 				addChild(sq);
 			}
+			
+			sq0.id = "bottom";
+			sq1.id = "left";
+			sq2.id = "back";
+			sq3.id = "front";
+			sq4.id = "right";
+			sq5.id = "top";
 		}
 		
 		override protected function validateGeometry ():Boolean
@@ -64,12 +79,12 @@ package isoLib.primitive
 			sq5.z = height;
 			
 			//now apply all common properties
-			var sq:IsoSquare;
+			var sq:IsoRectangle;
 			var i:int = numChildren - 1;
 			var c:int;
 			for (i; i >= 0; i--)
 			{
-				sq = IsoSquare(children[i]);
+				sq = IsoRectangle(children[i]);
 				
 				//styling
 				sq.lineAlphas = [lineAlphas[c]];
@@ -78,7 +93,7 @@ package isoLib.primitive
 				sq.faceAlphas = [faceAlphas[c]];
 				sq.shadedColors = [shadedColors[c]];
 				sq.solidColors = [solidColors[c]];
-				sq.type = type;
+				sq.renderStyle = renderStyle;
 				
 				c++;
 			}		

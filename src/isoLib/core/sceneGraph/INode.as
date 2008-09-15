@@ -32,6 +32,8 @@ package isoLib.core.sceneGraph
 		 */
 		function get hasParent ():Boolean;
 		
+		function getRootNode ():INode;
+		
 		////////////////////////////////////////////////
 		//	CHILD METHODS
 		////////////////////////////////////////////////

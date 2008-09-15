@@ -2,6 +2,7 @@ package isoLib.core.shape
 {
 	import com.jwopitz.geom.Pt;
 	
+	import flash.events.Event;
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
 	
@@ -10,6 +11,8 @@ package isoLib.core.shape
 	import isoLib.core.isolib_internal;
 	import isoLib.core.sceneGraph.INode;
 	import isoLib.core.sceneGraph.IsoContainer;
+	import isoLib.events.IsoEvent;
+	import isoLib.style.RenderStyle;
 	import isoLib.utils.IsoUtil;
 	
 	use namespace isolib_internal;
@@ -28,6 +31,9 @@ package isoLib.core.shape
 		
 		override public function render (recursive:Boolean = true):void
 		{
+			if (!hasParent)
+				return;
+			
 			if (geometryInvalidated || stylesInvalidated)
 			{
 				if (geometryInvalidated && validateGeometry() == false)
@@ -38,6 +44,13 @@ package isoLib.core.shape
 				
 				renderGeometry();
 				
+				var evt:IsoEvent = new IsoEvent(IsoEvent.RESIZE);
+				evt.propName = "size";
+				evt.oldValue = {width:oldWidth, length:oldLength, height:oldHeight};
+				evt.newValue = {width:isoWidth, length:isoLength, height:isoHeight};
+				
+				dispatchEvent(evt);
+				
 				_geometryInvalidated = false;
 				_stylesInvalidated = false;
 			}
@@ -45,9 +58,18 @@ package isoLib.core.shape
 			if (positionInvalidated)
 			{
 				validatePosition();
+				
+				evt = new IsoEvent(IsoEvent.MOVE);
+				evt.propName = "position";
+				evt.oldValue = {x:oldX, y:oldY, z:oldZ};
+				evt.newValue = {x:isoX, y:isoY, z:isoZ};
+				
+				dispatchEvent(evt);
+				
 				_positionInvalidated = false;
 			}
 			
+			dispatchEvent(new Event(Event.RENDER));
 			super.render(recursive);
 		}
 		
@@ -79,6 +101,9 @@ package isoLib.core.shape
 		//	INVALIDATION
 		////////////////////////////////////////////////////////////////////////
 		
+			//	GEOMETRY
+			////////////////////////////////////////////////////////////////////////
+		
 		/**
 		 * @private
 		 */
@@ -91,8 +116,15 @@ package isoLib.core.shape
 		
 		public function invalidateGeometry ():void
 		{
-			_geometryInvalidated = true;
+			if (!_geometryInvalidated)
+			{
+				_geometryInvalidated = true;
+				//dispatchEvent(new IsoEvent(IsoEvent.RESIZE));
+			}
 		}
+		
+			//	STYLES
+			////////////////////////////////////////////////////////////////////////
 		
 		private var _stylesInvalidated:Boolean = false; //for x, y, z or depth changes, will require position validation		
 		
@@ -106,6 +138,9 @@ package isoLib.core.shape
 			_stylesInvalidated = true;
 		}
 		
+			//	POSITION
+			////////////////////////////////////////////////////////////////////////
+		
 		private var _positionInvalidated:Boolean = false; //for various style changes, will require style validation
 		
 		public function get positionInvalidated ():Boolean
@@ -115,8 +150,15 @@ package isoLib.core.shape
 		
 		public function invalidatePosition ():void
 		{
-			 _positionInvalidated = true
+			if (!_positionInvalidated)
+			{
+				_positionInvalidated = true;
+				//dispatchEvent(new IsoEvent(IsoEvent.MOVE));
+			}
 		}
+		
+			//	DEPTH
+			////////////////////////////////////////////////////////////////////////
 		
 		private var _depthInvalidated:Boolean = false;
 		
@@ -182,26 +224,26 @@ package isoLib.core.shape
 		//	TYPE
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var isoType:String = IsoType.SOLID;
+		protected var isoRenderStyle:String = RenderStyle.SHADED;
 		
-		public function get type ():String
+		public function get renderStyle ():String
 		{
-			return isoType;
+			return isoRenderStyle;
 		}
 		
-		public function set type (value:String):void
+		public function set renderStyle (value:String):void
 		{
-			if (value != IsoType.WIREFRAME &&
-				value != IsoType.SOLID &&
-				value != IsoType.SHADED)
+			if (value != RenderStyle.WIREFRAME &&
+				value != RenderStyle.SOLID &&
+				value != RenderStyle.SHADED)
 			{
 				throw new Error("type is not of value IsoType.WIREFRAME, IsoType.SOLID, or IsoType.SHADED");
 				return;
 			}
 			
-			if (isoType != value)
+			if (isoRenderStyle != value)
 			{
-				isoType = value;
+				isoRenderStyle = value;
 				invalidateGeometry();
 				
 				if (autoUpdate)
@@ -278,7 +320,9 @@ package isoLib.core.shape
 		////////////////////////////////////////////////////////////////////////
 		
 		private var isoWidth:Number = 0;
+		private var oldWidth:Number;
 		
+		[Bindable("resize")]
 		public function get width ():Number
 		{
 			return isoWidth;
@@ -289,6 +333,8 @@ package isoLib.core.shape
 			value = Math.abs(value);
 			if (isoWidth != value)
 			{
+				oldWidth = isoWidth;
+				
 				isoWidth = value;
 				invalidateGeometry();
 				
@@ -302,7 +348,9 @@ package isoLib.core.shape
 		////////////////////////////////////////////////////////////////////////
 		
 		private var isoLength:Number = 0;
+		private var oldLength:Number;
 		
+		[Bindable("resize")]
 		public function get length ():Number
 		{
 			return isoLength;
@@ -313,6 +361,8 @@ package isoLib.core.shape
 			value = Math.abs(value);
 			if (isoLength != value)
 			{
+				oldLength = isoLength;
+				
 				isoLength = value;
 				invalidateGeometry();
 				
@@ -326,7 +376,9 @@ package isoLib.core.shape
 		////////////////////////////////////////////////////////////////////////
 		
 		private var isoHeight:Number = 0;
+		private var oldHeight:Number;
 		
+		[Bindable("resize")]
 		public function get height ():Number
 		{
 			return isoHeight;
@@ -337,6 +389,8 @@ package isoLib.core.shape
 			value = Math.abs(value);	
 			if (isoHeight != value)
 			{
+				oldHeight = isoHeight;
+				
 				isoHeight = value;
 				invalidateGeometry();				
 				if (autoUpdate)
@@ -348,8 +402,17 @@ package isoLib.core.shape
 		//	X
 		////////////////////////////////////////////////////////////////////////
 		
-		private var isoX:Number = 0;
+		public function moveTo (x:Number = 0, y:Number = 0, z:Number = 0):void
+		{
+			this.x = x;
+			this.y = y;
+			this.z = z;
+		}
 		
+		private var isoX:Number = 0;
+		private var oldX:Number;
+		
+		[Bindable("move")]
 		public function get x ():Number
 		{
 			return isoX;
@@ -360,6 +423,8 @@ package isoLib.core.shape
 			value = Math.round(value);
 			if (isoX != value)
 			{
+				oldX = isoX;
+				
 				isoX = value;
 				invalidatePosition();
 				
@@ -378,7 +443,9 @@ package isoLib.core.shape
 		////////////////////////////////////////////////////////////////////////
 		
 		private var isoY:Number = 0;
+		private var oldY:Number;
 		
+		[Bindable("move")]
 		public function get y ():Number
 		{
 			return isoY;
@@ -389,6 +456,8 @@ package isoLib.core.shape
 			value = Math.round(value);
 			if (isoY != value)
 			{
+				oldY = isoY;
+				
 				isoY = value;
 				invalidatePosition();
 				
@@ -407,7 +476,9 @@ package isoLib.core.shape
 		////////////////////////////////////////////////////////////////////////
 		
 		private var isoZ:Number = 0;
+		private var oldZ:Number;
 		
+		[Bindable("move")]
 		public function get z ():Number
 		{
 			return isoZ;
@@ -418,6 +489,8 @@ package isoLib.core.shape
 			value = Math.round(value);
 			if (isoZ != value)
 			{
+				oldZ = isoZ;
+				
 				isoZ = value;
 				invalidatePosition();
 				invalidateDepth();
@@ -595,7 +668,7 @@ package isoLib.core.shape
 			var classReference:Class = getDefinitionByName(className) as Class;
 			
 			var copy:IPrimitive = new classReference();
-			copy.type = this.type;
+			copy.renderStyle = this.renderStyle;
 			
 			copy.width = this.width;
 			copy.length = this.length;

@@ -2,8 +2,6 @@ package isoLib.core.sceneGraph
 {
 	import eDpLib.events.EventDispatcherProxy;
 	
-	import flash.display.Sprite;
-	
 	public class Node extends EventDispatcherProxy implements INode
 	{
 		////////////////////////////////////////////////////////////////////////
@@ -68,6 +66,19 @@ package isoLib.core.sceneGraph
 		public function get parent():INode
 		{
 			return parentNode;
+		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	ROOT NODE
+		////////////////////////////////////////////////////////////////////////
+		
+		public function getRootNode ():INode
+		{
+			var p:INode = this;
+			while (p.hasParent)
+				p = p.parent;
+			
+			return p;
 		}
 		
 		////////////////////////////////////////////////////////////////////////

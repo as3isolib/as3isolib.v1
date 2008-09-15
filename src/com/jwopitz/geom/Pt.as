@@ -1,6 +1,8 @@
 ﻿package com.jwopitz.geom
 {
-	public class Pt
+	import flash.geom.Point;
+	
+	public class Pt extends Point
 	{		
 		///////////////////////////////////////////////
 		//	CALCULATIONS
@@ -35,12 +37,16 @@
 			return theta(ptA, ptB) * 180 / Math.PI;
 		}
 		
-		static public function polar (originPt:Pt, radius:Number, theta:Number):Pt
+		/**
+		 * @param theta The amount of rotation in radians perpendicular to the X-Y plane.
+		 * @param gamma The amount of rotation in radians perpendicular to the plane established by the new point's x & y coordinates
+		 */
+		static public function polar (originPt:Pt, radius:Number, theta:Number, gamma:Number = 0):Pt
 		{
-			var nx:Number = originPt.x + Math.cos(theta) * radius;
-			var ny:Number = originPt.y + Math.sin(theta) * radius;
+			var tx:Number = originPt.x + Math.cos(theta) * radius;
+			var ty:Number = originPt.y + Math.sin(theta) * radius;
 			
-			return new Pt(nx, ny, 0);
+			return new Pt(tx, ty, 0);
 		}
 		
 		static public function interpolate (ptA:Pt, ptB:Pt, f:Number):Pt
@@ -62,9 +68,17 @@
 		//	X, Y, Z
 		///////////////////////////////////////////////
 		
-		public var x:Number = 0;
-		public var y:Number = 0;
 		public var z:Number = 0;
+		
+		override public function get length ():Number
+		{
+			return Math.sqrt(x * x + y * y + z * z);
+		}
+		
+		override public function clone ():Point
+		{
+			return new Pt(x, y, z);
+		}
 		
 		///////////////////////////////////////////////
 		//	CONSTRUCTOR

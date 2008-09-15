@@ -1,6 +1,6 @@
 package isoLib.core.shape
 {
-	public interface IStylable
+	public interface IIsoStyleClient
 	{
 		function get faceAlphas ():Array;
 		function set faceAlphas (value:Array):void;
@@ -21,20 +21,20 @@ package isoLib.core.shape
 		function set solidColors (value:Array):void;
 		
 		//////////////////////////////////////////////////////////////////
-		//	TYPE
+		//	RENDER STYLE
 		//////////////////////////////////////////////////////////////////
 		
 		/**
 		 * @private
 		 */
-		function get type ():String;
+		function get renderStyle ():String;
 		
 		/**
 		 * Indicates what kind of rendering/styles to apply to the IPrimitive during the validation phases.
 		 * 
 		 * @see isolib.core.shape.IsoType
 		 */
-		function set type (value:String):void;
+		function set renderStyle (value:String):void;
 			
 		function get filters ():Array;
 		function set filters (value:Array):void;

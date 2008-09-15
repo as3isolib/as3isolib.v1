@@ -1,12 +1,13 @@
 package isoLib.primitive
 {
-	import com.jwopitz.geom.Pt;
-	
+	import flash.display.CapsStyle;
 	import flash.display.Graphics;
+	import flash.display.JointStyle;
+	import flash.display.LineScaleMode;
 	
-	import isoLib.core.shape.IsoType;
 	import isoLib.core.shape.Primitive;
-	import isoLib.utils.IsoUtil;
+	import isoLib.events.IsoEvent;
+	import isoLib.style.RenderStyle;
 	
 	public class IsoPolygon extends Primitive
 	{
@@ -21,7 +22,7 @@ package isoLib.primitive
 			/*var pt:Pt;
 			for each (pt in pts)
 				Isometric.mapToIso(pt);*/
-				
+			
 			return true;
 		}
 		
@@ -45,13 +46,13 @@ package isoLib.primitive
 			g.clear();
 			g.moveTo(pts[0].x, pts[0].y);
 			
-			if (type == IsoType.SOLID)
+			if (renderStyle == RenderStyle.SOLID)
 				g.beginFill(solidColors[0], faceAlphas[0]);
 				
-			else if (type == IsoType.SHADED)
+			else if (renderStyle == RenderStyle.SHADED)
 				g.beginFill(shadedColors[0], faceAlphas[0]);
 			
-			g.lineStyle(lineThicknesses[0], lineColors[0], lineAlphas[0]);
+			g.lineStyle(lineThicknesses[0], lineColors[0], lineAlphas[0], true, LineScaleMode.NORMAL, CapsStyle.SQUARE, JointStyle.ROUND);
 			
 			var i:uint = 1;
 			var l:uint = pts.length;
@@ -60,7 +61,7 @@ package isoLib.primitive
 				
 			g.lineTo(pts[0].x, pts[0].y);
 			
-			if (type == IsoType.SOLID || type == IsoType.SHADED)
+			if (renderStyle == RenderStyle.SOLID || renderStyle == RenderStyle.SHADED)
 				g.endFill();
 		}
 	}

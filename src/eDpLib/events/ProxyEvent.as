@@ -13,6 +13,16 @@ package eDpLib.events
 		 */
 		public var proxy:IEventDispatcher;
 		
+		public var proxyTarget:IEventDispatcher;
+		
+		/**
+		 * Just another accessor for the proxy property.
+		 */
+		override public function get target ():Object
+		{
+			return proxy;
+		}
+		
 		/**
 		 * The original event being proxied for.
 		 */
@@ -29,6 +39,7 @@ package eDpLib.events
 			super(targetEvt.type, targetEvt.bubbles, targetEvt.cancelable);
 			
 			this.proxy = proxy;
+			this.proxyTarget = Object(proxy).hasOwnProperty("proxyTarget") ? Object(proxy).proxyTarget : null;
 			this.targetEvent = targetEvt;
 		}
 		
