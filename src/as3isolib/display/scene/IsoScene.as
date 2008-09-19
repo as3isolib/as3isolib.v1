@@ -1,16 +1,14 @@
 package as3isolib.display.scene
 {
-	import as3isolib.bounds.IBounds;
-	import as3isolib.core.data.INode;
+	import as3isolib.data.INode;
 	import as3isolib.display.IIsoDisplayObject;
-	import as3isolib.display.IRenderer;
 	import as3isolib.display.IsoContainer;
-	import as3isolib.geom.Pt;
-	import as3isolib.utils.IsoUtil;
+	import as3isolib.display.layoutClasses.DefaultSceneLayoutObject;
+	import as3isolib.display.layoutClasses.ILayoutObject;
 	
 	import flash.display.DisplayObjectContainer;
 	
-	public class IsoScene extends IsoContainer implements IRenderer
+	public class IsoScene extends IsoContainer
 	{		
 		///////////////////////////////////////////////////////////////////////////////
 		//	HOST CONTAINER
@@ -59,6 +57,12 @@ package as3isolib.display.scene
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
+		//	LAYOUT OBJECT
+		///////////////////////////////////////////////////////////////////////////////
+		
+		//protected var layoutObject:ILayoutObject;
+		
+		///////////////////////////////////////////////////////////////////////////////
 		//	RENDER
 		///////////////////////////////////////////////////////////////////////////////
 		
@@ -78,31 +82,23 @@ package as3isolib.display.scene
 				}
 			}
 			
+			super.render(recursive); //push individual changes thru, then sort based on new visible content of each child
+			
 			if (sceneInvalidated)
 			{
-				var sortedChildren:Array = children.slice();//.sortOn(["depth", "screenY", "screenX", "z"], Array.NUMERIC);
-				sortedChildren.sort(IsoUtil.isoDepthSort);
-							
-				var i:int;
-				var m:int = sortedChildren.length;
-				while (i < m)
-					setChildIndex(IIsoDisplayObject(sortedChildren[i]), i++);
+				var layoutObject:ILayoutObject = new DefaultSceneLayoutObject();
+				layoutObject.target = this;		
+				layoutObject.updateLayout();
 			}
-			
-			super.render(recursive);
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
 		//	CONSTRUCTOR
 		///////////////////////////////////////////////////////////////////////////////
 		
-		protected var camera:Pt
-		
 		public function IsoScene ()
 		{
 			super();
-			
-			camera = new Pt(10000, 10000, 10000);
 		}
 	}
 }

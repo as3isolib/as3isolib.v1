@@ -2,12 +2,19 @@ package as3isolib.display.primitive
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.PrimitiveBounds;
+	import as3isolib.data.Node;
 	import as3isolib.display.IIsoDisplayObject;
 	import as3isolib.display.IsoContainer;
 	import as3isolib.enum.RenderStyleType;
 	import as3isolib.events.IsoEvent;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
+	
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+	import flash.geom.Rectangle;
+	import flash.utils.getDefinitionByName;
+	import flash.utils.getQualifiedClassName;
 
 	public class IsoPrimitive extends IsoContainer implements IIsoDisplayObject
 	{
@@ -19,25 +26,38 @@ package as3isolib.display.primitive
 		static public const DEFAULT_LENGTH:Number = 25;
 		static public const DEFAULT_HEIGHT:Number = 25;
 		
-		public function get bounds ():IBounds
+		////////////////////////////////////////////////////////////////////////
+		//	BOUNDS
+		////////////////////////////////////////////////////////////////////////
+		
+		public function get isoBounds ():IBounds
 		{
 			return new PrimitiveBounds(this);
+		}
+		
+		public function get screenBounds ():Rectangle
+		{
+			var r:Rectangle;
+			if (container.parent)
+				r = container.getRect(container.parent);
+			
+			return r;
 		}
 		
 			/////////////////////////////////////////////////////////
 			//	POSITION
 			/////////////////////////////////////////////////////////
 		
-		////////////////////////////////////////////////////////////////////////
-		//	X
-		////////////////////////////////////////////////////////////////////////
-		
-		public function moveTo (x:Number = 0, y:Number = 0, z:Number = 0):void
+		public function moveTo (x:Number, y:Number, z:Number):void
 		{
 			this.x = x;
 			this.y = y;
 			this.z = z;
 		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	X
+		////////////////////////////////////////////////////////////////////////
 		
 		private var isoX:Number = 0;
 		private var oldX:Number;
@@ -65,8 +85,10 @@ package as3isolib.display.primitive
 		
 		public function get screenX ():Number
 		{
-			var b:IBounds = bounds;
-			return IsoMath.isoToScreen(new Pt(b.left, b.front, b.bottom)).x;
+			var b:IBounds = isoBounds;
+			var pt:Pt = IsoMath.isoToScreen(new Pt(b.left, b.front, b.bottom));
+						
+			return pt.x//container.localToGlobal(pt).x;
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -99,8 +121,10 @@ package as3isolib.display.primitive
 		
 		public function get screenY ():Number
 		{
-			var b:IBounds = bounds;
-			return IsoMath.isoToScreen(new Pt(b.right, b.front, b.bottom)).y;
+			var b:IBounds = isoBounds;
+			var pt:Pt = IsoMath.isoToScreen(new Pt(b.right, b.front, b.bottom));
+			
+			return pt.y//container.localToGlobal(pt).y;
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -134,6 +158,13 @@ package as3isolib.display.primitive
 			/////////////////////////////////////////////////////////
 			//	GEOMETRY
 			/////////////////////////////////////////////////////////
+		
+		public function setSize (width:Number, length:Number, height:Number):void
+		{
+			this.width = width;
+			this.length = length;
+			this.height = height;
+		}
 		
 		////////////////////////////////////////////////////////////////////////
 		//	WIDTH
@@ -401,6 +432,30 @@ package as3isolib.display.primitive
 			//overridden by subclasses
 		}
 		
+		public function get bitmapData ():BitmapData
+		{
+			var x:Number = IsoMath.isoToScreen(new Pt(x, y + length, z + height)).x;
+			var y:Number = IsoMath.isoToScreen(new Pt(x, y, z + height)).y;
+			var w:Number = IsoMath.isoToScreen(new Pt(x + width, y, z)).x;
+			var h:Number = IsoMath.isoToScreen(new Pt(x + width, y + length, z)).y;
+			
+			var c:IIsoDisplayObject = clone();
+			IsoPrimitive(c).parentNode = new Node(); //setting parent so as to render
+			c.container.x = -1 * x;
+			c.container.y = -1 * y;
+			c.render();
+			
+			var host:Sprite = new Sprite();
+			host.addChild(c.container);
+			
+			var bw:Number = Math.abs(w - x);
+			var bh:Number = Math.abs(h - y);
+			var b:BitmapData = new BitmapData(bw, bh, false, 0xff0000);
+			b.draw(host);
+			
+			return b;
+		}
+		
 		/////////////////////////////////////////////////////////
 		//	VALIDATION
 		/////////////////////////////////////////////////////////
@@ -446,7 +501,17 @@ package as3isolib.display.primitive
 		
 		public function clone ():IIsoDisplayObject
 		{
-			return null;
+			var CloneClass:Class = getDefinitionByName(getQualifiedClassName(this)) as Class;
+			
+			var cloneInstance:IIsoDisplayObject = new CloneClass();
+			cloneInstance.setSize(isoWidth, isoLength, isoHeight);
+			cloneInstance.lineAlphas = lineAlphasArray;
+			cloneInstance.lineColors = lineColorArray;
+			cloneInstance.lineThicknesses = lineThicknessesArray;
+			cloneInstance.faceAlphas = faceAlphasArray;
+			cloneInstance.faceColors = shadedColorArray;
+			
+			return cloneInstance;
 		}	
 		
 		/////////////////////////////////////////////////////////

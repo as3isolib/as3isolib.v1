@@ -47,6 +47,8 @@ package as3isolib.display.primitive
 		public function IsoRectangle ()
 		{
 			super();
+			
+			width = length = height = 0;
 		}
 	}
 }

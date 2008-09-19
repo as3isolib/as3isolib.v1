@@ -55,19 +55,21 @@ package as3isolib.display.scene
 		//	SHOW ORIGIN
 		////////////////////////////////////////////////////
 		
-		private var showOrigin:Boolean = false;
+		private var bShowOrigin:Boolean = false;
 		private var showOriginChanged:Boolean = false;
 		
-		public function get hasOrigin ():Boolean
+		public function get showOrigin ():Boolean
 		{
-			return showOrigin;
+			return bShowOrigin;
 		}
 		
-		public function set hasOrigin (value:Boolean):void
+		public function set showOrigin (value:Boolean):void
 		{
-			if (showOrigin != value)
+			if (bShowOrigin != value)
 			{
-				showOrigin = value;
+				bShowOrigin = value;
+				showOriginChanged = true;
+				
 				invalidateGeometry();
 			}
 		}
@@ -80,7 +82,7 @@ package as3isolib.display.scene
 		{
 			super();
 			
-			hasOrigin = true;
+			showOrigin = true;
 			
 			lineThicknesses = [0];
 			lineColors = [0xcccccc];
@@ -92,10 +94,29 @@ package as3isolib.display.scene
 		
 		private var origin:IsoOrigin;
 		
-		override protected function createChildren ():void
+		override public function render (recursive:Boolean = true):void
 		{
-			origin = new IsoOrigin();
-			addChild(origin);
+			if (showOriginChanged)
+			{
+				if (showOrigin)
+				{
+					if (!origin)
+						origin = new IsoOrigin();
+					
+					if (!contains(origin))
+						addChildAt(origin, 0);
+				}
+				
+				else
+				{
+					if (origin && contains(origin))
+						removeChild(origin);
+				}
+				
+				showOriginChanged = false;
+			}
+			
+			super.render(recursive);
 		}
 		
 		override protected function drawGeometry ():void

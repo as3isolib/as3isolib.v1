@@ -1,14 +1,15 @@
 package as3isolib.display
 {
-	import as3isolib.core.data.INode;
-	import as3isolib.core.data.Node;
+	import as3isolib.data.INode;
+	import as3isolib.data.Node;
 	
 	import eDpLib.events.ProxyEvent;
 	
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
 
-	public class IsoContainer extends Node implements IRenderer
+	public class IsoContainer extends Node implements IContainer
 	{
 		////////////////////////////////////////////////////////////////////////
 		//	CHILD METHODS
@@ -19,14 +20,14 @@ package as3isolib.display
 		
 		override public function addChildAt (child:INode, index:uint):void
 		{
-			if (child is IsoContainer)
+			if (child is IContainer)
 			{
 				super.addChildAt(child, index);
-				container.addChildAt(IRenderer(child).container, index);
+				container.addChildAt(IContainer(child).container, index);
 			}
 			
 			else
-				throw new Error("parameter child does not implement IRenderer.");
+				throw new Error("parameter child does not implement IContainer.");
 		}
 		
 			//	SWAP
@@ -34,8 +35,8 @@ package as3isolib.display
 		
 		override public function setChildIndex (child:INode, index:uint):void
 		{
-			if (!child is IRenderer)
-				throw new Error("parameter child does not implement IRenderer.");
+			if (!child is IContainer)
+				throw new Error("parameter child does not implement IContainer.");
 			
 			else if (!child.hasParent || child.parent != this)
 				throw new Error("parameter child is not found within node structure.");
@@ -43,7 +44,7 @@ package as3isolib.display
 			else
 			{
 				super.setChildIndex(child, index);
-				container.setChildIndex(IRenderer(child).container, index);
+				container.setChildIndex(IContainer(child).container, index);
 			}
 		}
 			
@@ -54,14 +55,14 @@ package as3isolib.display
 		{
 			var child:INode = super.removeChildByID(id);
 			if (child && child is IsoContainer)
-				container.removeChild(IRenderer(child).container);
+				container.removeChild(IContainer(child).container);
 			
 			return child;
 		}
 		
 		override public function removeAllChildren ():void
 		{
-			var child:IRenderer;
+			var child:IContainer;
 			for each (child in children)
 				container.removeChild(child.container);
 				
@@ -84,7 +85,7 @@ package as3isolib.display
 		{
 			if (recursive)
 			{
-				var child:IRenderer;
+				var child:IContainer;
 				for each (child in children)
 					child.render(recursive);
 			}
@@ -101,7 +102,7 @@ package as3isolib.display
 			if (!_container)
 			{
 				_container = new Sprite();
-				_container.cacheAsBitmap = true;
+				//_container.cacheAsBitmap = true;
 			}
 			
 			return _container;

@@ -3,6 +3,8 @@ package as3isolib.bounds
 	import as3isolib.display.IIsoDisplayObject;
 	import as3isolib.geom.Pt;
 	
+	import flash.geom.Rectangle;
+	
 	public interface IBounds
 	{
 		function get target ():IIsoDisplayObject;

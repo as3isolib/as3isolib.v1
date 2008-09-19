@@ -6,18 +6,18 @@ package as3isolib.display.primitive
 	import flash.display.Graphics;
 	import flash.display.JointStyle;
 	import flash.display.LineScaleMode;
+	import flash.display.Shape;
 	
 	public class IsoPolygon extends IsoPrimitive
 	{
 		override protected function validateGeometry ():Boolean
 		{
-			return (pts.length <= 2) ? false : true;
+			return pts.length > 2;
 		}
 		
 		override protected function drawGeometry ():void
-		{			
+		{
 			var g:Graphics = container.graphics;
-			
 			g.clear();
 			g.moveTo(pts[0].x, pts[0].y);
 			

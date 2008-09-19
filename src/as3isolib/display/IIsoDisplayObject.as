@@ -1,19 +1,24 @@
 package as3isolib.display
 {
 	import as3isolib.bounds.IBounds;
-	import as3isolib.core.data.INode;
+	import as3isolib.data.INode;
 	
-	public interface IIsoDisplayObject extends INode, IRenderer
+	import flash.geom.Rectangle;
+	
+	public interface IIsoDisplayObject extends INode, IContainer
 	{
 		//////////////////////////////////////////////////////////////////
 		//	BOUNDS
 		//////////////////////////////////////////////////////////////////
 		
-		function get bounds ():IBounds;
+		function get isoBounds ():IBounds;
+		function get screenBounds ():Rectangle;
 		
 		//////////////////////////////////////////////////////////////////
 		//	POSITION
 		//////////////////////////////////////////////////////////////////
+		
+		function moveTo (x:Number, y:Number, z:Number):void;
 		
 		function get x ():Number;
 		function set x (value:Number):void;
@@ -30,6 +35,8 @@ package as3isolib.display
 		//////////////////////////////////////////////////////////////////
 		//	GEOMETRY
 		//////////////////////////////////////////////////////////////////
+		
+		function setSize (width:Number, length:Number, height:Number):void
 		
 		function get width ():Number;
 		function set width (value:Number):void;

@@ -1,8 +1,10 @@
 package as3isolib.display
 {
+	import as3isolib.data.INode;
+	
 	import flash.display.Sprite;
 	
-	public interface IRenderer
+	public interface IContainer extends INode
 	{
 		//////////////////////////////////////////////////////////////////
 		//	CONTAINER
