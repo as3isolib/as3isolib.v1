@@ -1,10 +1,11 @@
-package as3isolib.display.scene
+2package as3isolib.display.scene
 {
 	import as3isolib.data.INode;
 	import as3isolib.display.IIsoDisplayObject;
 	import as3isolib.display.IsoContainer;
-	import as3isolib.display.layoutClasses.DefaultSceneLayoutObject;
-	import as3isolib.display.layoutClasses.ILayoutObject;
+	import as3isolib.display.renderers.DefaultSceneLayoutRenderer;
+	import as3isolib.display.renderers.DefaultShadowRenderer;
+	import as3isolib.display.renderers.ISceneRenderer;
 	
 	import flash.display.DisplayObjectContainer;
 	
@@ -50,21 +51,53 @@ package as3isolib.display.scene
 		override public function addChildAt (child:INode, index:uint):void
 		{
 			if (child is IIsoDisplayObject)
+			{
 				super.addChildAt(child, index);
+				invalidateScene();
+			}
 				
 			else
 				throw new Error ("parameter child is not of type IIsoDisplayObject");
 		}
 		
+		override public function setChildIndex (child:INode, index:uint):void
+		{
+			super.setChildIndex(child, index);
+			invalidateScene();
+		}
+		
+		override public function removeChildByID (id:String):INode
+		{
+			invalidateScene();
+			return super.removeChildByID(id);
+		}
+		
+		override public function removeAllChildren ():void
+		{
+			super.removeAllChildren();
+			invalidateScene();
+		}
+		
 		///////////////////////////////////////////////////////////////////////////////
-		//	LAYOUT OBJECT
+		//	DEPTH SORT
 		///////////////////////////////////////////////////////////////////////////////
 		
-		//protected var layoutObject:ILayoutObject;
+		public var layoutEnabled:Boolean = true;
 		
 		///////////////////////////////////////////////////////////////////////////////
 		//	RENDER
 		///////////////////////////////////////////////////////////////////////////////
+		
+		private var _isInvalidated:Boolean = false;
+		public function get isInvalidated ():Boolean
+		{
+			return _isInvalidated;
+		}
+		
+		public function invalidateScene ():void
+		{
+			_isInvalidated = true;
+		}
 		
 		/**
 		 * @inheritDoc
@@ -72,23 +105,26 @@ package as3isolib.display.scene
 		override public function render (recursive:Boolean = true):void
 		{
 			var child:IIsoDisplayObject;
-			var sceneInvalidated:Boolean = false;
 			for each (child in children)
 			{
 				if (child.isInvalidated)
 				{
-					sceneInvalidated = true;
+					invalidateScene();
 					break;
 				}
 			}
 			
 			super.render(recursive); //push individual changes thru, then sort based on new visible content of each child
 			
-			if (sceneInvalidated)
+			if (isInvalidated && layoutEnabled)
 			{
-				var layoutObject:ILayoutObject = new DefaultSceneLayoutObject();
-				layoutObject.target = this;		
-				layoutObject.updateLayout();
+				var layoutRenderer:ISceneRenderer = new DefaultSceneLayoutRenderer();
+				layoutRenderer.target = this;
+				layoutRenderer.renderScene();
+				
+				var shadowRenderer:ISceneRenderer = new DefaultShadowRenderer(0x000000, 0.15, true);
+				shadowRenderer.target = this;
+				shadowRenderer.renderScene();
 			}
 		}
 		

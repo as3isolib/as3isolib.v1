@@ -1,12 +1,12 @@
 package as3isolib.display.scene
 {
-	import as3isolib.display.primitive.IsoPrimitive;
+	import as3isolib.display.IsoDisplayObject;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
 	import flash.display.Graphics;
 
-	public class IsoGrid extends IsoPrimitive
+	public class IsoGrid extends IsoDisplayObject
 	{
 		////////////////////////////////////////////////////
 		//	GRID SIZE
@@ -58,6 +58,17 @@ package as3isolib.display.scene
 		private var bShowOrigin:Boolean = false;
 		private var showOriginChanged:Boolean = false;
 		
+		public function get origin ():IsoOrigin
+		{
+			if (!_origin)
+			{
+				_origin = new IsoOrigin();
+				addChild(_origin);
+			}
+			
+			return _origin;
+		}
+		
 		public function get showOrigin ():Boolean
 		{
 			return bShowOrigin;
@@ -92,7 +103,7 @@ package as3isolib.display.scene
 			setGridSize(5, 5);
 		}
 		
-		private var origin:IsoOrigin;
+		private var _origin:IsoOrigin;
 		
 		override public function render (recursive:Boolean = true):void
 		{
@@ -100,16 +111,13 @@ package as3isolib.display.scene
 			{
 				if (showOrigin)
 				{
-					if (!origin)
-						origin = new IsoOrigin();
-					
 					if (!contains(origin))
 						addChildAt(origin, 0);
 				}
 				
 				else
 				{
-					if (origin && contains(origin))
+					if (contains(origin))
 						removeChild(origin);
 				}
 				

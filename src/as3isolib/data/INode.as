@@ -1,8 +1,8 @@
 package as3isolib.data
 {
-	import flash.events.IEventDispatcher;
+	import eDpLib.events.IEventDispatcherProxy;
 	
-	public interface INode extends IEventDispatcher
+	public interface INode extends IEventDispatcherProxy
 	{
 		////////////////////////////////////////////////
 		//	ID
@@ -69,6 +69,10 @@ package as3isolib.data
 		 * @return int The child index or -1 if the child's parent is null.
 		 */
 		function getChildIndex (child:INode):int;
+		
+		function getChildAt (index:uint):INode;
+		
+		function getChildByID (id:String):INode;
 		
 		function setChildIndex (child:INode, index:uint):void;
 		

@@ -1,14 +1,15 @@
-package as3isolib.display.layoutClasses
+package as3isolib.display.renderers
 {
 	import as3isolib.display.IContainer;
+	import as3isolib.display.IIsoDisplayObject;
 	
 	import flash.events.IEventDispatcher;
 
-	public interface ILayoutObject extends IEventDispatcher
+	public interface ISceneRenderer extends IEventDispatcher
 	{
 		function get target ():IContainer;
 		function set target (value:IContainer):void;
 		
-		function updateLayout ():void;
+		function renderScene ():void;
 	}
 }

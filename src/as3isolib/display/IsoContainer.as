@@ -1,14 +1,17 @@
 package as3isolib.display
 {
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.data.INode;
 	import as3isolib.data.Node;
+	import as3isolib.events.IsoEvent;
 	
 	import eDpLib.events.ProxyEvent;
 	
-	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.Event;
-
+	
+	use namespace as3isolib_internal;
+	
 	public class IsoContainer extends Node implements IContainer
 	{
 		////////////////////////////////////////////////////////////////////////
@@ -23,7 +26,7 @@ package as3isolib.display
 			if (child is IContainer)
 			{
 				super.addChildAt(child, index);
-				container.addChildAt(IContainer(child).container, index);
+				mainContainer.addChildAt(IContainer(child).container, index);
 			}
 			
 			else
@@ -44,7 +47,7 @@ package as3isolib.display
 			else
 			{
 				super.setChildIndex(child, index);
-				container.setChildIndex(IContainer(child).container, index);
+				mainContainer.setChildIndex(IContainer(child).container, index);
 			}
 		}
 			
@@ -55,7 +58,7 @@ package as3isolib.display
 		{
 			var child:INode = super.removeChildByID(id);
 			if (child && child is IsoContainer)
-				container.removeChild(IContainer(child).container);
+				mainContainer.removeChild(IContainer(child).container);
 			
 			return child;
 		}
@@ -64,7 +67,7 @@ package as3isolib.display
 		{
 			var child:IContainer;
 			for each (child in children)
-				container.removeChild(child.container);
+				mainContainer.removeChild(child.container);
 				
 			super.removeAllChildren();
 		}		
@@ -75,6 +78,7 @@ package as3isolib.display
 		protected function createChildren ():void
 		{
 			//overriden by subclasses
+			mainContainer = new Sprite();			
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -89,23 +93,8 @@ package as3isolib.display
 				for each (child in children)
 					child.render(recursive);
 			}
-		}
-		
-		////////////////////////////////////////////////////////////////////////
-		//	CONTAINERS
-		////////////////////////////////////////////////////////////////////////
-		
-		private var _container:Sprite;
-		
-		public function get container ():Sprite
-		{
-			if (!_container)
-			{
-				_container = new Sprite();
-				//_container.cacheAsBitmap = true;
-			}
 			
-			return _container;
+			dispatchEvent(new IsoEvent(IsoEvent.RENDER));
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -123,15 +112,26 @@ package as3isolib.display
 		}
 		
 		////////////////////////////////////////////////////////////////////////
+		//	CONTAINER STRUCTURE
+		////////////////////////////////////////////////////////////////////////
+		
+		as3isolib_internal var mainContainer:Sprite;
+		
+		public function get container ():Sprite
+		{
+			return mainContainer;
+		}
+		
+		////////////////////////////////////////////////////////////////////////
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////////////////////////
 		
 		public function IsoContainer()
 		{
 			super();
+			createChildren();
 			
 			proxyTarget = container;
 		}
-		
 	}
 }

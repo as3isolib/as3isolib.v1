@@ -37,11 +37,7 @@
 			return theta(ptA, ptB) * 180 / Math.PI;
 		}
 		
-		/**
-		 * @param theta The amount of rotation in radians perpendicular to the X-Y plane.
-		 * @param gamma The amount of rotation in radians perpendicular to the plane established by the new point's x & y coordinates
-		 */
-		static public function polar (originPt:Pt, radius:Number, theta:Number, gamma:Number = 0):Pt
+		static public function polar (originPt:Pt, radius:Number, theta:Number = 0):Pt
 		{
 			var tx:Number = originPt.x + Math.cos(theta) * radius;
 			var ty:Number = originPt.y + Math.sin(theta) * radius;

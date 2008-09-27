@@ -1,10 +1,10 @@
-package as3isolib.display.primitive
+package as3isolib.display
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.PrimitiveBounds;
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.data.Node;
-	import as3isolib.display.IIsoDisplayObject;
-	import as3isolib.display.IsoContainer;
+	import as3isolib.enum.OffsetType;
 	import as3isolib.enum.RenderStyleType;
 	import as3isolib.events.IsoEvent;
 	import as3isolib.geom.IsoMath;
@@ -15,8 +15,10 @@ package as3isolib.display.primitive
 	import flash.geom.Rectangle;
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
+	
+	use namespace as3isolib_internal;
 
-	public class IsoPrimitive extends IsoContainer implements IIsoDisplayObject
+	public class IsoDisplayObject extends IsoContainer implements IIsoDisplayObject
 	{
 		////////////////////////////////////////////////////////////////////////
 		//	CONSTANTS
@@ -30,16 +32,21 @@ package as3isolib.display.primitive
 		//	BOUNDS
 		////////////////////////////////////////////////////////////////////////
 		
+		private var _isoBounds:IBounds;
+		
 		public function get isoBounds ():IBounds
 		{
-			return new PrimitiveBounds(this);
+			if (!_isoBounds || isInvalidated)
+				_isoBounds = new PrimitiveBounds(this);
+			
+			return _isoBounds;
 		}
 		
 		public function get screenBounds ():Rectangle
 		{
 			var r:Rectangle;
 			if (container.parent)
-				r = container.getRect(container.parent);
+				r = container.getBounds(container.parent);
 			
 			return r;
 		}
@@ -47,7 +54,7 @@ package as3isolib.display.primitive
 			/////////////////////////////////////////////////////////
 			//	POSITION
 			/////////////////////////////////////////////////////////
-		
+			
 		public function moveTo (x:Number, y:Number, z:Number):void
 		{
 			this.x = x;
@@ -188,6 +195,7 @@ package as3isolib.display.primitive
 				
 				isoWidth = value;
 				invalidateGeometry();
+				invalidatePosition();
 				
 				if (autoUpdate)
 					render();
@@ -215,6 +223,7 @@ package as3isolib.display.primitive
 				
 				isoLength = value;
 				invalidateGeometry();
+				invalidatePosition();
 				
 				if (autoUpdate)
 					render();
@@ -242,7 +251,9 @@ package as3isolib.display.primitive
 				oldHeight = isoHeight;
 				
 				isoHeight = value;
-				invalidateGeometry();				
+				invalidateGeometry();	
+				invalidatePosition();
+							
 				if (autoUpdate)
 					render();
 			}
@@ -422,8 +433,6 @@ package as3isolib.display.primitive
 				bPositionInvalidated = false;
 			}
 			
-			dispatchEvent(new IsoEvent(IsoEvent.RENDER));
-			
 			super.render(recursive);
 		}
 		
@@ -440,7 +449,7 @@ package as3isolib.display.primitive
 			var h:Number = IsoMath.isoToScreen(new Pt(x + width, y + length, z)).y;
 			
 			var c:IIsoDisplayObject = clone();
-			IsoPrimitive(c).parentNode = new Node(); //setting parent so as to render
+			IsoDisplayObject(c).parentNode = new Node(); //setting parent so as to render
 			c.container.x = -1 * x;
 			c.container.y = -1 * y;
 			c.render();
@@ -478,13 +487,15 @@ package as3isolib.display.primitive
 		//	INVALIDATION
 		/////////////////////////////////////////////////////////
 		
-		protected var bGeometryInvalidated:Boolean = false;
+		as3isolib_internal var bGeometryInvalidated:Boolean = false;
+		
 		public function invalidateGeometry ():void
 		{
 			bGeometryInvalidated = true;
 		}
 		
-		protected var bPositionInvalidated:Boolean = false;
+		as3isolib_internal var bPositionInvalidated:Boolean = false;
+		
 		public function invalidatePosition ():void
 		{
 			bPositionInvalidated = true;
@@ -518,7 +529,7 @@ package as3isolib.display.primitive
 		//	CONSTRUCTOR
 		/////////////////////////////////////////////////////////
 		
-		public function IsoPrimitive ()
+		public function IsoDisplayObject ()
 		{
 			super();
 			

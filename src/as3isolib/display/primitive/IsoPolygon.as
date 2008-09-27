@@ -1,14 +1,14 @@
 package as3isolib.display.primitive
 {
+	import as3isolib.display.IsoDisplayObject;
 	import as3isolib.enum.RenderStyleType;
 	
 	import flash.display.CapsStyle;
 	import flash.display.Graphics;
 	import flash.display.JointStyle;
 	import flash.display.LineScaleMode;
-	import flash.display.Shape;
 	
-	public class IsoPolygon extends IsoPrimitive
+	public class IsoPolygon extends IsoDisplayObject
 	{
 		override protected function validateGeometry ():Boolean
 		{
@@ -27,8 +27,11 @@ package as3isolib.display.primitive
 			else if (styleType == RenderStyleType.SOLID)
 				g.beginFill(0xffffff, faceAlphas[0]);
 				
-			else
+			else if (styleType == RenderStyleType.WIREFRAME)
 				g.beginFill(0xff0000, 0.0);
+			
+			else
+				return;
 			
 			g.lineStyle(lineThicknesses[0], lineColors[0], lineAlphas[0], true, LineScaleMode.NORMAL, CapsStyle.SQUARE, JointStyle.ROUND);
 			

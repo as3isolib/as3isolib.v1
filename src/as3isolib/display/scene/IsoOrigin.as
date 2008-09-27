@@ -1,12 +1,14 @@
 package as3isolib.display.scene
 {
-	import as3isolib.display.primitive.IsoPrimitive;
+	import as3isolib.display.IsoDisplayObject;
+	import as3isolib.enum.IsoOrientation;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
+	import as3isolib.utils.IsoDrawingUtil;
 	
 	import flash.display.Graphics;
 	
-	public class IsoOrigin extends IsoPrimitive
+	public class IsoOrigin extends IsoDisplayObject
 	{
 		override protected function drawGeometry ():void
 		{
@@ -22,15 +24,16 @@ package as3isolib.display.scene
 			g.moveTo(pt0.x, pt0.y);
 			g.lineTo(pt1.x, pt1.y);
 			
-			/* g.moveTo(pt0.x, pt0.y);
+			g.lineStyle(0, 0, 0);
+			g.moveTo(pt0.x, pt0.y);
 			g.beginFill(lineColors[0], lineAlphas[0]);
-			IsoDrawUtils.drawIsoArrow2(g, new Pt(-1 * axisLength, 0), 180, IsoOrientation.XY);
+			IsoDrawingUtil.drawIsoArrow(g, new Pt(-1 * axisLength, 0), 180, arrowLength, arrowWidth);
 			g.endFill();
 			
 			g.moveTo(pt1.x, pt1.y);
 			g.beginFill(lineColors[0], lineAlphas[0]);
-			IsoDrawUtils.drawIsoArrow2(g, new Pt(axisLength, 0), 0, IsoOrientation.XY);
-			g.endFill(); */
+			IsoDrawingUtil.drawIsoArrow(g, new Pt(axisLength, 0), 0, arrowLength, arrowWidth);
+			g.endFill();
 			
 			//draw y-axis
 			pt0 = IsoMath.isoToScreen(new Pt(0, -1 * axisLength, 0));
@@ -40,15 +43,16 @@ package as3isolib.display.scene
 			g.moveTo(pt0.x, pt0.y);
 			g.lineTo(pt1.x, pt1.y);
 			
-			/* g.moveTo(pt0.x, pt0.y);
+			g.lineStyle(0, 0, 0);
+			g.moveTo(pt0.x, pt0.y);
 			g.beginFill(lineColors[1], lineAlphas[1]);
-			IsoDrawUtils.drawIsoArrow2(g, new Pt(0, -1 * axisLength), 270, IsoOrientation.XY);
+			IsoDrawingUtil.drawIsoArrow(g, new Pt(0, -1 * axisLength), 270, arrowLength, arrowWidth);
 			g.endFill();
 			
 			g.moveTo(pt1.x, pt1.y);
 			g.beginFill(lineColors[1], lineAlphas[1]);
-			IsoDrawUtils.drawIsoArrow2(g, new Pt(0, axisLength), 90, IsoOrientation.XY);
-			g.endFill(); */
+			IsoDrawingUtil.drawIsoArrow(g, new Pt(0, axisLength), 90, arrowLength, arrowWidth);
+			g.endFill();
 			
 			//draw z-axis
 			pt0 = IsoMath.isoToScreen(new Pt(0, 0, -1 * axisLength));
@@ -58,15 +62,16 @@ package as3isolib.display.scene
 			g.moveTo(pt0.x, pt0.y);
 			g.lineTo(pt1.x, pt1.y);
 			
-			/* g.moveTo(pt0.x, pt0.y);
+			g.lineStyle(0, 0, 0);
+			g.moveTo(pt0.x, pt0.y);
 			g.beginFill(lineColors[2], lineAlphas[2]);
-			IsoDrawUtils.drawIsoArrow2(g, new Pt(0, 0, axisLength), 90, IsoOrientation.XZ);
+			IsoDrawingUtil.drawIsoArrow(g, new Pt(0, 0, axisLength), 90, arrowLength, arrowWidth, IsoOrientation.XZ);
 			g.endFill();
 			
 			g.moveTo(pt1.x, pt1.y);
 			g.beginFill(lineColors[2], lineAlphas[2]);
-			IsoDrawUtils.drawIsoArrow2(g, new Pt(0, 0, -1 * axisLength), 270, IsoOrientation.XZ);
-			g.endFill(); */
+			IsoDrawingUtil.drawIsoArrow(g, new Pt(0, 0, -1 * axisLength), 270, arrowLength, arrowWidth, IsoOrientation.YZ);
+			g.endFill();
 		}
 		
 		public var axisLength:Number = 100;

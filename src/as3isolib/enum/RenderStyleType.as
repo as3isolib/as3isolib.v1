@@ -5,5 +5,7 @@ package as3isolib.enum
 		static public const WIREFRAME:String = "wireframe";
 		static public const SOLID:String = "solid";
 		static public const SHADED:String = "shaded";
+		
+		static public const NONE:String = "none";
 	}
 }

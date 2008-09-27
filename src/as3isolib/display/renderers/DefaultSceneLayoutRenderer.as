@@ -1,4 +1,4 @@
-package as3isolib.display.layoutClasses
+package as3isolib.display.renderers
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.display.IContainer;
@@ -6,7 +6,7 @@ package as3isolib.display.layoutClasses
 	
 	import flash.events.EventDispatcher;
 
-	public class DefaultSceneLayoutObject extends EventDispatcher implements ILayoutObject
+	public class DefaultSceneLayoutRenderer extends EventDispatcher implements ISceneRenderer
 	{	
 			////////////////////////////////////////////////////
 			//	ILAYOUT OBJECT
@@ -32,7 +32,7 @@ package as3isolib.display.layoutClasses
 		//	UPDATE LAYOUT
 		////////////////////////////////////////////////////
 		
-		public function updateLayout ():void
+		public function renderScene ():void
 		{
 			var sortedChildren:Array = targetContainer.children;
 			sortedChildren.sort(isoDepthSort);
@@ -50,7 +50,7 @@ package as3isolib.display.layoutClasses
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////
 		
-		public function DefaultSceneLayoutObject ()
+		public function DefaultSceneLayoutRenderer ()
 		{
 			super();
 		}

@@ -1,6 +1,8 @@
 package as3isolib.display.primitive
 {
-	public class IsoBox extends IsoPrimitive
+	import as3isolib.display.IsoDisplayObject;
+	
+	public class IsoBox extends IsoDisplayObject
 	{
 		public function IsoBox ()
 		{
@@ -8,8 +10,6 @@ package as3isolib.display.primitive
 			
 			lineThicknesses = [0, 0, 0, 3, 3, 3];
 			faceColors = [0xffffff, 0xffffff, 0xcccccc, 0xffffff, 0xcccccc, 0x000000];
-			
-			createChildren();
 		}
 		
 		protected var sq0:IsoRectangle;
