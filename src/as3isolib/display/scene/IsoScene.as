@@ -1,4 +1,4 @@
-2package as3isolib.display.scene
+package as3isolib.display.scene
 {
 	import as3isolib.data.INode;
 	import as3isolib.display.IIsoDisplayObject;
