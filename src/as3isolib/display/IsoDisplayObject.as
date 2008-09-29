@@ -4,7 +4,6 @@ package as3isolib.display
 	import as3isolib.bounds.PrimitiveBounds;
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.data.Node;
-	import as3isolib.enum.OffsetType;
 	import as3isolib.enum.RenderStyleType;
 	import as3isolib.events.IsoEvent;
 	import as3isolib.geom.IsoMath;

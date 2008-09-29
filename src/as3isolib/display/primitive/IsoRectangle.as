@@ -3,8 +3,14 @@ package as3isolib.display.primitive
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
+	/**
+	 * 3D square primitive in isometric space.
+	 */
 	public class IsoRectangle extends IsoPolygon
 	{
+		/**
+		 * @inheritDoc
+		 */
 		override protected function validateGeometry ():Boolean
 		{
 			pts = [];
@@ -44,6 +50,9 @@ package as3isolib.display.primitive
 			return true;
 		}
 		
+		/**
+		 * @constructor
+		 */
 		public function IsoRectangle ()
 		{
 			super();

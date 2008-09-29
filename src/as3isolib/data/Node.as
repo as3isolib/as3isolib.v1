@@ -2,12 +2,18 @@ package as3isolib.data
 {
 	import eDpLib.events.EventDispatcherProxy;
 	
+	/**
+	 * A base hierachical data structure class.
+	 */
 	public class Node extends EventDispatcherProxy implements INode
 	{
 		////////////////////////////////////////////////////////////////////////
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @constructor
+		 */
 		public function Node ()
 		{
 			super();
@@ -17,9 +23,6 @@ package as3isolib.data
 		//	ID
 		////////////////////////////////////////////////////////////////////////
 		
-		/**
-		 * @private
-		 */
 		static private var _IDCount:uint = 0;
 		
 		/**
@@ -42,6 +45,9 @@ package as3isolib.data
 				setID;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set id (value:String):void
 		{
 			setID = value;
@@ -51,6 +57,9 @@ package as3isolib.data
 		//	PARENT
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get hasParent ():Boolean
 		{
 			return parentNode? true: false;
@@ -61,6 +70,9 @@ package as3isolib.data
 		 */
 		protected var parentNode:INode;
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get parent():INode
 		{
 			return parentNode;
@@ -70,6 +82,9 @@ package as3isolib.data
 		//	ROOT NODE
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function getRootNode ():INode
 		{
 			var p:INode = this;
@@ -83,6 +98,9 @@ package as3isolib.data
 		//	CHILD METHODS
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function contains (value:INode):Boolean
 		{
 			if (value.hasParent)
@@ -101,27 +119,36 @@ package as3isolib.data
 			}
 		}
 		
-		/**
-		 * @private
-		 */
 		[ArrayElementType("as3isolib.core.sceneGraph.INode")]
 		private var childrenArray:Array = [];
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get children ():Array
 		{
 			return childrenArray.slice(); //return a copy not the actual array
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get numChildren ():uint
 		{
 			return childrenArray.length;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function addChild (child:INode):void
 		{
 			addChildAt(child, numChildren);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function addChildAt (child:INode, index:uint):void
 		{
 			//if it already exists here, do nothing
@@ -139,6 +166,9 @@ package as3isolib.data
 			childrenArray.push(child);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function getChildAt (index:uint):INode
 		{
 			if (index >= numChildren)
@@ -148,6 +178,9 @@ package as3isolib.data
 				return INode(childrenArray[index]);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function getChildIndex (child:INode):int
 		{
 			var i:int;
@@ -162,6 +195,9 @@ package as3isolib.data
 			return -1;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function setChildIndex (child:INode, index:uint):void
 		{
 			var i:int = getChildIndex(child);
@@ -195,11 +231,17 @@ package as3isolib.data
 				throw new Error("");
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function removeChild (child:INode):INode
 		{
 			return removeChildByID(child.id);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function removeChildAt (index:uint):INode
 		{				
 			var child:INode;
@@ -212,6 +254,9 @@ package as3isolib.data
 			return removeChildByID(child.id);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function removeChildByID (id:String):INode
 		{
 			var child:INode = getChildByID(id);
@@ -235,6 +280,9 @@ package as3isolib.data
 			return child;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function removeAllChildren ():void
 		{
 			var child:INode;
@@ -244,6 +292,9 @@ package as3isolib.data
 			childrenArray = [];
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function getChildByID (id:String):INode
 		{
 			var childID:String;

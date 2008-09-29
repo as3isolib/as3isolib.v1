@@ -2,8 +2,14 @@ package as3isolib.display.primitive
 {
 	import as3isolib.display.IsoDisplayObject;
 	
+	/**
+	 * 3D box primitive in isometric space.
+	 */
 	public class IsoBox extends IsoDisplayObject
 	{
+		/**
+		 * @constructor
+		 */
 		public function IsoBox ()
 		{
 			super();
@@ -12,13 +18,39 @@ package as3isolib.display.primitive
 			faceColors = [0xffffff, 0xffffff, 0xcccccc, 0xffffff, 0xcccccc, 0x000000];
 		}
 		
+		/**
+		 * @private
+		 */
 		protected var sq0:IsoRectangle;
+		
+		/**
+		 * @private
+		 */
 		protected var sq1:IsoRectangle;
+		
+		/**
+		 * @private
+		 */
 		protected var sq2:IsoRectangle;
+		
+		/**
+		 * @private
+		 */
 		protected var sq3:IsoRectangle;
+		
+		/**
+		 * @private
+		 */
 		protected var sq4:IsoRectangle;
+		
+		/**
+		 * @private
+		 */
 		protected var sq5:IsoRectangle;
 		
+		/**
+		 * @inheritDoc
+		 */
 		override protected function createChildren ():void
 		{
 			super.createChildren();
@@ -44,11 +76,17 @@ package as3isolib.display.primitive
 			sq5.id = "top";
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override protected function validateGeometry ():Boolean
 		{
 			return (width <= 0 && length <= 0 && height <= 0) ? false : true;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override protected function drawGeometry ():void
 		{
 			//bottom face

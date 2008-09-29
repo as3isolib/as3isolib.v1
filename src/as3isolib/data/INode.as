@@ -32,14 +32,28 @@ package as3isolib.data
 		 */
 		function get hasParent ():Boolean;
 		
+		/**
+		 * Retrieves the top-most INode within this node hierarchy.
+		 * 
+		 * @returns INode The top-most INode.
+		 */
 		function getRootNode ():INode;
 		
 		////////////////////////////////////////////////
 		//	CHILD METHODS
 		////////////////////////////////////////////////
 		
+		/**
+		 * Determines if a particular INodes is an immediate child of this INode.
+		 * 
+		 * @param value The INode to check for.
+		 * @returns Boolean Returns true if this INode contains the given value as a child INode, false otherwise.
+		 */
 		function contains (value:INode):Boolean;
 		
+		/**
+		 * An array representing the immediate child INodes.
+		 */
 		function get children ():Array;
 		
 		/**
@@ -70,10 +84,28 @@ package as3isolib.data
 		 */
 		function getChildIndex (child:INode):int;
 		
+		/**
+		 * Returns the child node at the given index.
+		 * 
+		 * @param index The index of the child to retrieve.
+		 * @returns INode The child at the given index.
+		 */
 		function getChildAt (index:uint):INode;
 		
+		/**
+		 * Returns the child node with the given id.
+		 * 
+		 * @param id The id of the child to retrieve.
+		 * @returns INode The child at with the given id.
+		 */
 		function getChildByID (id:String):INode;
 		
+		/**
+		 * Moves a child node to the provided index
+		 * 
+		 * @param child The child node whose index is to be changed.
+		 * @param index The destination index to move the child node to.
+		 */
 		function setChildIndex (child:INode, index:uint):void;
 		
 		/**

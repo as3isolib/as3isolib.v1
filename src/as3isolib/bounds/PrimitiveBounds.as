@@ -5,18 +5,55 @@ package as3isolib.bounds
 	import as3isolib.geom.Pt;
 	
 	import flash.geom.Rectangle;
-
+	
+	/**
+	 * The IBounds implementation for Primitive-type classes
+	 */
 	public class PrimitiveBounds implements IBounds
 	{
+		////////////////////////////////////////////////////////////////
+		//	W / L / H
+		////////////////////////////////////////////////////////////////
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get width ():Number
+		{
+			return _target.width;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get length ():Number
+		{
+			return _target.length;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get height ():Number
+		{
+			return _target.height;
+		}
+		
 		////////////////////////////////////////////////////////////////
 		//	LEFT / RIGHT
 		////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get left ():Number
 		{
 			return _target.x;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get right ():Number
 		{
 			return _target.x + _target.width;
@@ -26,11 +63,17 @@ package as3isolib.bounds
 		//	BACK / FRONT
 		////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get back ():Number
 		{
 			return _target.y;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get front ():Number
 		{
 			return _target.y + _target.length;
@@ -40,11 +83,17 @@ package as3isolib.bounds
 		//	BOTTOM / TOP
 		////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get bottom ():Number
 		{
 			return _target.z;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get top ():Number
 		{
 			return _target.z + _target.height;
@@ -54,6 +103,9 @@ package as3isolib.bounds
 		//	CENTER PT
 		////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get centerPt ():Pt
 		{
 			var pt:Pt = new Pt();
@@ -68,11 +120,14 @@ package as3isolib.bounds
 		//	COLLISION
 		////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function intersects (bounds:IBounds):Boolean
 		{
-			if (centerPt.x + bounds.centerPt.x <= _target.width / 2 + target.width / 2 &&
-				centerPt.y + bounds.centerPt.y <= _target.length / 2 + target.length / 2 &&
-				centerPt.z + bounds.centerPt.z <= _target.height / 2 + target.height / 2)
+			if (centerPt.x + bounds.centerPt.x <= _target.width / 2 + bounds.width / 2 &&
+				centerPt.y + bounds.centerPt.y <= _target.length / 2 + bounds.length / 2 &&
+				centerPt.z + bounds.centerPt.z <= _target.height / 2 + bounds.height / 2)
 				
 				return true;
 			
@@ -80,21 +135,15 @@ package as3isolib.bounds
 				return false;
 		}
 		
-		////////////////////////////////////////////////////////////////
-		//	TARGET
-		////////////////////////////////////////////////////////////////
-		
 		private var _target:IIsoDisplayObject;
-		
-		public function get target ():IIsoDisplayObject
-		{
-			return _target;
-		}
 		
 		////////////////////////////////////////////////////////////////
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @constructor
+		 */
 		public function PrimitiveBounds (target:IIsoDisplayObject)
 		{
 			this._target = target;

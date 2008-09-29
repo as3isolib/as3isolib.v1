@@ -8,13 +8,22 @@ package as3isolib.display.primitive
 	import flash.display.JointStyle;
 	import flash.display.LineScaleMode;
 	
+	/**
+	 * 3D polygon primitive in isometric space.
+	 */
 	public class IsoPolygon extends IsoDisplayObject
 	{
+		/**
+		 * @inheritDoc
+		 */
 		override protected function validateGeometry ():Boolean
 		{
 			return pts.length > 2;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override protected function drawGeometry ():void
 		{
 			var g:Graphics = container.graphics;
@@ -54,11 +63,17 @@ package as3isolib.display.primitive
 		[ArrayElementType("as3isolib.geom.Pt")]
 		private var geometryPts:Array = [];
 		
+		/**
+		 * @private
+		 */
 		public function get pts ():Array
 		{
 			return geometryPts;
 		}
 		
+		/**
+		 * The set of points in isometric space needed to render the polygon.  At least 3 points are needed to render.
+		 */
 		public function set pts (value:Array):void
 		{
 			if (geometryPts != value)
@@ -71,6 +86,9 @@ package as3isolib.display.primitive
 			}
 		}
 		
+		/**
+		 * @constructor
+		 */
 		public function IsoPolygon ()
 		{
 			super();

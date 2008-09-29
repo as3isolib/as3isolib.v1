@@ -1,5 +1,7 @@
 package as3isolib.display.scene
 {
+	import as3isolib.bounds.IBounds;
+	import as3isolib.bounds.SceneBounds;
 	import as3isolib.data.INode;
 	import as3isolib.display.IIsoDisplayObject;
 	import as3isolib.display.IsoContainer;
@@ -9,19 +11,51 @@ package as3isolib.display.scene
 	
 	import flash.display.DisplayObjectContainer;
 	
-	public class IsoScene extends IsoContainer
+	/**
+	 * IsoScene is a base class for grouping and rendering IIsoDisplayObject children according to their isometric position-based depth.
+	 */
+	public class IsoScene extends IsoContainer implements IIsoScene
 	{		
+		///////////////////////////////////////////////////////////////////////////////
+		//	SCENE PAN / ZOOM
+		///////////////////////////////////////////////////////////////////////////////
+		
+		/**
+		 * @private
+		 */
+		private var _isoBounds:IBounds;
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get isoBounds ():IBounds
+		{
+			if (!_isoBounds || isInvalidated)
+				_isoBounds = new SceneBounds(this);
+			
+			return _isoBounds;
+		}
+		
 		///////////////////////////////////////////////////////////////////////////////
 		//	HOST CONTAINER
 		///////////////////////////////////////////////////////////////////////////////
 		
-		protected var host:DisplayObjectContainer;		
+		/**
+		 * @private
+		 */
+		protected var host:DisplayObjectContainer;
 		
+		/**
+		 * @private
+		 */
 		public function get hostContainer ():DisplayObjectContainer
 		{
 			return host;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set hostContainer (value:DisplayObjectContainer):void
 		{
 			if (value && host != value)
@@ -60,18 +94,27 @@ package as3isolib.display.scene
 				throw new Error ("parameter child is not of type IIsoDisplayObject");
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function setChildIndex (child:INode, index:uint):void
 		{
 			super.setChildIndex(child, index);
 			invalidateScene();
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function removeChildByID (id:String):INode
 		{
 			invalidateScene();
 			return super.removeChildByID(id);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function removeAllChildren ():void
 		{
 			super.removeAllChildren();
@@ -82,18 +125,32 @@ package as3isolib.display.scene
 		//	DEPTH SORT
 		///////////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * Flags the scene for possible layout rendering.
+		 * If false, child objects are sorted by the order they were added rather than by their isometric depth.
+		 */
 		public var layoutEnabled:Boolean = true;
 		
 		///////////////////////////////////////////////////////////////////////////////
 		//	RENDER
 		///////////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @private
+		 */
 		private var _isInvalidated:Boolean = false;
+		
+		/**
+		 * @private
+		 */
 		public function get isInvalidated ():Boolean
 		{
 			return _isInvalidated;
 		}
 		
+		/**
+		 * Flags the scene as invalidated during the rendering process
+		 */
 		public function invalidateScene ():void
 		{
 			_isInvalidated = true;
