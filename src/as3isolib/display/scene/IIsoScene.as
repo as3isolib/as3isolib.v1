@@ -1,7 +1,7 @@
 package as3isolib.display.scene
 {
 	import as3isolib.bounds.IBounds;
-	import as3isolib.display.IContainer;
+	import as3isolib.core.IContainer;
 	
 	import flash.display.DisplayObjectContainer;
 	

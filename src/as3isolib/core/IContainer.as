@@ -1,4 +1,4 @@
-package as3isolib.display
+package as3isolib.core
 {
 	import as3isolib.data.INode;
 	

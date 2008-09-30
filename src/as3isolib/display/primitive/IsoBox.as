@@ -1,6 +1,6 @@
 package as3isolib.display.primitive
 {
-	import as3isolib.display.IsoDisplayObject;
+	import as3isolib.core.IsoDisplayObject;
 	
 	/**
 	 * 3D box primitive in isometric space.

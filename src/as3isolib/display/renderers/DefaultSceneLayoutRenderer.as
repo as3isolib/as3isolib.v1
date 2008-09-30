@@ -1,7 +1,7 @@
 package as3isolib.display.renderers
 {
 	import as3isolib.bounds.IBounds;
-	import as3isolib.display.IIsoDisplayObject;
+	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.display.scene.IIsoScene;
 	
 	import flash.events.EventDispatcher;

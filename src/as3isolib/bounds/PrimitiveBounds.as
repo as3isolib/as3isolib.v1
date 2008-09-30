@@ -1,10 +1,7 @@
 package as3isolib.bounds
 {
-	import as3isolib.display.IIsoDisplayObject;
-	import as3isolib.geom.IsoMath;
+	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.geom.Pt;
-	
-	import flash.geom.Rectangle;
 	
 	/**
 	 * The IBounds implementation for Primitive-type classes

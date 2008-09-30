@@ -1,6 +1,6 @@
 package as3isolib.display.scene
 {
-	import as3isolib.display.IsoDisplayObject;
+	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.enum.IsoOrientation;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;

@@ -1,6 +1,6 @@
 package as3isolib.display
 {
-	import as3isolib.display.IIsoDisplayObject;
+	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.geom.Pt;
 	
 	/**

@@ -1,5 +1,6 @@
 package as3isolib.display
 {
+	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.display.scene.IIsoScene;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
@@ -7,7 +8,6 @@ package as3isolib.display
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
 	
 	/**
 	 * IsoView is a default view port that provides basic panning and zooming functionality on a given IIsoScene.

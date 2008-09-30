@@ -1,4 +1,4 @@
-package as3isolib.display
+package as3isolib.core
 {
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.data.INode;
@@ -97,7 +97,8 @@ package as3isolib.display
 		protected function createChildren ():void
 		{
 			//overriden by subclasses
-			mainContainer = new Sprite();			
+			mainContainer = new Sprite();	
+			//mainContainer.cacheAsBitmap = true;		
 		}
 		
 		////////////////////////////////////////////////////////////////////////

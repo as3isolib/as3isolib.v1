@@ -20,6 +20,10 @@
 			<arg line="-include-classes as3isolib.bounds.IBounds
 										as3isolib.bounds.PrimitiveBounds
 										as3isolib.bounds.SceneBounds
+										as3isolib.core.IContainer
+										as3isolib.core.IIsoDisplayObject
+										as3isolib.core.IsoContainer
+										as3isolib.core.IsoDisplayObject
 										as3isolib.data.INode
 										as3isolib.data.Node
 										as3isolib.display.primitive.IsoBox
@@ -32,10 +36,7 @@
 										as3isolib.display.scene.IsoGrid
 										as3isolib.display.scene.IsoOrigin
 										as3isolib.display.scene.IsoScene
-										as3isolib.display.IContainer
-										as3isolib.display.IIsoDisplayObject
 										as3isolib.display.IIsoView
-										as3isolib.display.IsoDisplayObject
 										as3isolib.display.IsoView
 										as3isolib.enum.IsoOrientation
 										as3isolib.enum.RenderStyleType

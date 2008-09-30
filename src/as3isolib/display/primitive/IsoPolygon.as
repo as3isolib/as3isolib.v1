@@ -1,6 +1,6 @@
 package as3isolib.display.primitive
 {
-	import as3isolib.display.IsoDisplayObject;
+	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.enum.RenderStyleType;
 	
 	import flash.display.CapsStyle;

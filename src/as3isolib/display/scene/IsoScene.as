@@ -2,9 +2,9 @@ package as3isolib.display.scene
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.SceneBounds;
+	import as3isolib.core.IIsoDisplayObject;
+	import as3isolib.core.IsoContainer;
 	import as3isolib.data.INode;
-	import as3isolib.display.IIsoDisplayObject;
-	import as3isolib.display.IsoContainer;
 	import as3isolib.display.renderers.DefaultSceneLayoutRenderer;
 	import as3isolib.display.renderers.DefaultShadowRenderer;
 	import as3isolib.display.renderers.ISceneRenderer;

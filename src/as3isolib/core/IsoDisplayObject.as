@@ -1,4 +1,4 @@
-package as3isolib.display
+package as3isolib.core
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.PrimitiveBounds;
@@ -19,6 +19,7 @@ package as3isolib.display
 	
 	/**
 	 * IsoDisplayObject is the base class that all primitive and complex isometric display objects should extend.
+	 * Developers should not instantiate this class but rather extend it.
 	 */
 	public class IsoDisplayObject extends IsoContainer implements IIsoDisplayObject
 	{
