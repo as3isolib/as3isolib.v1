@@ -4,7 +4,10 @@ package as3isolib.display.scene
 	import as3isolib.display.IContainer;
 	
 	import flash.display.DisplayObjectContainer;
-
+	
+	/**
+	 * The IIsoScene interface defines methods for scene-based classes that expect to group and control child objects in a similar fashion.
+	 */
 	public interface IIsoScene extends IContainer
 	{
 		/**

@@ -5,7 +5,10 @@ package as3isolib.display.scene
 	import as3isolib.geom.Pt;
 	
 	import flash.display.Graphics;
-
+	
+	/**
+	 * IsoGrid provides a display grid in the X-Y plane.
+	 */
 	public class IsoGrid extends IsoDisplayObject
 	{
 		////////////////////////////////////////////////////
@@ -14,11 +17,21 @@ package as3isolib.display.scene
 		
 		private var gSize:Array = [0, 0];
 		
+		/**
+		 * Returns an array containing the width and length of the grid.
+		 */
 		public function get gridSize ():Array
 		{
 			return gSize;
 		}
 		
+		/**
+		 * Sets the number of grid cells in each direction respectively.
+		 * 
+		 * @param width The number of cells along the x-axis.
+		 * @param length The number of cells along the y-axis.
+		 * @param height The number of cells along the z-axis (currently not implemented).
+		 */
 		public function setGridSize (width:uint, length:uint, height:uint = 0):void
 		{
 			if (gSize[0] != width || gSize[1] != length || gSize[2] != height)
@@ -34,11 +47,17 @@ package as3isolib.display.scene
 		
 		private var cSize:Number;
 		
+		/**
+		 * @private
+		 */
 		public function get cellSize ():Number
 		{
 			return cSize;
 		}
 		
+		/**
+		 * Represents the size of each grid cell.  This value sets both the width, length and height (where applicable) to the same size.
+		 */
 		public function set cellSize (value:Number):void
 		{
 			if (value < 2)
@@ -58,6 +77,9 @@ package as3isolib.display.scene
 		private var bShowOrigin:Boolean = false;
 		private var showOriginChanged:Boolean = false;
 		
+		/**
+		 * The origin indicator located at 0, 0, 0.
+		 */
 		public function get origin ():IsoOrigin
 		{
 			if (!_origin)
@@ -69,11 +91,17 @@ package as3isolib.display.scene
 			return _origin;
 		}
 		
+		/**
+		 * @private
+		 */
 		public function get showOrigin ():Boolean
 		{
 			return bShowOrigin;
 		}
 		
+		/**
+		 * Flag determining if the origin is visible.
+		 */
 		public function set showOrigin (value:Boolean):void
 		{
 			if (bShowOrigin != value)
@@ -89,6 +117,9 @@ package as3isolib.display.scene
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////
 		
+		/**
+		 * Constructor
+		 */
 		public function IsoGrid ()
 		{
 			super();
@@ -105,6 +136,9 @@ package as3isolib.display.scene
 		
 		private var _origin:IsoOrigin;
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function render (recursive:Boolean = true):void
 		{
 			if (showOriginChanged)
@@ -127,6 +161,9 @@ package as3isolib.display.scene
 			super.render(recursive);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override protected function drawGeometry ():void
 		{
 			var g:Graphics = container.graphics;

@@ -12,6 +12,10 @@ package as3isolib.display
 	
 	use namespace as3isolib_internal;
 	
+	/**
+	 * IsoContainer is the base class that any isometric object must extend in order to be shown in the display list.
+	 * Developers should not instantiate this class directly but rather extend it.
+	 */
 	public class IsoContainer extends Node implements IContainer
 	{
 		////////////////////////////////////////////////////////////////////////
@@ -21,6 +25,9 @@ package as3isolib.display
 			//	ADD
 			////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function addChildAt (child:INode, index:uint):void
 		{
 			if (child is IContainer)
@@ -36,6 +43,9 @@ package as3isolib.display
 			//	SWAP
 			////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function setChildIndex (child:INode, index:uint):void
 		{
 			if (!child is IContainer)
@@ -54,6 +64,9 @@ package as3isolib.display
 			//	REMOVE
 			////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function removeChildByID (id:String):INode
 		{
 			var child:INode = super.removeChildByID(id);
@@ -63,6 +76,9 @@ package as3isolib.display
 			return child;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function removeAllChildren ():void
 		{
 			var child:IContainer;
@@ -75,6 +91,9 @@ package as3isolib.display
 			//	CREATE
 			////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * Initialization method to create the child IContainer objects.
+		 */
 		protected function createChildren ():void
 		{
 			//overriden by subclasses
@@ -85,6 +104,9 @@ package as3isolib.display
 		//	RENDER
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function render (recursive:Boolean = true):void
 		{
 			if (recursive)
@@ -101,6 +123,9 @@ package as3isolib.display
 		//	EVENT DISPATCHER PROXY
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function dispatchEvent (event:Event):Boolean
 		{
 			//so we can make use of the bubbling events via the display list
@@ -115,8 +140,14 @@ package as3isolib.display
 		//	CONTAINER STRUCTURE
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @private
+		 */
 		as3isolib_internal var mainContainer:Sprite;
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get container ():Sprite
 		{
 			return mainContainer;
@@ -126,6 +157,9 @@ package as3isolib.display
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * Constructor
+		 */
 		public function IsoContainer()
 		{
 			super();

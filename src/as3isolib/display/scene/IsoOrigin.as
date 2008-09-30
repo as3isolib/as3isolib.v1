@@ -8,8 +8,14 @@ package as3isolib.display.scene
 	
 	import flash.display.Graphics;
 	
+	/**
+	 * IsoOrigin is a visual class that depicts the origin pt (typically at 0, 0, 0) with multicolored axis lines.
+	 */
 	public class IsoOrigin extends IsoDisplayObject
 	{
+		/**
+		 * @inheritDoc
+		 */
 		override protected function drawGeometry ():void
 		{
 			var pt0:Pt = IsoMath.isoToScreen(new Pt(-1 * axisLength, 0, 0));
@@ -74,10 +80,25 @@ package as3isolib.display.scene
 			g.endFill();
 		}
 		
+		/**
+		 * The length of each axis (not including the arrows).
+		 */
 		public var axisLength:Number = 100;
+		
+		/**
+		 * The arrow length for each arrow found on each axis.
+		 */
 		public var arrowLength:Number = 20;
+		
+		/**
+		 * The arrow width for each arrow found on each axis. 
+		 * This is the total width of the arrow at the base.
+		 */
 		public var arrowWidth:Number = 3;
 		
+		/**
+		 * Constructor
+		 */
 		public function IsoOrigin ()
 		{
 			super();
@@ -87,16 +108,25 @@ package as3isolib.display.scene
 			lineAlphas = [0.75, 0.75, 0.75];
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function set width (value:Number):void
 		{
 			super.width = 0;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function set length (value:Number):void
 		{
 			super.length = 0;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function set height (value:Number):void
 		{
 			super.height = 0;

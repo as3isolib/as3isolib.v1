@@ -189,6 +189,9 @@ package as3isolib.display.scene
 		//	CONSTRUCTOR
 		///////////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * Constructor
+		 */
 		public function IsoScene ()
 		{
 			super();

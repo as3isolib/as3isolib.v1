@@ -1,29 +1,34 @@
 package as3isolib.display.renderers
 {
 	import as3isolib.bounds.IBounds;
-	import as3isolib.display.IContainer;
 	import as3isolib.display.IIsoDisplayObject;
+	import as3isolib.display.scene.IIsoScene;
 	
 	import flash.events.EventDispatcher;
-
+	
+	/**
+	 * The DefaultSceneLayoutRenderer is the default renderer responsible for performing the isometric position-based depth sorting on the child objects of the target IIsoScene.
+	 */
 	public class DefaultSceneLayoutRenderer extends EventDispatcher implements ISceneRenderer
-	{	
-			////////////////////////////////////////////////////
-			//	ILAYOUT OBJECT
-			////////////////////////////////////////////////////
-		
+	{		
 		////////////////////////////////////////////////////
 		//	TARGET
 		////////////////////////////////////////////////////
 		
-		private var targetContainer:IContainer;
+		private var targetContainer:IIsoScene;
 		
-		public function get target ():IContainer
+		/**
+		 * @private
+		 */
+		public function get target ():IIsoScene
 		{
 			return targetContainer;
 		}
 		
-		public function set target (value:IContainer):void
+		/**
+		 * @inheritDoc
+		 */
+		public function set target (value:IIsoScene):void
 		{
 			targetContainer = value;
 		}
@@ -32,6 +37,9 @@ package as3isolib.display.renderers
 		//	UPDATE LAYOUT
 		////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function renderScene ():void
 		{
 			var sortedChildren:Array = targetContainer.children;
@@ -50,6 +58,9 @@ package as3isolib.display.renderers
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////
 		
+		/**
+		 * Constructor
+		 */
 		public function DefaultSceneLayoutRenderer ()
 		{
 			super();

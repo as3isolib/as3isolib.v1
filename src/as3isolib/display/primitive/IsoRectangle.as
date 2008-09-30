@@ -51,7 +51,7 @@ package as3isolib.display.primitive
 		}
 		
 		/**
-		 * @constructor
+		 * Constructor
 		 */
 		public function IsoRectangle ()
 		{

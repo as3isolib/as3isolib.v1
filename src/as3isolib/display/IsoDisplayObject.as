@@ -16,7 +16,10 @@ package as3isolib.display
 	import flash.utils.getQualifiedClassName;
 	
 	use namespace as3isolib_internal;
-
+	
+	/**
+	 * IsoDisplayObject is the base class that all primitive and complex isometric display objects should extend.
+	 */
 	public class IsoDisplayObject extends IsoContainer implements IIsoDisplayObject
 	{
 		////////////////////////////////////////////////////////////////////////
@@ -33,6 +36,9 @@ package as3isolib.display
 		
 		private var _isoBounds:IBounds;
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get isoBounds ():IBounds
 		{
 			if (!_isoBounds || isInvalidated)
@@ -41,6 +47,9 @@ package as3isolib.display
 			return _isoBounds;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get screenBounds ():Rectangle
 		{
 			var r:Rectangle;
@@ -54,6 +63,9 @@ package as3isolib.display
 			//	POSITION
 			/////////////////////////////////////////////////////////
 			
+		/**
+		 * @inheritDoc
+		 */
 		public function moveTo (x:Number, y:Number, z:Number):void
 		{
 			this.x = x;
@@ -68,12 +80,18 @@ package as3isolib.display
 		private var isoX:Number = 0;
 		private var oldX:Number;
 		
+		/**
+		 * @inheritDoc
+		 */
 		[Bindable("move")]
 		public function get x ():Number
 		{
 			return isoX;
 		}
 		
+		/**
+		 * @private
+		 */
 		public function set x (value:Number):void
 		{
 			value = Math.round(value);
@@ -89,6 +107,9 @@ package as3isolib.display
 			}
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get screenX ():Number
 		{
 			var b:IBounds = isoBounds;
@@ -104,12 +125,18 @@ package as3isolib.display
 		private var isoY:Number = 0;
 		private var oldY:Number;
 		
+		/**
+		 * @private
+		 */
 		[Bindable("move")]
 		public function get y ():Number
 		{
 			return isoY;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set y (value:Number):void
 		{
 			value = Math.round(value);
@@ -125,6 +152,9 @@ package as3isolib.display
 			}
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get screenY ():Number
 		{
 			var b:IBounds = isoBounds;
@@ -140,12 +170,18 @@ package as3isolib.display
 		private var isoZ:Number = 0;
 		private var oldZ:Number;
 		
+		/**
+		 * @private
+		 */
 		[Bindable("move")]
 		public function get z ():Number
 		{
 			return isoZ;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set z (value:Number):void
 		{
 			value = Math.round(value);
@@ -165,6 +201,9 @@ package as3isolib.display
 			//	GEOMETRY
 			/////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function setSize (width:Number, length:Number, height:Number):void
 		{
 			this.width = width;
@@ -179,12 +218,18 @@ package as3isolib.display
 		private var isoWidth:Number = 0;
 		private var oldWidth:Number;
 		
+		/**
+		 * @private
+		 */
 		[Bindable("resize")]
 		public function get width ():Number
 		{
 			return isoWidth;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set width (value:Number):void
 		{	
 			value = Math.abs(value);
@@ -208,12 +253,18 @@ package as3isolib.display
 		private var isoLength:Number = 0;
 		private var oldLength:Number;
 		
+		/**
+		 * @private
+		 */
 		[Bindable("resize")]
 		public function get length ():Number
 		{
 			return isoLength;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set length (value:Number):void
 		{
 			value = Math.abs(value);
@@ -236,12 +287,18 @@ package as3isolib.display
 		private var isoHeight:Number = 0;
 		private var oldHeight:Number;
 		
+		/**
+		 * @private
+		 */
 		[Bindable("resize")]
 		public function get height ():Number
 		{
 			return isoHeight;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set height (value:Number):void
 		{
 			value = Math.abs(value);	
@@ -264,11 +321,17 @@ package as3isolib.display
 		
 		private var renderStyle:String = RenderStyleType.SHADED;
 		
+		/**
+		 * @private
+		 */
 		public function get styleType ():String
 		{
 			return renderStyle;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set styleType (value:String):void
 		{
 			if (renderStyle != value)
@@ -288,11 +351,17 @@ package as3isolib.display
 		[ArrayElementType("uint")]
 		private var lineThicknessesArray:Array = [0, 0, 0, 0, 0, 0];
 		
+		/**
+		 * @private
+		 */
 		public function get lineThicknesses ():Array
 		{
 			return lineThicknessesArray;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set lineThicknesses (value:Array):void
 		{
 			if (lineThicknessesArray != value)
@@ -308,11 +377,17 @@ package as3isolib.display
 		[ArrayElementType("uint")]
 		private var lineColorArray:Array = [0x000000, 0x000000, 0x000000, 0x000000, 0x000000, 0x000000,];
 		
+		/**
+		 * @private
+		 */
 		public function get lineColors ():Array
 		{
 			return lineColorArray;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set lineColors (value:Array):void
 		{
 			if (lineColorArray != value)
@@ -328,11 +403,17 @@ package as3isolib.display
 		[ArrayElementType("Number")]
 		private var lineAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 		
+		/**
+		 * @private
+		 */
 		public function get lineAlphas ():Array
 		{
 			return lineAlphasArray;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set lineAlphas (value:Array):void
 		{
 			if (lineAlphasArray != value)
@@ -355,11 +436,17 @@ package as3isolib.display
 		[ArrayElementType("uint")]
 		private var shadedColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xcccccc, 0xcccccc];
 		
+		/**
+		 * @private
+		 */
 		public function get faceColors ():Array
 		{
 			return shadedColorArray;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set faceColors (value:Array):void
 		{
 			if (shadedColorArray != value)
@@ -375,11 +462,17 @@ package as3isolib.display
 		[ArrayElementType("Number")]
 		private var faceAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 		
+		/**
+		 * @private
+		 */
 		public function get faceAlphas ():Array
 		{
 			return faceAlphasArray;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set faceAlphas (value:Array):void
 		{
 			if (faceAlphasArray != value)
@@ -396,8 +489,14 @@ package as3isolib.display
 		//	RENDERING
 		/////////////////////////////////////////////////////////
 		
+		/**
+		 * Flag indicating whether a property change will automatically trigger a render phase.
+		 */
 		public var autoUpdate:Boolean = false;
 		
+		/**
+		 * @inheritDoc
+		 */
 		override public function render (recursive:Boolean = true):void
 		{
 			if (!hasParent)
@@ -435,44 +534,31 @@ package as3isolib.display
 			super.render(recursive);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		protected function drawGeometry ():void
 		{
 			//overridden by subclasses
-		}
-		
-		public function get bitmapData ():BitmapData
-		{
-			var x:Number = IsoMath.isoToScreen(new Pt(x, y + length, z + height)).x;
-			var y:Number = IsoMath.isoToScreen(new Pt(x, y, z + height)).y;
-			var w:Number = IsoMath.isoToScreen(new Pt(x + width, y, z)).x;
-			var h:Number = IsoMath.isoToScreen(new Pt(x + width, y + length, z)).y;
-			
-			var c:IIsoDisplayObject = clone();
-			IsoDisplayObject(c).parentNode = new Node(); //setting parent so as to render
-			c.container.x = -1 * x;
-			c.container.y = -1 * y;
-			c.render();
-			
-			var host:Sprite = new Sprite();
-			host.addChild(c.container);
-			
-			var bw:Number = Math.abs(w - x);
-			var bh:Number = Math.abs(h - y);
-			var b:BitmapData = new BitmapData(bw, bh, false, 0xff0000);
-			b.draw(host);
-			
-			return b;
 		}
 		
 		/////////////////////////////////////////////////////////
 		//	VALIDATION
 		/////////////////////////////////////////////////////////
 		
+		/**
+		 * For IIsoDisplayObject that make use of Flash's drawing API, validation of the geometry must occur before being rendered.
+		 * 
+		 * @return Boolean Flag indicating if the geometry is valid.
+		 */
 		protected function validateGeometry ():Boolean
 		{
 			return true;
 		}
 		
+		/**
+		 * Takes the given 3D isometric coordinates and positions them in cartesian coordinates relative to the parent container.
+		 */
 		protected function validatePosition ():void
 		{
 			var pt:Pt = new Pt(x, y, z);
@@ -486,20 +572,35 @@ package as3isolib.display
 		//	INVALIDATION
 		/////////////////////////////////////////////////////////
 		
+		/**
+		 * @private
+		 */
 		as3isolib_internal var bGeometryInvalidated:Boolean = false;
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function invalidateGeometry ():void
 		{
 			bGeometryInvalidated = true;
 		}
 		
+		/**
+		 * @private
+		 */
 		as3isolib_internal var bPositionInvalidated:Boolean = false;
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function invalidatePosition ():void
 		{
 			bPositionInvalidated = true;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get isInvalidated ():Boolean
 		{
 			return (bGeometryInvalidated || bPositionInvalidated);
@@ -509,6 +610,9 @@ package as3isolib.display
 		//	CLONE
 		/////////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function clone ():IIsoDisplayObject
 		{
 			var CloneClass:Class = getDefinitionByName(getQualifiedClassName(this)) as Class;
@@ -528,6 +632,9 @@ package as3isolib.display
 		//	CONSTRUCTOR
 		/////////////////////////////////////////////////////////
 		
+		/**
+		 * Constructor
+		 */
 		public function IsoDisplayObject ()
 		{
 			super();

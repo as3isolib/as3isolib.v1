@@ -4,6 +4,9 @@ package as3isolib.display
 	
 	import flash.display.Sprite;
 	
+	/**
+	 * The IContainer interface defines the methods necessary for display visual content associated with a particular data node.
+	 */
 	public interface IContainer extends INode
 	{
 		//////////////////////////////////////////////////////////////////

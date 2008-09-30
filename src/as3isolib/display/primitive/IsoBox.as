@@ -8,7 +8,7 @@ package as3isolib.display.primitive
 	public class IsoBox extends IsoDisplayObject
 	{
 		/**
-		 * @constructor
+		 * Constructor
 		 */
 		public function IsoBox ()
 		{

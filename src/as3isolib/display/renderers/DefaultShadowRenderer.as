@@ -1,20 +1,26 @@
 package as3isolib.display.renderers
 {
 	import as3isolib.bounds.IBounds;
-	import as3isolib.display.IContainer;
 	import as3isolib.display.IIsoDisplayObject;
+	import as3isolib.display.scene.IIsoScene;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
 	import flash.display.Graphics;
 	import flash.events.EventDispatcher;
 	
+	/**
+	 * The DefaultShadowRenderer class is the default renderer for applying basic shadowing on child objects of the target IIsoScene.
+	 */
 	public class DefaultShadowRenderer extends EventDispatcher implements ISceneRenderer
 	{
 		////////////////////////////////////////////////////
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////
 		
+		/**
+		 * Constructor
+		 */
 		public function DefaultShadowRenderer (shadowColor:uint = 0x000000, shadowAlpha:Number = 0.15, drawAll:Boolean = false)
 		{
 			this.shadowColor = shadowColor; 
@@ -27,14 +33,20 @@ package as3isolib.display.renderers
 		//	TARGET
 		////////////////////////////////////////////////////
 		
-		private var _target:IContainer
+		private var _target:IIsoScene
 		
-		public function get target ():IContainer
+		/**
+		 * @private
+		 */
+		public function get target ():IIsoScene
 		{
 			return _target;
 		}
 		
-		public function set target (value:IContainer):void
+		/**
+		 * @inheritDoc
+		 */
+		public function set target (value:IIsoScene):void
 		{
 			_target = value;
 		}
@@ -52,6 +64,9 @@ package as3isolib.display.renderers
 		//	RENDERER
 		////////////////////////////////////////////////////
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function renderScene ():void
 		{
 			if (!_target)
