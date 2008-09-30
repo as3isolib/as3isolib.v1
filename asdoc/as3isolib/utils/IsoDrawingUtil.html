@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IsoDrawingUtil,as3isolib.utils.IsoDrawingUtil,drawIsoArrow,drawIsoCircle,drawIsoRectangle" name="keywords">
+<meta content="IsoDrawingUtil,as3isolib.utils.IsoDrawingUtil,drawIsoArrow,drawIsoRectangle" name="keywords">
 <title>as3isolib.utils.IsoDrawingUtil</title>
 </head>
 <body>
@@ -39,7 +39,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  IsoDrawingUtil provides some convenience methods for drawing shapes in 3D isometric space.
+  <p></p>
 <br>
 <hr>
 </div>
@@ -54,21 +55,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#drawIsoArrow()">drawIsoArrow</a>(g:Graphics, originPt:<a href="../geom/Pt.html">Pt</a>, degrees:Number, length:Number = 27, width:Number = 6, plane:String = "xy"):void</div>
-<div class="summaryTableDescription">[static]</div>
-</td><td class="summaryTableOwnerCol">IsoDrawingUtil</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#drawIsoCircle()">drawIsoCircle</a>(g:Graphics, originPt:<a href="../geom/Pt.html">Pt</a>, radius:Number, plane:String = "xy"):void</div>
-<div class="summaryTableDescription">[static]</div>
+<div class="summaryTableDescription">[static]
+   Draws an arrow in 3D isometric space relative to a specific plane.</div>
 </td><td class="summaryTableOwnerCol">IsoDrawingUtil</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#drawIsoRectangle()">drawIsoRectangle</a>(g:Graphics, originPt:<a href="../geom/Pt.html">Pt</a>, width:Number, length:Number, plane:String = "xy"):void</div>
-<div class="summaryTableDescription">[static]</div>
+<div class="summaryTableDescription">[static]
+   Draws a rectangle in 3D isometric space relative to a specific plane.</div>
 </td><td class="summaryTableOwnerCol">IsoDrawingUtil</td>
 </tr>
 </table>
@@ -87,72 +83,49 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public static function drawIsoArrow(g:Graphics, originPt:<a href="../geom/Pt.html">Pt</a>, degrees:Number, length:Number = 27, width:Number = 6, plane:String = "xy"):void</code><span class="label">Parameters</span>
+<code>public static function drawIsoArrow(g:Graphics, originPt:<a href="../geom/Pt.html">Pt</a>, degrees:Number, length:Number = 27, width:Number = 6, plane:String = "xy"):void</code><p>
+   Draws an arrow in 3D isometric space relative to a specific plane.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">g</span>:Graphics</code></td>
+<td width="20px"></td><td><code><span class="label">g</span>:Graphics</code> &mdash; The target graphics object performing the drawing tasks.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">originPt</span>:<a href="../geom/Pt.html">Pt</a></code></td>
+<td width="20px"></td><td><code><span class="label">originPt</span>:<a href="../geom/Pt.html">Pt</a></code> &mdash; The origin pt where the specific drawing task originates.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">degrees</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">degrees</span>:Number</code> &mdash; The angle of rotation in degrees perpendicular to the plane of orientation.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">length</span>:Number</code> (default = <code>27</code>)<code></code></td>
+<td width="20px"></td><td><code><span class="label">length</span>:Number</code> (default = <code>27</code>)<code></code> &mdash; The length of the arrow.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">width</span>:Number</code> (default = <code>6</code>)<code></code></td>
+<td width="20px"></td><td><code><span class="label">width</span>:Number</code> (default = <code>6</code>)<code></code> &mdash; The width of the arrow.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">plane</span>:String</code> (default = "<code>xy</code>")<code></code></td>
-</tr>
-</table>
-</div>
-<a name="drawIsoCircle()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">drawIsoCircle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public static function drawIsoCircle(g:Graphics, originPt:<a href="../geom/Pt.html">Pt</a>, radius:Number, plane:String = "xy"):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">g</span>:Graphics</code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">originPt</span>:<a href="../geom/Pt.html">Pt</a></code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">radius</span>:Number</code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">plane</span>:String</code> (default = "<code>xy</code>")<code></code></td>
+<td width="20px"></td><td><code><span class="label">plane</span>:String</code> (default = "<code>xy</code>")<code></code> &mdash; The plane of orientation to draw the arrow on.
+   </td>
 </tr>
 </table>
 </div>
@@ -163,34 +136,42 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public static function drawIsoRectangle(g:Graphics, originPt:<a href="../geom/Pt.html">Pt</a>, width:Number, length:Number, plane:String = "xy"):void</code><span class="label">Parameters</span>
+<code>public static function drawIsoRectangle(g:Graphics, originPt:<a href="../geom/Pt.html">Pt</a>, width:Number, length:Number, plane:String = "xy"):void</code><p>
+   Draws a rectangle in 3D isometric space relative to a specific plane.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">g</span>:Graphics</code></td>
+<td width="20px"></td><td><code><span class="label">g</span>:Graphics</code> &mdash; The target graphics object performing the drawing tasks.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">originPt</span>:<a href="../geom/Pt.html">Pt</a></code></td>
+<td width="20px"></td><td><code><span class="label">originPt</span>:<a href="../geom/Pt.html">Pt</a></code> &mdash; The origin pt where the specific drawing task originates.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">width</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">width</span>:Number</code> &mdash; The width of the rectangle. This is relative to the first orientation axis in the given plane.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">length</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">length</span>:Number</code> &mdash; The length of the rectangle. This is relative to the second orientation axis in the given plane.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">plane</span>:String</code> (default = "<code>xy</code>")<code></code></td>
+<td width="20px"></td><td><code><span class="label">plane</span>:String</code> (default = "<code>xy</code>")<code></code> &mdash; The plane of orientation to draw the rectangle on.
+   </td>
 </tr>
 </table>
 </div>

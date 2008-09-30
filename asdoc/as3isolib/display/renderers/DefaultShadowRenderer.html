@@ -45,7 +45,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  The DefaultShadowRenderer class is the default renderer for applying basic shadowing on child objects of the target IIsoScene.
+  <p></p>
 <br>
 <hr>
 </div>
@@ -57,8 +58,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#target">target</a> : <a href="../../display/IContainer.html">IContainer</a>
-<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#target">target</a> : <a href="../scene/IIsoScene.html">IIsoScene</a>
+<div class="summaryTableDescription">
+   
+   The target IIsoScene whose children will be rendererd.</div>
 </td><td class="summaryTableOwnerCol">DefaultShadowRenderer</td>
 </tr>
 </table>
@@ -74,14 +77,18 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#DefaultShadowRenderer()">DefaultShadowRenderer</a>(shadowColor:uint = 0x000000, shadowAlpha:Number = 0.15, drawAll:Boolean = false)</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Constructor
+   </div>
 </td><td class="summaryTableOwnerCol">DefaultShadowRenderer</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#renderScene()">renderScene</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   Iterates and renders each child of the target.</div>
 </td><td class="summaryTableOwnerCol">DefaultShadowRenderer</td>
 </tr>
 </table>
@@ -100,11 +107,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>target:<a href="../../display/IContainer.html">IContainer</a></code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>target:<a href="../scene/IIsoScene.html">IIsoScene</a></code>&nbsp;&nbsp;[read-write]<p>
+   
+   The target IIsoScene whose children will be rendererd.
+   </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get target():<a href="../../display/IContainer.html">IContainer</a></code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get target():<a href="../scene/IIsoScene.html">IIsoScene</a></code>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set target(value:<a href="../../display/IContainer.html">IContainer</a>):void</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set target(value:<a href="../scene/IIsoScene.html">IIsoScene</a>):void</code>
 <br>
 </div>
 <a name="constructorDetail"></a>
@@ -116,7 +126,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function DefaultShadowRenderer(shadowColor:uint = 0x000000, shadowAlpha:Number = 0.15, drawAll:Boolean = false)</code><span class="label">Parameters</span>
+<code>public function DefaultShadowRenderer(shadowColor:uint = 0x000000, shadowAlpha:Number = 0.15, drawAll:Boolean = false)</code><p>
+   Constructor
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">shadowColor</span>:uint</code> (default = <code>0x000000</code>)<code></code></td>
@@ -144,8 +156,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function renderScene():void</code>
-</div>
+<code>public function renderScene():void</code><p>
+   
+   Iterates and renders each child of the target.
+   </p></div>
 <br>
 <br>
 <hr>

@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IsoContainer,as3isolib.display.IsoContainer,mainContainer,container,addChildAt,createChildren,dispatchEvent,removeAllChildren,removeChildByID,render,setChildIndex" name="keywords">
+<meta content="IsoContainer,as3isolib.display.IsoContainer,container,addChildAt,createChildren,dispatchEvent,removeAllChildren,removeChildByID,render,setChildIndex" name="keywords">
 <title>as3isolib.display.IsoContainer</title>
 </head>
 <body>
@@ -48,7 +48,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  IsoContainer is the base class that any isometric object must extend in order to be shown in the display list.
+  Developers should not instantiate this class directly but rather extend it.
+  <p></p>
 <br>
 <hr>
 </div>
@@ -74,7 +76,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../data/Node.html">Node</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#container">container</a> : Sprite<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#container">container</a> : Sprite<div class="summaryTableDescription">[read-only]
+   
+   The sprite that contains the visual assets.</div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -109,12 +113,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#proxy">proxy</a> : IEventDispatcher<div class="summaryTableDescription">
-   Generally the EventDispatcherProxy is indeed the proxy for the proxyTarget.</div>
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#proxyTarget">proxyTarget</a> : IEventDispatcher<div class="summaryTableDescription">
-   The target whose events are being redispatched by the proxy.</div>
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
 </tr>
 </table>
@@ -138,7 +142,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#IsoContainer()">IsoContainer</a>()</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Constructor
+   </div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -154,7 +160,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#addChildAt()">addChildAt</a>(child:<a href="../data/INode.html">INode</a>, index:uint):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   Adds a child to the display list at the specified index.</div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -178,7 +187,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#dispatchEvent()">dispatchEvent</a>(event:Event):Boolean</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   </div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -232,7 +243,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#removeAllChildren()">removeAllChildren</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   removes all child INodes.</div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -260,7 +274,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#removeChildByID()">removeChildByID</a>(id:String):<a href="../data/INode.html">INode</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   Removes the child with the specified id.</div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -275,14 +292,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#render()">render</a>(recursive:Boolean = true):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   Initiates the various validation processes in order to display the IPrimitive.</div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setChildIndex()">setChildIndex</a>(child:<a href="../data/INode.html">INode</a>, index:uint):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   Moves a child node to the provided index
+   
+   </div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -314,7 +338,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#createChildren()">createChildren</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Initialization method to create the child IContainer objects.</div>
 </td><td class="summaryTableOwnerCol">IsoContainer</td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
@@ -349,19 +374,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>container:Sprite</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>container:Sprite</code>&nbsp;&nbsp;[read-only]<p>
+   
+   The sprite that contains the visual assets.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get container():Sprite</code>
 <br>
-</div>
-<a name="mainContainer"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">mainContainer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>as3isolib_internal var mainContainer:Sprite</code>
 </div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
@@ -372,8 +391,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function IsoContainer()</code>
-</div>
+<code>public function IsoContainer()</code><p>
+   Constructor
+   </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
 <a name="addChildAt()"></a>
@@ -383,16 +403,23 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function addChildAt(child:<a href="../data/INode.html">INode</a>, index:uint):void</code><span class="label">Parameters</span>
+<code>public override function addChildAt(child:<a href="../data/INode.html">INode</a>, index:uint):void</code><p>
+   
+   
+   Adds a child to the display list at the specified index.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">child</span>:<a href="../data/INode.html">INode</a></code></td>
+<td width="20px"></td><td><code><span class="label">child</span>:<a href="../data/INode.html">INode</a></code> &mdash; The INode to add this node's heirarchy.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">index</span>:uint</code></td>
+<td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The target index to add the child.
+   </td>
 </tr>
 </table>
 </div>
@@ -403,8 +430,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected function createChildren():void</code>
-</div>
+<code>protected function createChildren():void</code><p>
+   Initialization method to create the child IContainer objects.
+   </p></div>
 <a name="dispatchEvent()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -412,7 +440,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function dispatchEvent(event:Event):Boolean</code><span class="label">Parameters</span>
+<code>public override function dispatchEvent(event:Event):Boolean</code><p>
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">event</span>:Event</code></td>
@@ -433,8 +463,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function removeAllChildren():void</code>
-</div>
+<code>public override function removeAllChildren():void</code><p>
+   
+   
+   removes all child INodes.
+   </p></div>
 <a name="removeChildByID()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -442,17 +475,27 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function removeChildByID(id:String):<a href="../data/INode.html">INode</a></code><span class="label">Parameters</span>
+<code>public override function removeChildByID(id:String):<a href="../data/INode.html">INode</a></code><p>
+   
+   
+   Removes the child with the specified id.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">id</span>:String</code></td>
+<td width="20px"></td><td><code><span class="label">id</span>:String</code> &mdash; The INode's id to remove from the children hierarchy.
+   </td>
 </tr>
 </table>
 <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../data/INode.html">INode</a></code></td>
+<td width="20"></td><td><code><a href="../data/INode.html">INode</a></code> &mdash; 
+                        INode The child that was removed.
+   
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -463,10 +506,15 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function render(recursive:Boolean = true):void</code><span class="label">Parameters</span>
+<code>public function render(recursive:Boolean = true):void</code><p>
+   
+   Initiates the various validation processes in order to display the IPrimitive.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>true</code>)<code></code></td>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; If true will tell child nodes to render through the display list.
+   </td>
 </tr>
 </table>
 </div>
@@ -477,16 +525,23 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function setChildIndex(child:<a href="../data/INode.html">INode</a>, index:uint):void</code><span class="label">Parameters</span>
+<code>public override function setChildIndex(child:<a href="../data/INode.html">INode</a>, index:uint):void</code><p>
+   
+   
+   Moves a child node to the provided index
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">child</span>:<a href="../data/INode.html">INode</a></code></td>
+<td width="20px"></td><td><code><span class="label">child</span>:<a href="../data/INode.html">INode</a></code> &mdash; The child node whose index is to be changed.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">index</span>:uint</code></td>
+<td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The destination index to move the child node to.
+   </td>
 </tr>
 </table>
 </div>

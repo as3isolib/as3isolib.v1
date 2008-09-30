@@ -60,7 +60,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">ProxyEvent</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#proxyTarget">proxyTarget</a> : IEventDispatcher<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#proxyTarget">proxyTarget</a> : IEventDispatcher<div class="summaryTableDescription">
+   The original event target who is being proxied for.</div>
 </td><td class="summaryTableOwnerCol">ProxyEvent</td>
 </tr>
 <tr class="">
@@ -87,6 +88,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#ProxyEvent()">ProxyEvent</a>(proxy:IEventDispatcher, targetEvt:Event)</div>
 <div class="summaryTableDescription">
+   Constructor
+   
    </div>
 </td><td class="summaryTableOwnerCol">ProxyEvent</td>
 </tr>
@@ -124,8 +127,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public var proxyTarget:IEventDispatcher</code>
-</div>
+<code>public var proxyTarget:IEventDispatcher</code><p>
+   The original event target who is being proxied for.
+   </p></div>
 <a name="target"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -160,6 +164,8 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public function ProxyEvent(proxy:IEventDispatcher, targetEvt:Event)</code><p>
+   Constructor
+   
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>

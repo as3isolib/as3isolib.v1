@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IsoDisplayObject,as3isolib.display.IsoDisplayObject,DEFAULT_HEIGHT,DEFAULT_LENGTH,DEFAULT_WIDTH,autoUpdate,bGeometryInvalidated,bPositionInvalidated,bitmapData,faceAlphas,faceColors,height,isInvalidated,isoBounds,length,lineAlphas,lineColors,lineThicknesses,screenBounds,screenX,screenY,styleType,width,x,y,z,clone,drawGeometry,invalidateGeometry,invalidatePosition,moveTo,render,setSize,validateGeometry,validatePosition" name="keywords">
+<meta content="IsoDisplayObject,as3isolib.display.IsoDisplayObject,DEFAULT_HEIGHT,DEFAULT_LENGTH,DEFAULT_WIDTH,autoUpdate,isInvalidated,isoBounds,screenBounds,screenX,screenY,x,faceAlphas,faceColors,height,length,lineAlphas,lineColors,lineThicknesses,styleType,width,y,z,clone,drawGeometry,invalidateGeometry,invalidatePosition,moveTo,render,setSize,validateGeometry,validatePosition" name="keywords">
 <title>as3isolib.display.IsoDisplayObject</title>
 </head>
 <body>
@@ -48,7 +48,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  IsoDisplayObject is the base class that all primitive and complex isometric display objects should extend.
+  <p></p>
 <br>
 <hr>
 </div>
@@ -68,11 +69,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoUpdate">autoUpdate</a> : Boolean = false<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#bitmapData">bitmapData</a> : BitmapData<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoUpdate">autoUpdate</a> : Boolean = false<div class="summaryTableDescription">
+   Flag indicating whether a property change will automatically trigger a render phase.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -82,7 +80,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../data/Node.html">Node</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IsoContainer.html#container">container</a> : Sprite<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IsoContainer.html#container">container</a> : Sprite<div class="summaryTableDescription">
+   
+   The sprite that contains the visual assets.</div>
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -91,11 +91,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#faceAlphas">faceAlphas</a> : Array<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#faceAlphas">faceAlphas</a> : Array<div class="summaryTableDescription">
+   
+   An array of alpha values corresponding to the various faces (where applicable).</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#faceColors">faceColors</a> : Array<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#faceColors">faceColors</a> : Array<div class="summaryTableDescription">
+   
+   An array of color values corresponding to the various faces (where applicable).</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -105,7 +109,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../data/Node.html">Node</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#height">height</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#height">height</a> : Number<div class="summaryTableDescription">
+   
+   The height in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -115,28 +121,40 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../data/Node.html">Node</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">[read-only]
+   
+   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isoBounds">isoBounds</a> : <a href="../bounds/IBounds.html">IBounds</a>
-<div class="summaryTableDescription">[read-only]</div>
+<div class="summaryTableDescription">[read-only]
+   
+   The object that defines the boundries of the IIsoDisplayObject in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#length">length</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#length">length</a> : Number<div class="summaryTableDescription">
+   
+   The length in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineAlphas">lineAlphas</a> : Array<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineAlphas">lineAlphas</a> : Array<div class="summaryTableDescription">
+   
+   An array of alphas values corresponding to the various faces' outlines (where applicable).</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineColors">lineColors</a> : Array<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineColors">lineColors</a> : Array<div class="summaryTableDescription">
+   
+   An array of color values corresponding to the various faces' outlines (where applicable).</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineThicknesses">lineThicknesses</a> : Array<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineThicknesses">lineThicknesses</a> : Array<div class="summaryTableDescription">
+   
+   An array of thickness values corresponding to the various faces' outlines (where applicable).</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -154,44 +172,61 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#proxy">proxy</a> : IEventDispatcher<div class="summaryTableDescription">
-   Generally the EventDispatcherProxy is indeed the proxy for the proxyTarget.</div>
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#proxyTarget">proxyTarget</a> : IEventDispatcher<div class="summaryTableDescription">
-   The target whose events are being redispatched by the proxy.</div>
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenBounds">screenBounds</a> : Rectangle<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenBounds">screenBounds</a> : Rectangle<div class="summaryTableDescription">[read-only]
+   
+   The traditional screen boundries associated with the IIsoDisplayObject in 2D screen coordinates.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenX">screenX</a> : Number<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenX">screenX</a> : Number<div class="summaryTableDescription">[read-only]
+   
+   The x value of the container in screen coordinates relative to the parent container.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenY">screenY</a> : Number<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenY">screenY</a> : Number<div class="summaryTableDescription">[read-only]
+   
+   The y value of the container in screen coordinates relative to the parent container.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#styleType">styleType</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#styleType">styleType</a> : String<div class="summaryTableDescription">
+   
+   For IIsoDisplayObjects that make use of Flash's drawing API, it is necessary to develop render logic corresponding to the
+   varios render style types.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#width">width</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#width">width</a> : Number<div class="summaryTableDescription">
+   
+   The width in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#x">x</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#x">x</a> : Number<div class="summaryTableDescription">
+   
+   </div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#y">y</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#y">y</a> : Number<div class="summaryTableDescription">
+   
+   The y value in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#z">z</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#z">z</a> : Number<div class="summaryTableDescription">
+   
+   The z value in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 </table>
@@ -215,7 +250,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#IsoDisplayObject()">IsoDisplayObject</a>()</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Constructor
+   </div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -231,7 +268,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="IsoContainer.html#addChildAt()">addChildAt</a>(child:<a href="../data/INode.html">INode</a>, index:uint):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   Adds a child to the display list at the specified index.</div>
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -247,7 +287,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#clone()">clone</a>():<a href="../display/IIsoDisplayObject.html">IIsoDisplayObject</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   Clones the IIsoDisplayObject, copying its dimensional and style properties.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -263,7 +305,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="IsoContainer.html#dispatchEvent()">dispatchEvent</a>(event:Event):Boolean</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -317,28 +361,37 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#invalidateGeometry()">invalidateGeometry</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   Invalidates the geometry of the  IIsoDisplayObject.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#invalidatePosition()">invalidatePosition</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   Invalidates the position of the  IIsoDisplayObject.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#moveTo()">moveTo</a>(x:Number, y:Number, z:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   Moves the IIsoDisplayObject to the particular 3D isometric coordinates.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="IsoContainer.html#removeAllChildren()">removeAllChildren</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   removes all child INodes.</div>
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -366,7 +419,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="IsoContainer.html#removeChildByID()">removeChildByID</a>(id:String):<a href="../data/INode.html">INode</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   Removes the child with the specified id.</div>
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -381,21 +437,31 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#render()">render</a>(recursive:Boolean = true):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   Initiates the various validation processes in order to display the IPrimitive.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="IsoContainer.html#setChildIndex()">setChildIndex</a>(child:<a href="../data/INode.html">INode</a>, index:uint):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   
+   Moves a child node to the provided index
+   
+   </div>
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setSize()">setSize</a>(width:Number, length:Number, height:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   
+   Resizes the IIsoDisplayObject in 3D isometric coordinates.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedMethod">
@@ -427,14 +493,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="IsoContainer.html#createChildren()">createChildren</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Initialization method to create the child IContainer objects.</div>
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#drawGeometry()">drawGeometry</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   </div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
@@ -457,14 +525,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#validateGeometry()">validateGeometry</a>():Boolean</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   For IIsoDisplayObject that make use of Flash's drawing API, validation of the geometry must occur before being rendered.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#validatePosition()">validatePosition</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Takes the given 3D isometric coordinates and positions them in cartesian coordinates relative to the parent container.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 </table>
@@ -504,38 +574,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public var autoUpdate:Boolean = false</code>
-</div>
-<a name="bGeometryInvalidated"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">bGeometryInvalidated</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>as3isolib_internal var bGeometryInvalidated:Boolean = false</code>
-</div>
-<a name="bitmapData"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">bitmapData</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>bitmapData:BitmapData</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get bitmapData():BitmapData</code>
-<br>
-</div>
-<a name="bPositionInvalidated"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">bPositionInvalidated</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>as3isolib_internal var bPositionInvalidated:Boolean = false</code>
-</div>
+<code>public var autoUpdate:Boolean = false</code><p>
+   Flag indicating whether a property change will automatically trigger a render phase.
+   </p></div>
 <a name="faceAlphas"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -543,7 +584,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>faceAlphas:Array</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>faceAlphas:Array</code>&nbsp;&nbsp;[read-write]<p>
+   
+   An array of alpha values corresponding to the various faces (where applicable).
+   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get faceAlphas():Array</code>
 <br>
@@ -557,7 +602,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>faceColors:Array</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>faceColors:Array</code>&nbsp;&nbsp;[read-write]<p>
+   
+   An array of color values corresponding to the various faces (where applicable).
+   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get faceColors():Array</code>
 <br>
@@ -571,8 +620,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>height:Number</code>&nbsp;&nbsp;[read-write]<p>This property can be used as the source for data binding.</p>
-<span class="label">Implementation</span>
+<code>height:Number</code>&nbsp;&nbsp;[read-write]<p>
+   
+   The height in 3D isometric space.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get height():Number</code>
 <br>
@@ -586,7 +637,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>isInvalidated:Boolean</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>isInvalidated:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   
+   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isInvalidated():Boolean</code>
 <br>
@@ -598,7 +652,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>isoBounds:<a href="../bounds/IBounds.html">IBounds</a></code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>isoBounds:<a href="../bounds/IBounds.html">IBounds</a></code>&nbsp;&nbsp;[read-only]<p>
+   
+   The object that defines the boundries of the IIsoDisplayObject in 3D isometric space.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isoBounds():<a href="../bounds/IBounds.html">IBounds</a></code>
 <br>
@@ -610,8 +667,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>length:Number</code>&nbsp;&nbsp;[read-write]<p>This property can be used as the source for data binding.</p>
-<span class="label">Implementation</span>
+<code>length:Number</code>&nbsp;&nbsp;[read-write]<p>
+   
+   The length in 3D isometric space.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get length():Number</code>
 <br>
@@ -625,7 +684,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>lineAlphas:Array</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>lineAlphas:Array</code>&nbsp;&nbsp;[read-write]<p>
+   
+   An array of alphas values corresponding to the various faces' outlines (where applicable).
+   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get lineAlphas():Array</code>
 <br>
@@ -639,7 +702,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>lineColors:Array</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>lineColors:Array</code>&nbsp;&nbsp;[read-write]<p>
+   
+   An array of color values corresponding to the various faces' outlines (where applicable).
+   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get lineColors():Array</code>
 <br>
@@ -653,7 +720,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>lineThicknesses:Array</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>lineThicknesses:Array</code>&nbsp;&nbsp;[read-write]<p>
+   
+   An array of thickness values corresponding to the various faces' outlines (where applicable).
+   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get lineThicknesses():Array</code>
 <br>
@@ -667,7 +738,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>screenBounds:Rectangle</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>screenBounds:Rectangle</code>&nbsp;&nbsp;[read-only]<p>
+   
+   The traditional screen boundries associated with the IIsoDisplayObject in 2D screen coordinates.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get screenBounds():Rectangle</code>
 <br>
@@ -679,7 +753,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>screenX:Number</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>screenX:Number</code>&nbsp;&nbsp;[read-only]<p>
+   
+   The x value of the container in screen coordinates relative to the parent container.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get screenX():Number</code>
 <br>
@@ -691,7 +768,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>screenY:Number</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>screenY:Number</code>&nbsp;&nbsp;[read-only]<p>
+   
+   The y value of the container in screen coordinates relative to the parent container.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get screenY():Number</code>
 <br>
@@ -703,7 +783,12 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>styleType:String</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>styleType:String</code>&nbsp;&nbsp;[read-write]<p>
+   
+   For IIsoDisplayObjects that make use of Flash's drawing API, it is necessary to develop render logic corresponding to the
+   varios render style types.
+   
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get styleType():String</code>
 <br>
@@ -717,8 +802,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>width:Number</code>&nbsp;&nbsp;[read-write]<p>This property can be used as the source for data binding.</p>
-<span class="label">Implementation</span>
+<code>width:Number</code>&nbsp;&nbsp;[read-write]<p>
+   
+   The width in 3D isometric space.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get width():Number</code>
 <br>
@@ -732,7 +819,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>x:Number</code>&nbsp;&nbsp;[read-write]<p>This property can be used as the source for data binding.</p>
+<code>x:Number</code>&nbsp;&nbsp;[read-write]<p>
+   
+   </p><p>This property can be used as the source for data binding.</p>
 <span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get x():Number</code>
@@ -747,8 +836,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>y:Number</code>&nbsp;&nbsp;[read-write]<p>This property can be used as the source for data binding.</p>
-<span class="label">Implementation</span>
+<code>y:Number</code>&nbsp;&nbsp;[read-write]<p>
+   
+   The y value in 3D isometric space.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get y():Number</code>
 <br>
@@ -762,8 +853,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>z:Number</code>&nbsp;&nbsp;[read-write]<p>This property can be used as the source for data binding.</p>
-<span class="label">Implementation</span>
+<code>z:Number</code>&nbsp;&nbsp;[read-write]<p>
+   
+   The z value in 3D isometric space.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get z():Number</code>
 <br>
@@ -779,8 +872,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function IsoDisplayObject()</code>
-</div>
+<code>public function IsoDisplayObject()</code><p>
+   Constructor
+   </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
 <a name="clone()"></a>
@@ -790,12 +884,21 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function clone():<a href="../display/IIsoDisplayObject.html">IIsoDisplayObject</a></code>
-<p></p>
+<code>public function clone():<a href="../display/IIsoDisplayObject.html">IIsoDisplayObject</a></code><p>
+   
+   Clones the IIsoDisplayObject, copying its dimensional and style properties.
+   Does not copy the position of the original.
+   Casting to the original class is necessary to avoid compile-time errors.
+   
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../display/IIsoDisplayObject.html">IIsoDisplayObject</a></code></td>
+<td width="20"></td><td><code><a href="../display/IIsoDisplayObject.html">IIsoDisplayObject</a></code> &mdash; 
+                        IIsoDisplayObject The clone of the original.
+   
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -806,8 +909,8 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected function drawGeometry():void</code>
-</div>
+<code>protected function drawGeometry():void</code><p>
+   </p></div>
 <a name="invalidateGeometry()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -815,8 +918,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function invalidateGeometry():void</code>
-</div>
+<code>public function invalidateGeometry():void</code><p>
+   
+   Invalidates the geometry of the  IIsoDisplayObject.
+   </p></div>
 <a name="invalidatePosition()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -824,8 +929,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function invalidatePosition():void</code>
-</div>
+<code>public function invalidatePosition():void</code><p>
+   
+   Invalidates the position of the  IIsoDisplayObject.
+   </p></div>
 <a name="moveTo()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -833,22 +940,29 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function moveTo(x:Number, y:Number, z:Number):void</code><span class="label">Parameters</span>
+<code>public function moveTo(x:Number, y:Number, z:Number):void</code><p>
+   
+   Moves the IIsoDisplayObject to the particular 3D isometric coordinates.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> &mdash; The x value in 3D isometric space.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> &mdash; The y value in 3D isometric space.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">z</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">z</span>:Number</code> &mdash; The z value in 3D isometric space.
+   </td>
 </tr>
 </table>
 </div>
@@ -859,10 +973,16 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function render(recursive:Boolean = true):void</code><span class="label">Parameters</span>
+<code>public override function render(recursive:Boolean = true):void</code><p>
+   
+   
+   Initiates the various validation processes in order to display the IPrimitive.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>true</code>)<code></code></td>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; If true will tell child nodes to render through the display list.
+   </td>
 </tr>
 </table>
 </div>
@@ -873,22 +993,29 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setSize(width:Number, length:Number, height:Number):void</code><span class="label">Parameters</span>
+<code>public function setSize(width:Number, length:Number, height:Number):void</code><p>
+   
+   Resizes the IIsoDisplayObject in 3D isometric coordinates.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">width</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">width</span>:Number</code> &mdash; The width in 3D isometric space.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">length</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">length</span>:Number</code> &mdash; The length in 3D isometric space.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">height</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">height</span>:Number</code> &mdash; The height in 3D isometric space.
+   </td>
 </tr>
 </table>
 </div>
@@ -899,12 +1026,15 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected function validateGeometry():Boolean</code>
-<p></p>
+<code>protected function validateGeometry():Boolean</code><p>
+   For IIsoDisplayObject that make use of Flash's drawing API, validation of the geometry must occur before being rendered.
+   
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Boolean</code></td>
+<td width="20"></td><td><code>Boolean</code> &mdash; Boolean Flag indicating if the geometry is valid.
+   </td>
 </tr>
 </table>
 </div>
@@ -915,8 +1045,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected function validatePosition():void</code>
-</div>
+<code>protected function validatePosition():void</code><p>
+   Takes the given 3D isometric coordinates and positions them in cartesian coordinates relative to the parent container.
+   </p></div>
 <a name="constantDetail"></a>
 <div class="detailSectionHeader">Constant detail</div>
 <a name="DEFAULT_HEIGHT"></a>

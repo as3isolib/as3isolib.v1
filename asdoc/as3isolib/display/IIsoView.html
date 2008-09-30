@@ -42,7 +42,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </tr>
 </table>
 <p></p>
-<p></p>
+  The IIsoView interface defines methods necessary to properly perform panning, zooming and other display task for a given IIsoScene.
+  The implementor normally wraps an IIsoScene with layout constraints.
+  <p></p>
 <br>
 <hr>
 </div>
@@ -55,7 +57,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentPt">currentPt</a> : <a href="../geom/Pt.html">Pt</a>
-<div class="summaryTableDescription">[read-only]</div>
+<div class="summaryTableDescription">[read-only]
+   The current pt relative to the child scene objects and the center of the IIsoView.</div>
 </td><td class="summaryTableOwnerCol">IIsoView</td>
 </tr>
 </table>
@@ -71,35 +74,40 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#centerOnIso()">centerOnIso</a>(iso:<a href="IIsoDisplayObject.html">IIsoDisplayObject</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Centers the IIsoView on a given IIsoDisplayObject within the current child scene objects.</div>
 </td><td class="summaryTableOwnerCol">IIsoView</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#centerOnPt()">centerOnPt</a>(pt:<a href="../geom/Pt.html">Pt</a>, isIsometric:Boolean = true):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Centers the IIsoView on a given pt within the current child scene objects.</div>
 </td><td class="summaryTableOwnerCol">IIsoView</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#pan()">pan</a>(px:Number, py:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Pans the child scene objects by a given amount in screen coordinate space.</div>
 </td><td class="summaryTableOwnerCol">IIsoView</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#reset()">reset</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Resets the child scene objects to be centered within the IIsoView and returns the zoom factor back to a normal value.</div>
 </td><td class="summaryTableOwnerCol">IIsoView</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#zoom()">zoom</a>(zFactor:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Zooms the child scene objects by a given amount.</div>
 </td><td class="summaryTableOwnerCol">IIsoView</td>
 </tr>
 </table>
@@ -118,7 +126,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>currentPt:<a href="../geom/Pt.html">Pt</a></code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>currentPt:<a href="../geom/Pt.html">Pt</a></code>&nbsp;&nbsp;[read-only]<p>
+   The current pt relative to the child scene objects and the center of the IIsoView.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentPt():<a href="../geom/Pt.html">Pt</a></code>
 <br>
@@ -132,10 +142,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function centerOnIso(iso:<a href="IIsoDisplayObject.html">IIsoDisplayObject</a>):void</code><span class="label">Parameters</span>
+<code>public function centerOnIso(iso:<a href="IIsoDisplayObject.html">IIsoDisplayObject</a>):void</code><p>
+   Centers the IIsoView on a given IIsoDisplayObject within the current child scene objects.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">iso</span>:<a href="IIsoDisplayObject.html">IIsoDisplayObject</a></code></td>
+<td width="20px"></td><td><code><span class="label">iso</span>:<a href="IIsoDisplayObject.html">IIsoDisplayObject</a></code> &mdash; The IIsoDisplayObject to pan and center on.
+   </td>
 </tr>
 </table>
 </div>
@@ -146,16 +160,21 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function centerOnPt(pt:<a href="../geom/Pt.html">Pt</a>, isIsometric:Boolean = true):void</code><span class="label">Parameters</span>
+<code>public function centerOnPt(pt:<a href="../geom/Pt.html">Pt</a>, isIsometric:Boolean = true):void</code><p>
+   Centers the IIsoView on a given pt within the current child scene objects.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">pt</span>:<a href="../geom/Pt.html">Pt</a></code></td>
+<td width="20px"></td><td><code><span class="label">pt</span>:<a href="../geom/Pt.html">Pt</a></code> &mdash; The pt to pan and center on.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">isIsometric</span>:Boolean</code> (default = <code>true</code>)<code></code></td>
+<td width="20px"></td><td><code><span class="label">isIsometric</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; A flag indicating wether the pt parameter represents a pt in 3D isometric space or screen coordinates.
+   </td>
 </tr>
 </table>
 </div>
@@ -166,16 +185,21 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function pan(px:Number, py:Number):void</code><span class="label">Parameters</span>
+<code>public function pan(px:Number, py:Number):void</code><p>
+   Pans the child scene objects by a given amount in screen coordinate space.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">px</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">px</span>:Number</code> &mdash; The x value to pan by.
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">py</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">py</span>:Number</code> &mdash; the y value to pan by.
+   </td>
 </tr>
 </table>
 </div>
@@ -186,8 +210,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function reset():void</code>
-</div>
+<code>public function reset():void</code><p>
+   Resets the child scene objects to be centered within the IIsoView and returns the zoom factor back to a normal value.
+   </p></div>
 <a name="zoom()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -195,10 +220,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function zoom(zFactor:Number):void</code><span class="label">Parameters</span>
+<code>public function zoom(zFactor:Number):void</code><p>
+   Zooms the child scene objects by a given amount.
+   
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">zFactor</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">zFactor</span>:Number</code> &mdash; The positive non-zero value to scale the child scene objects by.  This corresponds to the child scene objects' containers' scaleX and scaleY properties.
+   </td>
 </tr>
 </table>
 </div>
