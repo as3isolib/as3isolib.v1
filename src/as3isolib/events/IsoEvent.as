@@ -46,7 +46,7 @@ package as3isolib.events
 		public var newValue:Object;
 		
 		/**
-		 * @constructor
+		 * Constructor
 		 */
 		public function IsoEvent (type:String, bubbles:Boolean = false, cancelable:Boolean = false)
 		{

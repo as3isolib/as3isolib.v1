@@ -142,7 +142,7 @@ package as3isolib.bounds
 		////////////////////////////////////////////////////////////////
 		
 		/**
-		 * @constructor
+		 * Constructor
 		 */
 		public function PrimitiveBounds (target:IIsoDisplayObject)
 		{

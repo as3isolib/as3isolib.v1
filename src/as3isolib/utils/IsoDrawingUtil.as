@@ -6,9 +6,12 @@ package as3isolib.utils
 	
 	import flash.display.Graphics;
 	
+	/**
+	 * IsoDrawingUtil provides some convenience methods for drawing shapes in 3D isometric space.
+	 */
 	public class IsoDrawingUtil
 	{
-		static public function drawIsoCircle (g:Graphics, originPt:Pt, radius:Number, plane:String = "xy"):void
+		/* static public function drawIsoCircle (g:Graphics, originPt:Pt, radius:Number, plane:String = "xy"):void
 		{
 			switch (plane)
 			{
@@ -33,8 +36,17 @@ package as3isolib.utils
 					g.drawEllipse(ptX.x, ptY.y, ptW.x - ptX.x, ptH.y - ptY.y);
 				}
 			}
-		}
+		} */
 		
+		/**
+		 * Draws a rectangle in 3D isometric space relative to a specific plane.
+		 * 
+		 * @param g The target graphics object performing the drawing tasks.
+		 * @param originPt The origin pt where the specific drawing task originates.
+		 * @param width The width of the rectangle. This is relative to the first orientation axis in the given plane.
+		 * @param length The length of the rectangle. This is relative to the second orientation axis in the given plane.
+		 * @param plane The plane of orientation to draw the rectangle on.
+		 */
 		static public function drawIsoRectangle (g:Graphics, originPt:Pt, width:Number, length:Number, plane:String = "xy"):void
 		{
 			var pt0:Pt = IsoMath.isoToScreen(originPt, true);
@@ -74,6 +86,16 @@ package as3isolib.utils
 			g.lineTo(pt0.x, pt0.y);
 		}
 		
+		/**
+		 * Draws an arrow in 3D isometric space relative to a specific plane.
+		 * 
+		 * @param g The target graphics object performing the drawing tasks.
+		 * @param originPt The origin pt where the specific drawing task originates.
+		 * @param degrees The angle of rotation in degrees perpendicular to the plane of orientation.
+		 * @param length The length of the arrow.
+		 * @param width The width of the arrow.
+		 * @param plane The plane of orientation to draw the arrow on.
+		 */
 		static public function drawIsoArrow (g:Graphics, originPt:Pt, degrees:Number, length:Number = 27, width:Number = 6, plane:String = "xy"):void
 		{			
 			var pt0:Pt = new Pt();

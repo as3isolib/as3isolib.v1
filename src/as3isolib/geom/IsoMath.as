@@ -1,7 +1,17 @@
 package as3isolib.geom
 {
+	/**
+	 * IsoMath provides functions for converting pts back and forth between 3D isometric space and cartesian coordinates.
+	 */
 	public class IsoMath
 	{
+		/**
+		 * Converts a given pt in cartesian coordinates to 3D isometric space.
+		 * 
+		 * @param screenPt The pt in cartesian coordinates.
+		 * @param createNew Flag indicating whether to affect the provided pt or to return a converted copy.
+		 * @return pt A pt in 3D isometric space.
+		 */
 		static public function screenToIso (screenPt:Pt, createNew:Boolean = false):Pt
 		{
 			var z:Number = screenPt.z / Math.sqrt(1.25);
@@ -21,6 +31,13 @@ package as3isolib.geom
 			}
 		}
 		
+		/**
+		 * Converts a given pt in 3D isometric space to cartesian coordinates.
+		 * 
+		 * @param isoPt The pt in 3D isometric space.
+		 * @param createNew Flag indicating whether to affect the provided pt or to return a converted copy.
+		 * @return pt A pt in cartesian coordinates.
+		 */
 		static public function isoToScreen (isoPt:Pt, createNew:Boolean = false):Pt
 		{
 			var z:Number = isoPt.z * Math.sqrt(1.25);
@@ -38,20 +55,6 @@ package as3isolib.geom
 				
 				return isoPt;
 			}
-		}
-		
-		static public function intersection (lineA0:Pt, lineA1:Pt, lineB0:Pt, lineB1:Pt):Pt
-		{
-			var slopeA:Number = (lineA1.y - lineA0.y) / (lineA1.x - lineA0.x);
-			var slopeB:Number = (lineB1.y - lineB0.y) / (lineB1.x - lineB0.x);
-			
-			var yIntercept0:Number = lineA1.y - slopeA * lineA1.x;
-			var yIntercept1:Number = lineB1.y - slopeB * lineB1.x;
-			
-					
-			
-			
-			return new Pt();
 		}
 	}
 }

@@ -13,6 +13,9 @@ package eDpLib.events
 		 */
 		public var proxy:IEventDispatcher;
 		
+		/**
+		 * The original event target who is being proxied for.
+		 */
 		public var proxyTarget:IEventDispatcher;
 		
 		/**
@@ -29,7 +32,7 @@ package eDpLib.events
 		public var targetEvent:Event;
 		
 		/**
-		 * @constructor
+		 * Constructor
 		 * 
 		 * @param proxy The proxy object dispatching on behalf of the original event's target.
 		 * @param targetEvt The original event being proxied for.

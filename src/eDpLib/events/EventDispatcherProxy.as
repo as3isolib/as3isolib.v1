@@ -7,6 +7,9 @@ package eDpLib.events
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
 	
+	/**
+	 * EventDispatcherProxy provides a means for intercepting events on behalf of a target and redispatching them as the target of the event.
+	 */
 	public class EventDispatcherProxy implements IEventDispatcher
 	{
 		////////////////////////////////////////////////////////////////////////
@@ -27,7 +30,7 @@ package eDpLib.events
 		}
 		
 		/**
-		 * The target whose events are being redispatched by the proxy.
+		 * @inheritDoc
 		 */
 		public function set proxyTarget (value:IEventDispatcher):void
 		{
@@ -56,8 +59,7 @@ package eDpLib.events
 		}
 		
 		/**
-		 * Generally the EventDispatcherProxy is indeed the proxy for the proxyTarget.
-		 * However in special cases a developer may want to delegate IEventDispatcher tasks to another target.
+		 * @inheritDoc
 		 */
 		public function set proxy (target:IEventDispatcher):void
 		{
@@ -73,7 +75,7 @@ package eDpLib.events
 		////////////////////////////////////////////////////////////////////////
 		
 		/**
-		 * @constructor
+		 * Constructor
 		 */
 		public function EventDispatcherProxy ()
 		{
