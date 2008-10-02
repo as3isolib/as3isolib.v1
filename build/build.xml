@@ -26,8 +26,10 @@
 										as3isolib.core.IsoDisplayObject
 										as3isolib.data.INode
 										as3isolib.data.Node
+										as3isolib.display.primitive.IIsoPrimitve
 										as3isolib.display.primitive.IsoBox
 										as3isolib.display.primitive.IsoPolygon
+										as3isolib.display.primitive.IsoPrimitive
 										as3isolib.display.primitive.IsoRectangle
 										as3isolib.display.renderers.DefaultSceneLayoutRenderer
 										as3isolib.display.renderers.DefaultShadowRenderer
@@ -51,7 +53,7 @@
 	</target>
 	
 	<!-- Generate asdocs from lib -->
-	<target name="docs" depends="properties, lib">
+	<target name="docs" depends="properties">
 		<exec executable="${asdoc.exe}" dir="${basedir}">
 			<arg line="-output ${asdoc.dir}"/>
 			<arg line="-doc-sources ${src.dir}"/>

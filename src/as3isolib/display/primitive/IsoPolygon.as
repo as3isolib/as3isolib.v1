@@ -1,6 +1,5 @@
 package as3isolib.display.primitive
 {
-	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.enum.RenderStyleType;
 	
 	import flash.display.CapsStyle;
@@ -11,7 +10,7 @@ package as3isolib.display.primitive
 	/**
 	 * 3D polygon primitive in isometric space.
 	 */
-	public class IsoPolygon extends IsoDisplayObject
+	public class IsoPolygon extends IsoPrimitive
 	{
 		/**
 		 * @inheritDoc

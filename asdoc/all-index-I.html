@@ -78,6 +78,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   The IIsoDisplayObject interface defines methods for any base display class needing rendering within an 3D isometric space.</td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html"><i>IIsoPrimitive</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/package-detail.html">as3isolib.display.primitive</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+  The IIsoPrimitive interface defines methods for any IIsoDisplayObject class that is utilizing Flash's drawing API.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IIsoScene.html"><i>IIsoScene</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/package-detail.html">as3isolib.display.scene</a></td>
 </tr>
 <tr>
@@ -128,14 +135,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
    Determines if the IBounds oject has a 3D isometric intersection with the target IBounds.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html#invalidateGeometry()">invalidateGeometry</a>() &mdash; Method in interface as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html#invalidateGeometry()">invalidateGeometry</a>() &mdash; Method in interface as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html">IIsoPrimitive</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    Invalidates the geometry of the  IIsoDisplayObject.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html#invalidateGeometry()">invalidateGeometry</a>() &mdash; Method in class as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html#invalidateGeometry()">invalidateGeometry</a>() &mdash; Method in class as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html">IsoPrimitive</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -181,6 +188,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   
+   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html">IsoPrimitive</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -336,6 +351,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPolygon.html#IsoPolygon()">IsoPolygon</a>() &mdash; Constructor in class as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPolygon.html">IsoPolygon</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Constructor
+   </td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html">IsoPrimitive</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/package-detail.html">as3isolib.display.primitive</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+  IsoPrimitive is the base class for primitive-type classes that will make great use of Flash's drawing API.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html#IsoPrimitive()">IsoPrimitive</a>() &mdash; Constructor in class as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html">IsoPrimitive</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>

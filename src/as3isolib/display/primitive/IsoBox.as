@@ -5,7 +5,7 @@ package as3isolib.display.primitive
 	/**
 	 * 3D box primitive in isometric space.
 	 */
-	public class IsoBox extends IsoDisplayObject
+	public class IsoBox extends IsoPrimitive
 	{
 		/**
 		 * Constructor

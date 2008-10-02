@@ -1,6 +1,6 @@
 package as3isolib.display.scene
 {
-	import as3isolib.core.IsoDisplayObject;
+	import as3isolib.display.primitive.IsoPrimitive;
 	import as3isolib.enum.IsoOrientation;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
@@ -11,7 +11,7 @@ package as3isolib.display.scene
 	/**
 	 * IsoOrigin is a visual class that depicts the origin pt (typically at 0, 0, 0) with multicolored axis lines.
 	 */
-	public class IsoOrigin extends IsoDisplayObject
+	public class IsoOrigin extends IsoPrimitive
 	{
 		/**
 		 * @inheritDoc

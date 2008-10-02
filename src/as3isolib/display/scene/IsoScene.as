@@ -173,11 +173,14 @@ package as3isolib.display.scene
 			
 			super.render(recursive); //push individual changes thru, then sort based on new visible content of each child
 			
-			if (isInvalidated && layoutEnabled)
+			if (isInvalidated)
 			{
-				var layoutRenderer:ISceneRenderer = new DefaultSceneLayoutRenderer();
-				layoutRenderer.target = this;
-				layoutRenderer.renderScene();
+				if (layoutEnabled)
+				{
+					var layoutRenderer:ISceneRenderer = new DefaultSceneLayoutRenderer();
+					layoutRenderer.target = this;
+					layoutRenderer.renderScene();
+				}
 				
 				var shadowRenderer:ISceneRenderer = new DefaultShadowRenderer(0x000000, 0.15, true);
 				shadowRenderer.target = this;

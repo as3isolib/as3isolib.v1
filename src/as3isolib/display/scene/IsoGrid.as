@@ -1,6 +1,6 @@
 package as3isolib.display.scene
 {
-	import as3isolib.core.IsoDisplayObject;
+	import as3isolib.display.primitive.IsoPrimitive;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
@@ -9,7 +9,7 @@ package as3isolib.display.scene
 	/**
 	 * IsoGrid provides a display grid in the X-Y plane.
 	 */
-	public class IsoGrid extends IsoDisplayObject
+	public class IsoGrid extends IsoPrimitive
 	{
 		////////////////////////////////////////////////////
 		//	GRID SIZE
