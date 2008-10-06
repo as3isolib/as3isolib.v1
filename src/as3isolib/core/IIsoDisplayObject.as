@@ -29,6 +29,13 @@ package as3isolib.core
 		//////////////////////////////////////////////////////////////////
 		
 		/**
+		 * @private
+		 */
+		function get distance ():Number;
+		
+		function set distance (value:Number):void;
+		
+		/**
 		 * Moves the IIsoDisplayObject to the particular 3D isometric coordinates.
 		 * 
 		 * @param x The x value in 3D isometric space.
@@ -130,7 +137,7 @@ package as3isolib.core
 		function get isInvalidated ():Boolean;
 		
 		/**
-		 * Invalidates the position of the  IIsoDisplayObject.
+		 * Invalidates the position of the IIsoDisplayObject.
 		 */
 		function invalidatePosition ():void;
 		

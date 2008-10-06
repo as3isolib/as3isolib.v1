@@ -19,6 +19,20 @@ package as3isolib.data
 		function set id (value:String):void;
 		
 		////////////////////////////////////////////////
+		//	DATA
+		////////////////////////////////////////////////
+		
+		/**
+		 * @private
+		 */
+		function get data ():Object;
+		
+		/**
+		 * A generic data storage property.
+		 */
+		function set data (value:Object):void;
+		
+		////////////////////////////////////////////////
 		//	PARENT
 		////////////////////////////////////////////////
 		
@@ -38,6 +52,14 @@ package as3isolib.data
 		 * @returns INode The top-most INode.
 		 */
 		function getRootNode ():INode;
+		
+		/**
+		 * Retrieves the furthest descendant nodes within the node hierarchy.
+		 * 
+		 * @param includeBranches Flag indicating that during each point of recursion adds descendant nodes.  If false, only leaf nodes are returned.
+		 * @return Array A flat array consisting of all possible descendant nodes.
+		 */
+		function getDescendantNodes (includeBranches:Boolean = false):Array;
 		
 		////////////////////////////////////////////////
 		//	CHILD METHODS

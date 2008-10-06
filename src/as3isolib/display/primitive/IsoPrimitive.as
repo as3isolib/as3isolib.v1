@@ -1,5 +1,6 @@
 package as3isolib.display.primitive
 {
+	import as3isolib.bounds.PrimitiveBounds;
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
@@ -14,6 +15,14 @@ package as3isolib.display.primitive
 	 */
 	public class IsoPrimitive extends IsoDisplayObject implements IIsoPrimitive
 	{
+		////////////////////////////////////////////////////////////////////////
+		//	CONSTANTS
+		////////////////////////////////////////////////////////////////////////
+		
+		static public const DEFAULT_WIDTH:Number = 25;
+		static public const DEFAULT_LENGTH:Number = 25;
+		static public const DEFAULT_HEIGHT:Number = 25;
+		
 		//////////////////////////////////////////////////////
 		// WIDTH / LENGTH / HEIGHT
 		//////////////////////////////////////////////////////
@@ -263,6 +272,9 @@ package as3isolib.display.primitive
 					
 				drawGeometry();
 				
+				_isoBounds = new PrimitiveBounds(this);
+				_screenBounds = container.getBounds(container.parent);
+				
 				var evt:IsoEvent = new IsoEvent(IsoEvent.RESIZE);
 				evt.propName = "size";
 				evt.oldValue = {width:oldWidth, length:oldLength, height:oldHeight};
@@ -333,6 +345,7 @@ package as3isolib.display.primitive
 		override public function clone ():IIsoDisplayObject
 		{
 			var cloneInstance:IIsoPrimitive = super.clone() as IIsoPrimitive;
+			cloneInstance.styleType = styleType;
 			cloneInstance.lineAlphas = lineAlphasArray;
 			cloneInstance.lineColors = lineColorArray;
 			cloneInstance.lineThicknesses = lineThicknessesArray;
@@ -352,6 +365,10 @@ package as3isolib.display.primitive
 		public function IsoPrimitive ()
 		{
 			super();
+			
+			width = DEFAULT_WIDTH;
+			length = DEFAULT_LENGTH;
+			height = DEFAULT_HEIGHT;
 		}
 		
 	}

@@ -41,7 +41,7 @@ package as3isolib.data
 		public function get id ():String
 		{
 			return (setID == null || setID == "")?
-				"Node" + UID.toString():
+				"node" + UID.toString():
 				setID;
 		}
 		
@@ -51,6 +51,28 @@ package as3isolib.data
 		public function set id (value:String):void
 		{
 			setID = value;
+		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	DATA
+		////////////////////////////////////////////////////////////////////////
+		
+		private var _data:Object;
+		
+		/**
+		 * @private
+		 */
+		public function get data ():Object
+		{
+			return _data;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set data (value:Object):void
+		{
+			_data = value;
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -94,6 +116,31 @@ package as3isolib.data
 			return p;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
+		public function getDescendantNodes (includeBranches:Boolean = false):Array
+		{
+			var descendants:Array = [];
+			
+			var child:INode;
+			for each (child in childrenArray)
+			{				
+				if (child.children.length > 0)
+				{
+					descendants = descendants.concat(child.getDescendantNodes(includeBranches));
+					
+					if (includeBranches)
+						descendants.push(child);
+				}
+				
+				else
+					descendants.push(child);
+			}
+			
+			return descendants;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	CHILD METHODS
 		////////////////////////////////////////////////////////////////////////
@@ -127,7 +174,7 @@ package as3isolib.data
 		 */
 		public function get children ():Array
 		{
-			return childrenArray.slice(); //return a copy not the actual array
+			return childrenArray;
 		}
 		
 		/**

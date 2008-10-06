@@ -74,23 +74,29 @@ package as3isolib.display.renderers
 			
 			g = _target.container.graphics;
 			g.clear();
-			g.beginFill(shadowColor, shadowAlpha);
 			
 			var shadowChildren:Array = target.children;
 			var child:IIsoDisplayObject;
 			for each (child in shadowChildren)
 			{
+				
 				if (drawAll)
+				{
+					g.beginFill(shadowColor, shadowAlpha);
 					drawChildShadow(child);
+				}
 				
 				else
 				{
 					if (child.z > 0)
+					{
+						g.beginFill(shadowColor, shadowAlpha);
 						drawChildShadow(child);
+					}
 				}
+				
+				g.endFill();
 			}
-			
-			g.endFill();
 		}
 		
 		private var g:Graphics;

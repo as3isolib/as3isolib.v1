@@ -17,48 +17,73 @@ package as3isolib.core
 	 * Developers should not instantiate this class but rather extend it.
 	 */
 	public class IsoDisplayObject extends IsoContainer implements IIsoDisplayObject
-	{
-		////////////////////////////////////////////////////////////////////////
-		//	CONSTANTS
-		////////////////////////////////////////////////////////////////////////
-		
-		static public const DEFAULT_WIDTH:Number = 25;
-		static public const DEFAULT_LENGTH:Number = 25;
-		static public const DEFAULT_HEIGHT:Number = 25;
-		
+	{		
 		////////////////////////////////////////////////////////////////////////
 		//	BOUNDS
 		////////////////////////////////////////////////////////////////////////
 		
-		private var _isoBounds:IBounds;
+		/**
+		 * @private
+		 */
+		as3isolib_internal var _isoBounds:IBounds;
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function get isoBounds ():IBounds
 		{
-			if (!_isoBounds || isInvalidated)
+			if (!_isoBounds)
 				_isoBounds = new PrimitiveBounds(this);
 			
 			return _isoBounds;
 		}
 		
 		/**
+		 * @private
+		 */
+		as3isolib_internal var _screenBounds:Rectangle;
+		
+		/**
 		 * @inheritDoc
 		 */
 		public function get screenBounds ():Rectangle
 		{
-			var r:Rectangle;
-			if (container.parent)
-				r = container.getBounds(container.parent);
+			if (!_screenBounds)
+				_screenBounds = container.getBounds(container.parent);
 			
-			return r;
+			return _screenBounds;
 		}
 		
 			/////////////////////////////////////////////////////////
 			//	POSITION
 			/////////////////////////////////////////////////////////
-			
+		
+		////////////////////////////////////////////////////////////////////////
+		//	DISTANCE
+		////////////////////////////////////////////////////////////////////////
+		
+		private var _distance:Number;
+		
+		/**
+		 * @private
+		 */
+		public function get distance ():Number
+		{
+			return _distance;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set distance (value:Number):void
+		{
+			_distance = value;
+		}
+		
+			////////////////////////////////////////////////////////////////////////
+			//	X, Y, Z
+			////////////////////////////////////////////////////////////////////////
+		
 		/**
 		 * @inheritDoc
 		 */
@@ -450,10 +475,6 @@ package as3isolib.core
 		public function IsoDisplayObject ()
 		{
 			super();
-			
-			width = DEFAULT_WIDTH;
-			length = DEFAULT_LENGTH;
-			height = DEFAULT_HEIGHT;
 		}	
 	}
 }
