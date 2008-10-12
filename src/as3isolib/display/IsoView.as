@@ -1,3 +1,32 @@
+/*
+
+as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist 
+in creating isometrically projected content (such as games and graphics) 
+targeted for the Flash player platform
+
+http://code.google.com/p/as3isolib/
+
+Copyright (c) 2006 J.W.Opitz, All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
 package as3isolib.display
 {
 	import as3isolib.core.IIsoDisplayObject;
@@ -18,14 +47,17 @@ package as3isolib.display
 		//	SCENE METHODS
 		///////////////////////////////////////////////////////////////////////////////
 		
-		private var _currentScreenPt:Pt;
+		/**
+		 * @private
+		 */
+		protected var currentScreenPt:Pt;
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function get currentPt ():Pt
 		{
-			return _currentScreenPt.clone() as Pt;
+			return currentScreenPt.clone() as Pt;
 		}
 		
 		/**
@@ -37,13 +69,13 @@ package as3isolib.display
 			if (isIsometrc)
 				IsoMath.isoToScreen(target);
 			
-			var dx:Number = _currentScreenPt.x - target.x;
-			var dy:Number = _currentScreenPt.y - target.y;
+			var dx:Number = currentScreenPt.x - target.x;
+			var dy:Number = currentScreenPt.y - target.y;
 			
-			mainIsoScene.container.x += dx;
-			mainIsoScene.container.y += dy;
+			_mainContainer.x += dx;
+			_mainContainer.y += dy;
 			
-			_currentScreenPt = target;
+			currentScreenPt = target;
 		}
 		
 		/**
@@ -63,7 +95,7 @@ package as3isolib.display
 		 */
 		public function pan (px:Number, py:Number):void
 		{
-			var pt:Pt = _currentScreenPt.clone() as Pt;
+			var pt:Pt = currentScreenPt.clone() as Pt;
 			pt.x += px;
 			pt.y += py;
 			
@@ -106,10 +138,10 @@ package as3isolib.display
 				var pt:Pt = mainIsoScene.isoBounds.centerPt;
 				IsoMath.isoToScreen(pt);
 				
-				mainIsoScene.container.x = pt.x * -1;
-				mainIsoScene.container.y = pt.y * -1;
+				_mainContainer.x = pt.x * -1;
+				_mainContainer.y = pt.y * -1;
 				
-				_currentScreenPt = pt;
+				currentScreenPt = pt;
 			}
 		}
 		
@@ -140,7 +172,7 @@ package as3isolib.display
 				mainIsoScene = value;
 				if (mainIsoScene)
 				{
-					mainIsoScene.hostContainer = _zoomContainer;
+					mainIsoScene.hostContainer = _isoContainer;
 					reset();
 				}
 			}
@@ -248,12 +280,55 @@ package as3isolib.display
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
-		//	CONSTRUCTOR
+		//	CONTAINER STRUCTURE
 		///////////////////////////////////////////////////////////////////////////////
 		
 		private var _zoomContainer:Sprite;
+		
+		/**
+		 * @private
+		 */
+		protected var _mainContainer:Sprite;
+		
+		private var _bgContainer:Sprite;
+		
+		/**
+		 * The container for background elements.
+		 */
+		public function get backgroundContainer ():Sprite
+		{
+			if (!_bgContainer)
+			{
+				_bgContainer = new Sprite();
+				_mainContainer.addChildAt(_bgContainer, 0);
+			}
+			
+			return _bgContainer;
+		}
+		
+		private var _isoContainer:Sprite;
+		private var _fgContainer:Sprite;
+		
+		/**
+		 * The container for foreground elements.
+		 */
+		public function get foregroundContainer ():Sprite
+		{
+			if (!_fgContainer)
+			{
+				_fgContainer = new Sprite();
+				_mainContainer.addChild(_fgContainer);
+			}
+			
+			return _fgContainer;
+		}
+		
 		private var _mask:Shape;
 		private var _border:Shape;
+		
+		///////////////////////////////////////////////////////////////////////////////
+		//	CONSTRUCTOR
+		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
 		 * Constructor
@@ -262,7 +337,13 @@ package as3isolib.display
 		{
 			super();
 			
+			_isoContainer = new Sprite();
+			
+			_mainContainer = new Sprite();
+			_mainContainer.addChild(_isoContainer);
+			
 			_zoomContainer = new Sprite();
+			_zoomContainer.addChild(_mainContainer);
 			addChild(_zoomContainer);
 			
 			_mask = new Shape();
