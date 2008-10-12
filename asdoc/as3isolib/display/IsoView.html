@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IsoView,as3isolib.display.IsoView,currentPt,currentZoom,height,size,width,clipContent,scene,centerOnIso,centerOnPt,pan,render,reset,setSize,zoom" name="keywords">
+<meta content="IsoView,as3isolib.display.IsoView,backgroundContainer,currentPt,currentZoom,foregroundContainer,height,size,width,clipContent,scene,centerOnIso,centerOnPt,pan,render,reset,setSize,zoom" name="keywords">
 <title>as3isolib.display.IsoView</title>
 </head>
 <body>
@@ -58,6 +58,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#backgroundContainer">backgroundContainer</a> : Sprite<div class="summaryTableDescription">[read-only]
+   The container for background elements.</div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#clipContent">clipContent</a> : Boolean<div class="summaryTableDescription">
    Flag indicating where to allow content to visibly extend beyond the boundries of this IsoView.</div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
@@ -66,12 +71,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentPt">currentPt</a> : <a href="../geom/Pt.html">Pt</a>
 <div class="summaryTableDescription">[read-only]
    
-   The current pt relative to the child scene objects and the center of the IIsoView.</div>
+   This point is the coordinate position visually located at the the center of the IIsoView relative to the scenes' host container.</div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentZoom">currentZoom</a> : Number<div class="summaryTableDescription">[read-only]
    The current zoom factor applied to the child scene objects.</div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#foregroundContainer">foregroundContainer</a> : Sprite<div class="summaryTableDescription">[read-only]
+   The container for foreground elements.</div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
 <tr class="">
@@ -183,10 +193,24 @@ showHideInherited();
 <div class="MainContent">
 <a name="propertyDetail"></a>
 <div class="detailSectionHeader">Property detail</div>
+<a name="backgroundContainer"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">backgroundContainer</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>backgroundContainer:Sprite</code>&nbsp;&nbsp;[read-only]<p>
+   The container for background elements.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get backgroundContainer():Sprite</code>
+<br>
+</div>
 <a name="clipContent"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">clipContent</td><td class="detailHeaderType">property</td>
+<td class="detailHeaderName">clipContent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
@@ -208,7 +232,7 @@ showHideInherited();
 <div class="detailBody">
 <code>currentPt:<a href="../geom/Pt.html">Pt</a></code>&nbsp;&nbsp;[read-only]<p>
    
-   The current pt relative to the child scene objects and the center of the IIsoView.
+   This point is the coordinate position visually located at the the center of the IIsoView relative to the scenes' host container.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentPt():<a href="../geom/Pt.html">Pt</a></code>
@@ -226,6 +250,20 @@ showHideInherited();
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentZoom():Number</code>
+<br>
+</div>
+<a name="foregroundContainer"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">foregroundContainer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>foregroundContainer:Sprite</code>&nbsp;&nbsp;[read-only]<p>
+   The container for foreground elements.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get foregroundContainer():Sprite</code>
 <br>
 </div>
 <a name="height"></a>

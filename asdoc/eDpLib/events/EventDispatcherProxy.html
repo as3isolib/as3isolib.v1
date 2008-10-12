@@ -38,7 +38,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="classHeaderTableLabel">Class</td><td class="classSignature">public class EventDispatcherProxy</td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Implements</td><td>flash.events.IEventDispatcher</td>
+<td class="classHeaderTableLabel">Implements</td><td>flash.events.IEventDispatcher, <a href="IEventDispatcherProxy.html">IEventDispatcherProxy</a></td>
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Subclasses</td><td><a href="../../as3isolib/data/Node.html">Node</a></td>
@@ -64,12 +64,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#proxy">proxy</a> : IEventDispatcher<div class="summaryTableDescription">
-   </div>
+   
+   Generally the IEventDispatcherProxy is indeed the proxy for the proxyTarget.</div>
 </td><td class="summaryTableOwnerCol">EventDispatcherProxy</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#proxyTarget">proxyTarget</a> : IEventDispatcher<div class="summaryTableDescription">
-   </div>
+   
+   The target whose events are being redispatched by the proxy.</div>
 </td><td class="summaryTableOwnerCol">EventDispatcherProxy</td>
 </tr>
 </table>
@@ -182,6 +184,9 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>proxy:IEventDispatcher</code>&nbsp;&nbsp;[read-write]<p>
+   
+   Generally the IEventDispatcherProxy is indeed the proxy for the proxyTarget.
+   However in special cases a developer may want to delegate IEventDispatcher tasks to another target.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get proxy():IEventDispatcher</code>
@@ -197,6 +202,8 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>proxyTarget:IEventDispatcher</code>&nbsp;&nbsp;[read-write]<p>
+   
+   The target whose events are being redispatched by the proxy.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get proxyTarget():IEventDispatcher</code>
