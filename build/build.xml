@@ -20,7 +20,9 @@
 			<arg line="-include-classes as3isolib.bounds.IBounds
 										as3isolib.bounds.PrimitiveBounds
 										as3isolib.bounds.SceneBounds
+										as3isolib.core.ClassFactory
 										as3isolib.core.IContainer
+										as3isolib.core.IFactory
 										as3isolib.core.IIsoDisplayObject
 										as3isolib.core.IsoContainer
 										as3isolib.core.IsoDisplayObject

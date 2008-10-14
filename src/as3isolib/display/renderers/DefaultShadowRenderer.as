@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -50,12 +50,9 @@ package as3isolib.display.renderers
 		/**
 		 * Constructor
 		 */
-		public function DefaultShadowRenderer (shadowColor:uint = 0x000000, shadowAlpha:Number = 0.15, drawAll:Boolean = false)
+		public function DefaultShadowRenderer ()
 		{
-			this.shadowColor = shadowColor; 
-			this.shadowAlpha = shadowAlpha;
-			
-			this.drawAll = drawAll;
+			super();
 		}
 		
 		////////////////////////////////////////////////////
@@ -84,10 +81,20 @@ package as3isolib.display.renderers
 		//	STYLES
 		////////////////////////////////////////////////////
 		
-		private var drawAll:Boolean = false;
+		/**
+		 * If a child's z <= 0 and drawAll = true the shadow will still be renderered.
+		 */
+		public var drawAll:Boolean = false;
 		
-		private var shadowColor:uint = 0x000000;
-		private var shadowAlpha:Number = 0.15;
+		/**
+		 * The color of the shadow.
+		 */
+		public var shadowColor:uint = 0x000000;
+		
+		/**
+		 * The alpha level of the drawn shadow.
+		 */
+		public var shadowAlpha:Number = 0.15;
 		
 		////////////////////////////////////////////////////
 		//	RENDERER

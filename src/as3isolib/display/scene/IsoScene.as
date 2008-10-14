@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -31,11 +31,12 @@ package as3isolib.display.scene
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.SceneBounds;
+	import as3isolib.core.ClassFactory;
+	import as3isolib.core.IFactory;
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.IsoContainer;
 	import as3isolib.data.INode;
 	import as3isolib.display.renderers.DefaultSceneLayoutRenderer;
-	import as3isolib.display.renderers.DefaultShadowRenderer;
 	import as3isolib.display.renderers.ISceneRenderer;
 	
 	import flash.display.DisplayObjectContainer;
@@ -161,15 +162,65 @@ package as3isolib.display.scene
 		public var layoutEnabled:Boolean = true;
 		
 		///////////////////////////////////////////////////////////////////////////////
-		//	RENDERERS
+		//	LAYOUT RENDERER
 		///////////////////////////////////////////////////////////////////////////////
 		
-		public var layoutRenderer:ISceneRenderer;
+		private var layoutRendererFactory:IFactory;
 		
-		public var styleRenderers:Array;
+		/**
+		 * @private
+		 */
+		public function get layoutRenderer ():IFactory
+		{
+			return layoutRendererFactory;
+		}
+		
+		public function set layoutRenderer (value:IFactory):void
+		{
+			if (value && layoutRendererFactory != value)
+			{
+				layoutRendererFactory = value;
+				invalidateScene();
+			}
+		}
 		
 		///////////////////////////////////////////////////////////////////////////////
-		//	RENDER
+		//	STYLE RENDERERS
+		///////////////////////////////////////////////////////////////////////////////
+		
+		private var styleRendererFactories:Array = [];
+		
+		/**
+		 * @private
+		 */
+		public function get styleRenderers ():Array
+		{
+			return styleRendererFactories;
+		}
+		
+		/**
+		 * An array of IFactories whose class generators are ISceneRenderers.
+		 * If any value contained within the array is not of type IFactory, it will be ignored.
+		 */
+		public function set styleRenderers (value:Array):void
+		{			
+			if (value)
+			{
+				var temp:Array = [];
+				var obj:Object;
+				for each (obj in value)
+				{
+					if (obj is IFactory)
+						temp.push(obj);
+				}
+				
+				styleRendererFactories = temp;
+				invalidateScene();
+			}
+		}
+		
+		///////////////////////////////////////////////////////////////////////////////
+		//	INVALIDATION
 		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
@@ -193,6 +244,10 @@ package as3isolib.display.scene
 			_isInvalidated = true;
 		}
 		
+		///////////////////////////////////////////////////////////////////////////////
+		//	RENDER
+		///////////////////////////////////////////////////////////////////////////////
+		
 		/**
 		 * @inheritDoc
 		 */
@@ -212,16 +267,21 @@ package as3isolib.display.scene
 			
 			if (isInvalidated)
 			{
+				var sceneRenderer:ISceneRenderer;
 				if (layoutEnabled)
 				{
-					var layoutRenderer:ISceneRenderer = new DefaultSceneLayoutRenderer();
-					layoutRenderer.target = this;
-					layoutRenderer.renderScene();
+					sceneRenderer = layoutRendererFactory.newInstance();
+					sceneRenderer.target = this;
+					sceneRenderer.renderScene();
 				}
 				
-				var shadowRenderer:ISceneRenderer = new DefaultShadowRenderer(0x000000, 0.15, true);
-				shadowRenderer.target = this;
-				shadowRenderer.renderScene();
+				var factory:IFactory
+				for each (factory in styleRendererFactories)
+				{
+					sceneRenderer = factory.newInstance();
+					sceneRenderer.target = this; //this should already be set 
+					sceneRenderer.renderScene();
+				}
 			}
 		}
 		
@@ -235,6 +295,9 @@ package as3isolib.display.scene
 		public function IsoScene ()
 		{
 			super();
+			
+			layoutRendererFactory = new ClassFactory(DefaultSceneLayoutRenderer);
+			layoutRendererFactory.properties = {target:this};
 		}
 	}
 }

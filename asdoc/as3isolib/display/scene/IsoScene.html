@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="IsoScene,as3isolib.display.scene.IsoScene,layoutEnabled,layoutRenderer,styleRenderers,isoBounds,hostContainer,addChildAt,invalidateScene,removeAllChildren,removeChildByID,render,setChildIndex" name="keywords">
+<meta content="IsoScene,as3isolib.display.scene.IsoScene,layoutEnabled,isoBounds,hostContainer,layoutRenderer,styleRenderers,addChildAt,invalidateScene,removeAllChildren,removeChildByID,render,setChildIndex" name="keywords">
 <title>as3isolib.display.scene.IsoScene</title>
 </head>
 <body>
@@ -119,7 +119,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#layoutRenderer">layoutRenderer</a> : <a href="../renderers/ISceneRenderer.html">ISceneRenderer</a>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#layoutRenderer">layoutRenderer</a> : <a href="../../core/IFactory.html">IFactory</a>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
@@ -149,7 +149,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#styleRenderers">styleRenderers</a> : Array<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#styleRenderers">styleRenderers</a> : Array<div class="summaryTableDescription">
+   An array of IFactories whose class generators are ISceneRenderers.</div>
 </td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
 </table>
@@ -472,7 +473,12 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public var layoutRenderer:<a href="../renderers/ISceneRenderer.html">ISceneRenderer</a></code>
+<code>layoutRenderer:<a href="../../core/IFactory.html">IFactory</a></code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get layoutRenderer():<a href="../../core/IFactory.html">IFactory</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set layoutRenderer(value:<a href="../../core/IFactory.html">IFactory</a>):void</code>
+<br>
 </div>
 <a name="styleRenderers"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -481,7 +487,15 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public var styleRenderers:Array</code>
+<code>styleRenderers:Array</code>&nbsp;&nbsp;[read-write]<p>
+   An array of IFactories whose class generators are ISceneRenderers.
+   If any value contained within the array is not of type IFactory, it will be ignored.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get styleRenderers():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set styleRenderers(value:Array):void</code>
+<br>
 </div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
