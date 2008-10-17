@@ -123,6 +123,16 @@ package as3isolib.core
 			this.z = z;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
+		public function moveBy (x:Number, y:Number, z:Number):void
+		{
+			this.x += x;
+			this.y += y;
+			this.z += z;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	X
 		////////////////////////////////////////////////////////////////////////
@@ -433,6 +443,9 @@ package as3isolib.core
 				bPositionInvalidated = false;
 			}
 			
+			//set the flag back for the next time we invalidate the object
+			bInvalidateEventDispatched = false;
+			
 			super.render(recursive);
 		}
 		
@@ -458,6 +471,13 @@ package as3isolib.core
 		
 		/**
 		 * @private
+		 * 
+		 * Flag indicated that an IsoEvent.INVALIDATE has already been dispatched, negating the need to dispatch another.
+		 */
+		as3isolib_internal var bInvalidateEventDispatched:Boolean = false;
+		
+		/**
+		 * @private
 		 */
 		as3isolib_internal var bPositionInvalidated:Boolean = false;
 		
@@ -467,6 +487,12 @@ package as3isolib.core
 		public function invalidatePosition ():void
 		{
 			bPositionInvalidated = true;
+			
+			if (!bInvalidateEventDispatched)
+			{
+				dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
+				bInvalidateEventDispatched = true;
+			}
 		}
 		
 		/**

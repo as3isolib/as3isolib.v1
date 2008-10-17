@@ -74,6 +74,15 @@ package as3isolib.core
 		function moveTo (x:Number, y:Number, z:Number):void;
 		
 		/**
+		 * Moves the IIsoDisplayObject to a new position relative to the old position by the given amounts in 3D isometric coordinates.
+		 * 
+		 * @param x The relative x value in 3D isometric space.
+		 * @param y The relative y value in 3D isometric space.
+		 * @param z The relative z value in 3D isometric space.
+		 */
+		function moveBy (x:Number, y:Number, z:Number):void;
+		
+		/**
 		 * @private
 		 */
 		function get x ():Number;
