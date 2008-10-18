@@ -29,17 +29,22 @@ SOFTWARE.
 */
 package as3isolib.display.scene
 {
+	
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.SceneBounds;
 	import as3isolib.core.ClassFactory;
 	import as3isolib.core.IFactory;
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.IsoContainer;
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.data.INode;
 	import as3isolib.display.renderers.DefaultSceneLayoutRenderer;
 	import as3isolib.display.renderers.ISceneRenderer;
+	import as3isolib.events.IsoEvent;
 	
 	import flash.display.DisplayObjectContainer;
+	
+	use namespace as3isolib_internal;
 	
 	/**
 	 * IsoScene is a base class for grouping and rendering IIsoDisplayObject children according to their isometric position-based depth.
@@ -47,7 +52,7 @@ package as3isolib.display.scene
 	public class IsoScene extends IsoContainer implements IIsoScene
 	{		
 		///////////////////////////////////////////////////////////////////////////////
-		//	SCENE PAN / ZOOM
+		//	BOUNDS
 		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
@@ -110,6 +115,14 @@ package as3isolib.display.scene
 		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
+		 * @private
+		 * 
+		 * Array of invalidated children.  Each child dispatches an IsoEvent.INVALIDATION event which notifies 
+		 * the scene that that particular child is invalidated and subsequentally the scene is also invalidated.
+		 */
+		as3isolib_internal var invalidatedChildren:Array = [];
+		
+		/**
 		 * @inheritDoc
 		 */
 		override public function addChildAt (child:INode, index:uint):void
@@ -117,7 +130,9 @@ package as3isolib.display.scene
 			if (child is IIsoDisplayObject)
 			{
 				super.addChildAt(child, index);
-				invalidateScene();
+				child.addEventListener(IsoEvent.INVALIDATE, child_invalidateHandler);
+				
+				_isInvalidated = true; //since the child most likely had fired an invalidation event prior to being added, manually invalidate the scene
 			}
 				
 			else
@@ -130,7 +145,7 @@ package as3isolib.display.scene
 		override public function setChildIndex (child:INode, index:uint):void
 		{
 			super.setChildIndex(child, index);
-			invalidateScene();
+			_isInvalidated = true;
 		}
 		
 		/**
@@ -138,21 +153,43 @@ package as3isolib.display.scene
 		 */
 		override public function removeChildByID (id:String):INode
 		{
-			invalidateScene();
-			return super.removeChildByID(id);
+			var child:INode = super.removeChildByID(id);
+			child.removeEventListener(IsoEvent.INVALIDATE, child_invalidateHandler);
+			
+			_isInvalidated = true;
+			
+			return child;
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
 		override public function removeAllChildren ():void
-		{
+		{			
+			var child:INode
+			for each (child in children)
+				child.removeEventListener(IsoEvent.INVALIDATE, child_invalidateHandler);
+			
 			super.removeAllChildren();
-			invalidateScene();
+			_isInvalidated = true;
+		}
+		
+		/**
+		 * Renders the scene as invalidated if a child object is invalidated.
+		 * 
+		 * @param evt The IsoEvent dispatched from the invalidated child.
+		 */
+		protected function child_invalidateHandler (evt:IsoEvent):void
+		{
+			var child:INode = INode(evt.target);
+			if (invalidatedChildren.indexOf(child) == -1)
+				invalidatedChildren.push(child);
+			
+			_isInvalidated = true;
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
-		//	DEPTH SORT
+		//	LAYOUT RENDERER
 		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
@@ -160,10 +197,6 @@ package as3isolib.display.scene
 		 * If false, child objects are sorted by the order they were added rather than by their isometric depth.
 		 */
 		public var layoutEnabled:Boolean = true;
-		
-		///////////////////////////////////////////////////////////////////////////////
-		//	LAYOUT RENDERER
-		///////////////////////////////////////////////////////////////////////////////
 		
 		private var layoutRendererFactory:IFactory;
 		
@@ -175,18 +208,27 @@ package as3isolib.display.scene
 			return layoutRendererFactory;
 		}
 		
+		/**
+		 * The factory used to create the ISceneRenderer responsible for the layout of the child objects.
+		 */
 		public function set layoutRenderer (value:IFactory):void
 		{
 			if (value && layoutRendererFactory != value)
 			{
 				layoutRendererFactory = value;
-				invalidateScene();
+				_isInvalidated = true;
 			}
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
 		//	STYLE RENDERERS
 		///////////////////////////////////////////////////////////////////////////////
+		
+		/**
+		 * Flags the scene for possible style rendering.
+		 * If false, scene styles are not applied to child objects.
+		 */
+		public var stylingEnabled:Boolean = true;
 		
 		private var styleRendererFactories:Array = [];
 		
@@ -215,7 +257,7 @@ package as3isolib.display.scene
 				}
 				
 				styleRendererFactories = temp;
-				invalidateScene();
+				_isInvalidated = true;
 			}
 		}
 		
@@ -229,7 +271,7 @@ package as3isolib.display.scene
 		private var _isInvalidated:Boolean = false;
 		
 		/**
-		 * @private
+		 * Flag indicating if the scene is invalidated.  If true, validation will occur during the next render pass.
 		 */
 		public function get isInvalidated ():Boolean
 		{
@@ -253,19 +295,9 @@ package as3isolib.display.scene
 		 */
 		override public function render (recursive:Boolean = true):void
 		{
-			var child:IIsoDisplayObject;
-			for each (child in children)
-			{
-				if (child.isInvalidated)
-				{
-					invalidateScene();
-					break;
-				}
-			}
-			
 			super.render(recursive); //push individual changes thru, then sort based on new visible content of each child
 			
-			if (isInvalidated)
+			if (_isInvalidated)
 			{
 				var sceneRenderer:ISceneRenderer;
 				if (layoutEnabled)
@@ -275,14 +307,29 @@ package as3isolib.display.scene
 					sceneRenderer.renderScene();
 				}
 				
-				var factory:IFactory
-				for each (factory in styleRendererFactories)
+				if (stylingEnabled)
 				{
-					sceneRenderer = factory.newInstance();
-					sceneRenderer.target = this; //this should already be set 
-					sceneRenderer.renderScene();
+					var factory:IFactory
+					for each (factory in styleRendererFactories)
+					{
+						sceneRenderer = factory.newInstance();
+						sceneRenderer.target = this;
+						sceneRenderer.renderScene();
+					}
 				}
+				
+				_isInvalidated = false;
+				
+				sceneRendered();
 			}
+		}
+		
+		/**
+		 * Performs any last minute clean up after a render phase.
+		 */
+		protected function sceneRendered ():void
+		{
+			invalidatedChildren = [];
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -297,7 +344,6 @@ package as3isolib.display.scene
 			super();
 			
 			layoutRendererFactory = new ClassFactory(DefaultSceneLayoutRenderer);
-			layoutRendererFactory.properties = {target:this};
 		}
 	}
 }
