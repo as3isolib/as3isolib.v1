@@ -354,6 +354,12 @@ package as3isolib.display.primitive
 		public function invalidateGeometry ():void
 		{
 			bGeometryInvalidated = true;
+			
+			if (!bInvalidateEventDispatched)
+			{
+				dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
+				bInvalidateEventDispatched = true;
+			}
 		}
 		
 		/**

@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IIsoDisplayObject,as3isolib.core.IIsoDisplayObject,isInvalidated,isoBounds,screenBounds,screenX,screenY,distance,height,length,width,x,y,z,clone,invalidatePosition,moveTo,setSize" name="keywords">
+<meta content="IIsoDisplayObject,as3isolib.core.IIsoDisplayObject,isInvalidated,isoBounds,screenBounds,screenX,screenY,distance,height,length,width,x,y,z,clone,invalidatePosition,moveBy,moveTo,setSize" name="keywords">
 <title>as3isolib.core.IIsoDisplayObject</title>
 </head>
 <body>
@@ -80,8 +80,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
    A generic data storage property.</div>
 </td><td class="summaryTableOwnerCol"><a href="../data/INode.html">INode</a></td>
 </tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IContainer.html#depth">depth</a> : int<div class="summaryTableDescription">
+   The depth of the <code>container</code> relative to its parent container.</div>
+</td><td class="summaryTableOwnerCol"><a href="IContainer.html">IContainer</a></td>
+</tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#distance">distance</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#distance">distance</a> : Number<div class="summaryTableDescription">
+   The distance from an arbitrary point in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol">IIsoDisplayObject</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -275,6 +281,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#moveBy()">moveBy</a>(x:Number, y:Number, z:Number):void</div>
+<div class="summaryTableDescription">
+   Moves the IIsoDisplayObject to a new position relative to the old position by the given amounts in 3D isometric coordinates.</div>
+</td><td class="summaryTableOwnerCol">IIsoDisplayObject</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#moveTo()">moveTo</a>(x:Number, y:Number, z:Number):void</div>
 <div class="summaryTableDescription">
    Moves the IIsoDisplayObject to the particular 3D isometric coordinates.</div>
@@ -357,7 +371,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>distance:Number</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>distance:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The distance from an arbitrary point in 3D isometric space. 
+   Used for depth sorting algorithms. Though this is a public member it is not recommended for general usage.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get distance():Number</code>
 <br>
@@ -566,6 +583,38 @@ showHideInherited();
 <code>public function invalidatePosition():void</code><p>
    Invalidates the position of the IIsoDisplayObject.
    </p></div>
+<a name="moveBy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">moveBy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function moveBy(x:Number, y:Number, z:Number):void</code><p>
+   Moves the IIsoDisplayObject to a new position relative to the old position by the given amounts in 3D isometric coordinates.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> &mdash; The relative x value in 3D isometric space.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> &mdash; The relative y value in 3D isometric space.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">z</span>:Number</code> &mdash; The relative z value in 3D isometric space.
+   </td>
+</tr>
+</table>
+</div>
 <a name="moveTo()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>

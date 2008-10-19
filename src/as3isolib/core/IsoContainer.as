@@ -29,7 +29,6 @@ SOFTWARE.
 */
 package as3isolib.core
 {
-	import as3isolib.core.as3isolib_internal;
 	import as3isolib.data.INode;
 	import as3isolib.data.Node;
 	import as3isolib.events.IsoEvent;
@@ -174,6 +173,18 @@ package as3isolib.core
 		 * @private
 		 */
 		as3isolib_internal var mainContainer:Sprite;
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get depth ():int
+		{
+			if (mainContainer.parent)
+				return mainContainer.parent.getChildIndex(mainContainer);
+			
+			else
+				return -1;
+		}
 		
 		/**
 		 * @inheritDoc

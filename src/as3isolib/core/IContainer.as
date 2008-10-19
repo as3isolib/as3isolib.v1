@@ -49,6 +49,12 @@ package as3isolib.core
 		//////////////////////////////////////////////////////////////////
 		
 		/**
+		 * The depth of the <code>container</code> relative to its parent container.
+		 * If the <code>container</code> is orphaned, then -1 is returned.
+		 */
+		function get depth ():int;
+		
+		/**
 		 * The sprite that contains the visual assets.
 		 */
 		function get container ():Sprite;

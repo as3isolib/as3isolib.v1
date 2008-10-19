@@ -41,6 +41,7 @@ package as3isolib.display.scene
 	import as3isolib.display.renderers.DefaultSceneLayoutRenderer;
 	import as3isolib.display.renderers.ISceneRenderer;
 	import as3isolib.events.IsoEvent;
+	import as3isolib.geom.Pt;
 	
 	import flash.display.DisplayObjectContainer;
 	
@@ -181,7 +182,17 @@ package as3isolib.display.scene
 		 */
 		protected function child_invalidateHandler (evt:IsoEvent):void
 		{
-			var child:INode = INode(evt.target);
+			var child:IIsoDisplayObject = IIsoDisplayObject(evt.target);
+			
+			//determine distance from a likely camera position
+			var camera:Pt = new Pt(100000, 100000, 100000);
+			child.distance = -1 * Math.sqrt
+										(
+											Math.pow(camera.x - (child.x + child.width), 2) + 
+											Math.pow(camera.y - (child.y + child.length), 2) + 
+											Math.pow(camera.z - (child.z + child.height), 2)
+										);
+						
 			if (invalidatedChildren.indexOf(child) == -1)
 				invalidatedChildren.push(child);
 			

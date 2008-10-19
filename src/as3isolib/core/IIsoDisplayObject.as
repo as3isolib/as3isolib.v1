@@ -62,6 +62,10 @@ package as3isolib.core
 		 */
 		function get distance ():Number;
 		
+		/**
+		 * The distance from an arbitrary point in 3D isometric space. 
+		 * Used for depth sorting algorithms. Though this is a public member it is not recommended for general usage.
+		 */
 		function set distance (value:Number):void;
 		
 		/**

@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="IsoScene,as3isolib.display.scene.IsoScene,layoutEnabled,stylingEnabled,isInvalidated,isoBounds,hostContainer,layoutRenderer,styleRenderers,addChildAt,invalidateScene,removeAllChildren,removeChildByID,render,setChildIndex" name="keywords">
+<meta content="IsoScene,as3isolib.display.scene.IsoScene,layoutEnabled,stylingEnabled,isInvalidated,isoBounds,hostContainer,layoutRenderer,styleRenderers,addChildAt,child_invalidateHandler,invalidateScene,removeAllChildren,removeChildByID,render,sceneRendered,setChildIndex" name="keywords">
 <title>as3isolib.display.scene.IsoScene</title>
 </head>
 <body>
@@ -87,6 +87,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../eDpLib/events/EventDispatcherProxy.html#deleteQueueAfterUpdate">deleteQueueAfterUpdate</a> : Boolean = true<div class="summaryTableDescription">
    A flag indicating if the queue is a one-time use, where other visual assets may not receive the same handlers.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoContainer.html#depth">depth</a> : int<div class="summaryTableDescription">
+   
+   The depth of the <code>container</code> relative to its parent container.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../data/Node.html#hasParent">hasParent</a> : Boolean<div class="summaryTableDescription">
@@ -396,9 +402,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
 </div>
 </div>
-<table id="summaryTableProtectedMethod" class="summaryTable hideInheritedProtectedMethod" cellpadding="3" cellspacing="0">
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
 <tr>
 <th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#child_invalidateHandler()">child_invalidateHandler</a>(evt:<a href="../../events/IsoEvent.html">IsoEvent</a>):void</div>
+<div class="summaryTableDescription">
+   Renders the scene as invalidated if a child object is invalidated.</div>
+</td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -415,6 +429,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription">
    Creates an array of interactive object events to check against during event proxying.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#sceneRendered()">sceneRendered</a>():void</div>
+<div class="summaryTableDescription">
+   Performs any last minute clean up after a render phase.</div>
+</td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -577,6 +599,24 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="child_invalidateHandler()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">child_invalidateHandler</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function child_invalidateHandler(evt:<a href="../../events/IsoEvent.html">IsoEvent</a>):void</code><p>
+   Renders the scene as invalidated if a child object is invalidated.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">evt</span>:<a href="../../events/IsoEvent.html">IsoEvent</a></code> &mdash; The IsoEvent dispatched from the invalidated child.
+   </td>
+</tr>
+</table>
+</div>
 <a name="invalidateScene()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -652,6 +692,16 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="sceneRendered()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sceneRendered</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function sceneRendered():void</code><p>
+   Performs any last minute clean up after a render phase.
+   </p></div>
 <a name="setChildIndex()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>

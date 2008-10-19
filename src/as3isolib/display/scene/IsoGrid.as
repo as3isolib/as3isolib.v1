@@ -227,7 +227,25 @@ package as3isolib.display.scene
 				
 				i++;
 			}
+			
+			//now add the invisible layer to receive mouse events
+			pt = IsoMath.isoToScreen(new Pt(0, 0));
+			g.moveTo(pt.x, pt.y);
+			g.lineStyle(0, 0, 0);
+			g.beginFill(0xFF0000, 0.0);
+			
+			pt = IsoMath.isoToScreen(new Pt(cellSize * gridSize[0], 0));
+			g.lineTo(pt.x, pt.y);
+			
+			pt = IsoMath.isoToScreen(new Pt(cellSize * gridSize[0], cellSize * gridSize[1]));
+			g.lineTo(pt.x, pt.y);
+			
+			pt = IsoMath.isoToScreen(new Pt(0, cellSize * gridSize[1]));
+			g.lineTo(pt.x, pt.y);
+			
+			pt = IsoMath.isoToScreen(new Pt(0, 0));
+			g.lineTo(pt.x, pt.y);
+			g.endFill();
 		}
-		
 	}
 }

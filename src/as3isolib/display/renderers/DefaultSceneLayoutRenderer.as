@@ -33,7 +33,6 @@ package as3isolib.display.renderers
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.scene.IIsoScene;
-	import as3isolib.geom.Pt;
 	
 	import flash.events.EventDispatcher;
 	import flash.utils.getTimer;
@@ -76,38 +75,27 @@ package as3isolib.display.renderers
 		 */
 		public function renderScene ():void
 		{
-			var time:int = getTimer();
-			var sortedChildren:Array = targetContainer.children.slice();	
+			//var time:int = getTimer();
 			
-			var camera:Pt = new Pt(100000, 100000, 100000);
-			var child:IIsoDisplayObject;
-			for each (child in sortedChildren)
-			{
-				child.distance = -1 * Math.sqrt
-								(
-									Math.pow(camera.x - child.isoBounds.right, 2) + 
-									Math.pow(camera.y - child.isoBounds.front, 2) + 
-									Math.pow(camera.z - child.isoBounds.bottom, 2)
-								);
-			}
-			
-			trace("distance assignment:", getTimer() - time, "milliseconds");
-					
-			//sortedChildren.sortOn(["x", "y", "z"], Array.NUMERIC);
+			var sortedChildren:Array = targetContainer.children.slice(); //make a copy of the children
 			sortedChildren.sortOn(["distance", "screenX", "screenY"], Array.NUMERIC);
-			sortedChildren.sort(isoDepthSort);
+			sortedChildren.sort(isoDepthSort); //perform a secondary sort for any hittests
 			
-			trace("sort:", getTimer() - time, "milliseconds");
+			//trace("sort:", getTimer() - time, "milliseconds");
 			
+			var child:IIsoDisplayObject;
 			var i:uint;
 			var m:uint = sortedChildren.length;
 			while (i < m)
 			{
-				targetContainer.setChildIndex(IIsoDisplayObject(sortedChildren[i]), i);
+				child = IIsoDisplayObject(sortedChildren[i]);
+				if (child.depth != i)
+					targetContainer.setChildIndex(child, i); //is there a way to make this more efficient?
+				
 				i++;
 			}
 			
-			trace("index assignment:", getTimer() - time, "milliseconds");
+			//trace("index assignment:", getTimer() - time, "milliseconds");
 		}
 		
 		////////////////////////////////////////////////////
@@ -131,7 +119,7 @@ package as3isolib.display.renderers
 			var boundsA:IBounds;
 			var boundsB:IBounds;
 			
-			trace(childA.id, childB.id);
+			//trace(childA.id, childB.id);
 			
 			if (childA.container.hitTestObject(childB.container))
 			{

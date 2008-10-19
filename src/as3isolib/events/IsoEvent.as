@@ -41,6 +41,11 @@ package as3isolib.events
 		/////////////////////////////////////////////////////////////
 		
 		/**
+		 * The IsoEvent.INVALIDATE constant defines the value of the type property of the event object for an iso event.
+		 */
+		static public const INVALIDATE:String = "as3isolib_invalidate";
+		
+		/**
 		 * The IsoEvent.RENDER constant defines the value of the type property of the event object for an iso event.
 		 */
 		static public const RENDER:String = "as3isolib_render";
