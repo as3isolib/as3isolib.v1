@@ -38,14 +38,61 @@ package as3isolib.core
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
-	use namespace as3isolib_internal;
-	
 	/**
 	 * IsoContainer is the base class that any isometric object must extend in order to be shown in the display list.
 	 * Developers should not instantiate this class directly but rather extend it.
 	 */
-	public class IsoContainer extends Node implements IContainer
+	public class IsoContainer extends Node implements IIsoContainer
 	{
+		
+		//////////////////////////////////////////////////////////////////
+		//	INCLUDE IN LAYOUT
+		//////////////////////////////////////////////////////////////////
+		
+		/**
+		 * @private
+		 */
+		protected var bIncludeInLayout:Boolean = true;
+		
+		/**
+		 * @private
+		 */
+		protected var includeInLayoutChanged:Boolean = false;
+		
+		/**
+		 * @private
+		 */
+		public function get includeInLayout ():Boolean
+		{
+			return bIncludeInLayout;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set includeInLayout (value:Boolean):void
+		{
+			if (bIncludeInLayout != value)
+			{
+				bIncludeInLayout = value;
+				includeInLayoutChanged = true;
+			}
+		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	DISPLAY LIST CHILDREN
+		////////////////////////////////////////////////////////////////////////
+		
+		protected var displayListChildrenArray:Array = [];
+			
+		/**
+		 * @inheritDoc
+		 */
+		public function get displayListChildren ():Array
+		{
+			return displayListChildrenArray;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	CHILD METHODS
 		////////////////////////////////////////////////////////////////////////
@@ -58,10 +105,15 @@ package as3isolib.core
 		 */
 		override public function addChildAt (child:INode, index:uint):void
 		{
-			if (child is IContainer)
+			if (child is IIsoContainer)
 			{
 				super.addChildAt(child, index);
-				mainContainer.addChildAt(IContainer(child).container, index);
+				
+				if (includeInLayout)
+				{
+					displayListChildrenArray.push(child);
+					mainContainer.addChildAt(IIsoContainer(child).container, index);
+				}
 			}
 			
 			else
@@ -76,7 +128,7 @@ package as3isolib.core
 		 */
 		override public function setChildIndex (child:INode, index:uint):void
 		{
-			if (!child is IContainer)
+			if (!child is IIsoContainer)
 				throw new Error("parameter child does not implement IContainer.");
 			
 			else if (!child.hasParent || child.parent != this)
@@ -85,7 +137,7 @@ package as3isolib.core
 			else
 			{
 				super.setChildIndex(child, index);
-				mainContainer.setChildIndex(IContainer(child).container, index);
+				mainContainer.setChildIndex(IIsoContainer(child).container, index);
 			}
 		}
 			
@@ -97,9 +149,15 @@ package as3isolib.core
 		 */
 		override public function removeChildByID (id:String):INode
 		{
-			var child:INode = super.removeChildByID(id);
-			if (child && child is IsoContainer)
-				mainContainer.removeChild(IContainer(child).container);
+			var child:IIsoContainer = IIsoContainer(super.removeChildByID(id));
+			if (child && child.includeInLayout)
+			{
+				var i:int = displayListChildrenArray.indexOf(child);
+				if (i > -1)
+					displayListChildrenArray.splice(i, 1);
+				
+				mainContainer.removeChild(IIsoContainer(child).container);
+			}
 			
 			return child;
 		}
@@ -109,9 +167,14 @@ package as3isolib.core
 		 */
 		override public function removeAllChildren ():void
 		{
-			var child:IContainer;
+			var child:IIsoContainer;
 			for each (child in children)
-				mainContainer.removeChild(child.container);
+			{
+				if (child.includeInLayout)
+					mainContainer.removeChild(child.container);
+			}
+			
+			displayListChildrenArray = [];
 				
 			super.removeAllChildren();
 		}		
@@ -138,9 +201,34 @@ package as3isolib.core
 		 */
 		public function render (recursive:Boolean = true):void
 		{
+			if (includeInLayoutChanged && parentNode)
+			{
+				var p:IIsoContainer = IIsoContainer(parentNode);
+				var i:int = p.displayListChildren.indexOf(this);
+				if (bIncludeInLayout)
+				{
+					if (i == -1)
+						p.displayListChildren.push(this);
+					
+					if (!mainContainer.parent)
+						IIsoContainer(parentNode).container.addChild(mainContainer);
+				}
+				
+				else if (!bIncludeInLayout)
+				{
+					if (i >= 0)
+						p.displayListChildren.splice(i, 1);
+					
+					if (mainContainer.parent)
+						IIsoContainer(parentNode).container.removeChild(mainContainer);
+				}
+				
+				includeInLayoutChanged = false;
+			}
+			
 			if (recursive)
 			{
-				var child:IContainer;
+				var child:IIsoContainer;
 				for each (child in children)
 					child.render(recursive);
 			}
@@ -172,7 +260,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		as3isolib_internal var mainContainer:Sprite;
+		protected var mainContainer:Sprite;
 		
 		/**
 		 * @inheritDoc
@@ -206,7 +294,7 @@ package as3isolib.core
 			super();
 			createChildren();
 			
-			proxyTarget = container;
+			proxyTarget = mainContainer;
 		}
 	}
 }

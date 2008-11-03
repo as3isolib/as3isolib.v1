@@ -42,6 +42,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="ISceneRenderer.html">ISceneRenderer</a></i></td><td class="summaryTableLastCol">
   The ISceneRenderer interface defines the methods that all scene renderer-type classes should implement.</td>
 </tr>
+<tr class="prow0">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="IViewRenderer.html">IViewRenderer</a></i></td><td class="summaryTableLastCol">
+  The IViewRenderer interface defines the methods that all view renderer-type classes should implement.</td>
+</tr>
 </table>
 <a name="classSummary"></a>
 <div class="summaryTableTitle">Classes</div>
@@ -55,7 +59,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="DefaultShadowRenderer.html">DefaultShadowRenderer</a></td><td class="summaryTableLastCol">
-  The DefaultShadowRenderer class is the default renderer for applying basic shadowing on child objects of the target IIsoScene.</td>
+  The DefaultShadowRenderer class is the default renderer for applying basic shadowing on child objects of an IIsoScene.</td>
+</tr>
+<tr class="prow1">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="DefaultViewRenderer.html">DefaultViewRenderer</a></td><td class="summaryTableLastCol">
+  The DefaultViewRenderer iterates through the target view's scene's child objects and determines if they reside within the visible area.</td>
 </tr>
 </table>
 <p></p>

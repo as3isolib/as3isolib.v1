@@ -98,11 +98,25 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
    </td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/events/class-list.html');" href="as3isolib/events/IsoEvent.html#CHILD_ADDED">CHILD_ADDED</a> &mdash; Constant static property in class as3isolib.events.<a onclick="javascript:loadClassListFrame('as3isolib/events/class-list.html');" href="as3isolib/events/IsoEvent.html">IsoEvent</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   The IsoEvent.CHILD_ADDED constant defines the value of the type property of the event object for an iso event.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html#child_invalidateHandler()">child_invalidateHandler</a>(evt:<a href="as3isolib/events/IsoEvent.html" onclick="javascript:loadClassListFrame('as3isolib/events./class-list.html');">as3isolib.events:IsoEvent</a>) &mdash; Method in class as3isolib.display.scene.<a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html">IsoScene</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    Renders the scene as invalidated if a child object is invalidated.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/events/class-list.html');" href="as3isolib/events/IsoEvent.html#CHILD_REMOVED">CHILD_REMOVED</a> &mdash; Constant static property in class as3isolib.events.<a onclick="javascript:loadClassListFrame('as3isolib/events/class-list.html');" href="as3isolib/events/IsoEvent.html">IsoEvent</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   The IsoEvent.CHILD_REMOVED constant defines the value of the type property of the event object for an iso event.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/data/class-list.html');" href="as3isolib/data/INode.html#children">children</a> &mdash; Property in interface as3isolib.data.<a onclick="javascript:loadClassListFrame('as3isolib/data/class-list.html');" href="as3isolib/data/INode.html">INode</a></td>
@@ -187,7 +201,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
    </td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IContainer.html#container">container</a> &mdash; Property in interface as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IContainer.html">IContainer</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoContainer.html#container">container</a> &mdash; Property in interface as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoContainer.html">IIsoContainer</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
@@ -224,6 +238,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
    Initialization method to create the child IContainer objects.</td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoSprite.html#createChildren()">createChildren</a>() &mdash; Method in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoSprite.html">IsoSprite</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoBox.html#createChildren()">createChildren</a>() &mdash; Method in class as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoBox.html">IsoBox</a></td>
 </tr>
 <tr>
@@ -236,7 +256,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
 </tr>
 <tr>
 <td width="20"></td><td>
-   This point is the coordinate position visually located at the the center of the IIsoView relative to the scenes' host container.</td>
+   This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#currentPt">currentPt</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>
@@ -244,7 +264,37 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("CÂ
 <tr>
 <td width="20"></td><td>
    
-   This point is the coordinate position visually located at the the center of the IIsoView relative to the scenes' host container.</td>
+   This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IIsoView.html#currentX">currentX</a> &mdash; Property in interface as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IIsoView.html">IIsoView</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   The current x value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#currentX">currentX</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   
+   The current x value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IIsoView.html#currentY">currentY</a> &mdash; Property in interface as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IIsoView.html">IIsoView</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   The current y value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#currentY">currentY</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   
+   The current y value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#currentZoom">currentZoom</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>

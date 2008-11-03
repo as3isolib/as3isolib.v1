@@ -29,11 +29,14 @@ SOFTWARE.
 */
 package as3isolib.display.scene
 {
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.primitive.IsoPrimitive;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
 	import flash.display.Graphics;
+	
+	use namespace as3isolib_internal;
 	
 	/**
 	 * IsoGrid provides a display grid in the X-Y plane.
@@ -66,7 +69,7 @@ package as3isolib.display.scene
 			if (gSize[0] != width || gSize[1] != length || gSize[2] != height)
 			{
 				gSize = [width, length, height];
-				invalidateGeometry();
+				invalidateSize();
 			}
 		}
 		
@@ -95,7 +98,7 @@ package as3isolib.display.scene
 			if (cSize != value)
 			{
 				cSize = value;
-				invalidateGeometry();
+				invalidateSize();
 			}
 		}
 		
@@ -138,7 +141,7 @@ package as3isolib.display.scene
 				bShowOrigin = value;
 				showOriginChanged = true;
 				
-				invalidateGeometry();
+				invalidateSize();
 			}
 		}
 		
@@ -195,7 +198,7 @@ package as3isolib.display.scene
 		 */
 		override protected function drawGeometry ():void
 		{
-			var g:Graphics = container.graphics;
+			var g:Graphics = mainContainer.graphics;
 			g.clear();
 			
 			g.lineStyle(lineThicknesses[0], lineColors[0], lineAlphas[0]);

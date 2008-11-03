@@ -44,6 +44,7 @@ package as3isolib.display.scene
 	import as3isolib.geom.Pt;
 	
 	import flash.display.DisplayObjectContainer;
+	import flash.utils.getTimer;
 	
 	use namespace as3isolib_internal;
 	
@@ -112,7 +113,7 @@ package as3isolib.display.scene
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
-		//	OVERRIDES
+		//	INVALIDATE CHILDREN
 		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
@@ -121,7 +122,19 @@ package as3isolib.display.scene
 		 * Array of invalidated children.  Each child dispatches an IsoEvent.INVALIDATION event which notifies 
 		 * the scene that that particular child is invalidated and subsequentally the scene is also invalidated.
 		 */
-		as3isolib_internal var invalidatedChildren:Array = [];
+		protected var invalidatedChildrenArray:Array = [];
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get invalidatedChildren ():Array
+		{
+			return invalidatedChildrenArray;
+		}
+		
+		///////////////////////////////////////////////////////////////////////////////
+		//	OVERRIDES
+		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
 		 * @inheritDoc
@@ -193,8 +206,8 @@ package as3isolib.display.scene
 											Math.pow(camera.z - (child.z + child.height), 2)
 										);
 						
-			if (invalidatedChildren.indexOf(child) == -1)
-				invalidatedChildren.push(child);
+			if (invalidatedChildrenArray.indexOf(child) == -1)
+				invalidatedChildrenArray.push(child);
 			
 			_isInvalidated = true;
 		}
@@ -220,7 +233,7 @@ package as3isolib.display.scene
 		}
 		
 		/**
-		 * The factory used to create the ISceneRenderer responsible for the layout of the child objects.
+		 * The factory used to create the IIsoRenderer responsible for the layout of the child objects.
 		 */
 		public function set layoutRenderer (value:IFactory):void
 		{
@@ -237,7 +250,6 @@ package as3isolib.display.scene
 		
 		/**
 		 * Flags the scene for possible style rendering.
-		 * If false, scene styles are not applied to child objects.
 		 */
 		public var stylingEnabled:Boolean = true;
 		
@@ -252,7 +264,7 @@ package as3isolib.display.scene
 		}
 		
 		/**
-		 * An array of IFactories whose class generators are ISceneRenderers.
+		 * An array of IFactories whose class generators are IIsoRenderers.
 		 * If any value contained within the array is not of type IFactory, it will be ignored.
 		 */
 		public function set styleRenderers (value:Array):void
@@ -301,6 +313,13 @@ package as3isolib.display.scene
 		//	RENDER
 		///////////////////////////////////////////////////////////////////////////////
 		
+		private var renderInfoObj:SceneRenderInfoObject = new SceneRenderInfoObject();
+		
+		public function get renderInfo ():String
+		{
+			return renderInfoObj.toString();
+		}
+		
 		/**
 		 * @inheritDoc
 		 */
@@ -310,24 +329,34 @@ package as3isolib.display.scene
 			
 			if (_isInvalidated)
 			{
+				var time:int = getTimer();
+				
+				//render the layout first
 				var sceneRenderer:ISceneRenderer;
 				if (layoutEnabled)
 				{
 					sceneRenderer = layoutRendererFactory.newInstance();
-					sceneRenderer.target = this;
-					sceneRenderer.renderScene();
+					sceneRenderer.renderScene(this);
 				}
 				
+				renderInfoObj.layoutRenderTime = getTimer() - time;
+				time = getTimer();
+				
+				//apply styling
+				mainContainer.graphics.clear(); //should we do this here?
+				
+				var factory:IFactory
 				if (stylingEnabled)
 				{
-					var factory:IFactory
 					for each (factory in styleRendererFactories)
 					{
 						sceneRenderer = factory.newInstance();
-						sceneRenderer.target = this;
-						sceneRenderer.renderScene();
+						sceneRenderer.renderScene(this);
 					}
 				}
+				
+				renderInfoObj.styleRenderTime = getTimer() - time;
+				time = getTimer();
 				
 				_isInvalidated = false;
 				
@@ -340,7 +369,7 @@ package as3isolib.display.scene
 		 */
 		protected function sceneRendered ():void
 		{
-			invalidatedChildren = [];
+			invalidatedChildrenArray = [];
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -356,5 +385,16 @@ package as3isolib.display.scene
 			
 			layoutRendererFactory = new ClassFactory(DefaultSceneLayoutRenderer);
 		}
+	}
+}
+
+class SceneRenderInfoObject
+{
+	public var layoutRenderTime:int;
+	public var styleRenderTime:int;
+	
+	public function toString ():String
+	{
+		return "layoutRenderTime: " + layoutRenderTime + "\t styleRenderTime: " + styleRenderTime;
 	}
 }

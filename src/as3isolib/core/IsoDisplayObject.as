@@ -35,6 +35,8 @@ package as3isolib.core
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
+	import flash.display.DisplayObject;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
@@ -54,7 +56,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		as3isolib_internal var _isoBounds:IBounds;
+		protected var _isoBounds:IBounds;
 		
 		/**
 		 * @inheritDoc
@@ -70,17 +72,37 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		as3isolib_internal var _screenBounds:Rectangle;
+		protected var _screenBounds:Rectangle;
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function get screenBounds ():Rectangle
 		{
-			if (!_screenBounds)
-				_screenBounds = container.getBounds(container.parent);
+			_screenBounds = mainContainer.getBounds(mainContainer);				
+			_screenBounds.x += mainContainer.x;
+			_screenBounds.y += mainContainer.y;
 			
 			return _screenBounds;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function getBounds (targetCoordinateSpace:DisplayObject):Rectangle
+		{
+			var rect:Rectangle = mainContainer.getBounds(mainContainer);
+			rect.x += mainContainer.x;
+			rect.y += mainContainer.y;
+			
+			var pt:Point = new Point(rect.x, rect.y);
+			pt = IIsoContainer(parent).container.localToGlobal(pt);
+			pt = targetCoordinateSpace.globalToLocal(pt);
+			
+			rect.x = pt.x;
+			rect.y = pt.y;
+			
+			return rect;
 		}
 		
 			/////////////////////////////////////////////////////////
@@ -326,7 +348,7 @@ package as3isolib.core
 				oldWidth = isoWidth;
 				
 				isoWidth = value;
-				invalidatePosition();
+				invalidateSize();
 				
 				if (autoUpdate)
 					render();
@@ -366,7 +388,7 @@ package as3isolib.core
 				oldLength = isoLength;
 				
 				isoLength = value;
-				invalidatePosition();
+				invalidateSize();
 				
 				if (autoUpdate)
 					render();
@@ -407,7 +429,7 @@ package as3isolib.core
 				oldHeight = isoHeight;
 				
 				isoHeight = value;
-				invalidatePosition();
+				invalidateSize();
 							
 				if (autoUpdate)
 					render();
@@ -433,14 +455,14 @@ package as3isolib.core
 			
 			if (bPositionInvalidated)
 			{
-				validatePosition();
-				
-				var evt:IsoEvent = new IsoEvent(IsoEvent.MOVE);
-				evt.propName = "position";
-				evt.oldValue = {x:oldX, y:oldY, z:oldZ};
-				evt.newValue = {x:isoX, y:isoY, z:isoZ};
-				
+				validatePosition();				
 				bPositionInvalidated = false;
+			}
+			
+			if (bSizeInvalidated)
+			{
+				validateSize();
+				bSizeInvalidated = false;
 			}
 			
 			//set the flag back for the next time we invalidate the object
@@ -448,6 +470,26 @@ package as3isolib.core
 			
 			super.render(recursive);
 		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	INCLUDE LAYOUT
+		////////////////////////////////////////////////////////////////////////
+		
+		/**
+		 * @inheritDoc
+		 */
+		/* override public function set includeInLayout (value:Boolean):void
+		{
+			super.includeInLayout = value;
+			if (includeInLayoutChanged)
+			{
+				if (!bInvalidateEventDispatched)
+				{
+					dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
+					bInvalidateEventDispatched = true;
+				}
+			}
+		} */
 		
 		/////////////////////////////////////////////////////////
 		//	VALIDATION
@@ -461,8 +503,28 @@ package as3isolib.core
 			var pt:Pt = new Pt(x, y, z);
 			IsoMath.isoToScreen(pt);
 			
-			container.x = pt.x;
-			container.y = pt.y;
+			mainContainer.x = pt.x;
+			mainContainer.y = pt.y;
+			
+			var evt:IsoEvent = new IsoEvent(IsoEvent.MOVE, true);
+			evt.propName = "position";
+			evt.oldValue = {x:oldX, y:oldY, z:oldZ};
+			evt.newValue = {x:isoX, y:isoY, z:isoZ};
+			
+			dispatchEvent(evt);
+		}
+		
+		/**
+		 * Takes the given 3D isometric sizes and performs the necessary rendering logic.
+		 */
+		protected function validateSize ():void
+		{			
+			var evt:IsoEvent = new IsoEvent(IsoEvent.RESIZE, true);
+			evt.propName = "size";
+			evt.oldValue = {width:oldWidth, length:oldLength, height:oldHeight};
+			evt.newValue = {width:isoWidth, length:isoLength, height:isoHeight};
+			
+			dispatchEvent(evt);
 		}
 		
 		/////////////////////////////////////////////////////////
@@ -482,11 +544,36 @@ package as3isolib.core
 		as3isolib_internal var bPositionInvalidated:Boolean = false;
 		
 		/**
+		 * @private
+		 */
+		as3isolib_internal var bSizeInvalidated:Boolean = false;
+		
+		/**
 		 * @inheritDoc
 		 */
 		public function invalidatePosition ():void
 		{
 			bPositionInvalidated = true;
+			
+			_isoBounds = null;
+			_screenBounds = null;
+			
+			if (!bInvalidateEventDispatched)
+			{
+				dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
+				bInvalidateEventDispatched = true;
+			}
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function invalidateSize ():void
+		{
+			bSizeInvalidated = true;
+			
+			_isoBounds = null;
+			_screenBounds = null;
 			
 			if (!bInvalidateEventDispatched)
 			{
@@ -500,7 +587,7 @@ package as3isolib.core
 		 */
 		public function get isInvalidated ():Boolean
 		{
-			return bPositionInvalidated;
+			return (bPositionInvalidated || bSizeInvalidated);
 		}
 		
 		/////////////////////////////////////////////////////////

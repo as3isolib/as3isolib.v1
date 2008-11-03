@@ -20,35 +20,48 @@
 			<arg line="-include-classes as3isolib.bounds.IBounds
 										as3isolib.bounds.PrimitiveBounds
 										as3isolib.bounds.SceneBounds
+										
 										as3isolib.core.ClassFactory
-										as3isolib.core.IContainer
 										as3isolib.core.IFactory
+										as3isolib.core.IIsoContainer
 										as3isolib.core.IIsoDisplayObject
 										as3isolib.core.IsoContainer
 										as3isolib.core.IsoDisplayObject
+										
 										as3isolib.data.INode
 										as3isolib.data.Node
+										
 										as3isolib.display.primitive.IIsoPrimitive
 										as3isolib.display.primitive.IsoBox
 										as3isolib.display.primitive.IsoPolygon
 										as3isolib.display.primitive.IsoPrimitive
 										as3isolib.display.primitive.IsoRectangle
+										
 										as3isolib.display.renderers.DefaultSceneLayoutRenderer
 										as3isolib.display.renderers.DefaultShadowRenderer
+										as3isolib.display.renderers.DefaultViewRenderer
 										as3isolib.display.renderers.ISceneRenderer
+										as3isolib.display.renderers.IViewRenderer
+										
 										as3isolib.display.scene.IIsoScene
 										as3isolib.display.scene.IsoGrid
 										as3isolib.display.scene.IsoOrigin
 										as3isolib.display.scene.IsoScene
+										
 										as3isolib.display.IIsoView
 										as3isolib.display.IsoSprite
 										as3isolib.display.IsoView
+										
 										as3isolib.enum.IsoOrientation
 										as3isolib.enum.RenderStyleType
+										
 										as3isolib.events.IsoEvent
+										
 										as3isolib.geom.IsoMath
 										as3isolib.geom.Pt
+										
 										as3isolib.utils.IsoDrawingUtil
+										
 										eDpLib.events.EventDispatcherProxy
 										eDpLib.events.IEventDispatcherProxy
 										eDpLib.events.ProxyEvent"/>

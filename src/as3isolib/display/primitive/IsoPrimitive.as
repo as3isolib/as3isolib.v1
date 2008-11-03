@@ -53,66 +53,6 @@ package as3isolib.display.primitive
 		static public const DEFAULT_HEIGHT:Number = 25;
 		
 		//////////////////////////////////////////////////////
-		// WIDTH / LENGTH / HEIGHT
-		//////////////////////////////////////////////////////
-		
-		/**
-		 * @inheritDoc
-		 */
-		override public function set width (value:Number):void
-		{	
-			value = Math.abs(value);
-			if (isoWidth != value)
-			{
-				oldWidth = isoWidth;
-				
-				isoWidth = value;
-				invalidateGeometry();
-				invalidatePosition();
-				
-				if (autoUpdate)
-					render();
-			}
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		override public function set length (value:Number):void
-		{
-			value = Math.abs(value);
-			{
-				oldLength = isoLength;
-				
-				isoLength = value;
-				invalidateGeometry();
-				invalidatePosition();
-				
-				if (autoUpdate)
-					render();
-			}
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		override public function set height (value:Number):void
-		{
-			value = Math.abs(value);	
-			if (isoHeight != value)
-			{
-				oldHeight = isoHeight;
-				
-				isoHeight = value;
-				invalidateGeometry();	
-				invalidatePosition();
-							
-				if (autoUpdate)
-					render();
-			}
-		}
-		
-		//////////////////////////////////////////////////////
 		// STYLES
 		//////////////////////////////////////////////////////
 		
@@ -134,7 +74,7 @@ package as3isolib.display.primitive
 			if (renderStyle != value)
 			{
 				renderStyle = value;
-				invalidateGeometry();
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -164,7 +104,7 @@ package as3isolib.display.primitive
 			if (lineThicknessesArray != value)
 			{
 				lineThicknessesArray = value;
-				invalidateGeometry();
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -190,7 +130,7 @@ package as3isolib.display.primitive
 			if (lineColorArray != value)
 			{
 				lineColorArray = value;
-				invalidateGeometry();
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -216,7 +156,7 @@ package as3isolib.display.primitive
 			if (lineAlphasArray != value)
 			{
 				lineAlphasArray = value;
-				invalidateGeometry();
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -249,7 +189,7 @@ package as3isolib.display.primitive
 			if (shadedColorArray != value)
 			{
 				shadedColorArray = value;
-				invalidateGeometry();
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -275,7 +215,7 @@ package as3isolib.display.primitive
 			if (faceAlphasArray != value)
 			{
 				faceAlphasArray = value;
-				invalidateGeometry();
+				invalidateStyles();
 				
 				if (autoUpdate)
 					render();
@@ -294,27 +234,36 @@ package as3isolib.display.primitive
 			if (!hasParent)
 				return;
 			
-			if (bGeometryInvalidated)
+			//we do this before calling super.render() so as to only perform drawing logic for the size or style invalidation, not both.
+			if (bSizeInvalidated || bSytlesInvalidated)
 			{
 				if (!validateGeometry())
 					throw new Error("validation of geometry failed.");
-					
+				
 				drawGeometry();
+				validateSize();
 				
-				_isoBounds = new PrimitiveBounds(this);
-				_screenBounds = container.getBounds(container.parent);
-				
-				var evt:IsoEvent = new IsoEvent(IsoEvent.RESIZE);
-				evt.propName = "size";
-				evt.oldValue = {width:oldWidth, length:oldLength, height:oldHeight};
-				evt.newValue = {width:isoWidth, length:isoLength, height:isoHeight};
-				
-				dispatchEvent(evt);
-				
-				bGeometryInvalidated = false;
+				bSizeInvalidated = false;
+				bSytlesInvalidated = false;
 			}
 			
 			super.render(recursive);
+		}
+		
+		/////////////////////////////////////////////////////////
+		//	VALIDATION
+		/////////////////////////////////////////////////////////
+		
+		
+		/**
+		 * For IIsoDisplayObject that make use of Flash's drawing API, validation of the geometry must occur before being rendered.
+		 * 
+		 * @return Boolean Flag indicating if the geometry is valid.
+		 */
+		protected function validateGeometry ():Boolean
+		{
+			//overridden by subclasses
+			return true;	
 		}
 		
 		/**
@@ -325,20 +274,6 @@ package as3isolib.display.primitive
 			//overridden by subclasses
 		}
 		
-		/////////////////////////////////////////////////////////
-		//	VALIDATION
-		/////////////////////////////////////////////////////////
-		
-		/**
-		 * For IIsoDisplayObject that make use of Flash's drawing API, validation of the geometry must occur before being rendered.
-		 * 
-		 * @return Boolean Flag indicating if the geometry is valid.
-		 */
-		protected function validateGeometry ():Boolean
-		{
-			return true;
-		}
-		
 		////////////////////////////////////////////////////////////
 		//	INVALIDATION
 		////////////////////////////////////////////////////////////
@@ -346,14 +281,14 @@ package as3isolib.display.primitive
 		/**
 		 * @private
 		 */
-		as3isolib_internal var bGeometryInvalidated:Boolean = false;
+		as3isolib_internal var bSytlesInvalidated:Boolean = false;
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function invalidateGeometry ():void
+		public function invalidateStyles ():void
 		{
-			bGeometryInvalidated = true;
+			bSytlesInvalidated = true;
 			
 			if (!bInvalidateEventDispatched)
 			{
@@ -367,7 +302,7 @@ package as3isolib.display.primitive
 		 */
 		override public function get isInvalidated ():Boolean
 		{
-			return (bGeometryInvalidated || bPositionInvalidated);
+			return (bSizeInvalidated || bPositionInvalidated || bSytlesInvalidated);
 		}
 		
 		////////////////////////////////////////////////////////////

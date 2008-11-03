@@ -113,8 +113,8 @@ package as3isolib.display.primitive
 		//////////////////////////////////////////////////////////////////
 		
 		/**
-		 * Invalidates the geometry of the  IIsoDisplayObject.
+		 * Invalidates the styles of the  IIsoDisplayObject.
 		 */
-		function invalidateGeometry ():void;		
+		function invalidateStyles ():void;	
 	}
 }

@@ -426,13 +426,12 @@ package eDpLib.events
 		 */
 		public function dispatchEvent (event:Event):Boolean
 		{
-			if (checkForInteceptedEventType(event.type))
+			if (event.bubbles || checkForInteceptedEventType(event.type))
 				return proxyTarget.dispatchEvent(new ProxyEvent(this, event));
 				
 			else
 				return eventDispatcher.dispatchEvent(event);
-		}
-		
+		}	
 	}
 }
 

@@ -32,12 +32,13 @@ package as3isolib.core
 	import as3isolib.bounds.IBounds;
 	import as3isolib.data.INode;
 	
+	import flash.display.DisplayObject;
 	import flash.geom.Rectangle;
 	
 	/**
 	 * The IIsoDisplayObject interface defines methods for any base display class needing rendering within an 3D isometric space.
 	 */
-	public interface IIsoDisplayObject extends INode, IContainer
+	public interface IIsoDisplayObject extends INode, IIsoContainer
 	{
 		//////////////////////////////////////////////////////////////////
 		//	BOUNDS
@@ -49,9 +50,18 @@ package as3isolib.core
 		function get isoBounds ():IBounds;
 		
 		/**
-		 * The traditional screen boundries associated with the IIsoDisplayObject in 2D screen coordinates.
+		 * The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.
 		 */
 		function get screenBounds ():Rectangle;
+		
+		/**
+		 * The traditional getBounds method of the flash.display.DisplayObject.
+		 * 
+		 * @param targetCoordinateSpace The display object whose coordinate system is used to position the bounding rectangle.
+		 * 
+		 * @return Rectangle The bounding rectangle of the IIsoDisplayObject in the target coordinate space.
+		 */
+		function getBounds (targetCoordinateSpace:DisplayObject):Rectangle
 		
 		//////////////////////////////////////////////////////////////////
 		//	POSITION
@@ -182,6 +192,11 @@ package as3isolib.core
 		 * Invalidates the position of the IIsoDisplayObject.
 		 */
 		function invalidatePosition ():void;
+		
+		/**
+		 * Invalidates the size of the IIsoDisplayObject.
+		 */
+		function invalidateSize ():void;
 		
 		//////////////////////////////////////////////////////////////////
 		//	CLONE

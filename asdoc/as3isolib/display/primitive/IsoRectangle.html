@@ -97,6 +97,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoContainer.html#displayListChildren">displayListChildren</a> : Array<div class="summaryTableDescription">
+   
+   An array of all children whose <code>container</code> is present within the display list.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoDisplayObject.html#distance">distance</a> : Number<div class="summaryTableDescription">
    
    The distance from an arbitrary point in 3D isometric space.</div>
@@ -121,16 +127,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../../data/Node.html">Node</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IsoPrimitive.html#height">height</a> : Number<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoDisplayObject.html#height">height</a> : Number<div class="summaryTableDescription">
    
    The height in 3D isometric space.</div>
-</td><td class="summaryTableOwnerCol"><a href="IsoPrimitive.html">IsoPrimitive</a></td>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../data/Node.html#id">id</a> : String<div class="summaryTableDescription">
    
    The identifier string.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../data/Node.html">Node</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoContainer.html#includeInLayout">includeInLayout</a> : Boolean<div class="summaryTableDescription">
+   
+   Flag indicating whether the <code>container</code> is included in the display list.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IsoPrimitive.html#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">
@@ -146,10 +158,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IsoPrimitive.html#length">length</a> : Number<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoDisplayObject.html#length">length</a> : Number<div class="summaryTableDescription">
    
    The length in 3D isometric space.</div>
-</td><td class="summaryTableOwnerCol"><a href="IsoPrimitive.html">IsoPrimitive</a></td>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IsoPrimitive.html#lineAlphas">lineAlphas</a> : Array<div class="summaryTableDescription">
@@ -202,7 +214,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoDisplayObject.html#screenBounds">screenBounds</a> : Rectangle<div class="summaryTableDescription">
    
-   The traditional screen boundries associated with the IIsoDisplayObject in 2D screen coordinates.</div>
+   The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -225,10 +237,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="IsoPrimitive.html">IsoPrimitive</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IsoPrimitive.html#width">width</a> : Number<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoDisplayObject.html#width">width</a> : Number<div class="summaryTableDescription">
    
    The width in 3D isometric space.</div>
-</td><td class="summaryTableOwnerCol"><a href="IsoPrimitive.html">IsoPrimitive</a></td>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoDisplayObject.html#x">x</a> : Number<div class="summaryTableDescription">
@@ -247,6 +259,27 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
    
    The z value in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoContainer.html#displayListChildrenArray">displayListChildrenArray</a> : Array<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
 </tr>
 </table>
 </div>
@@ -332,6 +365,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoDisplayObject.html#getBounds()">getBounds</a>(targetCoordinateSpace:DisplayObject):Rectangle</div>
+<div class="summaryTableDescription">
+   
+   The traditional getBounds method of the flash.display.DisplayObject.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="../../data/Node.html#getChildAt()">getChildAt</a>(index:uint):<a href="../../data/INode.html">INode</a>
 </div>
 <div class="summaryTableDescription">
@@ -388,20 +430,29 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="IsoPrimitive.html#invalidateGeometry()">invalidateGeometry</a>():void</div>
-<div class="summaryTableDescription">
-   
-   Invalidates the geometry of the  IIsoDisplayObject.</div>
-</td><td class="summaryTableOwnerCol"><a href="IsoPrimitive.html">IsoPrimitive</a></td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
 <a class="signatureLink" href="../../core/IsoDisplayObject.html#invalidatePosition()">invalidatePosition</a>():void</div>
 <div class="summaryTableDescription">
    
    Invalidates the position of the IIsoDisplayObject.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoDisplayObject.html#invalidateSize()">invalidateSize</a>():void</div>
+<div class="summaryTableDescription">
+   
+   Invalidates the size of the IIsoDisplayObject.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="IsoPrimitive.html#invalidateStyles()">invalidateStyles</a>():void</div>
+<div class="summaryTableDescription">
+   
+   Invalidates the styles of the  IIsoDisplayObject.</div>
+</td><td class="summaryTableOwnerCol"><a href="IsoPrimitive.html">IsoPrimitive</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -573,7 +624,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="../../core/IsoDisplayObject.html#validatePosition()">validatePosition</a>():void</div>
 <div class="summaryTableDescription">
-   Takes the given 3D isometric coordinates and positions them in cartesian coordinates relative to the parent container.</div>
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoDisplayObject.html#validateSize()">validateSize</a>():void</div>
+<div class="summaryTableDescription">
+   Takes the given 3D isometric sizes and performs the necessary rendering logic.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
 </tr>
 </table>

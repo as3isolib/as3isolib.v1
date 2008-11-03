@@ -30,19 +30,24 @@ SOFTWARE.
 package as3isolib.display.scene
 {
 	import as3isolib.bounds.IBounds;
-	import as3isolib.core.IContainer;
+	import as3isolib.core.IIsoContainer;
 	
 	import flash.display.DisplayObjectContainer;
 	
 	/**
 	 * The IIsoScene interface defines methods for scene-based classes that expect to group and control child objects in a similar fashion.
 	 */
-	public interface IIsoScene extends IContainer
+	public interface IIsoScene extends IIsoContainer
 	{
 		/**
 		 * The IBounds for this object in 3D isometric space.
 		 */
 		function get isoBounds ():IBounds;
+		
+		/**
+		 * An array of all invalidated children.
+		 */
+		function get invalidatedChildren ():Array;
 		
 		/**
 		 * @private

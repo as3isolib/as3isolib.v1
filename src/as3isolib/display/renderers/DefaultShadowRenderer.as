@@ -39,44 +39,11 @@ package as3isolib.display.renderers
 	import flash.events.EventDispatcher;
 	
 	/**
-	 * The DefaultShadowRenderer class is the default renderer for applying basic shadowing on child objects of the target IIsoScene.
+	 * The DefaultShadowRenderer class is the default renderer for applying basic shadowing on child objects of an IIsoScene.
+	 * This is intended to be an iterative renderer meaning the <code>target</code> is expected to be a child object rather than the parent scene.
 	 */
-	public class DefaultShadowRenderer extends EventDispatcher implements ISceneRenderer
+	public class DefaultShadowRenderer implements ISceneRenderer
 	{
-		////////////////////////////////////////////////////
-		//	CONSTRUCTOR
-		////////////////////////////////////////////////////
-		
-		/**
-		 * Constructor
-		 */
-		public function DefaultShadowRenderer ()
-		{
-			super();
-		}
-		
-		////////////////////////////////////////////////////
-		//	TARGET
-		////////////////////////////////////////////////////
-		
-		private var _target:IIsoScene
-		
-		/**
-		 * @private
-		 */
-		public function get target ():IIsoScene
-		{
-			return _target;
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function set target (value:IIsoScene):void
-		{
-			_target = value;
-		}
-		
 		////////////////////////////////////////////////////
 		//	STYLES
 		////////////////////////////////////////////////////
@@ -84,7 +51,7 @@ package as3isolib.display.renderers
 		/**
 		 * If a child's z <= 0 and drawAll = true the shadow will still be renderered.
 		 */
-		public var drawAll:Boolean = false;
+		public var drawAll:Boolean = true;
 		
 		/**
 		 * The color of the shadow.
@@ -97,21 +64,18 @@ package as3isolib.display.renderers
 		public var shadowAlpha:Number = 0.15;
 		
 		////////////////////////////////////////////////////
-		//	RENDERER
+		//	RENDER SCENE
 		////////////////////////////////////////////////////
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function renderScene ():void
-		{
-			if (!_target)
-				return;
+		public function renderScene (scene:IIsoScene):void
+		{			
+			g = scene.container.graphics;
+			//g.clear(); - do not clear, may be overwriting other IIsoRenderer's efforts.  Do so in the scene.
 			
-			g = _target.container.graphics;
-			g.clear();
-			
-			var shadowChildren:Array = target.children;
+			var shadowChildren:Array = scene.displayListChildren;
 			var child:IIsoDisplayObject;
 			for each (child in shadowChildren)
 			{
@@ -157,6 +121,5 @@ package as3isolib.display.renderers
 			pt = IsoMath.isoToScreen(new Pt(b.left, b.back, 0));
 			g.lineTo(pt.x, pt.y);
 		}
-		
 	}
 }

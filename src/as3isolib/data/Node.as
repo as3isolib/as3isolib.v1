@@ -29,6 +29,8 @@ SOFTWARE.
 */
 package as3isolib.data
 {
+	import as3isolib.events.IsoEvent;
+	
 	import eDpLib.events.EventDispatcherProxy;
 	
 	/**
@@ -240,6 +242,11 @@ package as3isolib.data
 			
 			Node(child).parentNode = this;
 			childrenArray.push(child);
+			
+			var evt:IsoEvent = new IsoEvent(IsoEvent.CHILD_ADDED);
+			evt.newValue = child;
+			
+			dispatchEvent(evt);
 		}
 		
 		/**
@@ -351,6 +358,11 @@ package as3isolib.data
 						break;
 					}
 				}
+				
+				var evt:IsoEvent = new IsoEvent(IsoEvent.CHILD_REMOVED);
+				evt.newValue = child;
+				
+				dispatchEvent(evt);
 			}
 			
 			return child;

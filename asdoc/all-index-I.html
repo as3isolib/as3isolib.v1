@@ -42,13 +42,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   The IBounds interface defines the interface that all classes used bound-type information objects should use.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IContainer.html"><i>IContainer</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/package-detail.html">as3isolib.core</a></td>
-</tr>
-<tr>
-<td width="20"></td><td>
-  The IContainer interface defines the methods necessary for display visual content associated with a particular data node.</td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/data/class-list.html');" href="as3isolib/data/INode.html#id">id</a> &mdash; Property in interface as3isolib.data.<a onclick="javascript:loadClassListFrame('as3isolib/data/class-list.html');" href="as3isolib/data/INode.html">INode</a></td>
 </tr>
 <tr>
@@ -78,6 +71,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   The IFactory interface defines the interface that factory classes such as ClassFactory must implement.</td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoContainer.html"><i>IIsoContainer</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/package-detail.html">as3isolib.core</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+  The IContainer interface defines the methods necessary for display visual content associated with a particular data node.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html"><i>IIsoDisplayObject</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/package-detail.html">as3isolib.core</a></td>
 </tr>
 <tr>
@@ -104,6 +104,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <tr>
 <td width="20"></td><td>
   The IIsoView interface defines methods necessary to properly perform panning, zooming and other display task for a given IIsoScene.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoContainer.html#includeInLayout">includeInLayout</a> &mdash; Property in interface as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoContainer.html">IIsoContainer</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Flag indicating whether the <code>container</code> is included in the display list.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoContainer.html#includeInLayout">includeInLayout</a> &mdash; Property in class as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoContainer.html">IsoContainer</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   
+   Flag indicating whether the <code>container</code> is included in the display list.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/data/class-list.html');" href="as3isolib/data/INode.html"><i>INode</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/data/class-list.html');" href="as3isolib/data/package-detail.html">as3isolib.data</a></td>
@@ -149,19 +164,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
    The IsoEvent.INVALIDATE constant defines the value of the type property of the event object for an iso event.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html#invalidateGeometry()">invalidateGeometry</a>() &mdash; Method in interface as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html">IIsoPrimitive</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IIsoScene.html#invalidatedChildren">invalidatedChildren</a> &mdash; Property in interface as3isolib.display.scene.<a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IIsoScene.html">IIsoScene</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
-   Invalidates the geometry of the  IIsoDisplayObject.</td>
+   An array of all invalidated children.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html#invalidateGeometry()">invalidateGeometry</a>() &mdash; Method in class as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html">IsoPrimitive</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html#invalidatedChildren">invalidatedChildren</a> &mdash; Property in class as3isolib.display.scene.<a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html">IsoScene</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    
-   Invalidates the geometry of the  IIsoDisplayObject.</td>
+   An array of all invalidated children.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html#invalidatePosition()">invalidatePosition</a>() &mdash; Method in interface as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
@@ -179,6 +194,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
    Invalidates the position of the IIsoDisplayObject.</td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#invalidatePosition()">invalidatePosition</a>() &mdash; Method in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html#invalidateScene()">invalidateScene</a>() &mdash; Method in class as3isolib.display.scene.<a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html">IsoScene</a></td>
 </tr>
 <tr>
@@ -187,11 +208,41 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
    </td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html#invalidateSize()">invalidateSize</a>() &mdash; Method in interface as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Invalidates the size of the IIsoDisplayObject.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html#invalidateSize()">invalidateSize</a>() &mdash; Method in class as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   
+   Invalidates the size of the IIsoDisplayObject.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoSprite.html#invalidateSkins()">invalidateSkins</a>() &mdash; Method in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoSprite.html">IsoSprite</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
    Invalidates the skins of the IIsoDisplayObject.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html#invalidateStyles()">invalidateStyles</a>() &mdash; Method in interface as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html">IIsoPrimitive</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Invalidates the styles of the  IIsoDisplayObject.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html#invalidateStyles()">invalidateStyles</a>() &mdash; Method in class as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html">IsoPrimitive</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   
+   Invalidates the styles of the  IIsoDisplayObject.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/renderers/class-list.html');" href="as3isolib/display/renderers/ISceneRenderer.html"><i>ISceneRenderer</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/display/renderers/class-list.html');" href="as3isolib/display/renderers/package-detail.html">as3isolib.display.renderers</a></td>
@@ -223,6 +274,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
    
    
    Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Flag indicating if the view is invalidated.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IsoPrimitive.html">IsoPrimitive</a></td>
@@ -475,6 +533,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <td width="20"></td><td>
    Constructor
    </td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/renderers/class-list.html');" href="as3isolib/display/renderers/IViewRenderer.html"><i>IViewRenderer</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/display/renderers/class-list.html');" href="as3isolib/display/renderers/package-detail.html">as3isolib.display.renderers</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+  The IViewRenderer interface defines the methods that all view renderer-type classes should implement.</td>
 </tr>
 <tr>
 <td style="padding-bottom:20px" colspan="2"></td>

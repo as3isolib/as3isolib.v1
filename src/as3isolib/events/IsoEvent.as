@@ -60,6 +60,16 @@ package as3isolib.events
 		 */
 		static public const RESIZE:String = "as3isolib_resize";
 		
+		/**
+		 * The IsoEvent.CHILD_ADDED constant defines the value of the type property of the event object for an iso event.
+		 */
+		static public const CHILD_ADDED:String = "as3isolib_childAdded";
+		
+		/**
+		 * The IsoEvent.CHILD_REMOVED constant defines the value of the type property of the event object for an iso event.
+		 */
+		static public const CHILD_REMOVED:String = "as3isolib_childRemoved";
+		
 		/////////////////////////////////////////////////////////////
 		//	DATA
 		/////////////////////////////////////////////////////////////

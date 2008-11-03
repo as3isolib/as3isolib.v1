@@ -29,19 +29,20 @@ SOFTWARE.
 */
 package as3isolib.display.renderers
 {
-	import as3isolib.display.scene.IIsoScene;
+	import as3isolib.display.IIsoView;
 	
 	/**
-	 * The ISceneRenderer interface defines the methods that all scene renderer-type classes should implement.
-	 * ISceneRenderer classes are intended to assist IIsoContainers implementors during the rendering phase.
+	 * The IViewRenderer interface defines the methods that all view renderer-type classes should implement.
+	 * IViewRenderer classes are intended to assist IIsoView implementors during the rendering phase.
+	 * Generally this is used to clean up items from the display list that may reside outside of the viewing area.
 	 */
-	public interface ISceneRenderer
+	public interface IViewRenderer
 	{
 		/**
-		 * Iterates and renders each child of the target.
+		 * Renders the view.
 		 * 
-		 * @param scene The IIsoScene to be renderered.
+		 * @param view The IIsoView to render.
 		 */
-		function renderScene (scene:IIsoScene):void;
+		function renderView (view:IIsoView):void;
 	}
 }

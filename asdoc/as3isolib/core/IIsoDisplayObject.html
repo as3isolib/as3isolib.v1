@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IIsoDisplayObject,as3isolib.core.IIsoDisplayObject,isInvalidated,isoBounds,screenBounds,screenX,screenY,distance,height,length,width,x,y,z,clone,invalidatePosition,moveBy,moveTo,setSize" name="keywords">
+<meta content="IIsoDisplayObject,as3isolib.core.IIsoDisplayObject,isInvalidated,isoBounds,screenBounds,screenX,screenY,distance,height,length,width,x,y,z,clone,getBounds,invalidatePosition,invalidateSize,moveBy,moveTo,setSize" name="keywords">
 <title>as3isolib.core.IIsoDisplayObject</title>
 </head>
 <body>
@@ -35,7 +35,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">as3isolib.core</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IIsoDisplayObject extends <a href="../data/INode.html">INode</a>, <a href="../../eDpLib/events/IEventDispatcherProxy.html">IEventDispatcherProxy</a>, <a href="none">flash.events.IEventDispatcher</a>, <a href="IContainer.html">IContainer</a></td>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IIsoDisplayObject extends <a href="../data/INode.html">INode</a>, <a href="../../eDpLib/events/IEventDispatcherProxy.html">IEventDispatcherProxy</a>, <a href="none">flash.events.IEventDispatcher</a>, <a href="IIsoContainer.html">IIsoContainer</a></td>
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Subinterfaces</td><td><a href="../display/primitive/IIsoPrimitive.html">IIsoPrimitive</a></td>
@@ -71,9 +71,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </td><td class="summaryTableOwnerCol"><a href="../data/INode.html">INode</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IContainer.html#container">container</a> : Sprite<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IIsoContainer.html#container">container</a> : Sprite<div class="summaryTableDescription">
    The sprite that contains the visual assets.</div>
-</td><td class="summaryTableOwnerCol"><a href="IContainer.html">IContainer</a></td>
+</td><td class="summaryTableOwnerCol"><a href="IIsoContainer.html">IIsoContainer</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../data/INode.html#data">data</a> : Object<div class="summaryTableDescription">
@@ -81,9 +81,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </td><td class="summaryTableOwnerCol"><a href="../data/INode.html">INode</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IContainer.html#depth">depth</a> : int<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IIsoContainer.html#depth">depth</a> : int<div class="summaryTableDescription">
    The depth of the <code>container</code> relative to its parent container.</div>
-</td><td class="summaryTableOwnerCol"><a href="IContainer.html">IContainer</a></td>
+</td><td class="summaryTableOwnerCol"><a href="IIsoContainer.html">IIsoContainer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IIsoContainer.html#displayListChildren">displayListChildren</a> : Array<div class="summaryTableDescription">
+   An array of all children whose <code>container</code> is present within the display list.</div>
+</td><td class="summaryTableOwnerCol"><a href="IIsoContainer.html">IIsoContainer</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#distance">distance</a> : Number<div class="summaryTableDescription">
@@ -104,6 +109,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../data/INode.html#id">id</a> : String<div class="summaryTableDescription">
    The identifier string.</div>
 </td><td class="summaryTableOwnerCol"><a href="../data/INode.html">INode</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="IIsoContainer.html#includeInLayout">includeInLayout</a> : Boolean<div class="summaryTableDescription">
+   Flag indicating whether the <code>container</code> is included in the display list.</div>
+</td><td class="summaryTableOwnerCol"><a href="IIsoContainer.html">IIsoContainer</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">[read-only]
@@ -144,7 +154,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenBounds">screenBounds</a> : Rectangle<div class="summaryTableDescription">[read-only]
-   The traditional screen boundries associated with the IIsoDisplayObject in 2D screen coordinates.</div>
+   The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.</div>
 </td><td class="summaryTableOwnerCol">IIsoDisplayObject</td>
 </tr>
 <tr class="">
@@ -227,6 +237,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
    Determines if a particular INodes is an immediate child of this INode.</div>
 </td><td class="summaryTableOwnerCol"><a href="../data/INode.html">INode</a></td>
 </tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getBounds()">getBounds</a>(targetCoordinateSpace:DisplayObject):Rectangle</div>
+<div class="summaryTableDescription">
+   The traditional getBounds method of the flash.display.DisplayObject.</div>
+</td><td class="summaryTableOwnerCol">IIsoDisplayObject</td>
+</tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
@@ -276,6 +294,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <a class="signatureLink" href="#invalidatePosition()">invalidatePosition</a>():void</div>
 <div class="summaryTableDescription">
    Invalidates the position of the IIsoDisplayObject.</div>
+</td><td class="summaryTableOwnerCol">IIsoDisplayObject</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#invalidateSize()">invalidateSize</a>():void</div>
+<div class="summaryTableDescription">
+   Invalidates the size of the IIsoDisplayObject.</div>
 </td><td class="summaryTableOwnerCol">IIsoDisplayObject</td>
 </tr>
 <tr class="">
@@ -332,10 +358,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="IContainer.html#render()">render</a>(recursive:Boolean = true):void</div>
+<a class="signatureLink" href="IIsoContainer.html#render()">render</a>(recursive:Boolean = true):void</div>
 <div class="summaryTableDescription">
    Initiates the various validation processes in order to display the IPrimitive.</div>
-</td><td class="summaryTableOwnerCol"><a href="IContainer.html">IContainer</a></td>
+</td><td class="summaryTableOwnerCol"><a href="IIsoContainer.html">IIsoContainer</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -449,7 +475,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>screenBounds:Rectangle</code>&nbsp;&nbsp;[read-only]<p>
-   The traditional screen boundries associated with the IIsoDisplayObject in 2D screen coordinates.
+   The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get screenBounds():Rectangle</code>
@@ -573,6 +599,33 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="getBounds()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getBounds</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getBounds(targetCoordinateSpace:DisplayObject):Rectangle</code><p>
+   The traditional getBounds method of the flash.display.DisplayObject.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">targetCoordinateSpace</span>:DisplayObject</code> &mdash; The display object whose coordinate system is used to position the bounding rectangle.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Rectangle</code> &mdash; Rectangle The bounding rectangle of the IIsoDisplayObject in the target coordinate space.
+   </td>
+</tr>
+</table>
+</div>
 <a name="invalidatePosition()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -582,6 +635,16 @@ showHideInherited();
 <div class="detailBody">
 <code>public function invalidatePosition():void</code><p>
    Invalidates the position of the IIsoDisplayObject.
+   </p></div>
+<a name="invalidateSize()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">invalidateSize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function invalidateSize():void</code><p>
+   Invalidates the size of the IIsoDisplayObject.
    </p></div>
 <a name="moveBy()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">

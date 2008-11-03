@@ -35,53 +35,26 @@ package as3isolib.display.renderers
 	import as3isolib.display.scene.IIsoScene;
 	
 	import flash.events.EventDispatcher;
-	import flash.utils.getTimer;
 	
 	use namespace as3isolib_internal;
 	
 	/**
 	 * The DefaultSceneLayoutRenderer is the default renderer responsible for performing the isometric position-based depth sorting on the child objects of the target IIsoScene. 
 	 */
-	public class DefaultSceneLayoutRenderer extends EventDispatcher implements ISceneRenderer
+	public class DefaultSceneLayoutRenderer implements ISceneRenderer
 	{		
 		////////////////////////////////////////////////////
-		//	TARGET
-		////////////////////////////////////////////////////
-		
-		private var targetContainer:IIsoScene;
-		
-		/**
-		 * @private
-		 */
-		public function get target ():IIsoScene
-		{
-			return targetContainer;
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function set target (value:IIsoScene):void
-		{
-			targetContainer = value;
-		}
-		
-		////////////////////////////////////////////////////
-		//	UPDATE LAYOUT
+		//	RENDER SCENE
 		////////////////////////////////////////////////////
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function renderScene ():void
+		public function renderScene (scene:IIsoScene):void
 		{
-			//var time:int = getTimer();
-			
-			var sortedChildren:Array = targetContainer.children.slice(); //make a copy of the children
+			var sortedChildren:Array = scene.displayListChildren.slice(); //make a copy of the children
 			sortedChildren.sortOn(["distance", "screenX", "screenY"], Array.NUMERIC);
 			sortedChildren.sort(isoDepthSort); //perform a secondary sort for any hittests
-			
-			//trace("sort:", getTimer() - time, "milliseconds");
 			
 			var child:IIsoDisplayObject;
 			var i:uint;
@@ -90,24 +63,10 @@ package as3isolib.display.renderers
 			{
 				child = IIsoDisplayObject(sortedChildren[i]);
 				if (child.depth != i)
-					targetContainer.setChildIndex(child, i); //is there a way to make this more efficient?
+					scene.setChildIndex(child, i); //is there a way to make this more efficient?
 				
 				i++;
 			}
-			
-			//trace("index assignment:", getTimer() - time, "milliseconds");
-		}
-		
-		////////////////////////////////////////////////////
-		//	CONSTRUCTOR
-		////////////////////////////////////////////////////
-		
-		/**
-		 * Constructor
-		 */
-		public function DefaultSceneLayoutRenderer ()
-		{
-			super();
 		}
 		
 		////////////////////////////////////////////////////

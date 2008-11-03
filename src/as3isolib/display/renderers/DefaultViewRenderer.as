@@ -29,19 +29,57 @@ SOFTWARE.
 */
 package as3isolib.display.renderers
 {
-	import as3isolib.display.scene.IIsoScene;
+	import as3isolib.core.IIsoDisplayObject;
+	import as3isolib.display.IIsoView;
+	
+	import flash.display.Sprite;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	
 	/**
-	 * The ISceneRenderer interface defines the methods that all scene renderer-type classes should implement.
-	 * ISceneRenderer classes are intended to assist IIsoContainers implementors during the rendering phase.
+	 * The DefaultViewRenderer iterates through the target view's scene's child objects and determines if they reside within the visible area.
 	 */
-	public interface ISceneRenderer
+	public class DefaultViewRenderer implements IViewRenderer
 	{
 		/**
-		 * Iterates and renders each child of the target.
-		 * 
-		 * @param scene The IIsoScene to be renderered.
+		 * Generally for testing purposes.
+		 * This draws bounding rectangle around all objects contained within the target view's scene.
 		 */
-		function renderScene (scene:IIsoScene):void;
+		public var drawBounds:Boolean = false;
+		
+		////////////////////////////////////////////////////
+		//	RENDER SCENE
+		////////////////////////////////////////////////////
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function renderView (view:IIsoView):void
+		{
+			var v:Sprite = Sprite(view);
+			
+			if (drawBounds)
+			{
+				v.graphics.clear();
+				v.graphics.lineStyle(1, 0xff0000);
+			}
+			
+			var rect:Rectangle = new Rectangle(0, 0, v.width, v.height);
+			var pt:Point;
+			
+			var bounds:Rectangle;
+			var intersection:Boolean;
+			
+			var child:IIsoDisplayObject;
+			var children:Array = view.scene.children.slice();
+			for each (child in children)
+			{				
+				bounds = child.getBounds(v);				
+				child.includeInLayout = rect.intersects(bounds);
+				
+				if (drawBounds)
+					v.graphics.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
+			}
+		}
 	}
 }

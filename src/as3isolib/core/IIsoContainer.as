@@ -36,13 +36,29 @@ package as3isolib.core
 	/**
 	 * The IContainer interface defines the methods necessary for display visual content associated with a particular data node.
 	 */
-	public interface IContainer extends INode
+	public interface IIsoContainer extends INode
 	{
 		//////////////////////////////////////////////////////////////////
-		//	BOUNDS
+		//	INCLUDE IN LAYOUT
 		//////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @private
+		 */
+		function get includeInLayout ():Boolean;
 		
+		/**
+		 * Flag indicating whether the <code>container</code> is included in the display list.
+		 * The allows child objects to persist in memory while being removed from the display list.
+		 */
+		function set includeInLayout (value:Boolean):void;
+		
+		/**
+		 * An array of all children whose <code>container</code> is present within the display list.
+		 * 
+		 * @see #includeInLayout
+		 */
+		function get displayListChildren ():Array;
 		
 		//////////////////////////////////////////////////////////////////
 		//	CONTAINER

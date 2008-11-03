@@ -35,10 +35,18 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td colspan="2"><a name="S"></a><a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-A.html">A</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-B.html">B</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-C.html">C</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-D.html">D</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-E.html">E</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-F.html">F</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-G.html">G</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-H.html">H</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-I.html">I</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-J.html">J</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-K.html">K</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-L.html">L</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-M.html">M</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-N.html">N</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-O.html">O</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-P.html">P</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-Q.html">Q</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-R.html">R</a>&nbsp;&nbsp;<font style="bold" size="10px" color="black">S</font>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-T.html">T</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-U.html">U</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-V.html">V</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-W.html">W</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-X.html">X</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-Y.html">Y</a>&nbsp;&nbsp;<a onclick="javascript:loadClassListFrame('index-list.html');" href="all-index-Z.html">Z</a>&nbsp;&nbsp;</td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IIsoView.html#scene">scene</a> &mdash; Property in interface as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IIsoView.html">IIsoView</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   The child scene object that this IsoView wraps.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#scene">scene</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
+   
    The child scene object that this IsoView wraps.</td>
 </tr>
 <tr>
@@ -68,7 +76,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 </tr>
 <tr>
 <td width="20"></td><td>
-   The traditional screen boundries associated with the IIsoDisplayObject in 2D screen coordinates.</td>
+   The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html#screenBounds">screenBounds</a> &mdash; Property in class as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html">IsoDisplayObject</a></td>
@@ -76,7 +84,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <tr>
 <td width="20"></td><td>
    
-   The traditional screen boundries associated with the IIsoDisplayObject in 2D screen coordinates.</td>
+   The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/geom/class-list.html');" href="as3isolib/geom/IsoMath.html#screenToIso()">screenToIso</a>(screenPt:<a href="as3isolib/geom/Pt.html" onclick="javascript:loadClassListFrame('as3isolib/geom./class-list.html');">as3isolib.geom:Pt</a>, createNew) &mdash; Static method in class as3isolib.geom.<a onclick="javascript:loadClassListFrame('as3isolib/geom/class-list.html');" href="as3isolib/geom/IsoMath.html">IsoMath</a></td>
@@ -234,17 +242,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
    An array of visual assets to be attached.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoSprite.html#spritesArray">spritesArray</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoSprite.html">IsoSprite</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html#styleRenderers">styleRenderers</a> &mdash; Property in class as3isolib.display.scene.<a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html">IsoScene</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
-   An array of IFactories whose class generators are ISceneRenderers.</td>
+   An array of IFactories whose class generators are IIsoRenderers.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html#styleType">styleType</a> &mdash; Property in interface as3isolib.display.primitive.<a onclick="javascript:loadClassListFrame('as3isolib/display/primitive/class-list.html');" href="as3isolib/display/primitive/IIsoPrimitive.html">IIsoPrimitive</a></td>

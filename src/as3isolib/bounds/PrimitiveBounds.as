@@ -151,9 +151,9 @@ package as3isolib.bounds
 		 */
 		public function intersects (bounds:IBounds):Boolean
 		{
-			if (centerPt.x + bounds.centerPt.x <= _target.width / 2 + bounds.width / 2 &&
-				centerPt.y + bounds.centerPt.y <= _target.length / 2 + bounds.length / 2 &&
-				centerPt.z + bounds.centerPt.z <= _target.height / 2 + bounds.height / 2)
+			if (Math.abs(centerPt.x - bounds.centerPt.x) <= _target.width / 2 + bounds.width / 2 &&
+				Math.abs(centerPt.y - bounds.centerPt.y) <= _target.length / 2 + bounds.length / 2 &&
+				Math.abs(centerPt.z - bounds.centerPt.z) <= _target.height / 2 + bounds.height / 2)
 				
 				return true;
 			

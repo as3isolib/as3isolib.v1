@@ -30,7 +30,10 @@ SOFTWARE.
 package as3isolib.display
 {
 	import as3isolib.core.IIsoDisplayObject;
+	import as3isolib.display.scene.IIsoScene;
 	import as3isolib.geom.Pt;
+	
+	import flash.display.Sprite;
 	
 	/**
 	 * The IIsoView interface defines methods necessary to properly perform panning, zooming and other display task for a given IIsoScene.
@@ -39,9 +42,45 @@ package as3isolib.display
 	public interface IIsoView
 	{
 		/**
-		 * This point is the coordinate position visually located at the the center of the IIsoView relative to the scenes' host container.
+		 * @private
+		 */
+		function get scene ():IIsoScene;
+		
+		/**
+		 * The child scene object that this IsoView wraps.
+		 */
+		function set scene (value:IIsoScene):void;
+		
+		/**
+		 * This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.
 		 */
 		function get currentPt ():Pt;
+		
+		/**
+		 * @private
+		 */
+		function get currentX ():Number;
+		
+		/**
+		 * The current x value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.
+		 * This property is useful for targeting by tween engines.
+		 * 
+		 * @see #currentPt
+		 */
+		function set currentX (value:Number):void;
+		
+		/**
+		 * @private
+		 */
+		function get currentY ():Number;
+		
+		/**
+		 * The current y value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.
+		 * This property is useful for targeting by tween engines.
+		 * 
+		 * @see #currentPt
+		 */
+		function set currentY (value:Number):void;
 		
 		/**
 		 * Centers the IIsoView on a given pt within the current child scene objects.
@@ -63,6 +102,8 @@ package as3isolib.display
 		 * 
 		 * @param px The x value to pan by.
 		 * @param py the y value to pan by.
+		 * 
+		 * @see #currentPt
 		 */
 		function pan (px:Number, py:Number):void;
 		
@@ -77,5 +118,15 @@ package as3isolib.display
 		 * Resets the child scene objects to be centered within the IIsoView and returns the zoom factor back to a normal value.
 		 */
 		function reset ():void;
+		
+		/**
+		 * Executes positional changes for background, scene and foreground objects.
+		 */
+		function render ():void;
+		
+		/**
+		 * @private
+		 */
+		function get mainContainer ():Sprite;
 	}
 }

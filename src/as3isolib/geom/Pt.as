@@ -182,5 +182,10 @@ package as3isolib.geom
 			this.y = y;
 			this.z = z;
 		}
+		
+		override public function toString ():String
+		{
+			return "x:" + x + " y:" + y + " z:" + z;
+		}
 	}
 }

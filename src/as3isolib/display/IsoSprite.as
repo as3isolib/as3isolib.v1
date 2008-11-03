@@ -29,11 +29,11 @@ SOFTWARE.
 */
 package as3isolib.display
 {
-	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
 	
 	import flash.display.DisplayObject;
+	import flash.display.MovieClip;
 	
 	use namespace as3isolib_internal;
 	
@@ -47,7 +47,10 @@ package as3isolib.display
 		//	SKINS
 		////////////////////////////////////////////////////////////
 		
-		as3isolib_internal var spritesArray:Array = [];	
+		/**
+		 * @private
+		 */
+		protected var spritesArray:Array = [];	
 		
 		/**
 		 * @private
@@ -104,19 +107,19 @@ package as3isolib.display
 			if (bSkinsInvalidated)
 			{
 				//remove all previous skins				
-				while (container.numChildren > 0)
-					container.removeChildAt(container.numChildren - 1);
+				while (mainContainer.numChildren > 0)
+					mainContainer.removeChildAt(mainContainer.numChildren - 1);
 				
 				var sprite:Object;
 				for each (sprite in spritesArray)
 				{
 					if (sprite is DisplayObject)
-						container.addChild(sprite as DisplayObject);
+						mainContainer.addChild(sprite as DisplayObject);
 					
 					else if (sprite is Class)
 					{
 						var spriteInstance:DisplayObject = DisplayObject(new sprite());
-						container.addChild(spriteInstance);
+						mainContainer.addChild(spriteInstance);
 					}
 					
 					else
@@ -127,6 +130,13 @@ package as3isolib.display
 			}
 			
 			super.render(recursive);
+		}
+		
+		override protected function createChildren ():void
+		{
+			super.createChildren();
+			
+			mainContainer = new MovieClip();
 		}
 		
 		////////////////////////////////////////////////////////////

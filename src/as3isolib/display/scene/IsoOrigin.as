@@ -29,6 +29,7 @@ SOFTWARE.
 */
 package as3isolib.display.scene
 {
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.primitive.IsoPrimitive;
 	import as3isolib.enum.IsoOrientation;
 	import as3isolib.geom.IsoMath;
@@ -36,6 +37,8 @@ package as3isolib.display.scene
 	import as3isolib.utils.IsoDrawingUtil;
 	
 	import flash.display.Graphics;
+	
+	use namespace as3isolib_internal;
 	
 	/**
 	 * IsoOrigin is a visual class that depicts the origin pt (typically at 0, 0, 0) with multicolored axis lines.
@@ -51,7 +54,7 @@ package as3isolib.display.scene
 			var ptM:Pt;
 			var pt1:Pt = IsoMath.isoToScreen(new Pt(axisLength, 0, 0));
 			
-			var g:Graphics = container.graphics;
+			var g:Graphics = mainContainer.graphics;
 			g.clear();
 			
 			//draw x-axis

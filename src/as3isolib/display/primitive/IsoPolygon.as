@@ -29,12 +29,15 @@ SOFTWARE.
 */
 package as3isolib.display.primitive
 {
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.enum.RenderStyleType;
 	
 	import flash.display.CapsStyle;
 	import flash.display.Graphics;
 	import flash.display.JointStyle;
 	import flash.display.LineScaleMode;
+	
+	use namespace as3isolib_internal;
 	
 	/**
 	 * 3D polygon primitive in isometric space.
@@ -54,7 +57,7 @@ package as3isolib.display.primitive
 		 */
 		override protected function drawGeometry ():void
 		{
-			var g:Graphics = container.graphics;
+			var g:Graphics = mainContainer.graphics;
 			g.clear();
 			g.moveTo(pts[0].x, pts[0].y);
 			
@@ -107,7 +110,7 @@ package as3isolib.display.primitive
 			if (geometryPts != value)
 			{
 				geometryPts = value;
-				invalidateGeometry();
+				invalidateSize();
 				
 				if (autoUpdate)
 					render();
