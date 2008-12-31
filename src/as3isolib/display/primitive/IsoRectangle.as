@@ -80,6 +80,17 @@ package as3isolib.display.primitive
 		}
 		
 		/**
+		 * @inheritDoc
+		 */
+		override protected function drawGeometry ():void
+		{
+			super.drawGeometry();
+			
+			//clean up
+			geometryPts = [];
+		}
+		
+		/**
 		 * Constructor
 		 */
 		public function IsoRectangle ()

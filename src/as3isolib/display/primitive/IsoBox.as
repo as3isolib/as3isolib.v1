@@ -29,7 +29,13 @@ SOFTWARE.
 */
 package as3isolib.display.primitive
 {
-	import as3isolib.core.IsoDisplayObject;
+	import as3isolib.enum.RenderStyleType;
+	import as3isolib.geom.IsoMath;
+	import as3isolib.geom.Pt;
+	import as3isolib.graphics.IFill;
+	import as3isolib.graphics.IStroke;
+	
+	import flash.display.Graphics;
 	
 	/**
 	 * 3D box primitive in isometric space.
@@ -42,9 +48,6 @@ package as3isolib.display.primitive
 		public function IsoBox ()
 		{
 			super();
-			
-			lineThicknesses = [0, 0, 0, 3, 3, 3];
-			faceColors = [0xffffff, 0xffffff, 0xcccccc, 0xffffff, 0xcccccc, 0x000000];
 		}
 		
 		/**
@@ -118,6 +121,128 @@ package as3isolib.display.primitive
 		 */
 		override protected function drawGeometry ():void
 		{
+			/* var g:Graphics = mainContainer.graphics;
+			g.clear();
+			
+			//all pts are named in following order "x", "y", "z" via rfb = right, front, bottom
+			var lbb:Pt = IsoMath.isoToScreen(new Pt(0, 0, 0));
+			var rbb:Pt = IsoMath.isoToScreen(new Pt(width, 0, 0));
+			var rfb:Pt = IsoMath.isoToScreen(new Pt(width, length, 0));
+			var lfb:Pt = IsoMath.isoToScreen(new Pt(0, length, 0));
+			
+			var lbt:Pt = IsoMath.isoToScreen(new Pt(0, 0, height));
+			var rbt:Pt = IsoMath.isoToScreen(new Pt(width, 0, height));
+			var rft:Pt = IsoMath.isoToScreen(new Pt(width, length, height));
+			var lft:Pt = IsoMath.isoToScreen(new Pt(0, length, height));
+			
+			//bottom face
+			g.moveTo(lbb.x, lbb.y);
+			var fill:IFill = fills.length >= 6 ? IFill(fills[5]) : DEFAULT_FILL;
+			if (fill && styleType != RenderStyleType.WIREFRAME)
+				fill.begin(g);
+			
+			var stroke:IStroke = edges.length >= 6 ? IStroke(edges[5]) : DEFAULT_STROKE;
+			if (stroke)
+				stroke.apply(g);
+				
+			g.lineTo(rbb.x, rbb.y);
+			g.lineTo(rfb.x, rfb.y);
+			g.lineTo(lfb.x, lfb.y);
+			g.lineTo(lbb.x, lbb.y);
+			
+			if (fill)
+				fill.end(g);
+				
+			//back-left face
+			g.moveTo(lbb.x, lbb.y);
+			fill = IFill(fills[4]);
+			if (fill && styleType != RenderStyleType.WIREFRAME)
+				fill.begin(g);
+			
+			stroke = IStroke(edges[4]);
+			if (stroke)
+				stroke.apply(g);
+				
+			g.lineTo(lfb.x, lfb.y);
+			g.lineTo(lft.x, lft.y);
+			g.lineTo(lbt.x, lbt.y);
+			g.lineTo(lbb.x, lbb.y);
+			
+			if (fill)
+				fill.end(g);
+				
+			//back-right face
+			g.moveTo(lbb.x, lbb.y);
+			fill = IFill(fills[3]);
+			if (fill && styleType != RenderStyleType.WIREFRAME)
+				fill.begin(g);
+			
+			stroke = IStroke(edges[3]);
+			if (stroke)
+				stroke.apply(g);
+				
+			g.lineTo(rbb.x, rbb.y);
+			g.lineTo(rbt.x, rbt.y);
+			g.lineTo(lbt.x, lbt.y);
+			g.lineTo(lbb.x, lbb.y);
+			
+			if (fill)
+				fill.end(g);
+				
+			//front-left face
+			g.moveTo(lfb.x, lfb.y);
+			fill = IFill(fills[2]);
+			if (fill && styleType != RenderStyleType.WIREFRAME)
+				fill.begin(g);
+			
+			stroke = IStroke(edges[2]);
+			if (stroke)
+				stroke.apply(g);
+				
+			g.lineTo(lft.x, lft.y);
+			g.lineTo(rft.x, rft.y);
+			g.lineTo(rfb.x, rfb.y);
+			g.lineTo(lfb.x, lfb.y);
+			
+			if (fill)
+				fill.end(g);
+				
+			//front-right face
+			g.moveTo(rbb.x, rbb.y);
+			fill = IFill(fills[1]);
+			if (fill && styleType != RenderStyleType.WIREFRAME)
+				fill.begin(g);
+			
+			stroke = IStroke(edges[1]);
+			if (stroke)
+				stroke.apply(g);
+				
+			g.lineTo(rfb.x, rfb.y);
+			g.lineTo(rft.x, rft.y);
+			g.lineTo(rbt.x, rbt.y);
+			g.lineTo(rbb.x, rbb.y);
+			
+			if (fill)
+				fill.end(g);
+				
+			//top face
+			g.moveTo(lbt.x, lbt.y);
+			fill = IFill(fills[0]);
+			if (fill && styleType != RenderStyleType.WIREFRAME)
+				fill.begin(g);
+			
+			stroke = IStroke(edges[0]);
+			if (stroke)
+				stroke.apply(g);
+				
+			g.lineTo(rbt.x, rbt.y);
+			g.lineTo(rft.x, rft.y);
+			g.lineTo(lft.x, lft.y);
+			g.lineTo(lbt.x, lbt.y);
+			
+			if (fill)
+				fill.end(g); */
+			
 			//bottom face
 			sq0.width = width;
 			sq0.length = length;
@@ -159,16 +284,12 @@ package as3isolib.display.primitive
 			{
 				sq = IsoRectangle(getChildAt(i));
 				
-				//styling
-				sq.lineAlphas = [lineAlphas[c]];
-				sq.lineColors = [lineColors[c]];
-				sq.lineThicknesses = [lineThicknesses[c]];
-				sq.faceAlphas = [faceAlphas[c]];
-				sq.faceColors = [faceColors[c]];
+				sq.strokes = strokes[c] ? [strokes[c]] : [strokes[0]];
+				sq.fills = fills[c] ? [fills[c]] : [fills[0]];
 				sq.styleType = styleType;
 				
 				c++;
-			}		
+			}
 		}
 	}
 }

@@ -50,40 +50,50 @@ package as3isolib.core
 	public class IsoDisplayObject extends IsoContainer implements IIsoDisplayObject
 	{		
 		////////////////////////////////////////////////////////////////////////
-		//	BOUNDS
+		//	IS ANIMATED
 		////////////////////////////////////////////////////////////////////////
+		
+		private var _isAnimated:Boolean = false;
 		
 		/**
 		 * @private
 		 */
-		protected var _isoBounds:IBounds;
+		public function get isAnimated ():Boolean
+		{
+			return _isAnimated;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set isAnimated (value:Boolean):void
+		{
+			_isAnimated = value;
+			mainContainer.cacheAsBitmap = value;
+		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	BOUNDS
+		////////////////////////////////////////////////////////////////////////
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function get isoBounds ():IBounds
 		{
-			if (!_isoBounds)
-				_isoBounds = new PrimitiveBounds(this);
+			/* if (!_isoBounds)
+				_isoBounds =  */
 			
-			return _isoBounds;
+			return new PrimitiveBounds(this);
 		}
 		
-		/**
-		 * @private
-		 */
-		protected var _screenBounds:Rectangle;
-		
-		/**
-		 * @inheritDoc
-		 */
 		public function get screenBounds ():Rectangle
 		{
-			_screenBounds = mainContainer.getBounds(mainContainer);				
-			_screenBounds.x += mainContainer.x;
-			_screenBounds.y += mainContainer.y;
+			var screenBounds:Rectangle = mainContainer.getBounds(mainContainer);				
+			screenBounds.x += mainContainer.x;
+			screenBounds.y += mainContainer.y;
 			
-			return _screenBounds;
+			return screenBounds;
 		}
 		
 		/**
@@ -110,30 +120,8 @@ package as3isolib.core
 			/////////////////////////////////////////////////////////
 		
 		////////////////////////////////////////////////////////////////////////
-		//	DISTANCE
+		//	X, Y, Z
 		////////////////////////////////////////////////////////////////////////
-		
-		private var _distance:Number;
-		
-		/**
-		 * @private
-		 */
-		public function get distance ():Number
-		{
-			return _distance;
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function set distance (value:Number):void
-		{
-			_distance = value;
-		}
-		
-			////////////////////////////////////////////////////////////////////////
-			//	X, Y, Z
-			////////////////////////////////////////////////////////////////////////
 		
 		/**
 		 * @inheritDoc
@@ -154,6 +142,15 @@ package as3isolib.core
 			this.y += y;
 			this.z += z;
 		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	USE PRECISE VALUES
+		////////////////////////////////////////////////////////////////////////
+		
+		/**
+		 * Flag indicating if positional and dimensional values are rounded to the nearest whole number or not.
+		 */
+		public var usePreciseValues:Boolean = false;
 		
 		////////////////////////////////////////////////////////////////////////
 		//	X
@@ -179,11 +176,13 @@ package as3isolib.core
 		}
 		
 		/**
-		 * @private
+		 * @inheritDoc
 		 */
 		public function set x (value:Number):void
 		{
-			value = Math.round(value);
+			if (!usePreciseValues)
+				value = Math.round(value);
+				
 			if (isoX != value)
 			{
 				oldX = isoX;
@@ -235,7 +234,9 @@ package as3isolib.core
 		 */
 		public function set y (value:Number):void
 		{
-			value = Math.round(value);
+			if (!usePreciseValues)
+				value = Math.round(value);
+				
 			if (isoY != value)
 			{
 				oldY = isoY;
@@ -287,7 +288,9 @@ package as3isolib.core
 		 */
 		public function set z (value:Number):void
 		{
-			value = Math.round(value);
+			if (!usePreciseValues)
+				value = Math.round(value);
+				
 			if (isoZ != value)
 			{
 				oldZ = isoZ;
@@ -342,6 +345,9 @@ package as3isolib.core
 		 */
 		public function set width (value:Number):void
 		{	
+			if (!usePreciseValues)
+				value = Math.round(value);
+				
 			value = Math.abs(value);
 			if (isoWidth != value)
 			{
@@ -383,7 +389,11 @@ package as3isolib.core
 		 */
 		public function set length (value:Number):void
 		{
+			if (!usePreciseValues)
+				value = Math.round(value);
+				
 			value = Math.abs(value);
+			if (isoLength != value)
 			{
 				oldLength = isoLength;
 				
@@ -423,6 +433,9 @@ package as3isolib.core
 		 */
 		public function set height (value:Number):void
 		{
+			if (!usePreciseValues)
+				value = Math.round(value);
+				
 			value = Math.abs(value);	
 			if (isoHeight != value)
 			{
@@ -434,6 +447,28 @@ package as3isolib.core
 				if (autoUpdate)
 					render();
 			}
+		}
+		
+		/////////////////////////////////////////////////////////
+		//	RENDER AS ORPHAN
+		/////////////////////////////////////////////////////////
+		
+		private var _renderAsOrphan:Boolean = false;
+		
+		/**
+		 * @private
+		 */
+		public function get renderAsOrphan ():Boolean
+		{
+			return _renderAsOrphan;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set renderAsOrphan (value:Boolean):void
+		{
+			_renderAsOrphan = value;
 		}
 		
 		/////////////////////////////////////////////////////////
@@ -450,7 +485,7 @@ package as3isolib.core
 		 */
 		override public function render (recursive:Boolean = true):void
 		{
-			if (!hasParent)
+			if (!hasParent && !renderAsOrphan)
 				return;
 			
 			if (bPositionInvalidated)
@@ -555,9 +590,6 @@ package as3isolib.core
 		{
 			bPositionInvalidated = true;
 			
-			_isoBounds = null;
-			_screenBounds = null;
-			
 			if (!bInvalidateEventDispatched)
 			{
 				dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
@@ -571,9 +603,6 @@ package as3isolib.core
 		public function invalidateSize ():void
 		{
 			bSizeInvalidated = true;
-			
-			_isoBounds = null;
-			_screenBounds = null;
 			
 			if (!bInvalidateEventDispatched)
 			{
@@ -591,13 +620,24 @@ package as3isolib.core
 		}
 		
 		/////////////////////////////////////////////////////////
+		//	CREATE CHILDREN
+		/////////////////////////////////////////////////////////
+		
+		override protected function createChildren ():void
+		{
+			super.createChildren();
+			
+			mainContainer.cacheAsBitmap = _isAnimated;
+		}
+		
+		/////////////////////////////////////////////////////////
 		//	CLONE
 		/////////////////////////////////////////////////////////
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function clone ():IIsoDisplayObject
+		public function clone ():*
 		{
 			var CloneClass:Class = getDefinitionByName(getQualifiedClassName(this)) as Class;
 			

@@ -29,11 +29,15 @@ SOFTWARE.
 */
 package as3isolib.utils
 {
+	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.enum.IsoOrientation;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
+	import flash.display.BitmapData;
 	import flash.display.Graphics;
+	import flash.geom.Matrix;
+	import flash.geom.Rectangle;
 	
 	/**
 	 * IsoDrawingUtil provides some convenience methods for drawing shapes in 3D isometric space.
@@ -190,6 +194,75 @@ package as3isolib.utils
 			g.lineTo(pt1.x, pt1.y);
 			g.lineTo(pt2.x, pt2.y);
 			g.lineTo(pt0.x, pt0.y);
+		}
+		
+		/**
+		 * Creates a BitmapData object of the target IIsoDisplayObject.
+		 * 
+		 * @param target The target to retrieve the data from.
+		 * 
+		 * @return BitmapData A drawn bitmap data object of the target object.
+		 */
+		static public function getIsoBitmapData (target:IIsoDisplayObject):BitmapData
+		{
+			//make sure we can render the object, do it, then restore original value
+			var oldOrphanValue:Boolean = target.renderAsOrphan;
+			target.renderAsOrphan = true;
+			target.render();
+			target.renderAsOrphan = oldOrphanValue;
+			
+			//get the screen bounds and adjust matrix for negative rect values.
+			var rect:Rectangle = target.container.getBounds(target.container);
+			var bitmapdata:BitmapData = new BitmapData(rect.width, rect.height, true, 0);
+			bitmapdata.draw(target.container, new Matrix(1, 0, 0, 1, rect.x * -1, rect.y * -1));
+			
+			return bitmapdata;
+		}
+		
+		/**
+		 * Given a particular isometric orientation this method returns a matrix needed to project(skew) and image onto that plane.
+		 * 
+		 * @param orientation The isometric planar orientation.
+		 * @return Matrix The matrix associated with the provided isometric orientation.
+		 * 
+		 * @see as3isolib.enum.IsoOrientation
+		 */
+		static public function getIsoMatrix (orientation:String):Matrix
+		{
+			var m:Matrix = new Matrix();
+			
+			switch (orientation)
+			{
+				case IsoOrientation.XY:
+				{
+					var m2:Matrix = new Matrix();
+					m2.scale(1, 0.5);
+					
+					m.rotate(Math.PI / 4);
+					m.concat(m2);
+					
+					break;
+				}
+				
+				case IsoOrientation.XZ:
+				{
+					m.b = Math.atan(0.5);
+					break;
+				}
+				
+				case IsoOrientation.YZ:
+				{
+					m.b = Math.atan(-0.5);
+					break;
+				}
+				
+				default:
+				{
+					//do nothing
+				}
+			}
+			
+			return m;
 		}
 	}
 }

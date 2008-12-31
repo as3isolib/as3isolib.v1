@@ -33,6 +33,7 @@ package as3isolib.display
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.display.renderers.IViewRenderer;
 	import as3isolib.display.scene.IIsoScene;
+	import as3isolib.events.IsoEvent;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
@@ -41,6 +42,8 @@ package as3isolib.display
 	import flash.display.Sprite;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	
+	[Event(name="as3isolib_move", type="as3isolib.events.IsoEvent")]
 	
 	/**
 	 * IsoView is a default view port that provides basic panning and zooming functionality on a given IIsoScene.
@@ -70,11 +73,12 @@ package as3isolib.display
 		/**
 		 * @private
 		 */
-		protected var currentScreenPt:Pt;
+		protected var currentScreenPt:Pt = new Pt();
 		
 		/**
 		 * @inheritDoc
 		 */
+		[Bindable("as3isolib_move")]
 		public function get currentPt ():Pt
 		{
 			return currentScreenPt.clone() as Pt;
@@ -164,17 +168,33 @@ package as3isolib.display
 		//	VALIDATION
 		///////////////////////////////////////////////////////////////////////////////
 		
-		public var renderSceneOnValidation:Boolean = false;
-		
 		/**
 		 * @inheritDoc
 		 */
-		public function render ():void
+		public function render (recursive:Boolean = false):void
 		{
 			if (bPositionInvalidated)
 			{
 				validatePosition();
 				bPositionInvalidated = false;
+			}
+			
+			if (viewRenderers && numScenes > 0)
+			{
+				var viewRenderer:IViewRenderer;
+				var factory:IFactory;
+				for each (factory in viewRendererFactories)
+				{
+					viewRenderer = factory.newInstance();
+					viewRenderer.renderView(this);
+				}
+			}
+			
+			if (recursive)
+			{
+				var scene:IIsoScene;
+				for each (scene in scenesArray)
+					scene.render(recursive);
 			}
 		}
 		
@@ -218,21 +238,15 @@ package as3isolib.display
 			_mainContainer.x += dx;
 			_mainContainer.y += dy;
 			
+			var evt:IsoEvent = new IsoEvent(IsoEvent.MOVE);
+			evt.propName = "currentPt";
+			evt.oldValue = currentScreenPt;
+			
+			//store the new value now
 			currentScreenPt = targetScreenPt.clone() as Pt;
 			
-			if (viewRenderers && mainIsoScene)
-			{
-				var viewRenderer:IViewRenderer;
-				var factory:IFactory;
-				for each (factory in viewRendererFactories)
-				{
-					viewRenderer = factory.newInstance();
-					viewRenderer.renderView(this);
-				}
-				
-				if (renderSceneOnValidation)
-					mainIsoScene.render();
-			}
+			evt.newValue = currentScreenPt;
+			dispatchEvent(evt);
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -297,11 +311,16 @@ package as3isolib.display
 		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
-		 * The current zoom factor applied to the child scene objects.
+		 * @inheritDoc
 		 */
 		public function get currentZoom ():Number
 		{
 			return _zoomContainer.scaleX;
+		}
+		
+		public function set currentZoom (value:Number):void
+		{
+			_zoomContainer.scaleX = _zoomContainer.scaleY = value;
 		}
 		
 		/**
@@ -322,6 +341,7 @@ package as3isolib.display
 		public function reset ():void
 		{
 			_zoomContainer.scaleX = _zoomContainer.scaleY = 1;
+			setSize(_w, _h);
 			
 			_mainContainer.x = 0;
 			_mainContainer.y = 0;
@@ -367,39 +387,125 @@ package as3isolib.display
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
-		//	SCENE
+		//	SCENE METHODS
 		///////////////////////////////////////////////////////////////////////////////
-		
-		private var mainIsoScene:IIsoScene;
 		
 		/**
 		 * @private
 		 */
-		public function get scene ():IIsoScene
+		protected var scenesArray:Array = [];
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get scenes ():Array
 		{
-			return mainIsoScene;
+			return scenesArray;
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function set scene (value:IIsoScene):void
+		public function get numScenes ():uint
 		{
-			if (mainIsoScene != value)
+			return scenesArray.length;
+		}
+		
+		public function addScene (scene:IIsoScene):void
+		{
+			addSceneAt(scene, scenesArray.length);
+		}
+		
+		public function addSceneAt (scene:IIsoScene, index:int):void
+		{
+			if (!containsScene(scene))
 			{
-				if (mainIsoScene)
-					mainIsoScene.hostContainer = null;
+				scenesArray.splice(index, 0, scene);
 				
-				mainIsoScene = value;
-				if (mainIsoScene)
-				{
-					var oldZoom:Number = currentZoom;
-					
-					mainIsoScene.hostContainer = _sceneContainer;
-					reset();
-					zoom(oldZoom);
-				}
+				scene.hostContainer = _sceneContainer;
+				//if (_sceneContainer.contains(scene.hostContainer) && _sceneContainer.numChildren > 1)
+					//_sceneContainer.setChildIndex(scene.hostContainer, index);
 			}
+			
+			else
+				throw new Error("IsoView instance already contains parameter scene");
+		}
+		
+		public function containsScene (scene:IIsoScene):Boolean
+		{
+			var childScene:IIsoScene;
+			for each (childScene in scenesArray)
+			{
+				if (scene == childScene)
+					return true;
+			}
+			
+			return false;
+		}
+		
+		/* public function getSceneAt (index:int):IIsoScene
+		{
+			return IIsoScene(scenesArray[index]);
+		} */
+		
+		/* public function getSceneById (id:String):IIsoScene
+		{
+			var childScene:IIsoScene
+			for each (childScene in scenesArray)
+			{
+				if (childScene.id == id)
+					return childScene;
+			}
+			
+			return null;
+		} */
+		
+		/* public function getSceneIndex (scene:IIsoScene):int
+		{
+			var i:uint;
+			var m:uint = scenesArray.length;
+			while (i < m)
+			{
+				if (scene == scenesArray[i])
+					return i;
+				
+				i++;
+			}
+			
+			return -1;
+		} */
+		
+		/* public function setSceneIndex (scene:IIsoScene, index:int):void
+		{
+			
+		} */
+		
+		public function removeScene (scene:IIsoScene):IIsoScene
+		{
+			if (containsScene(scene))
+			{
+				var i:int = scenesArray.indexOf(scene);
+				scenesArray.splice(i, 1);
+				
+				return scene;				
+			}
+			
+			else
+				return null;
+		}
+		
+		/* public function removeSceneAt (index:int):IIsoScene
+		{
+			
+		} */
+		
+		public function removeAllScenes ():void
+		{
+			var scene:IIsoScene;
+			for each (scene in scenesArray)
+				scene.hostContainer = null;
+			
+			scenesArray = [];
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -445,19 +551,20 @@ package as3isolib.display
 			_w = Math.round(w);
 			_h = Math.round(h);
 			
-			romBoundsRect = new Rectangle(0, 0, _w, _h);
+			romBoundsRect = new Rectangle(0, 0, _w + 1, _h + 1);
+			this.scrollRect = _clipContent ? romBoundsRect : null;
 			
 			_zoomContainer.x = _w / 2;
 			_zoomContainer.y = _h / 2;
-			_zoomContainer.mask = _clipContent ? _mask : null;
+			//_zoomContainer.mask = _clipContent ? _mask : null;
 			
-			_mask.graphics.clear();
+			/* _mask.graphics.clear();
 			if (_clipContent)
 			{
 				_mask.graphics.beginFill(0);
 				_mask.graphics.drawRect(0, 0, _w, _h);
 				_mask.graphics.endFill();
-			}
+			} */
 			
 			_border.graphics.clear();
 			_border.graphics.lineStyle(0);

@@ -33,46 +33,78 @@ package as3isolib.display.renderers
 	import as3isolib.display.IIsoView;
 	import as3isolib.display.scene.IIsoScene;
 	
+	import flash.display.Graphics;
 	import flash.display.Sprite;
 	import flash.geom.Rectangle;
 	
 	/**
-	 * The DefaultViewRenderer iterates through the target view's scene's child objects and determines if they reside within the visible area.
+	 * ViewBoundsRenderer is used to draw bounding rectangles to a target graphics object based on the location of the IIsoView's scene's child object relative to the IIsoView.
 	 */
-	public class DefaultViewRenderer implements IViewRenderer
-	{		
-		////////////////////////////////////////////////////
-		//	RENDER SCENE
-		////////////////////////////////////////////////////
+	public class ViewBoundsRenderer implements IViewRenderer
+	{
+		/**
+		 * Flag indicating if all children or only those present in the display list has their bounds drawn.
+		 */
+		public var drawAll:Boolean = true;
+		
+		/**
+		 * The target graphics to draw the IIsoView's scene's child objects.  Default value is <code>null</code>.
+		 */
+		public var targetGraphics:Graphics;
+		
+		/**
+		 * The line thickness of the bounding rectangles being drawn.  Default value is 0.
+		 */
+		public var lineThickness:Number = 0;
+		
+		/**
+		 * The line color of the bounding rectangles being drawn.  Default value is 0xFF0000.
+		 */
+		public var lineColor:uint = 0xff0000;
+		
+		/**
+		 * The line alpha of the bounding rectangles being drawn.  Default value is 1.
+		 */
+		public var lineAlpha:Number = 1.0;
+		
+		/**
+		 *
+		 */
+		public var targetScenes:Array;
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function renderView (view:IIsoView):void
 		{
-			if (view.numScenes < 1)
-				return;
-			
+			if (!targetScenes || targetScenes.length < 1)
+				targetScenes = view.scenes;
+							
 			var v:Sprite = Sprite(view);
 			
-			var rect:Rectangle = new Rectangle(0, 0, v.width, v.height);
-			var bounds:Rectangle;
+			var g:Graphics = targetGraphics ? targetGraphics : v.graphics;
+			g.clear();
+			g.lineStyle(lineThickness, lineColor, lineAlpha);
 			
+			var bounds:Rectangle;
 			var child:IIsoDisplayObject;
 			var children:Array = [];
 			
 			//aggregate child objects
 			var scene:IIsoScene;
-			for each (scene in view.scenes)
+			for each (scene in targetScenes)
 				children = children.concat(scene.children);
-			
-			for each (child in children)
-			{				
-				bounds = child.getBounds(v);
-				bounds.width *= view.currentZoom;
-				bounds.height *= view.currentZoom;		
 				
-				child.includeInLayout = rect.intersects(bounds);
+			for each (child in children)
+			{
+				if (drawAll || child.includeInLayout)
+				{
+					bounds = child.getBounds(v);
+					bounds.width *= view.currentZoom;
+					bounds.height *= view.currentZoom;
+					
+					g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
+				}
 			}
 		}
 	}

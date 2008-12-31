@@ -34,7 +34,7 @@ package as3isolib.display.renderers
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.scene.IIsoScene;
 	
-	import flash.events.EventDispatcher;
+	import flash.utils.getTimer;
 	
 	use namespace as3isolib_internal;
 	
@@ -52,8 +52,9 @@ package as3isolib.display.renderers
 		 */
 		public function renderScene (scene:IIsoScene):void
 		{
+			var startTime:uint = getTimer();
+			
 			var sortedChildren:Array = scene.displayListChildren.slice(); //make a copy of the children
-			sortedChildren.sortOn(["distance", "screenX", "screenY"], Array.NUMERIC);
 			sortedChildren.sort(isoDepthSort); //perform a secondary sort for any hittests
 			
 			var child:IIsoDisplayObject;
@@ -63,10 +64,12 @@ package as3isolib.display.renderers
 			{
 				child = IIsoDisplayObject(sortedChildren[i]);
 				if (child.depth != i)
-					scene.setChildIndex(child, i); //is there a way to make this more efficient?
+					scene.setChildIndex(child, i);
 				
 				i++;
 			}
+			
+			trace("scene layout render time", getTimer() - startTime, "ms");
 		}
 		
 		////////////////////////////////////////////////////
@@ -75,59 +78,29 @@ package as3isolib.display.renderers
 		
 		private function isoDepthSort (childA:Object, childB:Object):int
 		{
-			var boundsA:IBounds;
-			var boundsB:IBounds;
+			var boundsA:IBounds = childA.isoBounds;
+			var boundsB:IBounds = childB.isoBounds;
 			
-			//trace(childA.id, childB.id);
+			if (boundsA.right <= boundsB.left)
+				return -1;
+				
+			else if (boundsA.left >= boundsB.right)
+				return 1;
 			
-			if (childA.container.hitTestObject(childB.container))
-			{
-				boundsA = childA.isoBounds;
-				boundsB = childB.isoBounds;
+			else if (boundsA.front <= boundsB.back)
+				return -1;
 				
-				if (boundsA.right <= boundsB.left)
-					return -1;
-					
-				else if (boundsA.left >= boundsB.right)
-					return 1;
+			else if (boundsA.back >= boundsB.front)
+				return 1;
 				
-				else if (boundsA.front <= boundsB.back)
-					return -1;
-					
-				else if (boundsA.back >= boundsB.front)
-					return 1;
-					
-				else if (boundsA.top <= boundsB.bottom)
-					return -1;
-					
-				else if (boundsA.bottom >= boundsB.top)
-					return 1;
+			else if (boundsA.top <= boundsB.bottom)
+				return -1;
 				
-				else
-					return 0;
-			}			
+			else if (boundsA.bottom >= boundsB.top)
+				return 1;
 			
-			//else simple positioning sort
 			else
-			{
-				if (childA.screenY > childB.screenY)
-					return 1;
-					
-				else if (childA.screenY < childB.screenY)
-					return -1;
-				
-				else
-				{
-					if (childA.screenX > childB.screenX)
-						return 1;
-						
-					else if (childA.screenX < childB.screenX)
-						return -1;
-						
-					else 
-						return 0;
-				}
-			}
+				return 0;
 		}
 	}
 }

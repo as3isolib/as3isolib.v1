@@ -43,61 +43,6 @@ package as3isolib.display.primitive
 		/**
 		 * @private
 		 */
-		function get faceAlphas ():Array;
-		
-		/**
-		 * An array of alpha values corresponding to the various faces (where applicable).
-		 * For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
-		 */
-		function set faceAlphas (value:Array):void;
-		
-		/**
-		 * @private
-		 */
-		function get faceColors ():Array;
-		
-		/**
-		 * An array of color values corresponding to the various faces (where applicable).
-		 * For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
-		 */
-		function set faceColors (value:Array):void;
-		
-		/**
-		 * @private
-		 */
-		function get lineAlphas ():Array;
-		
-		/**
-		 * An array of alphas values corresponding to the various faces' outlines (where applicable).
-		 * For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
-		 */
-		function set lineAlphas (value:Array):void;
-		
-		/**
-		 * @private
-		 */
-		function get lineColors ():Array;
-		
-		/**
-		 * An array of color values corresponding to the various faces' outlines (where applicable).
-		 * For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
-		 */
-		function set lineColors (value:Array):void;
-		
-		/**
-		 * @private
-		 */
-		function get lineThicknesses ():Array;
-		
-		/**
-		 * An array of thickness values corresponding to the various faces' outlines (where applicable).
-		 * For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
-		 */
-		function set lineThicknesses (value:Array):void;
-		
-		/**
-		 * @private
-		 */
 		function get styleType ():String;
 		
 		/**
@@ -107,6 +52,30 @@ package as3isolib.display.primitive
 		 * @see as3isolib.enum.RenderStyleType
 		 */
 		function set styleType (value:String):void;
+		
+		/**
+		 * @private
+		 */
+		function get fills ():Array;
+		
+		/**
+		 * An array of IFill objects used to apply material fills to the faces of the primitive object.
+		 * 
+		 * @see as3isolib.graphics.IFill
+		 */
+		function set fills (value:Array):void;
+		
+		/**
+		 * @private
+		 */
+		function get strokes ():Array;
+		
+		/**
+		 * An array of IStroke objects used to apply line styles to the face edges of the primitive object.
+		 * 
+		 * @see as3isolib.graphics.IFill
+		 */
+		function set strokes (value:Array):void;
 		
 		//////////////////////////////////////////////////////////////////
 		//	INVALIDATION

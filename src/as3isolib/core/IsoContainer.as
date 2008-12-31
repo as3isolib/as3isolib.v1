@@ -109,7 +109,7 @@ package as3isolib.core
 			{
 				super.addChildAt(child, index);
 				
-				if (includeInLayout)
+				if (IIsoContainer(child).includeInLayout)
 				{
 					displayListChildrenArray.push(child);
 					mainContainer.addChildAt(IIsoContainer(child).container, index);

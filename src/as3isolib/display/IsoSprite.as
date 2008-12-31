@@ -132,6 +132,9 @@ package as3isolib.display
 			super.render(recursive);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		override protected function createChildren ():void
 		{
 			super.createChildren();

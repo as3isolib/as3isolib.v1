@@ -29,11 +29,33 @@ SOFTWARE.
 */
 package as3isolib.geom
 {
+	/*
+	http://www.compuphase.com/axometr.htm - axometric projection references
+	*/
+	
+	import flash.geom.Point;
+	
 	/**
 	 * IsoMath provides functions for converting pts back and forth between 3D isometric space and cartesian coordinates.
 	 */
 	public class IsoMath
 	{
+		static private var _theta:Number = 2
+		static private var _projectionAngle:Number = Math.atan(0.5);
+		
+		static public function set projectionAngle (degrees:Number):void
+		{
+			_projectionAngle = degrees;
+			
+			var radians:Number = degrees * Math.PI / 180;
+			_theta = 1 / Math.tan(radians);
+		}
+		
+		static public function get projectionAngle ():Number
+		{
+			return _projectionAngle;
+		}
+		
 		/**
 		 * Converts a given pt in cartesian coordinates to 3D isometric space.
 		 * 
@@ -44,7 +66,7 @@ package as3isolib.geom
 		static public function screenToIso (screenPt:Pt, createNew:Boolean = false):Pt
 		{
 			var z:Number = screenPt.z / Math.sqrt(1.25);
-			var y:Number = (2 * screenPt.y - screenPt.x) / 2 + screenPt.z;
+			var y:Number = (_theta * screenPt.y - screenPt.x) / 2 + screenPt.z;
 			var x:Number = screenPt.x + y;
 			
 			if (createNew)
@@ -70,7 +92,7 @@ package as3isolib.geom
 		static public function isoToScreen (isoPt:Pt, createNew:Boolean = false):Pt
 		{
 			var z:Number = isoPt.z * Math.sqrt(1.25);
-			var y:Number = 0.5 * (isoPt.x + isoPt.y) - isoPt.z;
+			var y:Number = 1 / _theta * (isoPt.x + isoPt.y) - isoPt.z;
 			var x:Number = isoPt.x - isoPt.y;
 			
 			if (createNew)

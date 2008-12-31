@@ -439,8 +439,6 @@ class ListenerHash
 {
 	public var listeners:Array = [];
 	
-	
-	
 	public function addListener (listener:Function):void
 	{
 		if (!contains(listener))

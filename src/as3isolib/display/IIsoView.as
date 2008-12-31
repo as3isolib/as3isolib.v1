@@ -30,26 +30,26 @@ SOFTWARE.
 package as3isolib.display
 {
 	import as3isolib.core.IIsoDisplayObject;
-	import as3isolib.display.scene.IIsoScene;
 	import as3isolib.geom.Pt;
 	
 	import flash.display.Sprite;
+	import flash.events.IEventDispatcher;
 	
 	/**
 	 * The IIsoView interface defines methods necessary to properly perform panning, zooming and other display task for a given IIsoScene.
 	 * The implementor normally wraps an IIsoScene with layout constraints.
 	 */
-	public interface IIsoView
+	public interface IIsoView extends IEventDispatcher
 	{
 		/**
-		 * @private
+		 * An array of all child scenes.
 		 */
-		function get scene ():IIsoScene;
+		function get scenes ():Array;
 		
 		/**
-		 * The child scene object that this IsoView wraps.
+		 * The number of scenes.
 		 */
-		function set scene (value:IIsoScene):void;
+		function get numScenes ():uint;
 		
 		/**
 		 * This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.
@@ -108,6 +108,11 @@ package as3isolib.display
 		function pan (px:Number, py:Number):void;
 		
 		/**
+		 * The current zoom factor applied to the child scene objects.
+		 */
+		function get currentZoom ():Number
+		
+		/**
 		 * Zooms the child scene objects by a given amount.
 		 * 
 		 * @param zFactor The positive non-zero value to scale the child scene objects by.  This corresponds to the child scene objects' containers' scaleX and scaleY properties.
@@ -121,8 +126,14 @@ package as3isolib.display
 		
 		/**
 		 * Executes positional changes for background, scene and foreground objects.
+		 * 
+		 * @param recursive Flag indicating if child scenes render on the view's validation.  Default value is <code>false</code>.
 		 */
-		function render ():void;
+		function render (recursive:Boolean = false):void;
+		
+		function get width ():Number;
+		
+		function get height ():Number;
 		
 		/**
 		 * @private

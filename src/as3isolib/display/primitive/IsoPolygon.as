@@ -31,11 +31,10 @@ package as3isolib.display.primitive
 {
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.enum.RenderStyleType;
+	import as3isolib.graphics.IFill;
+	import as3isolib.graphics.IStroke;
 	
-	import flash.display.CapsStyle;
 	import flash.display.Graphics;
-	import flash.display.JointStyle;
-	import flash.display.LineScaleMode;
 	
 	use namespace as3isolib_internal;
 	
@@ -61,19 +60,13 @@ package as3isolib.display.primitive
 			g.clear();
 			g.moveTo(pts[0].x, pts[0].y);
 			
-			if (styleType == RenderStyleType.SHADED)
-				g.beginFill(faceColors[0], faceAlphas[0]);
+			var fill:IFill = IFill(fills[0]);
+			if (fill && styleType != RenderStyleType.WIREFRAME)
+				fill.begin(g);
 			
-			else if (styleType == RenderStyleType.SOLID)
-				g.beginFill(0xffffff, faceAlphas[0]);
-				
-			else if (styleType == RenderStyleType.WIREFRAME)
-				g.beginFill(0xff0000, 0.0);
-			
-			else
-				return;
-			
-			g.lineStyle(lineThicknesses[0], lineColors[0], lineAlphas[0], true, LineScaleMode.NORMAL, CapsStyle.SQUARE, JointStyle.ROUND);
+			var stroke:IStroke = IStroke(strokes[0]);
+			if (stroke)
+				stroke.apply(g);
 			
 			var i:uint = 1;
 			var l:uint = pts.length;
@@ -84,15 +77,20 @@ package as3isolib.display.primitive
 			}
 				
 			g.lineTo(pts[0].x, pts[0].y);
-			g.endFill();
+			
+			if (fill)
+				fill.end(g);
 		}
 		
 		////////////////////////////////////////////////////////////////////////
 		//	PTS
 		////////////////////////////////////////////////////////////////////////
 		
+		/**
+		 * @private
+		 */
 		[ArrayElementType("as3isolib.geom.Pt")]
-		private var geometryPts:Array = [];
+		protected var geometryPts:Array = [];
 		
 		/**
 		 * @private

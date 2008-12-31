@@ -29,12 +29,14 @@ SOFTWARE.
 */
 package as3isolib.display.primitive
 {
-	import as3isolib.bounds.PrimitiveBounds;
-	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.enum.RenderStyleType;
 	import as3isolib.events.IsoEvent;
+	import as3isolib.graphics.IFill;
+	import as3isolib.graphics.IStroke;
+	import as3isolib.graphics.SolidColorFill;
+	import as3isolib.graphics.Stroke;
 	
 	use namespace as3isolib_internal;
 	
@@ -56,7 +58,7 @@ package as3isolib.display.primitive
 		// STYLES
 		//////////////////////////////////////////////////////
 		
-		private var renderStyle:String = RenderStyleType.SHADED;
+		private var renderStyle:String = RenderStyleType.SOLID;
 		
 		/**
 		 * @private
@@ -81,29 +83,24 @@ package as3isolib.display.primitive
 			}
 		}
 		
-		//////////////////////////////////////////////////////
-		// LINE STYLES
-		//////////////////////////////////////////////////////
+		//////////////////////////////
+		//	MATERIALS
+		//////////////////////////////
 		
-		[ArrayElementType("uint")]
-		private var lineThicknessesArray:Array = [0, 0, 0, 0, 0, 0];
+		static protected const DEFAULT_FILL:IFill = new SolidColorFill(0xFFFFFF, 1);
 		
-		/**
-		 * @private
-		 */
-		public function get lineThicknesses ():Array
+		private var fillsArray:Array = [DEFAULT_FILL];
+		
+		public function get fills ():Array
 		{
-			return lineThicknessesArray;
+			return fillsArray;
 		}
 		
-		/**
-		 * @inheritDoc
-		 */
-		public function set lineThicknesses (value:Array):void
+		public function set fills (value:Array):void
 		{
-			if (lineThicknessesArray != value)
+			if (fillsArray != value)
 			{
-				lineThicknessesArray = value;
+				fillsArray = value;
 				invalidateStyles();
 				
 				if (autoUpdate)
@@ -111,110 +108,20 @@ package as3isolib.display.primitive
 			}
 		}
 		
-		[ArrayElementType("uint")]
-		private var lineColorArray:Array = [0x000000, 0x000000, 0x000000, 0x000000, 0x000000, 0x000000,];
+		static protected const DEFAULT_STROKE:IStroke = new Stroke(0, 0x000000);
 		
-		/**
-		 * @private
-		 */
-		public function get lineColors ():Array
+		private var edgesArray:Array = [DEFAULT_STROKE];
+		
+		public function get strokes ():Array
 		{
-			return lineColorArray;
+			return edgesArray;
 		}
 		
-		/**
-		 * @inheritDoc
-		 */
-		public function set lineColors (value:Array):void
+		public function set strokes (value:Array):void
 		{
-			if (lineColorArray != value)
+			if (edgesArray != value)
 			{
-				lineColorArray = value;
-				invalidateStyles();
-				
-				if (autoUpdate)
-					render();
-			}
-		}
-		
-		[ArrayElementType("Number")]
-		private var lineAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
-		
-		/**
-		 * @private
-		 */
-		public function get lineAlphas ():Array
-		{
-			return lineAlphasArray;
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function set lineAlphas (value:Array):void
-		{
-			if (lineAlphasArray != value)
-			{
-				lineAlphasArray = value;
-				invalidateStyles();
-				
-				if (autoUpdate)
-					render();
-			}
-		}
-		
-		//////////////////////////////////////////////////////
-		// FACE STYLES
-		//////////////////////////////////////////////////////
-		
-		[ArrayElementType("uint")]
-		private var solidColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff];
-		
-		[ArrayElementType("uint")]
-		private var shadedColorArray:Array = [0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xcccccc, 0xcccccc];
-		
-		/**
-		 * @private
-		 */
-		public function get faceColors ():Array
-		{
-			return shadedColorArray;
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function set faceColors (value:Array):void
-		{
-			if (shadedColorArray != value)
-			{
-				shadedColorArray = value;
-				invalidateStyles();
-				
-				if (autoUpdate)
-					render();
-			}
-		}
-		
-		[ArrayElementType("Number")]
-		private var faceAlphasArray:Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
-		
-		/**
-		 * @private
-		 */
-		public function get faceAlphas ():Array
-		{
-			return faceAlphasArray;
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function set faceAlphas (value:Array):void
-		{
-			if (faceAlphasArray != value)
-			{
-				faceAlphasArray = value;
+				edgesArray = value;
 				invalidateStyles();
 				
 				if (autoUpdate)
@@ -231,7 +138,7 @@ package as3isolib.display.primitive
 		 */
 		override public function render (recursive:Boolean = true):void
 		{
-			if (!hasParent)
+			if (!hasParent && !renderAsOrphan)
 				return;
 			
 			//we do this before calling super.render() so as to only perform drawing logic for the size or style invalidation, not both.
@@ -312,15 +219,12 @@ package as3isolib.display.primitive
 		/**
 		 * @inheritDoc
 		 */
-		override public function clone ():IIsoDisplayObject
+		override public function clone ():*
 		{
 			var cloneInstance:IIsoPrimitive = super.clone() as IIsoPrimitive;
+			cloneInstance.fills = fillsArray;
+			cloneInstance.strokes = edgesArray
 			cloneInstance.styleType = styleType;
-			cloneInstance.lineAlphas = lineAlphasArray;
-			cloneInstance.lineColors = lineColorArray;
-			cloneInstance.lineThicknesses = lineThicknessesArray;
-			cloneInstance.faceAlphas = faceAlphasArray;
-			cloneInstance.faceColors = shadedColorArray;
 			
 			return cloneInstance;
 		}

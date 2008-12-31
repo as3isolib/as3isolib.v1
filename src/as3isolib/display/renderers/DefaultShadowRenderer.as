@@ -51,7 +51,7 @@ package as3isolib.display.renderers
 		/**
 		 * If a child's z <= 0 and drawAll = true the shadow will still be renderered.
 		 */
-		public var drawAll:Boolean = true;
+		public var drawAll:Boolean = false;
 		
 		/**
 		 * The color of the shadow.

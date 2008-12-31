@@ -126,6 +126,7 @@ package as3isolib.data
 		/**
 		 * @inheritDoc
 		 */
+		[ClassUtil(ignore="true")]
 		public function get parent():INode
 		{
 			return parentNode;
@@ -241,7 +242,7 @@ package as3isolib.data
 			}
 			
 			Node(child).parentNode = this;
-			childrenArray.push(child);
+			childrenArray.splice(index, 0, child);
 			
 			var evt:IsoEvent = new IsoEvent(IsoEvent.CHILD_ADDED);
 			evt.newValue = child;

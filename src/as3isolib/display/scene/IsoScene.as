@@ -41,7 +41,6 @@ package as3isolib.display.scene
 	import as3isolib.display.renderers.DefaultSceneLayoutRenderer;
 	import as3isolib.display.renderers.ISceneRenderer;
 	import as3isolib.events.IsoEvent;
-	import as3isolib.geom.Pt;
 	
 	import flash.display.DisplayObjectContainer;
 	import flash.utils.getTimer;
@@ -67,10 +66,10 @@ package as3isolib.display.scene
 		 */
 		public function get isoBounds ():IBounds
 		{
-			if (!_isoBounds || isInvalidated)
-				_isoBounds = new SceneBounds(this);
+			/* if (!_isoBounds || isInvalidated)
+				_isoBounds =  */
 			
-			return _isoBounds;
+			return new SceneBounds(this);
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -195,17 +194,7 @@ package as3isolib.display.scene
 		 */
 		protected function child_invalidateHandler (evt:IsoEvent):void
 		{
-			var child:IIsoDisplayObject = IIsoDisplayObject(evt.target);
-			
-			//determine distance from a likely camera position
-			var camera:Pt = new Pt(100000, 100000, 100000);
-			child.distance = -1 * Math.sqrt
-										(
-											Math.pow(camera.x - (child.x + child.width), 2) + 
-											Math.pow(camera.y - (child.y + child.length), 2) + 
-											Math.pow(camera.z - (child.z + child.height), 2)
-										);
-						
+			var child:Object = evt.target;
 			if (invalidatedChildrenArray.indexOf(child) == -1)
 				invalidatedChildrenArray.push(child);
 			
@@ -313,13 +302,6 @@ package as3isolib.display.scene
 		//	RENDER
 		///////////////////////////////////////////////////////////////////////////////
 		
-		private var renderInfoObj:SceneRenderInfoObject = new SceneRenderInfoObject();
-		
-		public function get renderInfo ():String
-		{
-			return renderInfoObj.toString();
-		}
-		
 		/**
 		 * @inheritDoc
 		 */
@@ -329,18 +311,14 @@ package as3isolib.display.scene
 			
 			if (_isInvalidated)
 			{
-				var time:int = getTimer();
-				
 				//render the layout first
 				var sceneRenderer:ISceneRenderer;
 				if (layoutEnabled)
 				{
 					sceneRenderer = layoutRendererFactory.newInstance();
-					sceneRenderer.renderScene(this);
+					if (sceneRenderer)
+						sceneRenderer.renderScene(this);
 				}
-				
-				renderInfoObj.layoutRenderTime = getTimer() - time;
-				time = getTimer();
 				
 				//apply styling
 				mainContainer.graphics.clear(); //should we do this here?
@@ -351,12 +329,10 @@ package as3isolib.display.scene
 					for each (factory in styleRendererFactories)
 					{
 						sceneRenderer = factory.newInstance();
-						sceneRenderer.renderScene(this);
+						if (sceneRenderer)
+							sceneRenderer.renderScene(this);
 					}
 				}
-				
-				renderInfoObj.styleRenderTime = getTimer() - time;
-				time = getTimer();
 				
 				_isInvalidated = false;
 				
@@ -385,16 +361,5 @@ package as3isolib.display.scene
 			
 			layoutRendererFactory = new ClassFactory(DefaultSceneLayoutRenderer);
 		}
-	}
-}
-
-class SceneRenderInfoObject
-{
-	public var layoutRenderTime:int;
-	public var styleRenderTime:int;
-	
-	public function toString ():String
-	{
-		return "layoutRenderTime: " + layoutRenderTime + "\t styleRenderTime: " + styleRenderTime;
 	}
 }

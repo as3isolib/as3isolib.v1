@@ -27,21 +27,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
-package as3isolib.enum
+package as3isolib.graphics
 {
-	public class IsoOrientation
+	import flash.display.Graphics;
+	
+	/**
+	 * The IStroke interface defines the interface that stroke classes must implement.
+	 * 
+	 * This is a modified extension of mx.graphics.IStroke interface located in the Flex SDK by Adobe.
+	 */
+	public interface IStroke
 	{
-		static public const X:String = "x";
-		static public const Y:String = "y";
-		static public const Z:String = "z";		
-			
-		static public const XY:String = "xy";
-		static public const XZ:String = "xz";
-		static public const YZ:String = "yz";
-		
-		static public const XYZ:String = "xyz";
-		
-		static public const NONE:String = "none";
-		static public const UNDEFINED:String = "undefined";
+		/**
+		 *  Applies the properties to the specified Graphics object.
+		 *   
+		 *  @param target The Graphics object to apply the properties to.
+		 */
+		function apply (target:Graphics):void
 	}
 }

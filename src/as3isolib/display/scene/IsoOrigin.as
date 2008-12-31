@@ -34,6 +34,10 @@ package as3isolib.display.scene
 	import as3isolib.enum.IsoOrientation;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
+	import as3isolib.graphics.IFill;
+	import as3isolib.graphics.IStroke;
+	import as3isolib.graphics.SolidColorFill;
+	import as3isolib.graphics.Stroke;
 	import as3isolib.utils.IsoDrawingUtil;
 	
 	import flash.display.Graphics;
@@ -58,58 +62,67 @@ package as3isolib.display.scene
 			g.clear();
 			
 			//draw x-axis
-			g.lineStyle(lineThicknesses[0], lineColors[0], lineAlphas[0]);
+			var stroke:IStroke = IStroke(strokes[0]);
+			var fill:IFill = IFill(fills[0]);
+			
+			stroke.apply(g);
 			g.moveTo(pt0.x, pt0.y);
 			g.lineTo(pt1.x, pt1.y);
 			
 			g.lineStyle(0, 0, 0);
 			g.moveTo(pt0.x, pt0.y);
-			g.beginFill(lineColors[0], lineAlphas[0]);
+			fill.begin(g);
 			IsoDrawingUtil.drawIsoArrow(g, new Pt(-1 * axisLength, 0), 180, arrowLength, arrowWidth);
-			g.endFill();
+			fill.end(g);
 			
 			g.moveTo(pt1.x, pt1.y);
-			g.beginFill(lineColors[0], lineAlphas[0]);
+			fill.begin(g);
 			IsoDrawingUtil.drawIsoArrow(g, new Pt(axisLength, 0), 0, arrowLength, arrowWidth);
-			g.endFill();
+			fill.end(g);
 			
 			//draw y-axis
+			stroke = IStroke(strokes[1]);
+			fill = IFill(fills[1]);
+			
 			pt0 = IsoMath.isoToScreen(new Pt(0, -1 * axisLength, 0));
 			pt1 = IsoMath.isoToScreen(new Pt(0, axisLength, 0));
 			
-			g.lineStyle(lineThicknesses[1], lineColors[1], lineAlphas[1]);
+			stroke.apply(g);
 			g.moveTo(pt0.x, pt0.y);
 			g.lineTo(pt1.x, pt1.y);
 			
 			g.lineStyle(0, 0, 0);
 			g.moveTo(pt0.x, pt0.y);
-			g.beginFill(lineColors[1], lineAlphas[1]);
+			fill.begin(g)
 			IsoDrawingUtil.drawIsoArrow(g, new Pt(0, -1 * axisLength), 270, arrowLength, arrowWidth);
-			g.endFill();
+			fill.end(g);
 			
 			g.moveTo(pt1.x, pt1.y);
-			g.beginFill(lineColors[1], lineAlphas[1]);
+			fill.begin(g);
 			IsoDrawingUtil.drawIsoArrow(g, new Pt(0, axisLength), 90, arrowLength, arrowWidth);
-			g.endFill();
+			fill.end(g);
 			
 			//draw z-axis
+			stroke = IStroke(strokes[2]);
+			fill = IFill(fills[2]);
+			
 			pt0 = IsoMath.isoToScreen(new Pt(0, 0, -1 * axisLength));
 			pt1 = IsoMath.isoToScreen(new Pt(0, 0, axisLength));
 			
-			g.lineStyle(lineThicknesses[2], lineColors[2], lineAlphas[2]);
+			stroke.apply(g);
 			g.moveTo(pt0.x, pt0.y);
 			g.lineTo(pt1.x, pt1.y);
 			
 			g.lineStyle(0, 0, 0);
 			g.moveTo(pt0.x, pt0.y);
-			g.beginFill(lineColors[2], lineAlphas[2]);
+			fill.begin(g)
 			IsoDrawingUtil.drawIsoArrow(g, new Pt(0, 0, axisLength), 90, arrowLength, arrowWidth, IsoOrientation.XZ);
-			g.endFill();
+			fill.end(g);
 			
 			g.moveTo(pt1.x, pt1.y);
-			g.beginFill(lineColors[2], lineAlphas[2]);
+			fill.begin(g);
 			IsoDrawingUtil.drawIsoArrow(g, new Pt(0, 0, -1 * axisLength), 270, arrowLength, arrowWidth, IsoOrientation.YZ);
-			g.endFill();
+			fill.end(g);
 		}
 		
 		/**
@@ -135,9 +148,19 @@ package as3isolib.display.scene
 		{
 			super();
 			
-			lineThicknesses = [0, 0, 0]
-			lineColors = [0xff0000, 0x00ff00, 0x0000ff];
-			lineAlphas = [0.75, 0.75, 0.75];
+			strokes =
+			[
+				new Stroke(0, 0xFF0000, 0.75),
+				new Stroke(0, 0x00FF00, 0.75),
+				new Stroke(0, 0x0000FF, 0.75)
+			];
+			
+			fills =
+			[
+				new SolidColorFill(0xFF0000, 0.75),
+				new SolidColorFill(0x00FF00, 0.75),
+				new SolidColorFill(0x0000FF, 0.75)
+			]
 		}
 		
 		/**

@@ -41,6 +41,21 @@ package as3isolib.core
 	public interface IIsoDisplayObject extends INode, IIsoContainer
 	{
 		//////////////////////////////////////////////////////////////////
+		//	RENDER AS ORPHAN
+		//////////////////////////////////////////////////////////////////
+		
+		/**
+		 * @private
+		 */
+		function get renderAsOrphan ():Boolean;
+		
+		/**
+		 * By default, objects lacking a parent node do not perform rendering logic.  
+		 * If <code>renderAsOrphan</code> is set to true, then the IsoDisplayObject will render regardless if they have a parent node or not.
+		 */
+		function set renderAsOrphan (value:Boolean):void;
+		
+		//////////////////////////////////////////////////////////////////
 		//	BOUNDS
 		//////////////////////////////////////////////////////////////////
 		
@@ -68,17 +83,6 @@ package as3isolib.core
 		//////////////////////////////////////////////////////////////////
 		
 		/**
-		 * @private
-		 */
-		function get distance ():Number;
-		
-		/**
-		 * The distance from an arbitrary point in 3D isometric space. 
-		 * Used for depth sorting algorithms. Though this is a public member it is not recommended for general usage.
-		 */
-		function set distance (value:Number):void;
-		
-		/**
 		 * Moves the IIsoDisplayObject to the particular 3D isometric coordinates.
 		 * 
 		 * @param x The x value in 3D isometric space.
@@ -95,6 +99,16 @@ package as3isolib.core
 		 * @param z The relative z value in 3D isometric space.
 		 */
 		function moveBy (x:Number, y:Number, z:Number):void;
+		
+		/**
+		 * @private
+		 */
+		function get isAnimated ():Boolean
+		
+		/**
+		 * Flag indicating if IIsoDisplayObject will be intended for frequent movement and/or resizing.
+		 */
+		function set isAnimated (value:Boolean):void
 		
 		/**
 		 * @private
@@ -209,6 +223,6 @@ package as3isolib.core
 		 * 
 		 * @return IIsoDisplayObject The clone of the original.
 		 */
-		function clone ():IIsoDisplayObject;
+		function clone ():*;
 	}
 }

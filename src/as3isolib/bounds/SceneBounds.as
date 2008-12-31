@@ -38,6 +38,11 @@ package as3isolib.bounds
 	 */
 	public class SceneBounds implements IBounds
 	{
+		public function get volume ():Number
+		{
+			return width * length * height;
+		}
+		
 		////////////////////////////////////////////////////////////////
 		//	W / L / H
 		////////////////////////////////////////////////////////////////
@@ -185,7 +190,7 @@ package as3isolib.bounds
 			this._target = target;
 			
 			var child:IIsoDisplayObject;
-			for each (child in _target.children)
+			for each (child in _target.displayListChildren)
 			{
 				if (isNaN(_left) || child.isoBounds.left < _left)
 					_left = child.isoBounds.left;

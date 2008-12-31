@@ -27,21 +27,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
-package as3isolib.enum
+package as3isolib.graphics
 {
-	public class IsoOrientation
+	import flash.display.Graphics;
+	
+	/**
+	 * The IFill interface defines the interface that fill classes must implement.
+	 * 
+	 * This is a modified extension of mx.graphics.IFill interface located in the Flex SDK by Adobe.
+	 */
+	public interface IFill
 	{
-		static public const X:String = "x";
-		static public const Y:String = "y";
-		static public const Z:String = "z";		
-			
-		static public const XY:String = "xy";
-		static public const XZ:String = "xz";
-		static public const YZ:String = "yz";
+		/**
+		 * Initiates fill logic on target graphics.
+		 * 
+		 * @param target The target graphics object.
+		 */
+		function begin (target:Graphics):void;
 		
-		static public const XYZ:String = "xyz";
-		
-		static public const NONE:String = "none";
-		static public const UNDEFINED:String = "undefined";
+		/**
+		 * Completes fill logic on the target graphics.
+		 * 
+		 * @param target The target graphics object.
+		 */
+		function end (target:Graphics):void;
 	}
 }

@@ -33,6 +33,8 @@ package as3isolib.display.scene
 	import as3isolib.display.primitive.IsoPrimitive;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
+	import as3isolib.graphics.IStroke;
+	import as3isolib.graphics.Stroke;
 	
 	import flash.display.Graphics;
 	
@@ -115,10 +117,7 @@ package as3isolib.display.scene
 		public function get origin ():IsoOrigin
 		{
 			if (!_origin)
-			{
 				_origin = new IsoOrigin();
-				addChild(_origin);
-			}
 			
 			return _origin;
 		}
@@ -146,6 +145,20 @@ package as3isolib.display.scene
 		}
 		
 		////////////////////////////////////////////////////
+		//	GRID STYLES
+		////////////////////////////////////////////////////
+		
+		public function get gridlines ():IStroke
+		{
+			return IStroke(strokes[0]);
+		}
+		
+		public function set gridlines (value:IStroke):void
+		{
+			strokes = [value];
+		}
+		
+		////////////////////////////////////////////////////
 		//	CONSTRUCTOR
 		////////////////////////////////////////////////////
 		
@@ -157,10 +170,7 @@ package as3isolib.display.scene
 			super();
 			
 			showOrigin = true;
-			
-			lineThicknesses = [0];
-			lineColors = [0xcccccc];
-			lineAlphas = [0.5];
+			gridlines = new Stroke(0, 0xCCCCCC, 0.5);
 			
 			cellSize = 25;
 			setGridSize(5, 5);
@@ -201,7 +211,9 @@ package as3isolib.display.scene
 			var g:Graphics = mainContainer.graphics;
 			g.clear();
 			
-			g.lineStyle(lineThicknesses[0], lineColors[0], lineAlphas[0]);
+			var stroke:IStroke = IStroke(strokes[0]);
+			if (stroke)
+				stroke.apply(g);
 			
 			var pt:Pt = new Pt();
 			
