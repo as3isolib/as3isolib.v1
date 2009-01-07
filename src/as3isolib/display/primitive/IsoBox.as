@@ -244,37 +244,37 @@ package as3isolib.display.primitive
 				fill.end(g); */
 			
 			//bottom face
-			sq0.width = width;
-			sq0.length = length;
+			sq0.width = isoWidth;
+			sq0.length = isoLength;
 			sq0.height = 0;
 			
 			//back-left face
 			sq1.width = 0;
-			sq1.length = length;
-			sq1.height = height;
+			sq1.length = isoLength;
+			sq1.height = isoHeight;
 			
 			//back-right face
-			sq2.width = width;
+			sq2.width = isoWidth;
 			sq2.length = 0;
-			sq2.height = height;
+			sq2.height = isoHeight;
 			
 			//front-left face
-			sq3.width = width;
+			sq3.width = isoWidth;
 			sq3.length = 0;
-			sq3.height = height;
-			sq3.y = length;
+			sq3.height = isoHeight;
+			sq3.y = isoLength;
 			
 			//front-right face
 			sq4.width = 0;
-			sq4.length = length;
-			sq4.height = height;
-			sq4.x = width;
+			sq4.length = isoLength;
+			sq4.height = isoHeight;
+			sq4.x = isoWidth;
 			
 			//top face
-			sq5.width = width;
-			sq5.length = length;
+			sq5.width = isoWidth;
+			sq5.length = isoLength;
 			sq5.height = 0;
-			sq5.z = height;
+			sq5.z = isoHeight;
 			
 			//now apply all common properties
 			var sq:IsoRectangle;
