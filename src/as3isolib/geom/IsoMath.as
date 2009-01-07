@@ -33,28 +33,40 @@ package as3isolib.geom
 	http://www.compuphase.com/axometr.htm - axometric projection references
 	*/
 	
-	import flash.geom.Point;
+	import as3isolib.geom.transformations.DefaultIsometricTransformation;
+	import as3isolib.geom.transformations.IAxonometricTransformation;
 	
 	/**
 	 * IsoMath provides functions for converting pts back and forth between 3D isometric space and cartesian coordinates.
 	 */
 	public class IsoMath
 	{
-		static private var _theta:Number = 2
-		static private var _projectionAngle:Number = Math.atan(0.5);
+		/////////////////////////////////////////////////////////////////////
+		//	TRANSFORMATION OBJECT
+		/////////////////////////////////////////////////////////////////////
 		
-		static public function set projectionAngle (degrees:Number):void
+		static private var transformationObj:IAxonometricTransformation = new DefaultIsometricTransformation();
+		
+		/**
+		 * @private
+		 */
+		static public function get transformationObject ():IAxonometricTransformation
 		{
-			_projectionAngle = degrees;
+			return transformationObj;
+		}
+		
+		static public function set transformationObject (value:IAxonometricTransformation):void
+		{
+			if (value)
+				transformationObj = value;
 			
-			var radians:Number = degrees * Math.PI / 180;
-			_theta = 1 / Math.tan(radians);
+			else
+				transformationObj = new DefaultIsometricTransformation();
 		}
 		
-		static public function get projectionAngle ():Number
-		{
-			return _projectionAngle;
-		}
+		/////////////////////////////////////////////////////////////////////
+		//	TRANSFORMATION METHODS
+		/////////////////////////////////////////////////////////////////////
 		
 		/**
 		 * Converts a given pt in cartesian coordinates to 3D isometric space.
@@ -65,18 +77,16 @@ package as3isolib.geom
 		 */
 		static public function screenToIso (screenPt:Pt, createNew:Boolean = false):Pt
 		{
-			var z:Number = screenPt.z / Math.sqrt(1.25);
-			var y:Number = (_theta * screenPt.y - screenPt.x) / 2 + screenPt.z;
-			var x:Number = screenPt.x + y;
+			var isoPt:Pt = transformationObject.screenToSpace(screenPt);
 			
 			if (createNew)
-				return new Pt(x, y, z);
+				return isoPt;
 			
 			else
 			{
-				screenPt.x = x;
-				screenPt.y = y;
-				screenPt.z = z;
+				screenPt.x = isoPt.x;
+				screenPt.y = isoPt.y;
+				screenPt.z = isoPt.z;
 				
 				return screenPt;
 			}
@@ -91,18 +101,16 @@ package as3isolib.geom
 		 */
 		static public function isoToScreen (isoPt:Pt, createNew:Boolean = false):Pt
 		{
-			var z:Number = isoPt.z * Math.sqrt(1.25);
-			var y:Number = 1 / _theta * (isoPt.x + isoPt.y) - isoPt.z;
-			var x:Number = isoPt.x - isoPt.y;
+			var screenPt:Pt = transformationObject.spaceToScreen(isoPt);
 			
 			if (createNew)
-				return new Pt(x, y, z);
+				return screenPt;
 			
 			else
 			{
-				isoPt.x = x;
-				isoPt.y = y;
-				isoPt.z = z;
+				isoPt.x = screenPt.x;
+				isoPt.y = screenPt.y;
+				isoPt.z = screenPt.z;
 				
 				return isoPt;
 			}

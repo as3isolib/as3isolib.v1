@@ -108,8 +108,9 @@ package as3isolib.geom
 		{
 			var tx:Number = originPt.x + Math.cos(theta) * radius;
 			var ty:Number = originPt.y + Math.sin(theta) * radius;
+			var tz:Number = originPt.z
 			
-			return new Pt(tx, ty, 0);
+			return new Pt(tx, ty, tz);
 		}
 		
 		/**
