@@ -112,6 +112,9 @@ package as3isolib.core
 				if (IIsoContainer(child).includeInLayout)
 				{
 					displayListChildrenArray.push(child);
+					if (index > mainContainer.numChildren)
+						index = mainContainer.numChildren;
+					
 					mainContainer.addChildAt(IIsoContainer(child).container, index);
 				}
 			}
