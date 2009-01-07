@@ -16,6 +16,7 @@
 		<exec executable="${compc.exe}" dir="${basedir}">
 			<arg line="-output '${bin.dir}/${swc.name}.swc'"/>
 			<arg line="-source-path ${src.dir}"/>
+			<arg line="-strict=true"/>
 			<!--arg line="-include-namespaces ${manifest.uri}"/-->
 			<arg line="-include-classes as3isolib.bounds.IBounds
 										as3isolib.bounds.PrimitiveBounds
@@ -42,6 +43,7 @@
 										as3isolib.display.renderers.DefaultViewRenderer
 										as3isolib.display.renderers.ISceneRenderer
 										as3isolib.display.renderers.IViewRenderer
+										as3isolib.display.renderers.ViewBoundsRenderer
 										
 										as3isolib.display.scene.IIsoScene
 										as3isolib.display.scene.IsoGrid
@@ -55,10 +57,18 @@
 										as3isolib.enum.IsoOrientation
 										as3isolib.enum.RenderStyleType
 										
+										as3isolib.errors.IsoError
+										
 										as3isolib.events.IsoEvent
 										
 										as3isolib.geom.IsoMath
 										as3isolib.geom.Pt
+										
+										as3isolib.graphics.BitmapFill
+										as3isolib.graphics.IFill
+										as3isolib.graphics.IStroke
+										as3isolib.graphics.SolidColorFill
+										as3isolib.graphics.Stroke
 										
 										as3isolib.utils.IsoDrawingUtil
 										

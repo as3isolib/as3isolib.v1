@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IsoView,as3isolib.display.IsoView,autoUpdate,limitRangeOfMotion,renderSceneOnValidation,usePreciseValues,backgroundContainer,currentPt,currentZoom,foregroundContainer,height,isInvalidated,mainContainer,size,width,clipContent,currentX,currentY,rangeOfMotionTarget,scene,viewRenderers,centerOnIso,centerOnPt,invalidatePosition,pan,render,reset,setSize,validatePosition,zoom" name="keywords">
+<meta content="IsoView,as3isolib.display.IsoView,autoUpdate,limitRangeOfMotion,usePreciseValues,backgroundContainer,currentPt,currentZoom,foregroundContainer,height,isInvalidated,mainContainer,numScenes,scenes,size,width,clipContent,currentX,currentY,rangeOfMotionTarget,viewRenderers,addScene,addSceneAt,centerOnIso,centerOnPt,containsScene,invalidatePosition,pan,removeAllScenes,removeScene,render,reset,setSize,validatePosition,zoom" name="keywords">
 <title>as3isolib.display.IsoView</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 <td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../index.html?as3isolib/display/IsoView.html&amp;as3isolib/display/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../images/logo.jpg"></td>
 </tr>
 <tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;IsoView</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;IsoView</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
 </tr>
 <tr class="titleTableRow3">
 <td colspan="2">&nbsp;</td>
@@ -27,7 +27,7 @@
 </table>
 <script type="text/javascript" language="javascript">
 <!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class IsoView"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class IsoView"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
 --></script>
 <div class="MainContent">
 <table cellspacing="0" cellpadding="0" class="classHeaderTable">
@@ -92,7 +92,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentZoom">currentZoom</a> : Number<div class="summaryTableDescription">[read-only]
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentZoom">currentZoom</a> : Number<div class="summaryTableDescription">
+   
    The current zoom factor applied to the child scene objects.</div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
@@ -122,19 +123,20 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
 <tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#numScenes">numScenes</a> : uint<div class="summaryTableDescription">[read-only]
+   
+   The number of scenes.</div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#rangeOfMotionTarget">rangeOfMotionTarget</a> : DisplayObject<div class="summaryTableDescription">
    The target used to determine the range of motion when moving the <code>container</code>.</div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#renderSceneOnValidation">renderSceneOnValidation</a> : Boolean = false<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scene">scene</a> : <a href="scene/IIsoScene.html">IIsoScene</a>
-<div class="summaryTableDescription">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scenes">scenes</a> : Array<div class="summaryTableDescription">[read-only]
    
-   The child scene object that this IsoView wraps.</div>
+   An array of all child scenes.</div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
 <tr class="">
@@ -177,6 +179,20 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#addScene()">addScene</a>(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addSceneAt()">addSceneAt</a>(scene:<a href="scene/IIsoScene.html">IIsoScene</a>, index:int):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#centerOnIso()">centerOnIso</a>(iso:<a href="../core/IIsoDisplayObject.html">IIsoDisplayObject</a>):void</div>
 <div class="summaryTableDescription">
    
@@ -190,6 +206,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription">
    
    Centers the IIsoView on a given pt within the current child scene objects.</div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#containsScene()">containsScene</a>(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):Boolean</div>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
 <tr class="">
@@ -211,7 +234,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#render()">render</a>():void</div>
+<a class="signatureLink" href="#removeAllScenes()">removeAllScenes</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeScene()">removeScene</a>(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):<a href="scene/IIsoScene.html">IIsoScene</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#render()">render</a>(recursive:Boolean = false):void</div>
 <div class="summaryTableDescription">
    
    Executes positional changes for background, scene and foreground objects.</div>
@@ -259,6 +297,22 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription">
    Calculates the positional changes and repositions the <code>container</code>.</div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:as3isolib_move">as3isolib_move</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">&nbsp;</td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
 </table>
 </div>
@@ -319,7 +373,8 @@ showHideInherited();
 <code>currentPt:<a href="../geom/Pt.html">Pt</a></code>&nbsp;&nbsp;[read-only]<p>
    
    This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.
-   </p><span class="label">Implementation</span>
+   </p><p>This property can be used as the source for data binding.</p>
+<span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentPt():<a href="../geom/Pt.html">Pt</a></code>
 <br>
@@ -369,11 +424,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>currentZoom:Number</code>&nbsp;&nbsp;[read-only]<p>
+<code>currentZoom:Number</code>&nbsp;&nbsp;[read-write]<p>
+   
    The current zoom factor applied to the child scene objects.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentZoom():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentZoom(value:Number):void</code>
 <br>
 </div>
 <a name="foregroundContainer"></a>
@@ -456,6 +514,21 @@ showHideInherited();
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get mainContainer():Sprite</code>
 <br>
 </div>
+<a name="numScenes"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">numScenes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>numScenes:uint</code>&nbsp;&nbsp;[read-only]<p>
+   
+   The number of scenes.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get numScenes():uint</code>
+<br>
+</div>
 <a name="rangeOfMotionTarget"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -479,30 +552,19 @@ showHideInherited();
 <a href="../display/IsoView.html#limitRangeOfMotion" target="">limitRangeOfMotion</a>
 </div>
 </div>
-<a name="renderSceneOnValidation"></a>
+<a name="scenes"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">renderSceneOnValidation</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">scenes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public var renderSceneOnValidation:Boolean = false</code>
-</div>
-<a name="scene"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">scene</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>scene:<a href="scene/IIsoScene.html">IIsoScene</a></code>&nbsp;&nbsp;[read-write]<p>
+<code>scenes:Array</code>&nbsp;&nbsp;[read-only]<p>
    
-   The child scene object that this IsoView wraps.
+   An array of all child scenes.
    </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get scene():<a href="scene/IIsoScene.html">IIsoScene</a></code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set scene(value:<a href="scene/IIsoScene.html">IIsoScene</a>):void</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get scenes():Array</code>
 <br>
 </div>
 <a name="size"></a>
@@ -571,10 +633,44 @@ showHideInherited();
    </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
+<a name="addScene()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addScene(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">scene</span>:<a href="scene/IIsoScene.html">IIsoScene</a></code></td>
+</tr>
+</table>
+</div>
+<a name="addSceneAt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addSceneAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addSceneAt(scene:<a href="scene/IIsoScene.html">IIsoScene</a>, index:int):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">scene</span>:<a href="scene/IIsoScene.html">IIsoScene</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">index</span>:int</code></td>
+</tr>
+</table>
+</div>
 <a name="centerOnIso()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">centerOnIso</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+<td class="detailHeaderName">centerOnIso</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
@@ -616,6 +712,27 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="containsScene()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">containsScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function containsScene(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):Boolean</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">scene</span>:<a href="scene/IIsoScene.html">IIsoScene</a></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code></td>
+</tr>
+</table>
+</div>
 <a name="invalidatePosition()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -652,6 +769,36 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="removeAllScenes()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeAllScenes</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeAllScenes():void</code>
+</div>
+<a name="removeScene()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeScene(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):<a href="scene/IIsoScene.html">IIsoScene</a></code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">scene</span>:<a href="scene/IIsoScene.html">IIsoScene</a></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="scene/IIsoScene.html">IIsoScene</a></code></td>
+</tr>
+</table>
+</div>
 <a name="render()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -659,10 +806,18 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function render():void</code><p>
+<code>public function render(recursive:Boolean = false):void</code><p>
    
    Executes positional changes for background, scene and foreground objects.
-   </p></div>
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating if child scenes render on the view's validation.  Default value is <code>false</code>.
+   </td>
+</tr>
+</table>
+</div>
 <a name="reset()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -727,6 +882,18 @@ showHideInherited();
    </td>
 </tr>
 </table>
+</div>
+<div class="detailSectionHeader">Event detail</div>
+<a name="event:as3isolib_move"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">as3isolib_move</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/IsoEvent.html"><code>as3isolib.events.IsoEvent</code></a>
+<br>
+<p></p>
 </div>
 <br>
 <br>

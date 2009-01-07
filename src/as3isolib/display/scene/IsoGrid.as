@@ -81,12 +81,14 @@ package as3isolib.display.scene
 		
 		private var cSize:Number;
 		
+		private var explicitCellSize:Number;
+		
 		/**
 		 * @private
 		 */
 		public function get cellSize ():Number
 		{
-			return cSize;
+			return explicitCellSize;
 		}
 		
 		/**
@@ -96,6 +98,9 @@ package as3isolib.display.scene
 		{
 			if (value < 2)
 				throw new Error("cellSize must be a positive value greater than 2");
+				
+			explicitCellSize = value;
+			value = projectValuesToIsoAxes ? value * Math.cos(IsoMath.transformationObject.theta) : value;
 			
 			if (cSize != value)
 			{
@@ -221,10 +226,10 @@ package as3isolib.display.scene
 			var m:int = int(gridSize[0]);
 			while (i <= m)
 			{
-				pt = IsoMath.isoToScreen(new Pt(cellSize * i));
+				pt = IsoMath.isoToScreen(new Pt(cSize * i));
 				g.moveTo(pt.x, pt.y);
 				
-				pt = IsoMath.isoToScreen(new Pt(cellSize * i, cellSize * gridSize[1]));
+				pt = IsoMath.isoToScreen(new Pt(cSize * i, cSize * gridSize[1]));
 				g.lineTo(pt.x, pt.y);
 				
 				i++;
@@ -234,10 +239,10 @@ package as3isolib.display.scene
 			m = int(gridSize[1]);
 			while (i <= m)
 			{
-				pt = IsoMath.isoToScreen(new Pt(0, cellSize * i));
+				pt = IsoMath.isoToScreen(new Pt(0, cSize * i));
 				g.moveTo(pt.x, pt.y);
 				
-				pt = IsoMath.isoToScreen(new Pt(cellSize * gridSize[0], cellSize * i));
+				pt = IsoMath.isoToScreen(new Pt(cSize * gridSize[0], cSize * i));
 				g.lineTo(pt.x, pt.y);
 				
 				i++;
@@ -249,13 +254,13 @@ package as3isolib.display.scene
 			g.lineStyle(0, 0, 0);
 			g.beginFill(0xFF0000, 0.0);
 			
-			pt = IsoMath.isoToScreen(new Pt(cellSize * gridSize[0], 0));
+			pt = IsoMath.isoToScreen(new Pt(cSize * gridSize[0], 0));
 			g.lineTo(pt.x, pt.y);
 			
-			pt = IsoMath.isoToScreen(new Pt(cellSize * gridSize[0], cellSize * gridSize[1]));
+			pt = IsoMath.isoToScreen(new Pt(cSize * gridSize[0], cSize * gridSize[1]));
 			g.lineTo(pt.x, pt.y);
 			
-			pt = IsoMath.isoToScreen(new Pt(0, cellSize * gridSize[1]));
+			pt = IsoMath.isoToScreen(new Pt(0, cSize * gridSize[1]));
 			g.lineTo(pt.x, pt.y);
 			
 			pt = IsoMath.isoToScreen(new Pt(0, 0));

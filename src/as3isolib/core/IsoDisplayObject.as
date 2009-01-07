@@ -152,14 +152,23 @@ package as3isolib.core
 		 */
 		public var usePreciseValues:Boolean = false;
 		
+		public var projectValuesToIsoAxes:Boolean = true;
+		
 		////////////////////////////////////////////////////////////////////////
 		//	X
 		////////////////////////////////////////////////////////////////////////
 		
 		/**
 		 * @private
+		 * 
+		 * The positional value based on the isometric x-axis.
 		 */
 		protected var isoX:Number = 0;
+		
+		/**
+		 * @private
+		 */
+		protected var explicitX:Number = 0;
 		
 		/**
 		 * @private
@@ -172,7 +181,7 @@ package as3isolib.core
 		[Bindable("move")]
 		public function get x ():Number
 		{
-			return isoX;
+			return explicitX;
 		}
 		
 		/**
@@ -182,10 +191,13 @@ package as3isolib.core
 		{
 			if (!usePreciseValues)
 				value = Math.round(value);
-				
+			
+			explicitX = value;
+			value = projectValuesToIsoAxes ? value * Math.cos(IsoMath.transformationObject.theta) : value;
+			
 			if (isoX != value)
 			{
-				oldX = isoX;
+				oldX = explicitX;
 				
 				isoX = value;
 				invalidatePosition();
@@ -218,6 +230,11 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
+		protected var explicitY:Number = 0;
+		
+		/**
+		 * @private
+		 */
 		protected var oldY:Number;
 		
 		/**
@@ -226,7 +243,7 @@ package as3isolib.core
 		[Bindable("move")]
 		public function get y ():Number
 		{
-			return isoY;
+			return explicitY;
 		}
 		
 		/**
@@ -236,10 +253,13 @@ package as3isolib.core
 		{
 			if (!usePreciseValues)
 				value = Math.round(value);
-				
+			
+			explicitY = value;
+			value = projectValuesToIsoAxes ? value * Math.cos(IsoMath.transformationObject.theta) : value;
+			
 			if (isoY != value)
 			{
-				oldY = isoY;
+				oldY = explicitY;
 				
 				isoY = value;
 				invalidatePosition();
@@ -329,6 +349,11 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
+		protected var explicitWidth:Number = 0;
+		
+		/**
+		 * @private
+		 */
 		protected var oldWidth:Number;
 		
 		/**
@@ -337,7 +362,7 @@ package as3isolib.core
 		[Bindable("resize")]
 		public function get width ():Number
 		{
-			return isoWidth;
+			return explicitWidth;
 		}
 		
 		/**
@@ -349,9 +374,13 @@ package as3isolib.core
 				value = Math.round(value);
 				
 			value = Math.abs(value);
+			
+			explicitWidth = value;
+			value = projectValuesToIsoAxes ? value * Math.cos(IsoMath.transformationObject.theta) : value;
+			
 			if (isoWidth != value)
 			{
-				oldWidth = isoWidth;
+				oldWidth = explicitWidth;
 				
 				isoWidth = value;
 				invalidateSize();
@@ -373,6 +402,11 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
+		protected var explicitLength:Number = 0;
+		
+		/**
+		 * @private
+		 */
 		protected var oldLength:Number;
 		
 		/**
@@ -381,7 +415,7 @@ package as3isolib.core
 		[Bindable("resize")]
 		public function get length ():Number
 		{
-			return isoLength;
+			return explicitLength;
 		}
 		
 		/**
@@ -393,6 +427,10 @@ package as3isolib.core
 				value = Math.round(value);
 				
 			value = Math.abs(value);
+			
+			explicitLength = value;
+			value = value = projectValuesToIsoAxes ? value * Math.cos(IsoMath.transformationObject.theta) : value;
+			
 			if (isoLength != value)
 			{
 				oldLength = isoLength;

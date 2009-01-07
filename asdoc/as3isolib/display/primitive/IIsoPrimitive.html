@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="IIsoPrimitive,as3isolib.display.primitive.IIsoPrimitive,faceAlphas,faceColors,lineAlphas,lineColors,lineThicknesses,styleType,invalidateStyles" name="keywords">
+<meta content="IIsoPrimitive,as3isolib.display.primitive.IIsoPrimitive,fills,strokes,styleType,invalidateStyles" name="keywords">
 <title>as3isolib.display.primitive.IIsoPrimitive</title>
 </head>
 <body>
@@ -87,19 +87,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
    An array of all children whose <code>container</code> is present within the display list.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IIsoContainer.html">IIsoContainer</a></td>
 </tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#distance">distance</a> : Number<div class="summaryTableDescription">
-   The distance from an arbitrary point in 3D isometric space.</div>
-</td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
-</tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#faceAlphas">faceAlphas</a> : Array<div class="summaryTableDescription">
-   An array of alpha values corresponding to the various faces (where applicable).</div>
-</td><td class="summaryTableOwnerCol">IIsoPrimitive</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#faceColors">faceColors</a> : Array<div class="summaryTableDescription">
-   An array of color values corresponding to the various faces (where applicable).</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#fills">fills</a> : Array<div class="summaryTableDescription">
+   An array of IFill objects used to apply material fills to the faces of the primitive object.</div>
 </td><td class="summaryTableOwnerCol">IIsoPrimitive</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -123,6 +113,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </td><td class="summaryTableOwnerCol"><a href="../../core/IIsoContainer.html">IIsoContainer</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#isAnimated">isAnimated</a> : Boolean<div class="summaryTableDescription">
+   Flag indicating if IIsoDisplayObject will be intended for frequent movement and/or resizing.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">
    Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
@@ -137,21 +132,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#length">length</a> : Number<div class="summaryTableDescription">
    The length in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineAlphas">lineAlphas</a> : Array<div class="summaryTableDescription">
-   An array of alphas values corresponding to the various faces' outlines (where applicable).</div>
-</td><td class="summaryTableOwnerCol">IIsoPrimitive</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineColors">lineColors</a> : Array<div class="summaryTableDescription">
-   An array of color values corresponding to the various faces' outlines (where applicable).</div>
-</td><td class="summaryTableOwnerCol">IIsoPrimitive</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#lineThicknesses">lineThicknesses</a> : Array<div class="summaryTableDescription">
-   An array of thickness values corresponding to the various faces' outlines (where applicable).</div>
-</td><td class="summaryTableOwnerCol">IIsoPrimitive</td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../data/INode.html#numChildren">numChildren</a> : uint<div class="summaryTableDescription">
@@ -175,6 +155,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </td><td class="summaryTableOwnerCol"><a href="../../../eDpLib/events/IEventDispatcherProxy.html">IEventDispatcherProxy</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#renderAsOrphan">renderAsOrphan</a> : Boolean<div class="summaryTableDescription">
+   By default, objects lacking a parent node do not perform rendering logic.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#screenBounds">screenBounds</a> : Rectangle<div class="summaryTableDescription">
    The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
@@ -188,6 +173,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#screenY">screenY</a> : Number<div class="summaryTableDescription">
    The y value of the container in screen coordinates relative to the parent container.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#strokes">strokes</a> : Array<div class="summaryTableDescription">
+   An array of IStroke objects used to apply line styles to the face edges of the primitive object.</div>
+</td><td class="summaryTableOwnerCol">IIsoPrimitive</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#styleType">styleType</a> : String<div class="summaryTableDescription">
@@ -251,8 +241,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../../core/IIsoDisplayObject.html#clone()">clone</a>():<a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a>
-</div>
+<a class="signatureLink" href="../../core/IIsoDisplayObject.html#clone()">clone</a>():*</div>
 <div class="summaryTableDescription">
    Clones the IIsoDisplayObject, copying its dimensional and style properties.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
@@ -426,90 +415,51 @@ showHideInherited();
 <div class="MainContent">
 <a name="propertyDetail"></a>
 <div class="detailSectionHeader">Property detail</div>
-<a name="faceAlphas"></a>
+<a name="fills"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">faceAlphas</td><td class="detailHeaderType">property</td>
+<td class="detailHeaderName">fills</td><td class="detailHeaderType">property</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>faceAlphas:Array</code>&nbsp;&nbsp;[read-write]<p>
-   An array of alpha values corresponding to the various faces (where applicable).
-   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
+<code>fills:Array</code>&nbsp;&nbsp;[read-write]<p>
+   An array of IFill objects used to apply material fills to the faces of the primitive object.
+   
    </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get faceAlphas():Array</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get fills():Array</code>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set faceAlphas(value:Array):void</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set fills(value:Array):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../graphics/IFill.html" target="">as3isolib.graphics.IFill</a>
 </div>
-<a name="faceColors"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">faceColors</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>faceColors:Array</code>&nbsp;&nbsp;[read-write]<p>
-   An array of color values corresponding to the various faces (where applicable).
-   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get faceColors():Array</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set faceColors(value:Array):void</code>
-<br>
 </div>
-<a name="lineAlphas"></a>
+<a name="strokes"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">lineAlphas</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">strokes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>lineAlphas:Array</code>&nbsp;&nbsp;[read-write]<p>
-   An array of alphas values corresponding to the various faces' outlines (where applicable).
-   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
+<code>strokes:Array</code>&nbsp;&nbsp;[read-write]<p>
+   An array of IStroke objects used to apply line styles to the face edges of the primitive object.
+   
    </p><span class="label">Implementation</span>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get lineAlphas():Array</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get strokes():Array</code>
 <br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set lineAlphas(value:Array):void</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set strokes(value:Array):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../graphics/IFill.html" target="">as3isolib.graphics.IFill</a>
 </div>
-<a name="lineColors"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">lineColors</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>lineColors:Array</code>&nbsp;&nbsp;[read-write]<p>
-   An array of color values corresponding to the various faces' outlines (where applicable).
-   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get lineColors():Array</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set lineColors(value:Array):void</code>
-<br>
-</div>
-<a name="lineThicknesses"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">lineThicknesses</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>lineThicknesses:Array</code>&nbsp;&nbsp;[read-write]<p>
-   An array of thickness values corresponding to the various faces' outlines (where applicable).
-   For a given IsoBox the values would be assigned in order to: top, right, front, left, back, bottom
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get lineThicknesses():Array</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set lineThicknesses(value:Array):void</code>
-<br>
 </div>
 <a name="styleType"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
