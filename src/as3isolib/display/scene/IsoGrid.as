@@ -81,14 +81,12 @@ package as3isolib.display.scene
 		
 		private var cSize:Number;
 		
-		private var explicitCellSize:Number;
-		
 		/**
 		 * @private
 		 */
 		public function get cellSize ():Number
 		{
-			return explicitCellSize;
+			return cSize;
 		}
 		
 		/**
@@ -99,9 +97,6 @@ package as3isolib.display.scene
 			if (value < 2)
 				throw new Error("cellSize must be a positive value greater than 2");
 				
-			explicitCellSize = value;
-			value = projectValuesToIsoAxes ? value * Math.cos(IsoMath.transformationObject.theta) : value;
-			
 			if (cSize != value)
 			{
 				cSize = value;
