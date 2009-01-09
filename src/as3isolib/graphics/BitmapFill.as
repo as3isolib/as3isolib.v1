@@ -121,11 +121,17 @@ package as3isolib.graphics
 		
 		private var _orientation:String;
 		
+		/**
+		 * @private
+		 */
 		public function get orientation ():String
 		{
 			return _orientation;
 		}
 		
+		/**
+		 * The planar orientation of fill relative to an isometric face.
+		 */
 		public function set orientation (value:String):void
 		{
 			_orientation = value;
@@ -142,9 +148,19 @@ package as3isolib.graphics
 		//	props
 		///////////////////////////////////////////////////////////
 		
+		/**
+		 * The transformation matrix applied to the source relative to the isometric face.
+		 */
 		public var matrix:Matrix;
 		
+		/**
+		 * A flag indicating whether the bitmap is repeated to fill the area.
+		 */
 		public var repeat:Boolean;
+		
+		/**
+		 * A flag indicating whether to smooth the bitmap data when filling with it.
+		 */
 		public var smooth:Boolean;
 		
 		///////////////////////////////////////////////////////////

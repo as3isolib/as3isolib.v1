@@ -39,7 +39,10 @@ package as3isolib.display.renderers
 	import flash.display.BitmapData;
 	import flash.geom.Matrix;
 	import flash.utils.getTimer;
-
+	
+	/**
+	 * @private
+	 */
 	public class SceneBlittingRenderer implements ISceneRenderer
 	{
 		////////////////////////////////////////////////////

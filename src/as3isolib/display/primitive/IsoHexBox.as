@@ -27,7 +27,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
-package as3isolib.display.scene
+package as3isolib.display.primitive
 {
 	import as3isolib.display.primitive.IsoPrimitive;
 	import as3isolib.enum.IsoOrientation;
@@ -39,7 +39,10 @@ package as3isolib.display.scene
 	
 	import flash.display.Graphics;
 	import flash.geom.Matrix;
-
+	
+	/**
+	 * @private
+	 */
 	public class IsoHexBox extends IsoPrimitive
 	{
 		static private var sin60:Number = Math.sin(Math.PI / 3);

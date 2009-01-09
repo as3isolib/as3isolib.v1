@@ -30,16 +30,25 @@ SOFTWARE.
 package as3isolib.geom.transformations
 {
 	import as3isolib.geom.Pt;
-
+	
+	/**
+	 * The default isometric transformation object that provide the ideal 2:1 x to y ratio.
+	 */
 	public class DefaultIsometricTransformation implements IAxonometricTransformation
 	{
+		static private var axialProjection:Number = Math.cos(Math.atan(0.5));
+		
 		/**
-		 * @inheritDoc
+		 * Constructor
+		 * 
+		 * @param projectValuesToAxonometricAxes A flag indicating whether to compute x, y, z, width, lenght, and height values to the axonometric axes or screen axes.
 		 */
-		public function get theta ():Number
+		public function DefaultIsometricTransformation (projectValuesToAxonometricAxes:Boolean = false)
 		{
-			return Math.atan(0.5);
+			bAxonometricAxesProjection = projectValuesToAxonometricAxes;
 		}
+		
+		private var bAxonometricAxesProjection:Boolean;
 		
 		/**
 		 * @inheritDoc
@@ -50,6 +59,12 @@ package as3isolib.geom.transformations
 			var y:Number = screenPt.y - screenPt.x / 2 + screenPt.z;
 			var x:Number = screenPt.x / 2 + screenPt.y + screenPt.z;
 			
+			if (bAxonometricAxesProjection)
+			{
+				x = x / axialProjection;
+				y = y / axialProjection;
+			}
+			
 			return new Pt(x, y, z);
 		}
 		
@@ -58,6 +73,12 @@ package as3isolib.geom.transformations
 		 */
 		public function spaceToScreen (spacePt:Pt):Pt
 		{
+			if (bAxonometricAxesProjection)
+			{
+				spacePt.x = spacePt.x * axialProjection;
+				spacePt.y = spacePt.y * axialProjection;
+			}
+			
 			var z:Number = spacePt.z;
 			var y:Number = (spacePt.x + spacePt.y) / 2 - spacePt.z;
 			var x:Number = spacePt.x - spacePt.y;

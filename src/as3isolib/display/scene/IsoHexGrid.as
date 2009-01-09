@@ -35,6 +35,9 @@ package as3isolib.display.scene
 	
 	import flash.display.Graphics;
 	
+	/**
+	 * @private
+	 */
 	public class IsoHexGrid extends IsoGrid
 	{
 		public function IsoHexGrid ()

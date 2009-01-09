@@ -34,6 +34,7 @@
 										
 										as3isolib.display.primitive.IIsoPrimitive
 										as3isolib.display.primitive.IsoBox
+										as3isolib.display.primitive.IsoHexBox
 										as3isolib.display.primitive.IsoPolygon
 										as3isolib.display.primitive.IsoPrimitive
 										as3isolib.display.primitive.IsoRectangle
@@ -43,10 +44,12 @@
 										as3isolib.display.renderers.DefaultViewRenderer
 										as3isolib.display.renderers.ISceneRenderer
 										as3isolib.display.renderers.IViewRenderer
+										as3isolib.display.renderers.SceneBlittingRenderer
 										as3isolib.display.renderers.ViewBoundsRenderer
 										
 										as3isolib.display.scene.IIsoScene
 										as3isolib.display.scene.IsoGrid
+										as3isolib.display.scene.IsoHexGrid
 										as3isolib.display.scene.IsoOrigin
 										as3isolib.display.scene.IsoScene
 										
@@ -60,6 +63,11 @@
 										as3isolib.errors.IsoError
 										
 										as3isolib.events.IsoEvent
+										
+										as3isolib.geom.transformations.DefaultIsometricTransformation
+										as3isolib.geom.transformations.DimetricTransformation
+										as3isolib.geom.transformations.IAxonometricTransformation
+										as3isolib.geom.transformations.IsometricTransformation
 										
 										as3isolib.geom.IsoMath
 										as3isolib.geom.Pt

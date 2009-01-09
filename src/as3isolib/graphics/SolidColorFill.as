@@ -45,12 +45,12 @@ package as3isolib.graphics
 		}
 		
 		/**
-		 * The color of the fill.
+		 * The fill color.
 		 */
 		public var color:uint;
 		
 		/**
-		 * The alpha of the fill.
+		 * The transparency of the fill.
 		 */
 		public var alpha:Number;
 		
