@@ -35,6 +35,7 @@ package as3isolib.core
 	
 	import eDpLib.events.ProxyEvent;
 	
+	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
@@ -114,6 +115,11 @@ package as3isolib.core
 					displayListChildrenArray.push(child);
 					if (index > mainContainer.numChildren)
 						index = mainContainer.numChildren;
+					
+					//referencing explicit removal of child RTE - http://life.neophi.com/danielr/2007/06/rangeerror_error_2006_the_supp.html
+					var p:DisplayObjectContainer = IIsoContainer(child).container.parent;
+					if (p && p != mainContainer)
+						p.removeChild(IIsoContainer(child).container);
 					
 					mainContainer.addChildAt(IIsoContainer(child).container, index);
 				}
@@ -280,6 +286,7 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
+		[ClassUtil(ignore="true")]
 		public function get container ():Sprite
 		{
 			return mainContainer;
