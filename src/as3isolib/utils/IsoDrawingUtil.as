@@ -239,6 +239,7 @@ package as3isolib.utils
 					m2.scale(1, 0.5);
 					
 					m.rotate(Math.PI / 4);
+					m.scale(Math.SQRT2, Math.SQRT2);
 					m.concat(m2);
 					
 					break;
