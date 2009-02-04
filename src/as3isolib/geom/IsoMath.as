@@ -61,7 +61,7 @@ package as3isolib.geom
 				transformationObj = value;
 			
 			else
-				transformationObj = new DefaultIsometricTransformation();
+				transformationObj = new new DefaultIsometricTransformation();
 		}
 		
 		/////////////////////////////////////////////////////////////////////

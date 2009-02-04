@@ -31,18 +31,54 @@ package as3isolib.display.renderers
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.core.IIsoDisplayObject;
-	import as3isolib.core.as3isolib_internal;
+	import as3isolib.display.IIsoView;
 	import as3isolib.display.scene.IIsoScene;
+	import as3isolib.errors.IsoError;
 	
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.geom.Matrix;
 	import flash.utils.getTimer;
 	
-	use namespace as3isolib_internal;
-	
 	/**
-	 * The DefaultSceneLayoutRenderer is the default renderer responsible for performing the isometric position-based depth sorting on the child objects of the target IIsoScene. 
+	 * @private
 	 */
-	public class DefaultSceneLayoutRenderer implements ISceneLayoutRenderer
-	{		
+	public class SceneBlittingRenderer implements ISceneRenderer
+	{
+		////////////////////////////////////////////////////
+		//	TARGET BITMAP OBJECT
+		////////////////////////////////////////////////////
+		
+		private var _targetBitmap:Bitmap;
+		private var _targetObject:Object
+		
+		/**
+		 * @private
+		 */
+		public function get target ():Object
+		{
+			return _targetObject;
+		}
+		
+		public function set target (value:Object):void
+		{
+			if (_targetObject != value)
+			{
+				_targetObject = value;
+				
+				if (_targetObject is Bitmap)
+					_targetBitmap = Bitmap(_targetObject);
+				
+				else if (_targetObject.hasOwnProperty("bitmap"))
+					_targetBitmap = Bitmap(_targetObject.bitmap);
+				
+				else
+					throw new IsoError("");
+			}
+		}
+		
+		public var view:IIsoView;
+		
 		////////////////////////////////////////////////////
 		//	RENDER SCENE
 		////////////////////////////////////////////////////
@@ -53,6 +89,9 @@ package as3isolib.display.renderers
 		public function renderScene (scene:IIsoScene):void
 		{
 			var startTime:uint = getTimer();
+			
+			if (!_targetBitmap)
+				return;
 			
 			var sortedChildren:Array = scene.displayListChildren.slice(); //make a copy of the children
 			sortedChildren.sort(isoDepthSort); //perform a secondary sort for any hittests
@@ -68,6 +107,18 @@ package as3isolib.display.renderers
 				
 				i++;
 			}
+			
+			var offsetMatrix:Matrix = new Matrix();
+			offsetMatrix.tx = view.width / 2 - view.currentX;
+			offsetMatrix.ty = view.height / 2 - view.currentY;
+			
+			var sceneBitmapData:BitmapData = new BitmapData(view.width, view.height, true, 0);
+			sceneBitmapData.draw(scene.container, offsetMatrix);
+			
+			if (_targetBitmap.bitmapData)
+				_targetBitmap.bitmapData.dispose();
+				
+			_targetBitmap.bitmapData = sceneBitmapData;
 			
 			trace("scene layout render time", getTimer() - startTime, "ms");
 		}
@@ -100,10 +151,7 @@ package as3isolib.display.renderers
 				return 1;
 			
 			else
-			{
-				//trace("no solution betw", childA.id, "&", childB.id);
 				return 0;
-			}
 		}
 	}
 }

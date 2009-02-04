@@ -110,15 +110,15 @@ package as3isolib.display
 				while (mainContainer.numChildren > 0)
 					mainContainer.removeChildAt(mainContainer.numChildren - 1);
 				
-				var sprite:Object;
-				for each (sprite in spritesArray)
+				var spriteObj:Object;
+				for each (spriteObj in spritesArray)
 				{
-					if (sprite is DisplayObject)
-						mainContainer.addChild(sprite as DisplayObject);
+					if (spriteObj is DisplayObject)
+						mainContainer.addChild(DisplayObject(spriteObj));
 					
-					else if (sprite is Class)
+					else if (spriteObj is Class)
 					{
-						var spriteInstance:DisplayObject = DisplayObject(new sprite());
+						var spriteInstance:DisplayObject = DisplayObject(new spriteObj());
 						mainContainer.addChild(spriteInstance);
 					}
 					

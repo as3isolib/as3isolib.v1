@@ -39,11 +39,11 @@ package as3isolib.display.scene
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.data.INode;
 	import as3isolib.display.renderers.DefaultSceneLayoutRenderer;
+	import as3isolib.display.renderers.ISceneLayoutRenderer;
 	import as3isolib.display.renderers.ISceneRenderer;
 	import as3isolib.events.IsoEvent;
 	
 	import flash.display.DisplayObjectContainer;
-	import flash.utils.getTimer;
 	
 	use namespace as3isolib_internal;
 	
@@ -222,7 +222,7 @@ package as3isolib.display.scene
 		}
 		
 		/**
-		 * The factory used to create the IIsoRenderer responsible for the layout of the child objects.
+		 * The factory used to create the ISceneLayoutRenderer responsible for the layout of the child objects.
 		 */
 		public function set layoutRenderer (value:IFactory):void
 		{
@@ -253,7 +253,7 @@ package as3isolib.display.scene
 		}
 		
 		/**
-		 * An array of IFactories whose class generators are IIsoRenderers.
+		 * An array of IFactories whose class generators are ISceneRenderer.
 		 * If any value contained within the array is not of type IFactory, it will be ignored.
 		 */
 		public function set styleRenderers (value:Array):void
@@ -312,17 +312,18 @@ package as3isolib.display.scene
 			if (_isInvalidated)
 			{
 				//render the layout first
-				var sceneRenderer:ISceneRenderer;
+				var sceneLayoutRenderer:ISceneLayoutRenderer;
 				if (layoutEnabled)
 				{
-					sceneRenderer = layoutRendererFactory.newInstance();
-					if (sceneRenderer)
-						sceneRenderer.renderScene(this);
+					sceneLayoutRenderer = layoutRendererFactory.newInstance();
+					if (sceneLayoutRenderer)
+						sceneLayoutRenderer.renderScene(this);
 				}
 				
 				//apply styling
 				mainContainer.graphics.clear(); //should we do this here?
 				
+				var sceneRenderer:ISceneRenderer;
 				var factory:IFactory
 				if (stylingEnabled)
 				{

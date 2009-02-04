@@ -91,11 +91,18 @@ package as3isolib.display.primitive
 		
 		private var fillsArray:Array = [DEFAULT_FILL];
 		
+		/**
+		 * @private
+		 */
+		[ArrayElementType("as3isolib.graphics.IFill")]
 		public function get fills ():Array
 		{
 			return fillsArray;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set fills (value:Array):void
 		{
 			if (fillsArray != value)
@@ -112,11 +119,18 @@ package as3isolib.display.primitive
 		
 		private var edgesArray:Array = [DEFAULT_STROKE];
 		
+		/**
+		 * @private
+		 */
+		[ArrayElementType("as3isolib.graphics.IStroke")]
 		public function get strokes ():Array
 		{
 			return edgesArray;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function set strokes (value:Array):void
 		{
 			if (edgesArray != value)

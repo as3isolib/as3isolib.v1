@@ -32,23 +32,30 @@ package as3isolib.geom.transformations
 	import as3isolib.geom.Pt;
 	
 	/**
-	 * The default isometric transformation object that provide the ideal 2:1 x to y ratio.
+	 * The default isometric transformation object that provides the ideal 2:1 x to y ratio.
 	 */
 	public class DefaultIsometricTransformation implements IAxonometricTransformation
 	{
-		static private var axialProjection:Number = Math.cos(Math.atan(0.5));
 		
 		/**
 		 * Constructor
 		 * 
 		 * @param projectValuesToAxonometricAxes A flag indicating whether to compute x, y, z, width, lenght, and height values to the axonometric axes or screen axes.
+		 * @param maintainZaxisRatio A flag indicating if the z axis values are to be adjusted to maintain proportions based on the x & axis values. 
 		 */
-		public function DefaultIsometricTransformation (projectValuesToAxonometricAxes:Boolean = false)
+		public function DefaultIsometricTransformation (projectValuesToAxonometricAxes:Boolean = false, maintainZAxisRatio:Boolean = false)
 		{
 			bAxonometricAxesProjection = projectValuesToAxonometricAxes;
+			bMaintainZAxisRatio = maintainZAxisRatio;
 		}
 		
+		private var radians:Number;
+		private var ratio:Number = 2;
+		
 		private var bAxonometricAxesProjection:Boolean;
+		private var bMaintainZAxisRatio:Boolean;
+		
+		private var axialProjection:Number = Math.cos(Math.atan(0.5));
 		
 		/**
 		 * @inheritDoc
@@ -56,8 +63,11 @@ package as3isolib.geom.transformations
 		public function screenToSpace (screenPt:Pt):Pt
 		{
 			var z:Number = screenPt.z;
-			var y:Number = screenPt.y - screenPt.x / 2 + screenPt.z;
-			var x:Number = screenPt.x / 2 + screenPt.y + screenPt.z;
+			var y:Number = screenPt.y - screenPt.x / ratio + screenPt.z;
+			var x:Number = screenPt.x / ratio + screenPt.y + screenPt.z;
+			
+			if (!bAxonometricAxesProjection && bMaintainZAxisRatio)
+				z = z * axialProjection;
 			
 			if (bAxonometricAxesProjection)
 			{
@@ -73,6 +83,9 @@ package as3isolib.geom.transformations
 		 */
 		public function spaceToScreen (spacePt:Pt):Pt
 		{
+			if (!bAxonometricAxesProjection && bMaintainZAxisRatio)
+				spacePt.z = spacePt.z / axialProjection;
+			
 			if (bAxonometricAxesProjection)
 			{
 				spacePt.x = spacePt.x * axialProjection;
@@ -80,7 +93,7 @@ package as3isolib.geom.transformations
 			}
 			
 			var z:Number = spacePt.z;
-			var y:Number = (spacePt.x + spacePt.y) / 2 - spacePt.z;
+			var y:Number = (spacePt.x + spacePt.y) / ratio - spacePt.z;
 			var x:Number = spacePt.x - spacePt.y;
 			
 			return new Pt(x, y, z);

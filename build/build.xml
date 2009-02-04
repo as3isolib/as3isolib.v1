@@ -2,13 +2,13 @@
 <project name="${swc.name}" basedir="../" default="docs">
 
 	<!-- Define variables/paths used in this build script -->
-	<property file="./build/build.properties" />
+	<property file="./build/build.properties"/>
 
 	<!-- Have you edited the properties file to make sure the paths are right on your system? -->
 	<target name="properties">
-		<fail unless="asdoc.exe">The "asdoc.exe" property must be set in ${build.dir}/build.properties.</fail>
-		<fail unless="compc.exe">The "compc.exe" property must be set in ${build.dir}/build.properties.</fail>
-		<fail unless="mxmlc.exe">The "mxmlc.exe" property must be set in ${build.dir}/build.properties.</fail>
+		<fail unless="asdoc.exe">The "asdoc.exe" property must be set in build.properties.</fail>
+		<fail unless="compc.exe">The "compc.exe" property must be set in build.properties.</fail>
+		<fail unless="mxmlc.exe">The "mxmlc.exe" property must be set in build.properties.</fail>
 	</target>
 	
 	<!-- Compile all of the classes under the "src" tree into a .swc file -->
@@ -18,6 +18,7 @@
 			<arg line="-source-path ${src.dir}"/>
 			<arg line="-strict=true"/>
 			<!--arg line="-include-namespaces ${manifest.uri}"/-->
+			<arg line="-namespace ${manifest.uri} ${manifest.xml}"/>
 			<arg line="-include-classes as3isolib.bounds.IBounds
 										as3isolib.bounds.PrimitiveBounds
 										as3isolib.bounds.SceneBounds
@@ -34,22 +35,19 @@
 										
 										as3isolib.display.primitive.IIsoPrimitive
 										as3isolib.display.primitive.IsoBox
-										as3isolib.display.primitive.IsoHexBox
-										as3isolib.display.primitive.IsoPolygon
 										as3isolib.display.primitive.IsoPrimitive
 										as3isolib.display.primitive.IsoRectangle
 										
 										as3isolib.display.renderers.DefaultSceneLayoutRenderer
 										as3isolib.display.renderers.DefaultShadowRenderer
 										as3isolib.display.renderers.DefaultViewRenderer
+										as3isolib.display.renderers.ISceneLayoutRenderer
 										as3isolib.display.renderers.ISceneRenderer
 										as3isolib.display.renderers.IViewRenderer
-										as3isolib.display.renderers.SceneBlittingRenderer
 										as3isolib.display.renderers.ViewBoundsRenderer
 										
 										as3isolib.display.scene.IIsoScene
 										as3isolib.display.scene.IsoGrid
-										as3isolib.display.scene.IsoHexGrid
 										as3isolib.display.scene.IsoOrigin
 										as3isolib.display.scene.IsoScene
 										
@@ -65,9 +63,7 @@
 										as3isolib.events.IsoEvent
 										
 										as3isolib.geom.transformations.DefaultIsometricTransformation
-										as3isolib.geom.transformations.DimetricTransformation
 										as3isolib.geom.transformations.IAxonometricTransformation
-										as3isolib.geom.transformations.IsometricTransformation
 										
 										as3isolib.geom.IsoMath
 										as3isolib.geom.Pt
@@ -82,6 +78,7 @@
 										
 										eDpLib.events.EventDispatcherProxy
 										eDpLib.events.IEventDispatcherProxy
+										eDpLib.events.ListenerHash
 										eDpLib.events.ProxyEvent"/>
 		</exec>
 	</target>

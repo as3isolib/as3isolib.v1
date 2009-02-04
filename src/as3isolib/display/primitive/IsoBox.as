@@ -51,64 +51,6 @@ package as3isolib.display.primitive
 		}
 		
 		/**
-		 * @private
-		 */
-		protected var sq0:IsoRectangle;
-		
-		/**
-		 * @private
-		 */
-		protected var sq1:IsoRectangle;
-		
-		/**
-		 * @private
-		 */
-		protected var sq2:IsoRectangle;
-		
-		/**
-		 * @private
-		 */
-		protected var sq3:IsoRectangle;
-		
-		/**
-		 * @private
-		 */
-		protected var sq4:IsoRectangle;
-		
-		/**
-		 * @private
-		 */
-		protected var sq5:IsoRectangle;
-		
-		/**
-		 * @inheritDoc
-		 */
-		override protected function createChildren ():void
-		{
-			super.createChildren();
-			
-			var sq:IsoRectangle;
-			var i:uint;
-			for (i; i < 6; i++)
-			{
-				if (this['sq' + i] == null)
-				{
-					sq = new IsoRectangle();
-					this['sq' + i] = sq;
-				}
-				
-				addChild(sq);
-			}
-			
-			sq0.id = "bottom";
-			sq1.id = "left";
-			sq2.id = "back";
-			sq3.id = "front";
-			sq4.id = "right";
-			sq5.id = "top";
-		}
-		
-		/**
 		 * @inheritDoc
 		 */
 		override protected function validateGeometry ():Boolean
@@ -121,7 +63,7 @@ package as3isolib.display.primitive
 		 */
 		override protected function drawGeometry ():void
 		{
-			/* var g:Graphics = mainContainer.graphics;
+			var g:Graphics = mainContainer.graphics;
 			g.clear();
 			
 			//all pts are named in following order "x", "y", "z" via rfb = right, front, bottom
@@ -141,7 +83,7 @@ package as3isolib.display.primitive
 			if (fill && styleType != RenderStyleType.WIREFRAME)
 				fill.begin(g);
 			
-			var stroke:IStroke = edges.length >= 6 ? IStroke(edges[5]) : DEFAULT_STROKE;
+			var stroke:IStroke = strokes.length >= 6 ? IStroke(strokes[5]) : DEFAULT_STROKE;
 			if (stroke)
 				stroke.apply(g);
 				
@@ -155,11 +97,11 @@ package as3isolib.display.primitive
 				
 			//back-left face
 			g.moveTo(lbb.x, lbb.y);
-			fill = IFill(fills[4]);
+			fill = fills.length >= 5 ? IFill(fills[4]) : DEFAULT_FILL;
 			if (fill && styleType != RenderStyleType.WIREFRAME)
 				fill.begin(g);
 			
-			stroke = IStroke(edges[4]);
+			stroke = strokes.length >= 5 ? IStroke(strokes[4]) : DEFAULT_STROKE;
 			if (stroke)
 				stroke.apply(g);
 				
@@ -173,11 +115,11 @@ package as3isolib.display.primitive
 				
 			//back-right face
 			g.moveTo(lbb.x, lbb.y);
-			fill = IFill(fills[3]);
+			fill = fills.length >= 4 ? IFill(fills[3]) : DEFAULT_FILL;
 			if (fill && styleType != RenderStyleType.WIREFRAME)
 				fill.begin(g);
 			
-			stroke = IStroke(edges[3]);
+			stroke = strokes.length >= 4 ? IStroke(strokes[3]) : DEFAULT_STROKE;
 			if (stroke)
 				stroke.apply(g);
 				
@@ -191,11 +133,11 @@ package as3isolib.display.primitive
 				
 			//front-left face
 			g.moveTo(lfb.x, lfb.y);
-			fill = IFill(fills[2]);
+			fill = fills.length >= 3 ? IFill(fills[2]) : DEFAULT_FILL;
 			if (fill && styleType != RenderStyleType.WIREFRAME)
 				fill.begin(g);
 			
-			stroke = IStroke(edges[2]);
+			stroke = strokes.length >= 3 ? IStroke(strokes[2]) : DEFAULT_STROKE;
 			if (stroke)
 				stroke.apply(g);
 				
@@ -209,11 +151,11 @@ package as3isolib.display.primitive
 				
 			//front-right face
 			g.moveTo(rbb.x, rbb.y);
-			fill = IFill(fills[1]);
+			fill = fills.length >= 2 ? IFill(fills[1]) : DEFAULT_FILL;
 			if (fill && styleType != RenderStyleType.WIREFRAME)
 				fill.begin(g);
 			
-			stroke = IStroke(edges[1]);
+			stroke = strokes.length >= 2 ? IStroke(strokes[1]) : DEFAULT_STROKE;
 			if (stroke)
 				stroke.apply(g);
 				
@@ -227,11 +169,11 @@ package as3isolib.display.primitive
 				
 			//top face
 			g.moveTo(lbt.x, lbt.y);
-			fill = IFill(fills[0]);
+			fill = fills.length >= 1 ? IFill(fills[0]) : DEFAULT_FILL;
 			if (fill && styleType != RenderStyleType.WIREFRAME)
 				fill.begin(g);
 			
-			stroke = IStroke(edges[0]);
+			stroke = strokes.length >= 1 ? IStroke(strokes[0]) : DEFAULT_STROKE;
 			if (stroke)
 				stroke.apply(g);
 				
@@ -241,55 +183,7 @@ package as3isolib.display.primitive
 			g.lineTo(lbt.x, lbt.y);
 			
 			if (fill)
-				fill.end(g); */
-			
-			//bottom face
-			sq0.width = isoWidth;
-			sq0.length = isoLength;
-			sq0.height = 0;
-			
-			//back-left face
-			sq1.width = 0;
-			sq1.length = isoLength;
-			sq1.height = isoHeight;
-			
-			//back-right face
-			sq2.width = isoWidth;
-			sq2.length = 0;
-			sq2.height = isoHeight;
-			
-			//front-left face
-			sq3.width = isoWidth;
-			sq3.length = 0;
-			sq3.height = isoHeight;
-			sq3.y = isoLength;
-			
-			//front-right face
-			sq4.width = 0;
-			sq4.length = isoLength;
-			sq4.height = isoHeight;
-			sq4.x = isoWidth;
-			
-			//top face
-			sq5.width = isoWidth;
-			sq5.length = isoLength;
-			sq5.height = 0;
-			sq5.z = isoHeight;
-			
-			//now apply all common properties
-			var sq:IsoRectangle;
-			var i:int = numChildren - 1;
-			var c:int;
-			for (i; i >= 0; i--)
-			{
-				sq = IsoRectangle(getChildAt(i));
-				
-				sq.strokes = strokes[c] ? [strokes[c]] : [strokes[0]];
-				sq.fills = fills[c] ? [fills[c]] : [fills[0]];
-				sq.styleType = styleType;
-				
-				c++;
-			}
+				fill.end(g);
 		}
 	}
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<componentPackage>
+	
+	<component id="IBounds" class="as3isolib.bounds.IBounds"/>
+	<component id="PrimitiveBounds" class="as3isolib.bounds.PrimitiveBounds"/>
+	<component id="SceneBounds" class="as3isolib.bounds.SceneBounds"/>
+	
+	<component id="ClassFactory" class="as3isolib.core.ClassFactory"/>
+	<component id="IFactory" class="as3isolib.core.IFactory"/>
+	<component id="IIsoContainer" class="as3isolib.core.IIsoContainer"/>
+	<component id="IIsoDisplayObject" class="as3isolib.core.IIsoDisplayObject"/>
+	<component id="IsoContainer" class="as3isolib.core.IsoContainer"/>
+	<component id="IsoDisplayObject" class="as3isolib.core.IsoDisplayObject"/>
+	
+	<component id="INode" class="as3isolib.data.INode"/>
+	<component id="Node" class="as3isolib.data.Node"/>
+	
+	<component id="IIsoPrimitive" class="as3isolib.display.primitive.IIsoPrimitive"/>
+	<component id="IsoBox" class="as3isolib.display.primitive.IsoBox"/>
+	<!--component id="IsoHexBox" class="as3isolib.display.primitive.IsoHexBox"/-->
+	<component id="IsoPolygon" class="as3isolib.display.primitive.IsoPolygon"/>
+	<component id="IsoPrimitive" class="as3isolib.display.primitive.IsoPrimitive"/>
+	<component id="IsoRectangle" class="as3isolib.display.primitive.IsoRectangle"/>
+	
+	<component id="DefautlSceneLayoutRenderer" class="as3isolib.display.renderers.DefaultSceneLayoutRenderer"/>
+	<component id="DefaultShadowRenderer" class="as3isolib.display.renderers.DefaultShadowRenderer"/>
+	<component id="DefaultViewRenderer" class="as3isolib.display.renderers.DefaultViewRenderer"/>
+	<component id="ISceneLayoutRenderer" class="as3isolib.display.renderers.ISceneLayoutRenderer"/>
+	<component id="ISceneRenderer" class="as3isolib.display.renderers.ISceneRenderer"/>
+	<component id="IViewRenderer" class="as3isolib.display.renderers.IViewRenderer"/>
+	<!--component id="SceneBlittingRenderer" class="as3isolib.display.renderers.SceneBlittingRenderer"/-->
+	<component id="ViewBoundsRenderer" class="as3isolib.display.renderers.ViewBoundsRenderer"/>
+	
+	<component id="IIsoScene" class="as3isolib.display.scene.IIsoScene"/>
+	<component id="IsoGrid" class="as3isolib.display.scene.IsoGrid"/>
+	<!--component id="IsoHexGrid" class="as3isolib.display.scene.IsoHexGrid"/-->
+	<component id="IsoOrigin" class="as3isolib.display.scene.IsoOrigin"/>
+	<component id="IsoScene" class="as3isolib.display.scene.IsoScene"/>
+	
+	<component id="IIsoView" class="as3isolib.display.IIsoView"/>
+	<component id="IsoSprite" class="as3isolib.display.IsoSprite"/>
+	<component id="IsoView" class="as3isolib.display.IsoView"/>
+	
+	<component id="IsoOrientation" class="as3isolib.enum.IsoOrientation"/>
+	<component id="RenderStyleType" class="as3isolib.enum.RenderStyleType"/>
+	
+	<component id="IsoError" class="as3isolib.errors.IsoError"/>
+	
+	<component id="IsoEvent" class="as3isolib.events.IsoEvent"/>
+	
+	<component id="DefaultIsometricTransformation" class="as3isolib.geom.transformations.DefaultIsometricTransformation"/>
+	<!--component id="DimetricTransformation" class="as3isolib.geom.transformations.DimetricTransformation"/-->
+	<component id="IAxonometricTransformation" class="as3isolib.geom.transformations.IAxonometricTransformation"/>
+	<!--component id="IsometricTransformation" class="as3isolib.geom.transformations.IsometricTransformation"/-->
+	
+	<component id="IsoMath" class="as3isolib.geom.IsoMath"/>
+	<component id="Pt" class="as3isolib.geom.Pt"/>
+	
+	<component id="BitmapFill" class="as3isolib.graphics.BitmapFill"/>
+	<component id="IFill" class="as3isolib.graphics.IFill"/>
+	<component id="IStroke" class="as3isolib.graphics.IStroke"/>
+	<component id="SolidColorFill" class="as3isolib.graphics.SolidColorFill"/>
+	<component id="Stroke" class="as3isolib.graphics.Stroke"/>
+	
+	<component id="IsoDrawingUtil" class="as3isolib.utils.IsoDrawingUtil"/>
+	
+	<component id="EventDispatcherProxy" class="eDpLib.events.EventDispatcherProxy"/>
+	<component id="IEventDispatcherProxy" class="eDpLib.events.IEventDispatcherProxy"/>
+	<component id="ListenerHash" class="eDpLib.events.ListenerHash"/>
+	<component id="ProxyEvent" class="eDpLib.events.ProxyEvent"/>
+	
+</componentPackage>

@@ -29,12 +29,44 @@ SOFTWARE.
 */
 package as3isolib.graphics
 {
-	import as3isolib.errors.IsoError;
-	
 	import flash.display.Graphics;
 
 	public class SolidColorFill implements IFill
 	{
+		////////////////////////////////////////////////////////////////////////
+		//	ID
+		////////////////////////////////////////////////////////////////////////
+		
+		static private var _IDCount:uint = 0;
+		
+		/**
+		 * @private
+		 */
+		public const UID:uint = _IDCount++;
+		
+		/**
+		 * @private
+		 */
+		protected var setID:String;
+		
+		/**
+		 * @private
+		 */
+		public function get id ():String
+		{
+			return (setID == null || setID == "")?
+				"SolidColorFill" + UID.toString():
+				setID;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set id (value:String):void
+		{
+			setID = value;
+		}
+		
 		/**
 		 * Constructor
 		 */
@@ -42,6 +74,8 @@ package as3isolib.graphics
 		{
 			this.color = color;
 			this.alpha = alpha;
+			
+			
 		}
 		
 		/**

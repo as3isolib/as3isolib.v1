@@ -150,7 +150,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#layoutRenderer">layoutRenderer</a> : <a href="../../core/IFactory.html">IFactory</a>
 <div class="summaryTableDescription">
-   The factory used to create the IIsoRenderer responsible for the layout of the child objects.</div>
+   The factory used to create the ISceneLayoutRenderer responsible for the layout of the child objects.</div>
 </td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -180,7 +180,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#styleRenderers">styleRenderers</a> : Array<div class="summaryTableDescription">
-   An array of IFactories whose class generators are IIsoRenderers.</div>
+   An array of IFactories whose class generators are ISceneRenderer.</div>
 </td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
 <tr class="">
@@ -575,7 +575,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>layoutRenderer:<a href="../../core/IFactory.html">IFactory</a></code>&nbsp;&nbsp;[read-write]<p>
-   The factory used to create the IIsoRenderer responsible for the layout of the child objects.
+   The factory used to create the ISceneLayoutRenderer responsible for the layout of the child objects.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get layoutRenderer():<a href="../../core/IFactory.html">IFactory</a></code>
@@ -591,7 +591,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>styleRenderers:Array</code>&nbsp;&nbsp;[read-write]<p>
-   An array of IFactories whose class generators are IIsoRenderers.
+   An array of IFactories whose class generators are ISceneRenderer.
    If any value contained within the array is not of type IFactory, it will be ignored.
    </p><span class="label">Implementation</span>
 <br>

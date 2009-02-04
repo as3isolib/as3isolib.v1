@@ -42,7 +42,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-  The default isometric transformation object that provide the ideal 2:1 x to y ratio.
+  The default isometric transformation object that provides the ideal 2:1 x to y ratio.
   <p></p>
 <br>
 <hr>
@@ -57,7 +57,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#DefaultIsometricTransformation()">DefaultIsometricTransformation</a>(projectValuesToAxonometricAxes:Boolean = false)</div>
+<a class="signatureLink" href="#DefaultIsometricTransformation()">DefaultIsometricTransformation</a>(projectValuesToAxonometricAxes:Boolean = false, maintainZAxisRatio:Boolean = false)</div>
 <div class="summaryTableDescription">
    Constructor
    
@@ -100,13 +100,20 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function DefaultIsometricTransformation(projectValuesToAxonometricAxes:Boolean = false)</code><p>
+<code>public function DefaultIsometricTransformation(projectValuesToAxonometricAxes:Boolean = false, maintainZAxisRatio:Boolean = false)</code><p>
    Constructor
    
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">projectValuesToAxonometricAxes</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; A flag indicating whether to compute x, y, z, width, lenght, and height values to the axonometric axes or screen axes.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">maintainZAxisRatio</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; A flag indicating if the z axis values are to be adjusted to maintain proportions based on the x & axis values. 
    </td>
 </tr>
 </table>

@@ -169,7 +169,7 @@ package as3isolib.core
 		protected var oldX:Number;
 		
 		/**
-		 * @inheritDoc
+		 * @private
 		 */
 		[Bindable("move")]
 		public function get x ():Number
