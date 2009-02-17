@@ -38,6 +38,7 @@ package as3isolib.graphics
 	import flash.display.Graphics;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
+	import flash.geom.Rectangle;
 	import flash.utils.getDefinitionByName;
 
 	public class BitmapFill implements IFill
@@ -91,6 +92,12 @@ package as3isolib.graphics
 		{
 			sourceObject = value;
 			
+			if (bitmapData)
+			{
+				bitmapData.dispose();
+				bitmapData = null;
+			}
+			
 			var tempSprite:DisplayObject;
 			
 			if (value is BitmapData)
@@ -125,6 +132,9 @@ package as3isolib.graphics
 				bitmapData = new BitmapData(tempSprite.width, tempSprite.height);
 				bitmapData.draw(tempSprite, new Matrix(), colorTransform);
 			}
+			
+			if (cTransform)
+				bitmapData.colorTransform(bitmapData.rect, cTransform);
 		}
 		
 		///////////////////////////////////////////////////////////
@@ -178,7 +188,9 @@ package as3isolib.graphics
 		public function set colorTransform (value:ColorTransform):void
 		{
 			cTransform = value;
-			source = sourceObject; //trigger to apply color transform if applicable
+			
+			if (bitmapData)
+				bitmapData.colorTransform(bitmapData.rect, cTransform);
 		}
 		
 		/**
