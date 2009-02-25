@@ -106,6 +106,20 @@ package as3isolib.data
 			_data = value;
 		}
 		
+		//////////////////////////////////////////////////////////////////
+		//	OWNER
+		//////////////////////////////////////////////////////////////////
+		
+		protected var ownerObject:Object;
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get owner ():Object
+		{
+			return ownerObject ? ownerObject : parentNode;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	PARENT
 		////////////////////////////////////////////////////////////////////////
@@ -115,7 +129,7 @@ package as3isolib.data
 		 */
 		public function get hasParent ():Boolean
 		{
-			return parentNode? true: false;
+			return parentNode ? true : false;
 		}
 		
 		/**

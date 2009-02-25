@@ -30,11 +30,10 @@ SOFTWARE.
 package as3isolib.display.renderers
 {
 	import as3isolib.bounds.IBounds;
+	import as3isolib.bounds.PrimitiveBounds;
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.scene.IIsoScene;
-	
-	import flash.utils.getTimer;
 	
 	use namespace as3isolib_internal;
 	
@@ -52,24 +51,21 @@ package as3isolib.display.renderers
 		 */
 		public function renderScene (scene:IIsoScene):void
 		{
-			var startTime:uint = getTimer();
-			
-			var sortedChildren:Array = scene.displayListChildren.slice(); //make a copy of the children
-			sortedChildren.sort(isoDepthSort); //perform a secondary sort for any hittests
+			var children:Array = scene.displayListChildren.slice();
+			children.sort(isoDepthSort, Array.NUMERIC);
 			
 			var child:IIsoDisplayObject;
+			
 			var i:uint;
-			var m:uint = sortedChildren.length;
+			var m:uint = children.length;
 			while (i < m)
 			{
-				child = IIsoDisplayObject(sortedChildren[i]);
+				child = IIsoDisplayObject(children[i]);
 				if (child.depth != i)
 					scene.setChildIndex(child, i);
 				
 				i++;
 			}
-			
-			trace("scene layout render time", getTimer() - startTime, "ms");
 		}
 		
 		////////////////////////////////////////////////////
@@ -100,10 +96,7 @@ package as3isolib.display.renderers
 				return 1;
 			
 			else
-			{
-				//trace("no solution betw", childA.id, "&", childB.id);
 				return 0;
-			}
 		}
 	}
 }

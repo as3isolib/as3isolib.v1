@@ -38,7 +38,6 @@ package as3isolib.graphics
 	import flash.display.Graphics;
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
-	import flash.geom.Rectangle;
 	import flash.utils.getDefinitionByName;
 
 	public class BitmapFill implements IFill
@@ -57,7 +56,7 @@ package as3isolib.graphics
 		 * @param repeat Flag indicating whether to repeat the fill.
 		 * @param smooth Flag indicating whether to smooth the fill.
 		 */
-		public function BitmapFill (source:Object, orientation:String = null, matrix:Matrix = null, colorTransform:ColorTransform = null, repeat:Boolean = true, smooth:Boolean = false)
+		public function BitmapFill (source:Object, orientation:Object = null, matrix:Matrix = null, colorTransform:ColorTransform = null, repeat:Boolean = true, smooth:Boolean = false)
 		{
 			this.source = source;
 			this.orientation = orientation;
@@ -141,12 +140,12 @@ package as3isolib.graphics
 		//	ORIENTATION
 		///////////////////////////////////////////////////////////
 		
-		private var _orientation:String;
+		private var _orientation:Object;
 		
 		/**
 		 * @private
 		 */
-		public function get orientation ():String
+		public function get orientation ():Object
 		{
 			return _orientation;
 		}
@@ -154,18 +153,29 @@ package as3isolib.graphics
 		private var _orientationMatrix:Matrix;
 		
 		/**
-		 * The planar orientation of fill relative to an isometric face.
+		 * The planar orientation of fill relative to an isometric face.  This can either be a string value enumerated in the IsoOrientation or a matrix.
 		 */
-		public function set orientation (value:String):void
+		public function set orientation (value:Object):void
 		{
 			_orientation = value;
 			
-			if (value == IsoOrientation.XY ||
-				value == IsoOrientation.XZ ||
-				value == IsoOrientation.YZ)
+			if (!value)
+				return;
+			
+			if (value is String)
 			{
-				_orientationMatrix = IsoDrawingUtil.getIsoMatrix(value);
+				if (value == IsoOrientation.XY || value == IsoOrientation.XZ || value == IsoOrientation.YZ)
+					_orientationMatrix = IsoDrawingUtil.getIsoMatrix(value as String);
+				
+				else
+					_orientationMatrix = null;
 			}
+				
+			else if (value is Matrix)
+				_orientationMatrix = Matrix(value);
+			
+			else
+				throw new Error("value is not of type String or Matrix");
 		}
 		
 		///////////////////////////////////////////////////////////
@@ -189,7 +199,7 @@ package as3isolib.graphics
 		{
 			cTransform = value;
 			
-			if (bitmapData)
+			if (bitmapData && cTransform)
 				bitmapData.colorTransform(bitmapData.rect, cTransform);
 		}
 		
@@ -233,6 +243,14 @@ package as3isolib.graphics
 		public function end (target:Graphics):void
 		{
 			target.endFill();
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function clone ():IFill
+		{
+			return new BitmapFill(source, orientation, matrix, colorTransform, repeat, smooth);
 		}
 	}
 }

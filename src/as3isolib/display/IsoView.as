@@ -179,6 +179,13 @@ package as3isolib.display
 				bPositionInvalidated = false;
 			}
 			
+			if (recursive)
+			{
+				var scene:IIsoScene;
+				for each (scene in scenesArray)
+					scene.render(recursive);
+			}
+			
 			if (viewRenderers && numScenes > 0)
 			{
 				var viewRenderer:IViewRenderer;
@@ -188,13 +195,6 @@ package as3isolib.display
 					viewRenderer = factory.newInstance();
 					viewRenderer.renderView(this);
 				}
-			}
-			
-			if (recursive)
-			{
-				var scene:IIsoScene;
-				for each (scene in scenesArray)
-					scene.render(recursive);
 			}
 		}
 		

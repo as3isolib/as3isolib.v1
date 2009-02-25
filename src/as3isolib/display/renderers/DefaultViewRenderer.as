@@ -42,6 +42,28 @@ package as3isolib.display.renderers
 	public class DefaultViewRenderer implements IViewRenderer
 	{		
 		////////////////////////////////////////////////////
+		//	SCENES
+		////////////////////////////////////////////////////
+		
+		private var scenesArray:Array = [];
+		
+		/**
+		 * @private
+		 */
+		public function get scenes ():Array
+		{
+			return scenesArray;
+		}
+		
+		/**
+		 * An array of target scenes to be rendered.  If this value's length is 0, then the target view's scenes are used.
+		 */
+		public function set scenes (value:Array):void
+		{
+			scenesArray = value;
+		}
+		
+		////////////////////////////////////////////////////
 		//	RENDER SCENE
 		////////////////////////////////////////////////////
 		
@@ -50,11 +72,11 @@ package as3isolib.display.renderers
 		 */
 		public function renderView (view:IIsoView):void
 		{
-			if (view.numScenes < 1)
+			var targetScenes:Array = (scenesArray && scenesArray.length >= 1) ? scenesArray : view.scenes;
+			if (targetScenes.length < 1)
 				return;
 			
 			var v:Sprite = Sprite(view);
-			
 			var rect:Rectangle = new Rectangle(0, 0, v.width, v.height);
 			var bounds:Rectangle;
 			
@@ -63,7 +85,7 @@ package as3isolib.display.renderers
 			
 			//aggregate child objects
 			var scene:IIsoScene;
-			for each (scene in view.scenes)
+			for each (scene in targetScenes)
 				children = children.concat(scene.children);
 			
 			for each (child in children)

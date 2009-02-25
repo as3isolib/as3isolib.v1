@@ -160,6 +160,26 @@ package as3isolib.bounds
 			return pt;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
+		public function getPts ():Array
+		{
+			var a:Array = [];
+			
+			a.push(new Pt(_left, _back, _bottom));
+			a.push(new Pt(_right, _back, _bottom));
+			a.push(new Pt(_right, _front, _bottom));
+			a.push(new Pt(_left, _front, _bottom));
+			
+			a.push(new Pt(_left, _back, _top));
+			a.push(new Pt(_right, _back, _top));
+			a.push(new Pt(_right, _front, _top));
+			a.push(new Pt(_left, _front, _top));
+			
+			return a;
+		}
+		
 		////////////////////////////////////////////////////////////////
 		//	COLLISION
 		////////////////////////////////////////////////////////////////
@@ -170,6 +190,22 @@ package as3isolib.bounds
 		public function intersects (bounds:IBounds):Boolean
 		{
 			return false;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function containsPt (target:Pt):Boolean
+		{
+			if ((_left <= target.x && target.x <= _right) &&
+				(_back <= target.y && target.y <= _front) &&
+				(_bottom <= target.z && target.z <= _top))
+			{
+				return true;
+			}
+			
+			else
+				return false;
 		}
 		
 		////////////////////////////////////////////////////////////////
@@ -188,10 +224,40 @@ package as3isolib.bounds
 		public function SceneBounds (target:IsoScene)
 		{
 			this._target = target;
-			
+			calculateBounds();					
+		}
+		
+		////////////////////////////////////////////////////////////////
+		//	EXCLUDE ANIMATED
+		////////////////////////////////////////////////////////////////
+		
+		private var excludeAnimated:Boolean = false;
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get excludeAnimatedChildren ():Boolean
+		{
+			return excludeAnimated;
+		}
+		
+		/**
+		 * Flag indicating to exclude animated child objects when calculating the scene's bounds.
+		 */
+		public function set excludeAnimatedChildren (value:Boolean):void
+		{
+			excludeAnimated = value;
+			calculateBounds();
+		}
+		
+		private function calculateBounds ():void
+		{
 			var child:IIsoDisplayObject;
 			for each (child in _target.displayListChildren)
 			{
+				if (excludeAnimated && child.isAnimated)
+					continue;	
+				
 				if (isNaN(_left) || child.isoBounds.left < _left)
 					_left = child.isoBounds.left;
 				
@@ -227,7 +293,7 @@ package as3isolib.bounds
 				_bottom = 0;
 				
 			if (isNaN(_top))
-				_top = 0;		
+				_top = 0;
 		}
 	}
 }

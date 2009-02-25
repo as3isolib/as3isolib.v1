@@ -30,6 +30,8 @@ SOFTWARE.
 package as3isolib.display.primitive
 {
 	import as3isolib.core.IIsoDisplayObject;
+	import as3isolib.graphics.IFill;
+	import as3isolib.graphics.IStroke;
 	
 	/**
 	 * The IIsoPrimitive interface defines methods for any IIsoDisplayObject class that is utilizing Flash's drawing API.
@@ -56,6 +58,16 @@ package as3isolib.display.primitive
 		/**
 		 * @private
 		 */
+		function get fill ():IFill;
+		
+		/**
+		 * The primary fill used to draw the faces of this object.  This overwrites any values in the fills array.
+		 */
+		function set fill (value:IFill):void;
+		
+		/**
+		 * @private
+		 */
 		function get fills ():Array;
 		
 		/**
@@ -64,6 +76,16 @@ package as3isolib.display.primitive
 		 * @see as3isolib.graphics.IFill
 		 */
 		function set fills (value:Array):void;
+		
+		/**
+		 * @private
+		 */
+		function get stroke ():IStroke;
+		
+		/**
+		 * The primary stroke used to draw the edges of this object.  This overwrites any values in the strokes array.
+		 */
+		function set stroke (value:IStroke):void;
 		
 		/**
 		 * @private

@@ -69,7 +69,7 @@ package as3isolib.core
 		public function set isAnimated (value:Boolean):void
 		{
 			_isAnimated = value;
-			mainContainer.cacheAsBitmap = value;
+			//mainContainer.cacheAsBitmap = value;
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -87,6 +87,9 @@ package as3isolib.core
 			return new PrimitiveBounds(this);
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
 		public function get screenBounds ():Rectangle
 		{
 			var screenBounds:Rectangle = mainContainer.getBounds(mainContainer);				
@@ -113,6 +116,16 @@ package as3isolib.core
 			rect.y = pt.y;
 			
 			return rect;
+		}
+		
+		public function get inverseOriginX ():Number
+		{
+			return IsoMath.isoToScreen(new Pt(x + width, y + length, z)).x;
+		}
+		
+		public function get inverseOriginY ():Number
+		{
+			return IsoMath.isoToScreen(new Pt(x + width, y + length, z)).y;
 		}
 		
 			/////////////////////////////////////////////////////////
@@ -202,10 +215,7 @@ package as3isolib.core
 		 */
 		public function get screenX ():Number
 		{
-			var b:IBounds = isoBounds;
-			var pt:Pt = IsoMath.isoToScreen(new Pt(b.left, b.front, b.bottom));
-						
-			return pt.x//container.localToGlobal(pt).x;
+			return IsoMath.isoToScreen(new Pt(x, y, z)).x;
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -256,10 +266,7 @@ package as3isolib.core
 		 */
 		public function get screenY ():Number
 		{
-			var b:IBounds = isoBounds;
-			var pt:Pt = IsoMath.isoToScreen(new Pt(b.right, b.front, b.bottom));
-			
-			return pt.y//container.localToGlobal(pt).y;
+			return IsoMath.isoToScreen(new Pt(x, y, z)).y
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -303,6 +310,22 @@ package as3isolib.core
 				if (autoUpdate)
 					render();
 			}
+		}
+		
+		////////////////////////////////////////////////////////////////////////
+		//	WIDTH
+		////////////////////////////////////////////////////////////////////////
+		
+		private var dist:Number;
+		
+		public function get distance ():Number
+		{
+			return dist;
+		}
+		
+		public function set distance (value:Number):void
+		{
+			dist = value;
 		}
 		
 			/////////////////////////////////////////////////////////

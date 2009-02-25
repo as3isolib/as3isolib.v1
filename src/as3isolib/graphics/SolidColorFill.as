@@ -107,5 +107,13 @@ package as3isolib.graphics
 		{
 			target.endFill();
 		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function clone ():IFill
+		{
+			return new SolidColorFill(color, alpha);
+		}
 	}
 }

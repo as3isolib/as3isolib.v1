@@ -78,6 +78,9 @@ package as3isolib.core
 		 */
 		function getBounds (targetCoordinateSpace:DisplayObject):Rectangle
 		
+		function get inverseOriginX ():Number;
+		function get inverseOriginY ():Number;
+		
 		//////////////////////////////////////////////////////////////////
 		//	POSITION
 		//////////////////////////////////////////////////////////////////
@@ -106,7 +109,7 @@ package as3isolib.core
 		function get isAnimated ():Boolean
 		
 		/**
-		 * Flag indicating if IIsoDisplayObject will be intended for frequent movement and/or resizing.
+		 * Flag indicating if this object will be intended for frequent movement and/or resizing.
 		 */
 		function set isAnimated (value:Boolean):void
 		
@@ -149,6 +152,16 @@ package as3isolib.core
 		 * The y value of the container in screen coordinates relative to the parent container.
 		 */ 
 		function get screenY ():Number;
+		
+		/**
+		 * @private
+		 */
+		function get distance ():Number;
+		
+		/**
+		 * An arbitrary value set by ISceneLayoutRenderers for calculating the proper z-order depth.  In most cases this should not be used by developers.
+		 */
+		function set distance (value:Number):void;
 		
 		//////////////////////////////////////////////////////////////////
 		//	GEOMETRY

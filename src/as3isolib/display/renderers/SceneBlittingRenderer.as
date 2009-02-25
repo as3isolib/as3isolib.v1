@@ -88,8 +88,6 @@ package as3isolib.display.renderers
 		 */
 		public function renderScene (scene:IIsoScene):void
 		{
-			var startTime:uint = getTimer();
-			
 			if (!_targetBitmap)
 				return;
 			
@@ -119,8 +117,6 @@ package as3isolib.display.renderers
 				_targetBitmap.bitmapData.dispose();
 				
 			_targetBitmap.bitmapData = sceneBitmapData;
-			
-			trace("scene layout render time", getTimer() - startTime, "ms");
 		}
 		
 		////////////////////////////////////////////////////

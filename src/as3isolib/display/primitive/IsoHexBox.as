@@ -29,7 +29,6 @@ SOFTWARE.
 */
 package as3isolib.display.primitive
 {
-	import as3isolib.display.primitive.IsoPrimitive;
 	import as3isolib.enum.IsoOrientation;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
@@ -104,17 +103,17 @@ package as3isolib.display.primitive
 			var g:Graphics = mainContainer.graphics;
 			g.clear();
 			
-			var stroke:IStroke = IStroke(strokes[2]);
-			if (stroke)
-				stroke.apply(g);
+			var s:IStroke = strokes.length >= 8 ? IStroke(strokes[7]) : DEFAULT_STROKE;
+			if (s)
+				s.apply(g);
 							
-			var fill:IFill = IFill(fills[2]);
-			if (fill)
+			var f:IFill = fills.length >= 8 ? IFill(fills[7]) : DEFAULT_FILL;
+			if (f)
 			{
-				if (fill is BitmapFill)
-					BitmapFill(fill).orientation = IsoOrientation.XY;
+				if (f is BitmapFill)
+					BitmapFill(f).orientation = IsoOrientation.XY;
 				
-				fill.begin(g);
+				f.begin(g);
 			}
 			
 			g.moveTo(ptb0.x, ptb0.y);
@@ -125,22 +124,29 @@ package as3isolib.display.primitive
 			g.lineTo(ptb5.x, ptb5.y);
 			g.lineTo(ptb0.x, ptb0.y);
 			
-			if (fill)
-				fill.end(g);
+			s = null;
+			
+			if (f)
+				f.end(g);
 			
 			//draw side faces, orienting fills to face planes
-			//face #6
-			stroke = IStroke(strokes[1]);
-			if (stroke)
-				stroke.apply(g);
+			//face #4
+			s = strokes.length >= 5 ? IStroke(strokes[4]) : DEFAULT_STROKE;
+			if (s)
+				s.apply(g);
 			
-			fill = IFill(fills[1]);
-			if (fill)
+			f = fills.length >= 5 ? IFill(fills[4]) : DEFAULT_FILL;
+			if (f)
 			{
-				if (fill is BitmapFill)
-					BitmapFill(fill).matrix = new Matrix(1, Pt.theta(ptb4, ptb5), 0, 1, 0, 0);
+				if (f is BitmapFill)
+				{
+					var m:Matrix = new Matrix();
+					m.b = Math.tan(Pt.theta(ptb4, ptb5));
+					
+					BitmapFill(f).orientation = m;
+				}
 				
-				fill.begin(g);
+				f.begin(g);
 			}
 			
 			g.moveTo(ptb4.x, ptb4.y);
@@ -149,15 +155,28 @@ package as3isolib.display.primitive
 			g.lineTo(ptt4.x, ptt4.y);
 			g.lineTo(ptb4.x, ptb4.y);
 			
-			//face #1
-			if (fill)
+			s = null;
+			
+			if (f)
+				f.end(g);
+			
+			//face #5
+			s = strokes.length >= 6 ? IStroke(strokes[5]) : DEFAULT_STROKE;
+			if (s)
+				s.apply(g);
+			
+			f = fills.length >= 6 ? IFill(fills[5]) : DEFAULT_FILL;
+			if (f)
 			{
-				fill.end(g);
+				if (f is BitmapFill)
+				{
+					m = new Matrix();
+					m.b = Math.tan(Pt.theta(ptb5, ptb0));
+					
+					BitmapFill(f).orientation = m;
+				}
 				
-				if (fill is BitmapFill)
-					BitmapFill(fill).matrix = new Matrix(1, Pt.theta(ptb5, ptb0), 0, 1, 0, 0);
-				
-				fill.begin(g);
+				f.begin(g);
 			}
 			
 			g.moveTo(ptb0.x, ptb0.y);
@@ -166,15 +185,25 @@ package as3isolib.display.primitive
 			g.lineTo(ptt0.x, ptt0.y);
 			g.lineTo(ptb0.x, ptb0.y);
 			
-			//face #2
-			if (fill)
+			s = null;
+			
+			if (f)
+				f.end(g);
+			
+			//face #6
+			s = strokes.length >= 7 ? IStroke(strokes[6]) : DEFAULT_STROKE;
+			if (s)
+				s.apply(g);
+			
+			f = fills.length >= 7 ? IFill(fills[6]) : DEFAULT_FILL;
+			if (f)
 			{
-				fill.end(g);
+				f.end(g);
 				
-				if (fill is BitmapFill)
-					BitmapFill(fill).orientation = IsoOrientation.XZ;
+				if (f is BitmapFill)
+					BitmapFill(f).orientation = IsoOrientation.XZ;
 				
-				fill.begin(g);
+				f.begin(g);
 			}
 			
 			g.moveTo(ptb0.x, ptb0.y);
@@ -183,15 +212,28 @@ package as3isolib.display.primitive
 			g.lineTo(ptt0.x, ptt0.y);
 			g.lineTo(ptb0.x, ptb0.y);
 			
-			//face #3
-			if (fill)
-			{
-				fill.end(g);
+			s = null;
+			
+			if (f)
+				f.end(g);
 				
-				if (fill is BitmapFill)
-					BitmapFill(fill).matrix = new Matrix(1, Pt.theta(ptb2, ptb3), 0, 1, 0, 0);
+			//face #1
+			s = strokes.length >= 2 ? IStroke(strokes[1]) : DEFAULT_STROKE;
+			if (s)
+				s.apply(g);
+			
+			f = fills.length >= 2 ? IFill(fills[1]) : DEFAULT_FILL;
+			if (f)
+			{				
+				if (f is BitmapFill)
+				{
+					m = new Matrix();
+					m.b = Math.tan(Pt.theta(ptb2, ptb1));
+					
+					BitmapFill(f).orientation = m;
+				}
 				
-				fill.begin(g);
+				f.begin(g);
 			}
 			
 			g.moveTo(ptb1.x, ptb1.y);
@@ -200,15 +242,29 @@ package as3isolib.display.primitive
 			g.lineTo(ptt1.x, ptt1.y);
 			g.lineTo(ptb1.x, ptb1.y);
 			
-			//face #4
-			if (fill)
+			s = null;
+			
+			if (f)
+				f.end(g);
+				
+			//face #2
+			s = strokes.length >= 3 ? IStroke(strokes[2]) : DEFAULT_STROKE;
+			if (s)
+				s.apply(g);
+			
+			f = fills.length >= 3 ? IFill(fills[2]) : DEFAULT_FILL;
+			f = IFill(fills[2]);
+			if (f)
 			{
-				fill.end(g);
+				if (f is BitmapFill)
+				{
+					m = new Matrix();
+					m.b = Math.tan(Pt.theta(ptb3, ptb2));
+					
+					BitmapFill(f).orientation = m;
+				}
 				
-				if (fill is BitmapFill)
-					BitmapFill(fill).matrix = new Matrix(1, Pt.theta(ptb3, ptb2), 0, 1, 0, 0);
-				
-				fill.begin(g);
+				f.begin(g);
 			}
 			
 			g.moveTo(ptb2.x, ptb2.y);
@@ -217,15 +273,23 @@ package as3isolib.display.primitive
 			g.lineTo(ptt2.x, ptt2.y);
 			g.lineTo(ptb2.x, ptb2.y);
 			
-			//face #5
-			if (fill)
+			s = null;
+			
+			if (f)
+				f.end(g);
+				
+			//face #3
+			s = strokes.length >= 4 ? IStroke(strokes[3]) : DEFAULT_STROKE;
+			if (s)
+				s.apply(g);
+			
+			f = fills.length >= 4 ? IFill(fills[3]) : DEFAULT_FILL;
+			if (f)
 			{
-				fill.end(g);
+				if (f is BitmapFill)
+					BitmapFill(f).orientation = IsoOrientation.XZ;
 				
-				if (fill is BitmapFill)
-					BitmapFill(fill).orientation = IsoOrientation.XZ;
-				
-				fill.begin(g);
+				f.begin(g);
 			}
 			
 			g.moveTo(ptb3.x, ptb3.y);
@@ -234,21 +298,23 @@ package as3isolib.display.primitive
 			g.lineTo(ptt3.x, ptt3.y);
 			g.lineTo(ptb3.x, ptb3.y);
 			
-			if (fill)
-				fill.end(g);
+			s = null;
+			
+			if (f)
+				f.end(g);
 			
 			//top hex
-			stroke = IStroke(strokes[0]);
-			if (stroke)
-				stroke.apply(g);
+			s = strokes.length >= 1 ? IStroke(strokes[0]) : DEFAULT_STROKE;
+			if (s)
+				s.apply(g);
 			
-			fill = IFill(fills[0]);
-			if (fill)
+			f = fills.length >= 1 ? IFill(fills[0]) : DEFAULT_FILL;
+			if (f)
 			{
-				if (fill is BitmapFill)
-					BitmapFill(fill).orientation = IsoOrientation.XY;
+				if (f is BitmapFill)
+					BitmapFill(f).orientation = IsoOrientation.XY;
 				
-				fill.begin(g);
+				f.begin(g);
 			}
 			
 			g.moveTo(ptt0.x, ptt0.y);
@@ -259,8 +325,10 @@ package as3isolib.display.primitive
 			g.lineTo(ptt5.x, ptt5.y);
 			g.lineTo(ptt0.x, ptt0.y);
 			
-			if (fill)
-				fill.end(g);
+			s = null;
+			
+			if (f)
+				f.end(g);
 		}
 		
 		//////////////////////////////////////////////////

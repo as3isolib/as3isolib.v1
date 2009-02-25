@@ -97,7 +97,10 @@ package as3isolib.display.scene
 			if (value && host != value)
 			{
 				if (host && host.contains(container))
+				{
 					host.removeChild(container);
+					ownerObject = null;
+				}
 				
 				else if (hasParent)
 					parent.removeChild(this);
@@ -106,6 +109,7 @@ package as3isolib.display.scene
 				if (host)
 				{
 					host.addChild(container);
+					ownerObject = host;
 					parentNode = null;
 				}
 			}

@@ -40,7 +40,7 @@ package as3isolib.display.scene
 	public interface IIsoScene extends IIsoContainer
 	{
 		/**
-		 * The IBounds for this object in 3D isometric space.
+		 * The IBounds for the displayable content in 3D isometric space.
 		 */
 		function get isoBounds ():IBounds;
 		

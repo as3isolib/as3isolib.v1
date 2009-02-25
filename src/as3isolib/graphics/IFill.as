@@ -51,5 +51,12 @@ package as3isolib.graphics
 		 * @param target The target graphics object.
 		 */
 		function end (target:Graphics):void;
+		
+		/**
+		 * Returns an exact copy of this IFill.
+		 * 
+		 * @returns IFill The clone of this IFill.
+		 */
+		function clone ():IFill;
 	}
 }

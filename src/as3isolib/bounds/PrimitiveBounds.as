@@ -151,6 +151,26 @@ package as3isolib.bounds
 			return pt;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
+		public function getPts ():Array
+		{
+			var a:Array = [];
+			
+			a.push(new Pt(left, back, bottom));
+			a.push(new Pt(right, back, bottom));
+			a.push(new Pt(right, front, bottom));
+			a.push(new Pt(left, front, bottom));
+			
+			a.push(new Pt(left, back, top));
+			a.push(new Pt(right, back, top));
+			a.push(new Pt(right, front, top));
+			a.push(new Pt(left, front, top));
+			
+			return a;
+		}
+		
 		////////////////////////////////////////////////////////////////
 		//	COLLISION
 		////////////////////////////////////////////////////////////////
@@ -165,6 +185,22 @@ package as3isolib.bounds
 				Math.abs(centerPt.z - bounds.centerPt.z) <= _target.height / 2 + bounds.height / 2)
 				
 				return true;
+			
+			else
+				return false;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function containsPt (target:Pt):Boolean
+		{
+			if ((left <= target.x && target.x <= right) &&
+				(back <= target.y && target.y <= front) &&
+				(bottom <= target.z && target.z <= top))
+			{
+				return true;
+			}
 			
 			else
 				return false;

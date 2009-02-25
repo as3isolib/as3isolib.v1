@@ -87,9 +87,47 @@ package as3isolib.display.primitive
 		//	MATERIALS
 		//////////////////////////////
 		
+			//	PROFILE STROKE
+			//////////////////////////////
+		
+		private var pStroke:IStroke;
+		
+		public function get profileStroke ():IStroke
+		{
+			return pStroke;
+		}
+		
+		public function set profileStroke (value:IStroke):void
+		{
+			if (pStroke != value)
+			{
+				pStroke = value;
+				invalidateStyles();
+				
+				if (autoUpdate)
+					render();
+			}
+		}
+		
+			//	MAIN FILL
+			//////////////////////////////
+		
+		public function get fill ():IFill
+		{
+			return IFill(fills[0]);
+		}
+		
+		public function set fill (value:IFill):void
+		{
+			fills = [value];
+		}
+		
+			//	FILLS
+			//////////////////////////////
+		
 		static protected const DEFAULT_FILL:IFill = new SolidColorFill(0xFFFFFF, 1);
 		
-		private var fillsArray:Array = [DEFAULT_FILL];
+		private var fillsArray:Array = [];
 		
 		/**
 		 * @private
@@ -115,9 +153,25 @@ package as3isolib.display.primitive
 			}
 		}
 		
+			//	MAIN STROKE
+			//////////////////////////////
+		
+		public function get stroke ():IStroke
+		{
+			return IStroke(strokes[0]);
+		}
+		
+		public function set stroke (value:IStroke):void
+		{
+			strokes = [value];
+		}
+		
+			//	STROKES
+			//////////////////////////////
+		
 		static protected const DEFAULT_STROKE:IStroke = new Stroke(0, 0x000000);
 		
-		private var edgesArray:Array = [DEFAULT_STROKE];
+		private var edgesArray:Array = [];
 		
 		/**
 		 * @private

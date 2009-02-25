@@ -100,13 +100,20 @@ package as3isolib.bounds
 		function get top ():Number;
 		
 		///////////////////////////////////////////////////////////
-		//	CENTER PT
+		//	PTS
 		///////////////////////////////////////////////////////////
 		
 		/**
 		 * Represents the center pt of the IBounds object in 3D isometric space
 		 */
 		function get centerPt ():Pt;
+		
+		/**
+		 * Returns an array of all the vertices of the IBounds' target.
+		 * 
+		 * @returns Array An array of vertices of the target object.
+		 */
+		function getPts ():Array;
 		
 		///////////////////////////////////////////////////////////
 		//	INTERSECTS
@@ -120,5 +127,14 @@ package as3isolib.bounds
 		 * @returns Boolean Returns true if an intersection occured, else false.
 		 */
 		function intersects (bounds:IBounds):Boolean;
+		
+		/**
+		 * Determines if the IBounds oject contains the target Pt.
+		 * 
+		 * @param bounds The Pt object to test for an intersection against.
+		 * 
+		 * @returns Boolean Returns true if it contains the Pt, else false.
+		 */
+		function containsPt (target:Pt):Boolean;
 	}
 }
