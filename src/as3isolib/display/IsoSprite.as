@@ -32,7 +32,6 @@ package as3isolib.display
 	import as3isolib.core.IFactory;
 	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
-	import as3isolib.graphics.ISpriteAsset;
 	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
