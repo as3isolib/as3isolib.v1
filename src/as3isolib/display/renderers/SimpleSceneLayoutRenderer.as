@@ -29,18 +29,16 @@ SOFTWARE.
 */
 package as3isolib.display.renderers
 {
-	import as3isolib.bounds.IBounds;
 	import as3isolib.core.IIsoDisplayObject;
-	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.scene.IIsoScene;
-	
-	use namespace as3isolib_internal;
-	
-	/**
-	 * The DefaultSceneLayoutRenderer is the default renderer responsible for performing the isometric position-based depth sorting on the child objects of the target IIsoScene. 
-	 */
-	public class DefaultSceneLayoutRenderer implements ISceneLayoutRenderer
-	{		
+
+	public class SimpleSceneLayoutRenderer implements ISceneLayoutRenderer
+	{
+		/**
+		 * Array of propert names to sort scene's children by.  The default value is <code>["y", "x", "z"]</code>.
+		 */
+		public var sortOnProps:Array = ["y", "x", "z"];
+		
 		////////////////////////////////////////////////////
 		//	RENDER SCENE
 		////////////////////////////////////////////////////
@@ -51,7 +49,7 @@ package as3isolib.display.renderers
 		public function renderScene (scene:IIsoScene):void
 		{
 			var children:Array = scene.displayListChildren.slice();
-			children.sort(isoDepthSort, Array.NUMERIC);
+			children.sortOn(sortOnProps, Array.NUMERIC);
 			
 			var child:IIsoDisplayObject;
 			
@@ -66,65 +64,5 @@ package as3isolib.display.renderers
 				i++;
 			}
 		}
-		
-		////////////////////////////////////////////////////
-		//	SORT
-		////////////////////////////////////////////////////
-		
-		private function isoDepthSort (childA:Object, childB:Object):int
-		{
-			var boundsA:IBounds = childA.isoBounds;
-			var boundsB:IBounds = childB.isoBounds;
-			
-			if (boundsA.right <= boundsB.left)
-				return -1;
-				
-			else if (boundsA.left >= boundsB.right)
-				return 1;
-			
-			else if (boundsA.front <= boundsB.back)
-				return -1;
-				
-			else if (boundsA.back >= boundsB.front)
-				return 1;
-				
-			else if (boundsA.top <= boundsB.bottom)
-				return -1;
-				
-			else if (boundsA.bottom >= boundsB.top)
-				return 1;
-			
-			else
-				return 0;
-		}
-		
-		//	proposed solution for issue# 10 submitted by Danko Kozar - http://code.google.com/p/as3isolib/issues/detail?id=10
-		/* private function isoDepthSort (childA:Object, childB:Object):int
-		{
-			var boundsA:IBounds = childA.isoBounds;
-			var boundsB:IBounds = childB.isoBounds;
-			
-			if (boundsA.right <= boundsB.left)
-				return -1;
-			
-			else if (boundsA.front <= boundsB.back)
-				return -1;
-			
-			else if (boundsA.top <= boundsB.bottom)
-				return -1;
-				
-			else if (boundsA.left >= boundsB.right)
-				return 1;
-				
-			else if (boundsA.back >= boundsB.front)
-				return 1;
-				
-			else if (boundsA.bottom >= boundsB.top)
-				return 1;
-			
-			else
-				return 0;
-		} */
-
 	}
 }

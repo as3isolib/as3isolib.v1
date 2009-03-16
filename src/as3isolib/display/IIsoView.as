@@ -34,6 +34,7 @@ package as3isolib.display
 	
 	import flash.display.Sprite;
 	import flash.events.IEventDispatcher;
+	import flash.geom.Point;
 	
 	/**
 	 * The IIsoView interface defines methods necessary to properly perform panning, zooming and other display task for a given IIsoScene.
@@ -81,6 +82,10 @@ package as3isolib.display
 		 * @see #currentPt
 		 */
 		function set currentY (value:Number):void;
+		
+		function localToIso (localPt:Point):Pt;
+		
+		function isoToLocal (isoPt:Pt):Point;
 		
 		/**
 		 * Centers the IIsoView on a given pt within the current child scene objects.

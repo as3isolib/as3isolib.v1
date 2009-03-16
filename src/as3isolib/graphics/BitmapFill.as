@@ -39,6 +39,7 @@ package as3isolib.graphics
 	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
 	import flash.utils.getDefinitionByName;
+	import flash.utils.getQualifiedSuperclassName;
 
 	public class BitmapFill implements IFill
 	{
@@ -108,7 +109,14 @@ package as3isolib.graphics
 			if (value is Class)
 			{
 				var classInstance:Class = Class(value);
-				tempSprite = new classInstance();
+				if (getQualifiedSuperclassName(classInstance) == "flash.display::BitmapData")
+				{
+					bitmapData = new classInstance(1, 1);
+					return;
+				}
+					
+				else
+					tempSprite = new classInstance();
 			}
 			
 			else if (value is Bitmap)
@@ -120,7 +128,8 @@ package as3isolib.graphics
 			else if (value is String)
 			{
 				classInstance = Class(getDefinitionByName(String(value)));
-				tempSprite = new classInstance();
+				if (classInstance)
+					tempSprite = new classInstance();
 			}
 			
 			else
@@ -128,8 +137,11 @@ package as3isolib.graphics
 				
 			if (!bitmapData && tempSprite)
 			{
-				bitmapData = new BitmapData(tempSprite.width, tempSprite.height);
-				bitmapData.draw(tempSprite, new Matrix(), colorTransform);
+				if (tempSprite.width > 0 && tempSprite.height > 0)
+				{
+					bitmapData = new BitmapData(tempSprite.width, tempSprite.height);
+					bitmapData.draw(tempSprite, new Matrix(), cTransform);
+				}
 			}
 			
 			if (cTransform)

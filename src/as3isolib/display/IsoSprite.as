@@ -29,7 +29,7 @@ SOFTWARE.
 */
 package as3isolib.display
 {
-	import as3isolib.core.IFactory;
+	import mx.core.IFactory;
 	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
 	
@@ -72,11 +72,11 @@ package as3isolib.display
 			if (spritesArray != value)
 			{
 				spritesArray = value;
-				bSkinsInvalidated = true;
+				bSpritesInvalidated = true;
 			}
 		}
 		
-		private var actualSpriteObjects:Array = [];
+		protected var actualSpriteObjects:Array = [];
 		
 		public function get actualSprites ():Array
 		{
@@ -87,14 +87,22 @@ package as3isolib.display
 		//	INVALIDATION
 		////////////////////////////////////////////////////////////
 		
-		as3isolib_internal var bSkinsInvalidated:Boolean = false;
+		as3isolib_internal var bSpritesInvalidated:Boolean = false;
 		
 		/**
-		 * Invalidates the skins of the IIsoDisplayObject.
+		 * This method has been deprecated.  Use invalidateSprites instead.
 		 */
 		public function invalidateSkins ():void
 		{
-			bSkinsInvalidated = true;
+			bSpritesInvalidated = true;
+		}
+		
+		/**
+		 * Flags the IsoSprite for invalidation reflecting changes of the spite objects contained in <code>sprites</code>.
+		 */
+		public function invalidateSprites ():void
+		{
+			bSpritesInvalidated = true;
 		}
 		
 		/**
@@ -102,7 +110,7 @@ package as3isolib.display
 		 */
 		override public function get isInvalidated ():Boolean
 		{
-			return (bPositionInvalidated || bSkinsInvalidated);
+			return (bPositionInvalidated || bSpritesInvalidated);
 		}
 		
 		////////////////////////////////////////////////////////////
@@ -114,52 +122,56 @@ package as3isolib.display
 		 */
 		override public function render (recursive:Boolean = true):void
 		{
-			if (bSkinsInvalidated)
+			if (bSpritesInvalidated)
 			{
-				//remove all previous skins	
-				actualSpriteObjects = [];			
-				while (mainContainer.numChildren > 0)
-					mainContainer.removeChildAt(mainContainer.numChildren - 1);
-				
-				var spriteObj:Object;
-				for each (spriteObj in spritesArray)
-				{
-					if (spriteObj is BitmapData)
-					{
-						var b:Bitmap = new Bitmap(BitmapData(spriteObj));
-						b.cacheAsBitmap = true;
-						mainContainer.addChild(b);
-						actualSpriteObjects.push(b);
-					}
-					
-					else if (spriteObj is DisplayObject)
-					{
-						mainContainer.addChild(DisplayObject(spriteObj));
-						actualSpriteObjects.push(spriteObj);
-					}
-					
-					else if (spriteObj is Class)
-					{
-						var spriteInstance:DisplayObject = DisplayObject(new spriteObj());
-						mainContainer.addChild(spriteInstance);
-						actualSpriteObjects.push(spriteInstance);
-					}
-					
-					else if (spriteObj is IFactory)
-					{
-						spriteInstance = DisplayObject(IFactory(spriteObj).newInstance());
-						mainContainer.addChild(spriteInstance);
-						actualSpriteObjects.push(spriteInstance);
-					}
-					
-					else
-						throw new Error("skin asset is not of the following types: BitmapData, DisplayObject, ISpriteAsset, IFactory or Class cast as DisplayOject.");
-				}
-				
-				bSkinsInvalidated = false;
+				renderSprites();
+				bSpritesInvalidated = false;
 			}
 			
 			super.render(recursive);
+		}
+		
+		protected function renderSprites ():void
+		{
+			//remove all previous skins	
+			actualSpriteObjects = [];			
+			while (mainContainer.numChildren > 0)
+				mainContainer.removeChildAt(0);
+			
+			var spriteObj:Object;
+			for each (spriteObj in spritesArray)
+			{
+				if (spriteObj is BitmapData)
+				{
+					var b:Bitmap = new Bitmap(BitmapData(spriteObj));
+					b.cacheAsBitmap = true;
+					mainContainer.addChild(b);
+					actualSpriteObjects.push(b);
+				}
+				
+				else if (spriteObj is DisplayObject)
+				{
+					mainContainer.addChild(DisplayObject(spriteObj));
+					actualSpriteObjects.push(spriteObj);
+				}
+				
+				else if (spriteObj is Class)
+				{
+					var spriteInstance:DisplayObject = DisplayObject(new spriteObj());
+					mainContainer.addChild(spriteInstance);
+					actualSpriteObjects.push(spriteInstance);
+				}
+				
+				else if (spriteObj is IFactory)
+				{
+					spriteInstance = DisplayObject(IFactory(spriteObj).newInstance());
+					mainContainer.addChild(spriteInstance);
+					actualSpriteObjects.push(spriteInstance);
+				}
+				
+				else
+					throw new Error("skin asset is not of the following types: BitmapData, DisplayObject, ISpriteAsset, IFactory or Class cast as DisplayOject.");
+			}
 		}
 		
 		/**

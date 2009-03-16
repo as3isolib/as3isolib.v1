@@ -30,8 +30,11 @@ SOFTWARE.
 package as3isolib.data
 {
 	import as3isolib.events.IsoEvent;
+	import as3isolib.core.as3isolib_internal;
 	
 	import eDpLib.events.EventDispatcherProxy;
+	
+	use namespace as3isolib_internal;
 	
 	/**
 	 * A base hierachical data structure class.
@@ -110,7 +113,7 @@ package as3isolib.data
 		//	OWNER
 		//////////////////////////////////////////////////////////////////
 		
-		protected var ownerObject:Object;
+		as3isolib_internal var ownerObject:Object;
 		
 		/**
 		 * @inheritDoc
@@ -135,7 +138,7 @@ package as3isolib.data
 		/**
 		 * @private
 		 */
-		protected var parentNode:INode;
+		as3isolib_internal var parentNode:INode;
 		
 		/**
 		 * @inheritDoc

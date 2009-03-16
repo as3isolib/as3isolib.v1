@@ -50,6 +50,11 @@ package as3isolib.display.primitive
 			super();
 		}
 		
+		override public function set stroke (value:IStroke):void
+		{
+			strokes = [value, value, value, value, value, value];
+		}
+		
 		/**
 		 * @inheritDoc
 		 */

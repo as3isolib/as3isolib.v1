@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IsoView,as3isolib.display.IsoView,autoUpdate,limitRangeOfMotion,usePreciseValues,backgroundContainer,currentPt,currentZoom,foregroundContainer,height,isInvalidated,mainContainer,numScenes,scenes,size,width,clipContent,currentX,currentY,rangeOfMotionTarget,viewRenderers,addScene,addSceneAt,centerOnIso,centerOnPt,containsScene,invalidatePosition,pan,removeAllScenes,removeScene,render,reset,setSize,validatePosition,zoom" name="keywords">
+<meta content="IsoView,as3isolib.display.IsoView,autoUpdate,limitRangeOfMotion,usePreciseValues,backgroundContainer,currentPt,currentZoom,foregroundContainer,height,isInvalidated,mainContainer,numScenes,scenes,size,width,clipContent,currentX,currentY,rangeOfMotionTarget,viewRenderers,addScene,addSceneAt,centerOnIso,centerOnPt,containsScene,invalidatePosition,isoToLocal,localToIso,pan,removeAllScenes,removeScene,render,reset,setSize,validatePosition,zoom" name="keywords">
 <title>as3isolib.display.IsoView</title>
 </head>
 <body>
@@ -219,6 +219,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#invalidatePosition()">invalidatePosition</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isoToLocal()">isoToLocal</a>(isoPt:<a href="../geom/Pt.html">Pt</a>):Point</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">IsoView</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#localToIso()">localToIso</a>(localPt:Point):<a href="../geom/Pt.html">Pt</a>
+</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">IsoView</td>
 </tr>
@@ -741,6 +756,48 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public function invalidatePosition():void</code>
+</div>
+<a name="isoToLocal()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isoToLocal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isoToLocal(isoPt:<a href="../geom/Pt.html">Pt</a>):Point</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">isoPt</span>:<a href="../geom/Pt.html">Pt</a></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Point</code></td>
+</tr>
+</table>
+</div>
+<a name="localToIso()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">localToIso</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function localToIso(localPt:Point):<a href="../geom/Pt.html">Pt</a></code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">localPt</span>:Point</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Pt.html">Pt</a></code></td>
+</tr>
+</table>
 </div>
 <a name="pan()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">

@@ -10,70 +10,37 @@
 ////////////////////////////////////////////////////////////////////////////////
 package as3isolib.core
 {
+	import mx.core.ClassFactory;
+	
 	/**
-	 * ClassFactory is a direct copy of mx.core.ClassFactory.
-	 * For convenience it has been added to as3isolib.
+	 * This class is now deprecated.  This is an exact duplicate of mx.core.ClassFactory located in the Flex SDK by Adobe.
+	 * Developers are incouraged to use the mx.core.ClassFactory instead.
+	 * 
+	 *  A ClassFactory instance is a "factory object" which Flex uses
+	 *  to generate instances of another class, each with identical properties.
+	 *
+	 *  <p>You specify a <code>generator</code> class when you construct
+	 *  the factory object.
+	 *  Then you set the <code>properties</code> property on the factory object.
+	 *  Flex uses the factory object to generate instances by calling
+	 *  the factory object's <code>newInstance()</code> method.</p>
+	 *
+	 *  <p>The <code>newInstance()</code> method creates a new instance
+	 *  of the <code>generator</code> class, and sets the properties specified
+	 *  by <code>properties</code> in the new instance.
+	 *  If you need to further customize the generated instances,
+	 *  you can override the <code>newInstance()</code> method.</p>
+	 *
+	 *  <p>The ClassFactory class implements the IFactory interface.
+	 *  Therefore it lets you create objects that can be assigned to properties 
+	 *  of type IFactory.</p>
 	 */
-	public class ClassFactory implements IFactory
+	public class ClassFactory extends mx.core.ClassFactory
 	{
-		/**
-		 * Constructor
-		 * 
-		 * @param generator The Class that the newInstance method uses to generate objects from this factory object.
-		 */
+		
 		public function ClassFactory (generator:Class = null)
 		{
-			super();
-			
-			this.generator = generator;
-		}
-		
-		////////////////////////////////////////////////////////////////
-		//	PROPERTIES
-		////////////////////////////////////////////////////////////////
-		
-		/**
-		 * The Class that the newInstance method used to generate objects from this factory object.
-		 */
-		public var generator:Class;
-		
-		private var generatorProps:Object = null;
-		
-		/**
-		 * @private
-		 */
-		public function get properties ():Object
-		{
-			return generatorProps;
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function set properties (value:Object):void
-		{
-			generatorProps = value;
-		}
-		
-		/**
-		 *  Creates a new instance of the <code>generator</code> class,
-		 *  with the properties specified by <code>properties</code>.
-		 *
-		 *  <p>This method implements the <code>newInstance()</code> method
-		 *  of the IFactory interface.</p>
-		 *
-		 *  @return The new instance that was created.
-		 */
-		public function newInstance ():*
-		{
-			var instance:Object = new generator();
-			if (properties)
-			{
-				for (var p:String in properties)
-					instance[p] = properties[p]
-			}
-			
-			return instance;
+			super(generator);
 		}
 	}
 }

@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IsoDisplayObject,as3isolib.core.IsoDisplayObject,autoUpdate,usePreciseValues,isInvalidated,isoBounds,screenBounds,screenX,screenY,height,isAnimated,length,renderAsOrphan,width,x,y,z,clone,createChildren,getBounds,invalidatePosition,invalidateSize,moveBy,moveTo,render,setSize,validatePosition,validateSize" name="keywords">
+<meta content="IsoDisplayObject,as3isolib.core.IsoDisplayObject,autoUpdate,usePreciseValues,distance,inverseOriginX,inverseOriginY,isInvalidated,isoBounds,screenBounds,screenX,screenY,height,isAnimated,length,renderAsOrphan,width,x,y,z,clone,createChildren,getBounds,invalidatePosition,invalidateSize,moveBy,moveTo,render,setSize,validatePosition,validateSize" name="keywords">
 <title>as3isolib.core.IsoDisplayObject</title>
 </head>
 <body>
@@ -109,6 +109,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
    An array of all children whose <code>container</code> is present within the display list.</div>
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#distance">distance</a> : Number<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
+</tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../data/Node.html#hasParent">hasParent</a> : Boolean<div class="summaryTableDescription">
    
@@ -134,9 +138,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#inverseOriginX">inverseOriginX</a> : Number<div class="summaryTableDescription">[read-only]</div>
+</td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#inverseOriginY">inverseOriginY</a> : Number<div class="summaryTableDescription">[read-only]</div>
+</td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
+</tr>
+<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isAnimated">isAnimated</a> : Boolean<div class="summaryTableDescription">
    
-   Flag indicating if IIsoDisplayObject will be intended for frequent movement and/or resizing.</div>
+   Flag indicating if this object will be intended for frequent movement and/or resizing.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
@@ -165,6 +177,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol"><a href="../data/Node.html">Node</a></td>
 </tr>
 <tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../data/Node.html#owner">owner</a> : Object<div class="summaryTableDescription">
+   
+   The owner of this INode.</div>
+</td><td class="summaryTableOwnerCol"><a href="../data/Node.html">Node</a></td>
+</tr>
+<tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../data/Node.html#parent">parent</a> : <a href="../data/INode.html">INode</a>
 <div class="summaryTableDescription">
    
@@ -190,7 +208,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenBounds">screenBounds</a> : Rectangle<div class="summaryTableDescription">[read-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#screenBounds">screenBounds</a> : Rectangle<div class="summaryTableDescription">[read-only]
+   
+   The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.</div>
 </td><td class="summaryTableOwnerCol">IsoDisplayObject</td>
 </tr>
 <tr class="">
@@ -599,6 +619,20 @@ showHideInherited();
 <code>public var autoUpdate:Boolean = false</code><p>
    Flag indicating whether a property change will automatically trigger a render phase.
    </p></div>
+<a name="distance"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">distance</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>distance:Number</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get distance():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set distance(value:Number):void</code>
+<br>
+</div>
 <a name="height"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -616,6 +650,30 @@ showHideInherited();
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set height(value:Number):void</code>
 <br>
 </div>
+<a name="inverseOriginX"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">inverseOriginX</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>inverseOriginX:Number</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get inverseOriginX():Number</code>
+<br>
+</div>
+<a name="inverseOriginY"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">inverseOriginY</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>inverseOriginY:Number</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get inverseOriginY():Number</code>
+<br>
+</div>
 <a name="isAnimated"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -625,7 +683,7 @@ showHideInherited();
 <div class="detailBody">
 <code>isAnimated:Boolean</code>&nbsp;&nbsp;[read-write]<p>
    
-   Flag indicating if IIsoDisplayObject will be intended for frequent movement and/or resizing.
+   Flag indicating if this object will be intended for frequent movement and/or resizing.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isAnimated():Boolean</code>
@@ -705,7 +763,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>screenBounds:Rectangle</code>&nbsp;&nbsp;[read-only]<span class="label">Implementation</span>
+<code>screenBounds:Rectangle</code>&nbsp;&nbsp;[read-only]<p>
+   
+   The screen boundries associated with the IIsoDisplayObject in 2D screen coordinates related to the parent object.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get screenBounds():Rectangle</code>
 <br>

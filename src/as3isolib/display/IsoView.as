@@ -29,8 +29,8 @@ SOFTWARE.
 */
 package as3isolib.display
 {
-	import as3isolib.core.IFactory;
 	import as3isolib.core.IIsoDisplayObject;
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.renderers.IViewRenderer;
 	import as3isolib.display.scene.IIsoScene;
 	import as3isolib.events.IsoEvent;
@@ -42,6 +42,10 @@ package as3isolib.display
 	import flash.display.Sprite;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	
+	import mx.core.IFactory;
+	
+	use namespace as3isolib_internal;
 	
 	[Event(name="as3isolib_move", type="as3isolib.events.IsoEvent")]
 	
@@ -142,6 +146,23 @@ package as3isolib.display
 			}
 		}
 		
+		public function localToIso (localPt:Point):Pt
+		{
+			localPt = localToGlobal(localPt);
+			localPt = mainContainer.globalToLocal(localPt);
+			
+			return IsoMath.screenToIso(new Pt(localPt.x, localPt.y, 0));
+		}
+		
+		public function isoToLocal (isoPt:Pt):Point
+		{
+			isoPt = IsoMath.isoToScreen(isoPt);
+			
+			var temp:Point = new Point(isoPt.x, isoPt.y);
+			temp = mainContainer.localToGlobal(temp);
+			return globalToLocal(temp);
+		}
+		
 		///////////////////////////////////////////////////////////////////////////////
 		//	INVALIDATION
 		///////////////////////////////////////////////////////////////////////////////
@@ -235,8 +256,8 @@ package as3isolib.display
 				dy = ndy;
 			}
 			
-			_mainContainer.x += dx;
-			_mainContainer.y += dy;
+			mContainer.x += dx;
+			mContainer.y += dy;
 			
 			var evt:IsoEvent = new IsoEvent(IsoEvent.MOVE);
 			evt.propName = "currentPt";
@@ -315,12 +336,12 @@ package as3isolib.display
 		 */
 		public function get currentZoom ():Number
 		{
-			return _zoomContainer.scaleX;
+			return zoomContainer.scaleX;
 		}
 		
 		public function set currentZoom (value:Number):void
 		{
-			_zoomContainer.scaleX = _zoomContainer.scaleY = value;
+			zoomContainer.scaleX = zoomContainer.scaleY = value;
 		}
 		
 		/**
@@ -328,7 +349,7 @@ package as3isolib.display
 		 */
 		public function zoom (zFactor:Number):void
 		{
-			_zoomContainer.scaleX = _zoomContainer.scaleY = zFactor;
+			zoomContainer.scaleX = zoomContainer.scaleY = zFactor;
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -340,11 +361,11 @@ package as3isolib.display
 		 */
 		public function reset ():void
 		{
-			_zoomContainer.scaleX = _zoomContainer.scaleY = 1;
+			zoomContainer.scaleX = zoomContainer.scaleY = 1;
 			setSize(_w, _h);
 			
-			_mainContainer.x = 0;
-			_mainContainer.y = 0;
+			mContainer.x = 0;
+			mContainer.y = 0;
 			
 			currentScreenPt = new Pt();
 		}
@@ -422,9 +443,8 @@ package as3isolib.display
 			{
 				scenesArray.splice(index, 0, scene);
 				
-				scene.hostContainer = _sceneContainer;
-				//if (_sceneContainer.contains(scene.hostContainer) && _sceneContainer.numChildren > 1)
-					//_sceneContainer.setChildIndex(scene.hostContainer, index);
+				scene.hostContainer = null;
+				sceneContainer.addChildAt(scene.container, index);
 			}
 			
 			else
@@ -486,8 +506,9 @@ package as3isolib.display
 			{
 				var i:int = scenesArray.indexOf(scene);
 				scenesArray.splice(i, 1);
+				sceneContainer.removeChild(scene.container);
 				
-				return scene;				
+				return scene;	
 			}
 			
 			else
@@ -554,8 +575,8 @@ package as3isolib.display
 			romBoundsRect = new Rectangle(0, 0, _w + 1, _h + 1);
 			this.scrollRect = _clipContent ? romBoundsRect : null;
 			
-			_zoomContainer.x = _w / 2;
-			_zoomContainer.y = _h / 2;
+			zoomContainer.x = _w / 2;
+			zoomContainer.y = _h / 2;
 			//_zoomContainer.mask = _clipContent ? _mask : null;
 			
 			/* _mask.graphics.clear();
@@ -566,9 +587,9 @@ package as3isolib.display
 				_mask.graphics.endFill();
 			} */
 			
-			_border.graphics.clear();
-			_border.graphics.lineStyle(0);
-			_border.graphics.drawRect(0, 0, _w, _h);
+			borderShape.graphics.clear();
+			borderShape.graphics.lineStyle(0);
+			borderShape.graphics.drawRect(0, 0, _w, _h);
 			
 			//for testing only - adds crosshairs to view border
 			/* _border.graphics.moveTo(0, 0);
@@ -647,7 +668,7 @@ package as3isolib.display
 		//	CONTAINER STRUCTURE
 		///////////////////////////////////////////////////////////////////////////////
 		
-		private var _zoomContainer:Sprite;
+		private var zoomContainer:Sprite;
 		
 			//	MAIN CONTAINER
 			///////////////////////////////////////////////////////////////////////////////
@@ -655,7 +676,7 @@ package as3isolib.display
 		/**
 		 * @private
 		 */
-		protected var _mainContainer:Sprite;
+		protected var mContainer:Sprite;
 		
 		/**
 		 * The main container whose children include the background container, the iso object container and the foreground container.
@@ -670,54 +691,54 @@ package as3isolib.display
 		 */
 		public function get mainContainer ():Sprite
 		{
-			return _mainContainer;
+			return mContainer;
 		}
 		
 			//	BACKGROUND CONTAINER
 			///////////////////////////////////////////////////////////////////////////////
 		
-		private var _bgContainer:Sprite;
+		private var bgContainer:Sprite;
 		
 		/**
 		 * The container for background elements.
 		 */
 		public function get backgroundContainer ():Sprite
 		{
-			if (!_bgContainer)
+			if (!bgContainer)
 			{
-				_bgContainer = new Sprite();
-				_mainContainer.addChildAt(_bgContainer, 0);
+				bgContainer = new Sprite();
+				mContainer.addChildAt(bgContainer, 0);
 			}
 			
-			return _bgContainer;
+			return bgContainer;
 		}
 		
 			//	FOREGROUND CONTAINER
 			///////////////////////////////////////////////////////////////////////////////
 			
-		private var _fgContainer:Sprite;
+		private var fgContainer:Sprite;
 		
 		/**
 		 * The container for foreground elements.
 		 */
 		public function get foregroundContainer ():Sprite
 		{
-			if (!_fgContainer)
+			if (!fgContainer)
 			{
-				_fgContainer = new Sprite();
-				_mainContainer.addChild(_fgContainer);
+				fgContainer = new Sprite();
+				mContainer.addChild(fgContainer);
 			}
 			
-			return _fgContainer;
+			return fgContainer;
 		}
 		
 			//	BOUNDS & SCENE CONTAINER
 			///////////////////////////////////////////////////////////////////////////////
 		
-		private var _sceneContainer:Sprite;
+		private var sceneContainer:Sprite;
 		
-		private var _mask:Shape;
-		private var _border:Shape;
+		private var maskShape:Shape;
+		private var borderShape:Shape;
 		
 		///////////////////////////////////////////////////////////////////////////////
 		//	CONSTRUCTOR
@@ -730,20 +751,20 @@ package as3isolib.display
 		{
 			super();
 			
-			_sceneContainer = new Sprite();
+			sceneContainer = new Sprite();
 			
-			_mainContainer = new Sprite();
-			_mainContainer.addChild(_sceneContainer);
+			mContainer = new Sprite();
+			mContainer.addChild(sceneContainer);
 			
-			_zoomContainer = new Sprite();
-			_zoomContainer.addChild(_mainContainer);
-			addChild(_zoomContainer);
+			zoomContainer = new Sprite();
+			zoomContainer.addChild(mContainer);
+			addChild(zoomContainer);
 			
-			_mask = new Shape();
-			addChild(_mask);
+			maskShape = new Shape();
+			addChild(maskShape);
 			
-			_border = new Shape();
-			addChild(_border);
+			borderShape = new Shape();
+			addChild(borderShape);
 			
 			setSize(400, 250);
 			

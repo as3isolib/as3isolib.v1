@@ -17,7 +17,7 @@
 	
 	<component id="IIsoPrimitive" class="as3isolib.display.primitive.IIsoPrimitive"/>
 	<component id="IsoBox" class="as3isolib.display.primitive.IsoBox"/>
-	<!--component id="IsoHexBox" class="as3isolib.display.primitive.IsoHexBox"/-->
+	<component id="IsoHexBox" class="as3isolib.display.primitive.IsoHexBox"/>
 	<component id="IsoPolygon" class="as3isolib.display.primitive.IsoPolygon"/>
 	<component id="IsoPrimitive" class="as3isolib.display.primitive.IsoPrimitive"/>
 	<component id="IsoRectangle" class="as3isolib.display.primitive.IsoRectangle"/>

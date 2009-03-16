@@ -32,12 +32,15 @@ package as3isolib.core
 	import as3isolib.data.INode;
 	import as3isolib.data.Node;
 	import as3isolib.events.IsoEvent;
+	import as3isolib.core.as3isolib_internal;
 	
 	import eDpLib.events.ProxyEvent;
 	
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	
+	use namespace as3isolib_internal;
 	
 	/**
 	 * IsoContainer is the base class that any isometric object must extend in order to be shown in the display list.

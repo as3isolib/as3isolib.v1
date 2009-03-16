@@ -115,12 +115,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isoBounds">isoBounds</a> : <a href="../../bounds/IBounds.html">IBounds</a>
 <div class="summaryTableDescription">[read-only]
-   The IBounds for this object in 3D isometric space.</div>
+   The IBounds for the displayable content in 3D isometric space.</div>
 </td><td class="summaryTableOwnerCol">IIsoScene</td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../data/INode.html#numChildren">numChildren</a> : uint<div class="summaryTableDescription">
    Indicates how many child nodes fall underneath this node within a particular heirarchical structure.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../data/INode.html">INode</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../data/INode.html#owner">owner</a> : Object<div class="summaryTableDescription">
+   The owner of this INode.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../data/INode.html">INode</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -324,7 +329,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>isoBounds:<a href="../../bounds/IBounds.html">IBounds</a></code>&nbsp;&nbsp;[read-only]<p>
-   The IBounds for this object in 3D isometric space.
+   The IBounds for the displayable content in 3D isometric space.
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isoBounds():<a href="../../bounds/IBounds.html">IBounds</a></code>

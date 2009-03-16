@@ -35,6 +35,8 @@
 										
 										as3isolib.display.primitive.IIsoPrimitive
 										as3isolib.display.primitive.IsoBox
+										as3isolib.display.primitive.IsoHexBox
+										as3isolib.display.primitive.IsoPolygon
 										as3isolib.display.primitive.IsoPrimitive
 										as3isolib.display.primitive.IsoRectangle
 										

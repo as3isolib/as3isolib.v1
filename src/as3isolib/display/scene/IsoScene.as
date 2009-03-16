@@ -32,8 +32,6 @@ package as3isolib.display.scene
 	
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.SceneBounds;
-	import as3isolib.core.ClassFactory;
-	import as3isolib.core.IFactory;
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.IsoContainer;
 	import as3isolib.core.as3isolib_internal;
@@ -44,6 +42,9 @@ package as3isolib.display.scene
 	import as3isolib.events.IsoEvent;
 	
 	import flash.display.DisplayObjectContainer;
+	
+	import mx.core.ClassFactory;
+	import mx.core.IFactory;
 	
 	use namespace as3isolib_internal;
 	
@@ -80,6 +81,8 @@ package as3isolib.display.scene
 		 * @private
 		 */
 		protected var host:DisplayObjectContainer;
+		
+		as3isolib_internal
 		
 		/**
 		 * @private

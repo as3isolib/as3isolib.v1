@@ -331,6 +331,11 @@ package as3isolib.display.primitive
 				f.end(g);
 		}
 		
+		override public function set stroke (value:IStroke):void
+		{
+			strokes = [value, value, value, value, value, value, value, value];
+		}
+		
 		//////////////////////////////////////////////////
 		//	CONSTRUCTOR
 		//////////////////////////////////////////////////
