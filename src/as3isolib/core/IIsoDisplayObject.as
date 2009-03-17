@@ -31,6 +31,7 @@ package as3isolib.core
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.data.INode;
+	import as3isolib.data.RenderData;
 	
 	import flash.display.DisplayObject;
 	import flash.geom.Rectangle;
@@ -40,6 +41,17 @@ package as3isolib.core
 	 */
 	public interface IIsoDisplayObject extends INode, IIsoContainer
 	{
+		//////////////////////////////////////////////////////////////////
+		//	GET RENDER DATA
+		//////////////////////////////////////////////////////////////////
+		
+		/**
+		 * Retrieves data for rendering the IIsoDisplayObject for blitting engines.
+		 * 
+		 * @return Object A render data object which contains the bounds information and bitmapData of the IIsoDisplayObject.
+		 */
+		function getRenderData ():RenderData;
+		
 		//////////////////////////////////////////////////////////////////
 		//	RENDER AS ORPHAN
 		//////////////////////////////////////////////////////////////////

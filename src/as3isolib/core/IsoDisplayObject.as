@@ -31,11 +31,14 @@ package as3isolib.core
 {
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.PrimitiveBounds;
+	import as3isolib.data.RenderData;
 	import as3isolib.events.IsoEvent;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
 	
+	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
+	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.utils.getDefinitionByName;
@@ -49,6 +52,40 @@ package as3isolib.core
 	 */
 	public class IsoDisplayObject extends IsoContainer implements IIsoDisplayObject
 	{		
+		//////////////////////////////////////////////////////////////////
+		//	GET RENDER DATA
+		//////////////////////////////////////////////////////////////////
+		
+		private var cachedRenderData:RenderData;
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function getRenderData ():RenderData
+		{
+			if (isInvalidated || !cachedRenderData)
+			{
+				var flag:Boolean = bRenderAsOrphan; //set to allow for rendering regardless of hierarchy
+				bRenderAsOrphan = true;
+				
+				render(true);
+				
+				var r:Rectangle = mainContainer.getBounds(mainContainer);
+				var bd:BitmapData = new BitmapData(r.width + 1, r.height + 1, true, 0x000000);
+				bd.draw(mainContainer, new Matrix(1, 0, 0, 1, -r.left, -r.top));
+				
+				var renderData:RenderData = new RenderData();
+				renderData.x = mainContainer.x + r.left;
+				renderData.y = mainContainer.y + r.top;
+				renderData.bitmapData = bd;
+				
+				cachedRenderData = renderData;
+				bRenderAsOrphan = flag; //set back to original
+			}
+			
+			return cachedRenderData;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	IS ANIMATED
 		////////////////////////////////////////////////////////////////////////
@@ -480,14 +517,14 @@ package as3isolib.core
 		//	RENDER AS ORPHAN
 		/////////////////////////////////////////////////////////
 		
-		private var _renderAsOrphan:Boolean = false;
+		private var bRenderAsOrphan:Boolean = false;
 		
 		/**
 		 * @private
 		 */
 		public function get renderAsOrphan ():Boolean
 		{
-			return _renderAsOrphan;
+			return bRenderAsOrphan;
 		}
 		
 		/**
@@ -495,7 +532,7 @@ package as3isolib.core
 		 */
 		public function set renderAsOrphan (value:Boolean):void
 		{
-			_renderAsOrphan = value;
+			bRenderAsOrphan = value;
 		}
 		
 		/////////////////////////////////////////////////////////
