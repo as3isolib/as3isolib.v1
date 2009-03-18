@@ -119,7 +119,7 @@ package as3isolib.display.primitive
 		
 		public function set fill (value:IFill):void
 		{
-			fills = [value];
+			fills = [value, value, value, value, value, value];
 		}
 		
 			//	FILLS
