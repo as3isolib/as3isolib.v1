@@ -194,6 +194,26 @@ package as3isolib.display
 		 */
 		public function render (recursive:Boolean = false):void
 		{
+			preRenderLogic();
+			renderLogic(recursive);
+			postRenderLogic();
+		}
+		
+		/**
+		 * Performs any logic prior to executing actual rendering logic on the view.
+		 */
+		protected function preRenderLogic ():void
+		{
+			dispatchEvent(new IsoEvent(IsoEvent.RENDER));
+		}
+		
+		/**
+		 * Performs actual rendering logic on the view.
+		 * 
+		 * @param recursive Flag indicating if child scenes render on the view's validation.  Default value is <code>false</code>.
+		 */
+		protected function renderLogic (recursive:Boolean = false):void
+		{
 			if (bPositionInvalidated)
 			{
 				validatePosition();
@@ -217,6 +237,14 @@ package as3isolib.display
 					viewRenderer.renderView(this);
 				}
 			}
+		}
+		
+		/**
+		 * Performs any logic after executing actual rendering logic on the view.
+		 */
+		protected function postRenderLogic ():void
+		{
+			dispatchEvent(new IsoEvent(IsoEvent.RENDER_COMPLETE));
 		}
 		
 		/**

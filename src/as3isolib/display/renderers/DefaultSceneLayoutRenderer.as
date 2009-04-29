@@ -79,52 +79,25 @@ package as3isolib.display.renderers
 			if (boundsA.right <= boundsB.left)
 				return -1;
 				
-			else if (boundsA.left >= boundsB.right)
-				return 1;
-			
 			else if (boundsA.front <= boundsB.back)
 				return -1;
 				
+			else if (boundsA.top <= boundsB.bottom)
+				return -1;
+			
+			else if (boundsA.left >= boundsB.right)
+				return 1;
+			
 			else if (boundsA.back >= boundsB.front)
 				return 1;
 				
-			else if (boundsA.top <= boundsB.bottom)
-				return -1;
-				
 			else if (boundsA.bottom >= boundsB.top)
 				return 1;
+			
+			
 			
 			else
 				return 0;
 		}
-		
-		//	proposed solution for issue# 10 submitted by Danko Kozar - http://code.google.com/p/as3isolib/issues/detail?id=10
-		/* private function isoDepthSort (childA:Object, childB:Object):int
-		{
-			var boundsA:IBounds = childA.isoBounds;
-			var boundsB:IBounds = childB.isoBounds;
-			
-			if (boundsA.right <= boundsB.left)
-				return -1;
-			
-			else if (boundsA.front <= boundsB.back)
-				return -1;
-			
-			else if (boundsA.top <= boundsB.bottom)
-				return -1;
-				
-			else if (boundsA.left >= boundsB.right)
-				return 1;
-				
-			else if (boundsA.back >= boundsB.front)
-				return 1;
-				
-			else if (boundsA.bottom >= boundsB.top)
-				return 1;
-			
-			else
-				return 0;
-		} */
-
 	}
 }

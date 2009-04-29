@@ -152,7 +152,7 @@ package as3isolib.display.scene
 				super.addChildAt(child, index);
 				child.addEventListener(IsoEvent.INVALIDATE, child_invalidateHandler);
 				
-				_isInvalidated = true; //since the child most likely had fired an invalidation event prior to being added, manually invalidate the scene
+				bIsInvalidated = true; //since the child most likely had fired an invalidation event prior to being added, manually invalidate the scene
 			}
 				
 			else
@@ -165,7 +165,7 @@ package as3isolib.display.scene
 		override public function setChildIndex (child:INode, index:uint):void
 		{
 			super.setChildIndex(child, index);
-			_isInvalidated = true;
+			bIsInvalidated = true;
 		}
 		
 		/**
@@ -174,9 +174,11 @@ package as3isolib.display.scene
 		override public function removeChildByID (id:String):INode
 		{
 			var child:INode = super.removeChildByID(id);
-			child.removeEventListener(IsoEvent.INVALIDATE, child_invalidateHandler);
-			
-			_isInvalidated = true;
+			if (child)
+			{
+				child.removeEventListener(IsoEvent.INVALIDATE, child_invalidateHandler);
+				bIsInvalidated = true;
+			}
 			
 			return child;
 		}
@@ -191,7 +193,7 @@ package as3isolib.display.scene
 				child.removeEventListener(IsoEvent.INVALIDATE, child_invalidateHandler);
 			
 			super.removeAllChildren();
-			_isInvalidated = true;
+			bIsInvalidated = true;
 		}
 		
 		/**
@@ -205,7 +207,7 @@ package as3isolib.display.scene
 			if (invalidatedChildrenArray.indexOf(child) == -1)
 				invalidatedChildrenArray.push(child);
 			
-			_isInvalidated = true;
+			bIsInvalidated = true;
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -236,7 +238,7 @@ package as3isolib.display.scene
 			if (value && layoutRendererFactory != value)
 			{
 				layoutRendererFactory = value;
-				_isInvalidated = true;
+				bIsInvalidated = true;
 			}
 		}
 		
@@ -276,7 +278,7 @@ package as3isolib.display.scene
 				}
 				
 				styleRendererFactories = temp;
-				_isInvalidated = true;
+				bIsInvalidated = true;
 			}
 		}
 		
@@ -287,14 +289,14 @@ package as3isolib.display.scene
 		/**
 		 * @private
 		 */
-		private var _isInvalidated:Boolean = false;
+		private var bIsInvalidated:Boolean = false;
 		
 		/**
 		 * Flag indicating if the scene is invalidated.  If true, validation will occur during the next render pass.
 		 */
 		public function get isInvalidated ():Boolean
 		{
-			return _isInvalidated;
+			return bIsInvalidated;
 		}
 		
 		/**
@@ -302,7 +304,7 @@ package as3isolib.display.scene
 		 */
 		public function invalidateScene ():void
 		{
-			_isInvalidated = true;
+			bIsInvalidated = true;
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -312,11 +314,11 @@ package as3isolib.display.scene
 		/**
 		 * @inheritDoc
 		 */
-		override public function render (recursive:Boolean = true):void
+		override protected function renderLogic (recursive:Boolean = true):void
 		{
-			super.render(recursive); //push individual changes thru, then sort based on new visible content of each child
+			super.renderLogic(recursive); //push individual changes thru, then sort based on new visible content of each child
 			
-			if (_isInvalidated)
+			if (bIsInvalidated)
 			{
 				//render the layout first
 				var sceneLayoutRenderer:ISceneLayoutRenderer;
@@ -342,18 +344,27 @@ package as3isolib.display.scene
 					}
 				}
 				
-				_isInvalidated = false;
-				
-				sceneRendered();
+				bIsInvalidated = false;
 			}
 		}
 		
 		/**
-		 * Performs any last minute clean up after a render phase.
+		 * @inheritDoc
+		 */
+		override protected function postRenderLogic ():void
+		{
+			invalidatedChildrenArray = [];
+			
+			super.postRenderLogic();
+			//should we still call sceneRendered()?
+			sceneRendered();
+		}
+		
+		/**
+		 * This function has been deprecated.  Please refer to postRenderLogic.
 		 */
 		protected function sceneRendered ():void
 		{
-			invalidatedChildrenArray = [];
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////

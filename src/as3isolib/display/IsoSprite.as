@@ -120,7 +120,7 @@ package as3isolib.display
 		/**
 		 * @inheritDoc
 		 */
-		override public function render (recursive:Boolean = true):void
+		override protected function renderLogic (recursive:Boolean = true):void
 		{
 			if (bSpritesInvalidated)
 			{
@@ -128,7 +128,7 @@ package as3isolib.display
 				bSpritesInvalidated = false;
 			}
 			
-			super.render(recursive);
+			super.renderLogic(recursive);
 		}
 		
 		protected function renderSprites ():void

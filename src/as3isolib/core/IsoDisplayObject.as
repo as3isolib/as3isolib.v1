@@ -38,6 +38,7 @@ package as3isolib.core
 	
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
+	import flash.events.Event;
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -63,6 +64,7 @@ package as3isolib.core
 		 */
 		public function getRenderData ():RenderData
 		{
+			var r:Rectangle = mainContainer.getBounds(mainContainer);
 			if (isInvalidated || !cachedRenderData)
 			{
 				var flag:Boolean = bRenderAsOrphan; //set to allow for rendering regardless of hierarchy
@@ -70,7 +72,6 @@ package as3isolib.core
 				
 				render(true);
 				
-				var r:Rectangle = mainContainer.getBounds(mainContainer);
 				var bd:BitmapData = new BitmapData(r.width + 1, r.height + 1, true, 0x000000);
 				bd.draw(mainContainer, new Matrix(1, 0, 0, 1, -r.left, -r.top));
 				
@@ -81,6 +82,12 @@ package as3isolib.core
 				
 				cachedRenderData = renderData;
 				bRenderAsOrphan = flag; //set back to original
+			}
+			
+			else
+			{
+				cachedRenderData.x = mainContainer.x + r.left;
+				cachedRenderData.y = mainContainer.y + r.top;
 			}
 			
 			return cachedRenderData;
@@ -141,9 +148,7 @@ package as3isolib.core
 		 */
 		public function getBounds (targetCoordinateSpace:DisplayObject):Rectangle
 		{
-			var rect:Rectangle = mainContainer.getBounds(mainContainer);
-			rect.x += mainContainer.x;
-			rect.y += mainContainer.y;
+			var rect:Rectangle = screenBounds;
 			
 			var pt:Point = new Point(rect.x, rect.y);
 			pt = IIsoContainer(parent).container.localToGlobal(pt);
@@ -547,7 +552,7 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		override public function render (recursive:Boolean = true):void
+		override protected function renderLogic (recursive:Boolean = true):void
 		{
 			if (!hasParent && !renderAsOrphan)
 				return;
@@ -567,7 +572,7 @@ package as3isolib.core
 			//set the flag back for the next time we invalidate the object
 			bInvalidateEventDispatched = false;
 			
-			super.render(recursive);
+			super.renderLogic(recursive);
 		}
 		
 		////////////////////////////////////////////////////////////////////////
