@@ -260,7 +260,7 @@ package as3isolib.core
 			{
 				var child:IIsoContainer;
 				for each (child in children)
-					child.render(recursive);
+					renderChild(child);
 			}
 		}
 		
@@ -270,6 +270,11 @@ package as3isolib.core
 		protected function postRenderLogic ():void
 		{
 			dispatchEvent(new IsoEvent(IsoEvent.RENDER_COMPLETE));
+		}
+		
+		protected function renderChild (child:IIsoContainer):void
+		{
+			child.render(true);
 		}
 		
 		////////////////////////////////////////////////////////////////////////
