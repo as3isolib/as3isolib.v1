@@ -287,19 +287,6 @@ package as3isolib.display.scene
 		///////////////////////////////////////////////////////////////////////////////
 		
 		/**
-		 * @private
-		 */
-		private var bIsInvalidated:Boolean = false;
-		
-		/**
-		 * Flag indicating if the scene is invalidated.  If true, validation will occur during the next render pass.
-		 */
-		public function get isInvalidated ():Boolean
-		{
-			return bIsInvalidated;
-		}
-		
-		/**
 		 * Flags the scene as invalidated during the rendering process
 		 */
 		public function invalidateScene ():void

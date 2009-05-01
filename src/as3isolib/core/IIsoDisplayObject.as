@@ -39,7 +39,7 @@ package as3isolib.core
 	/**
 	 * The IIsoDisplayObject interface defines methods for any base display class needing rendering within an 3D isometric space.
 	 */
-	public interface IIsoDisplayObject extends INode, IIsoContainer
+	public interface IIsoDisplayObject extends IIsoContainer
 	{
 		//////////////////////////////////////////////////////////////////
 		//	GET RENDER DATA
@@ -221,11 +221,6 @@ package as3isolib.core
 		//////////////////////////////////////////////////////////////////
 		//	INVALIDATION
 		//////////////////////////////////////////////////////////////////
-		
-		/**
-		 * Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.
-		 */
-		function get isInvalidated ():Boolean;
 		
 		/**
 		 * Invalidates the position of the IIsoDisplayObject.

@@ -180,9 +180,28 @@ package as3isolib.display
 			return bPositionInvalidated;
 		}
 		
+		/**
+		 * Flags the view as needing validation.
+		 */
 		public function invalidatePosition ():void
 		{
 			bPositionInvalidated = true;
+		}
+		
+		/**
+		 * Convenience method for determining which scenes are invalidated.
+		 */
+		public function getInvalidatedScenes ():Array
+		{
+			var a:Array = [];
+			var scene:IIsoScene;
+			for each (scene in scenesArray)
+			{
+				if (scene.isInvalidated)
+					a.push(scene);
+			}
+			
+			return a;
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////

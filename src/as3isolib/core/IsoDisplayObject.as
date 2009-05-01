@@ -683,7 +683,7 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function get isInvalidated ():Boolean
+		override public function get isInvalidated ():Boolean
 		{
 			return (bPositionInvalidated || bSizeInvalidated);
 		}

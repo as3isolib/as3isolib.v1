@@ -29,6 +29,7 @@ SOFTWARE.
 */
 package as3isolib.display
 {
+	import as3isolib.core.IInvalidation;
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.geom.Pt;
 	
@@ -40,7 +41,7 @@ package as3isolib.display
 	 * The IIsoView interface defines methods necessary to properly perform panning, zooming and other display task for a given IIsoScene.
 	 * The implementor normally wraps an IIsoScene with layout constraints.
 	 */
-	public interface IIsoView extends IEventDispatcher
+	public interface IIsoView extends IEventDispatcher, IInvalidation
 	{
 		/**
 		 * An array of all child scenes.
