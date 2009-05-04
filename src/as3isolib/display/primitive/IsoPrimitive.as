@@ -204,7 +204,7 @@ package as3isolib.display.primitive
 		/**
 		 * @inheritDoc
 		 */
-		override public function render (recursive:Boolean = true):void
+		override protected function renderLogic (recursive:Boolean = true):void
 		{
 			if (!hasParent && !renderAsOrphan)
 				return;
@@ -222,7 +222,7 @@ package as3isolib.display.primitive
 				bSytlesInvalidated = false;
 			}
 			
-			super.render(recursive);
+			super.renderLogic(recursive);
 		}
 		
 		/////////////////////////////////////////////////////////

@@ -51,6 +51,11 @@ package as3isolib.events
 		static public const RENDER:String = "as3isolib_render";
 		
 		/**
+		 * The IsoEvent.RENDER_COMPLETE constant defines the value of the type property of the event object for an iso event.
+		 */
+		static public const RENDER_COMPLETE:String = "as3isolib_renderComplete";
+		
+		/**
 		 * The IsoEvent.MOVE constant defines the value of the type property of the event object for an iso event.
 		 */
 		static public const MOVE:String = "as3isolib_move";

@@ -181,7 +181,7 @@ package as3isolib.display.scene
 		/**
 		 * @inheritDoc
 		 */
-		override public function render (recursive:Boolean = true):void
+		override protected function renderLogic (recursive:Boolean = true):void
 		{
 			if (showOriginChanged)
 			{
@@ -200,7 +200,7 @@ package as3isolib.display.scene
 				showOriginChanged = false;
 			}
 			
-			super.render(recursive);
+			super.renderLogic(recursive);
 		}
 		
 		/**

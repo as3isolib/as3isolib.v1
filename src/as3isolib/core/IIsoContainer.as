@@ -36,7 +36,7 @@ package as3isolib.core
 	/**
 	 * The IContainer interface defines the methods necessary for display visual content associated with a particular data node.
 	 */
-	public interface IIsoContainer extends INode
+	public interface IIsoContainer extends INode, IInvalidation
 	{
 		//////////////////////////////////////////////////////////////////
 		//	INCLUDE IN LAYOUT

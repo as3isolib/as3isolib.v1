@@ -32,7 +32,6 @@ package as3isolib.core
 	import as3isolib.data.INode;
 	import as3isolib.data.Node;
 	import as3isolib.events.IsoEvent;
-	import as3isolib.core.as3isolib_internal;
 	
 	import eDpLib.events.ProxyEvent;
 	
@@ -203,6 +202,20 @@ package as3isolib.core
 			//mainContainer.cacheAsBitmap = true;		
 		}
 		
+		/////////////////////////////////////////////////////////////////
+		//	IS INVALIDATED
+		/////////////////////////////////////////////////////////////////
+		
+		as3isolib_internal var bIsInvalidated:Boolean;
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get isInvalidated ():Boolean
+		{
+			return bIsInvalidated;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	RENDER
 		////////////////////////////////////////////////////////////////////////
@@ -211,6 +224,26 @@ package as3isolib.core
 		 * @inheritDoc
 		 */
 		public function render (recursive:Boolean = true):void
+		{
+			preRenderLogic();
+			renderLogic(recursive);
+			postRenderLogic();
+		}
+		
+		/**
+		 * Performs any logic prior to executing actual rendering logic on the IIsoContainer.
+		 */
+		protected function preRenderLogic ():void
+		{
+			dispatchEvent(new IsoEvent(IsoEvent.RENDER));
+		}
+		
+		/**
+		 * Performs actual rendering logic on the IIsoContainer.
+		 * 
+		 * @param recursive Flag indicating if child objects render upon validation.  Default value is <code>true</code>.
+		 */
+		protected function renderLogic (recursive:Boolean = true):void
 		{
 			if (includeInLayoutChanged && parentNode)
 			{
@@ -222,7 +255,7 @@ package as3isolib.core
 						p.displayListChildren.push(this);
 					
 					if (!mainContainer.parent)
-						IIsoContainer(parentNode).container.addChild(mainContainer);
+						IIsoContainer(parentNode).container.addChildAt(mainContainer, Math.max(i, 0));
 				}
 				
 				else if (!bIncludeInLayout)
@@ -241,10 +274,21 @@ package as3isolib.core
 			{
 				var child:IIsoContainer;
 				for each (child in children)
-					child.render(recursive);
+					renderChild(child);
 			}
-			
-			dispatchEvent(new IsoEvent(IsoEvent.RENDER));
+		}
+		
+		/**
+		 * Performs any logic after executing actual rendering logic on the IIsoContainer.
+		 */
+		protected function postRenderLogic ():void
+		{
+			dispatchEvent(new IsoEvent(IsoEvent.RENDER_COMPLETE));
+		}
+		
+		protected function renderChild (child:IIsoContainer):void
+		{
+			child.render(true);
 		}
 		
 		////////////////////////////////////////////////////////////////////////

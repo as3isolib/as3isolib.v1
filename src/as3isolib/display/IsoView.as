@@ -180,9 +180,28 @@ package as3isolib.display
 			return bPositionInvalidated;
 		}
 		
+		/**
+		 * Flags the view as needing validation.
+		 */
 		public function invalidatePosition ():void
 		{
 			bPositionInvalidated = true;
+		}
+		
+		/**
+		 * Convenience method for determining which scenes are invalidated.
+		 */
+		public function getInvalidatedScenes ():Array
+		{
+			var a:Array = [];
+			var scene:IIsoScene;
+			for each (scene in scenesArray)
+			{
+				if (scene.isInvalidated)
+					a.push(scene);
+			}
+			
+			return a;
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////
@@ -193,6 +212,26 @@ package as3isolib.display
 		 * @inheritDoc
 		 */
 		public function render (recursive:Boolean = false):void
+		{
+			preRenderLogic();
+			renderLogic(recursive);
+			postRenderLogic();
+		}
+		
+		/**
+		 * Performs any logic prior to executing actual rendering logic on the view.
+		 */
+		protected function preRenderLogic ():void
+		{
+			dispatchEvent(new IsoEvent(IsoEvent.RENDER));
+		}
+		
+		/**
+		 * Performs actual rendering logic on the view.
+		 * 
+		 * @param recursive Flag indicating if child scenes render on the view's validation.  Default value is <code>false</code>.
+		 */
+		protected function renderLogic (recursive:Boolean = false):void
 		{
 			if (bPositionInvalidated)
 			{
@@ -217,6 +256,14 @@ package as3isolib.display
 					viewRenderer.renderView(this);
 				}
 			}
+		}
+		
+		/**
+		 * Performs any logic after executing actual rendering logic on the view.
+		 */
+		protected function postRenderLogic ():void
+		{
+			dispatchEvent(new IsoEvent(IsoEvent.RENDER_COMPLETE));
 		}
 		
 		/**
