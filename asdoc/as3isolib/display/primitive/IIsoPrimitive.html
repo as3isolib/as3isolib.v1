@@ -35,7 +35,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">as3isolib.display.primitive</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IIsoPrimitive extends <a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a>, <a href="../../data/INode.html">INode</a>, <a href="../../../eDpLib/events/IEventDispatcherProxy.html">IEventDispatcherProxy</a>, <a href="none">flash.events.IEventDispatcher</a>, <a href="../../core/IIsoContainer.html">IIsoContainer</a></td>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IIsoPrimitive extends <a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a>, <a href="../../core/IIsoContainer.html">IIsoContainer</a>, <a href="../../data/INode.html">INode</a>, <a href="../../../eDpLib/events/IEventDispatcherProxy.html">IEventDispatcherProxy</a>, <a href="none">flash.events.IEventDispatcher</a>, <a href="../../core/IInvalidation.html">IInvalidation</a></td>
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Implementors</td><td><a href="../primitive/IsoPrimitive.html">IsoPrimitive</a></td>
@@ -137,9 +137,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
 </tr>
 <tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">
-   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</div>
-</td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IInvalidation.html#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">
+   Flag indicating if the scene is invalidated.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IInvalidation.html">IInvalidation</a></td>
 </tr>
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IIsoDisplayObject.html#isoBounds">isoBounds</a> : <a href="../../bounds/IBounds.html">IBounds</a>
@@ -325,6 +325,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <div class="summaryTableDescription">
    Retrieves the furthest descendant nodes within the node hierarchy.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../data/INode.html">INode</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../core/IIsoDisplayObject.html#getRenderData()">getRenderData</a>():<a href="../../data/RenderData.html">RenderData</a>
+</div>
+<div class="summaryTableDescription">
+   Retrieves data for rendering the IIsoDisplayObject for blitting engines.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">

@@ -100,6 +100,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   The IFill interface defines the interface that fill classes must implement.</td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IInvalidation.html"><i>IInvalidation</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/package-detail.html">as3isolib.core</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+  The IInvalidation interface defines the methods necessary for determining if an object is invalidated.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoContainer.html"><i>IIsoContainer</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/package-detail.html">as3isolib.core</a></td>
 </tr>
 <tr>
@@ -233,7 +240,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#invalidatePosition()">invalidatePosition</a>() &mdash; Method in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Flags the view as needing validation.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html#invalidateScene()">invalidateScene</a>() &mdash; Method in class as3isolib.display.scene.<a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html">IsoScene</a></td>
@@ -341,11 +349,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
   The ISceneRenderer interface defines the methods that all scene renderer-type classes should implement.</td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html#isInvalidated">isInvalidated</a> &mdash; Property in interface as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IIsoDisplayObject.html">IIsoDisplayObject</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IInvalidation.html#isInvalidated">isInvalidated</a> &mdash; Property in interface as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IInvalidation.html">IInvalidation</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
-   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</td>
+   Flag indicating if the scene is invalidated.</td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoContainer.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoContainer.html">IsoContainer</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   
+   Flag indicating if the scene is invalidated.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.core.<a onclick="javascript:loadClassListFrame('as3isolib/core/class-list.html');" href="as3isolib/core/IsoDisplayObject.html">IsoDisplayObject</a></td>
@@ -353,7 +369,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <tr>
 <td width="20"></td><td>
    
-   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</td>
+   
+   Flag indicating if the scene is invalidated.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoSprite.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoSprite.html">IsoSprite</a></td>
@@ -362,7 +379,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <td width="20"></td><td>
    
    
-   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</td>
+   
+   Flag indicating if the scene is invalidated.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.display.<a onclick="javascript:loadClassListFrame('as3isolib/display/class-list.html');" href="as3isolib/display/IsoView.html">IsoView</a></td>
@@ -377,13 +395,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IÂ
 <tr>
 <td width="20"></td><td>
    
-   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html#isInvalidated">isInvalidated</a> &mdash; Property in class as3isolib.display.scene.<a onclick="javascript:loadClassListFrame('as3isolib/display/scene/class-list.html');" href="as3isolib/display/scene/IsoScene.html">IsoScene</a></td>
-</tr>
-<tr>
-<td width="20"></td><td>
    Flag indicating if the scene is invalidated.</td>
 </tr>
 <tr>

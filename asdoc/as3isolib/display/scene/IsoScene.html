@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../../print.css" type="text/css" media="print">
-<meta content="IsoScene,as3isolib.display.scene.IsoScene,layoutEnabled,stylingEnabled,invalidatedChildren,isInvalidated,isoBounds,hostContainer,layoutRenderer,styleRenderers,addChildAt,child_invalidateHandler,invalidateScene,removeAllChildren,removeChildByID,render,sceneRendered,setChildIndex" name="keywords">
+<meta content="IsoScene,as3isolib.display.scene.IsoScene,layoutEnabled,stylingEnabled,invalidatedChildren,isoBounds,hostContainer,layoutRenderer,styleRenderers,addChildAt,child_invalidateHandler,invalidateScene,postRenderLogic,removeAllChildren,removeChildByID,renderLogic,sceneRendered,setChildIndex" name="keywords">
 <title>as3isolib.display.scene.IsoScene</title>
 </head>
 <body>
@@ -130,10 +130,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
    An array of all invalidated children.</div>
 </td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">[read-only]
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IsoContainer.html#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">
+   
    Flag indicating if the scene is invalidated.</div>
-</td><td class="summaryTableOwnerCol">IsoScene</td>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isoBounds">isoBounds</a> : <a href="../../bounds/IBounds.html">IBounds</a>
@@ -403,15 +404,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
    </div>
 </td><td class="summaryTableOwnerCol"><a href="../../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
 </tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#render()">render</a>(recursive:Boolean = true):void</div>
+<a class="signatureLink" href="../../core/IsoContainer.html#render()">render</a>(recursive:Boolean = true):void</div>
 <div class="summaryTableDescription">
    
-   
    Initiates the various validation processes in order to display the IPrimitive.</div>
-</td><td class="summaryTableOwnerCol">IsoScene</td>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
@@ -478,9 +478,42 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#postRenderLogic()">postRenderLogic</a>():void</div>
+<div class="summaryTableDescription">
+   
+   Performs any logic after executing actual rendering logic on the IIsoContainer.</div>
+</td><td class="summaryTableOwnerCol">IsoScene</td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoContainer.html#preRenderLogic()">preRenderLogic</a>():void</div>
+<div class="summaryTableDescription">
+   Performs any logic prior to executing actual rendering logic on the IIsoContainer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoContainer.html#renderChild()">renderChild</a>(child:<a href="../../core/IIsoContainer.html">IIsoContainer</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#renderLogic()">renderLogic</a>(recursive:Boolean = true):void</div>
+<div class="summaryTableDescription">
+   
+   Performs actual rendering logic on the IIsoContainer.</div>
+</td><td class="summaryTableOwnerCol">IsoScene</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#sceneRendered()">sceneRendered</a>():void</div>
 <div class="summaryTableDescription">
-   Performs any last minute clean up after a render phase.</div>
+   This function has been deprecated.</div>
 </td><td class="summaryTableOwnerCol">IsoScene</td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
@@ -531,20 +564,6 @@ showHideInherited();
    </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get invalidatedChildren():Array</code>
-<br>
-</div>
-<a name="isInvalidated"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">isInvalidated</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>isInvalidated:Boolean</code>&nbsp;&nbsp;[read-only]<p>
-   Flag indicating if the scene is invalidated.  If true, validation will occur during the next render pass.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isInvalidated():Boolean</code>
 <br>
 </div>
 <a name="isoBounds"></a>
@@ -686,6 +705,17 @@ showHideInherited();
 <code>public function invalidateScene():void</code><p>
    Flags the scene as invalidated during the rendering process
    </p></div>
+<a name="postRenderLogic()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">postRenderLogic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function postRenderLogic():void</code><p>
+   
+   Performs any logic after executing actual rendering logic on the IIsoContainer.
+   </p></div>
 <a name="removeAllChildren()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -731,22 +761,21 @@ showHideInherited();
 </tr>
 </table>
 </div>
-<a name="render()"></a>
+<a name="renderLogic()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">render</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">renderLogic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public override function render(recursive:Boolean = true):void</code><p>
+<code>protected override function renderLogic(recursive:Boolean = true):void</code><p>
    
-   
-   Initiates the various validation processes in order to display the IPrimitive.
+   Performs actual rendering logic on the IIsoContainer.
    
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; If true will tell child nodes to render through the display list.
+<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; Flag indicating if child objects render upon validation.  Default value is <code>true</code>.
    </td>
 </tr>
 </table>
@@ -759,7 +788,7 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>protected function sceneRendered():void</code><p>
-   Performs any last minute clean up after a render phase.
+   This function has been deprecated.  Please refer to postRenderLogic.
    </p></div>
 <a name="setChildIndex()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">

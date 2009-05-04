@@ -7,6 +7,7 @@
 	
 	<component id="ClassFactory" class="as3isolib.core.ClassFactory"/>
 	<component id="IFactory" class="as3isolib.core.IFactory"/>
+	<component id="IInvalidation" class="as3isolib.core.IInvalidation"/>
 	<component id="IIsoContainer" class="as3isolib.core.IIsoContainer"/>
 	<component id="IIsoDisplayObject" class="as3isolib.core.IIsoDisplayObject"/>
 	<component id="IsoContainer" class="as3isolib.core.IsoContainer"/>

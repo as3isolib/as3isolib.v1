@@ -35,7 +35,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">as3isolib.display.scene</a></td>
 </tr>
 <tr>
-<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IIsoScene extends <a href="../../core/IIsoContainer.html">IIsoContainer</a>, <a href="../../data/INode.html">INode</a>, <a href="../../../eDpLib/events/IEventDispatcherProxy.html">IEventDispatcherProxy</a>, <a href="none">flash.events.IEventDispatcher</a></td>
+<td class="classHeaderTableLabel">Interface</td><td class="classSignature">public interface IIsoScene extends <a href="../../core/IIsoContainer.html">IIsoContainer</a>, <a href="../../data/INode.html">INode</a>, <a href="../../../eDpLib/events/IEventDispatcherProxy.html">IEventDispatcherProxy</a>, <a href="none">flash.events.IEventDispatcher</a>, <a href="../../core/IInvalidation.html">IInvalidation</a></td>
 </tr>
 <tr>
 <td class="classHeaderTableLabel">Implementors</td><td><a href="../scene/IsoScene.html">IsoScene</a></td>
@@ -111,6 +111,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#invalidatedChildren">invalidatedChildren</a> : Array<div class="summaryTableDescription">[read-only]
    An array of all invalidated children.</div>
 </td><td class="summaryTableOwnerCol">IIsoScene</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../core/IInvalidation.html#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">
+   Flag indicating if the scene is invalidated.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IInvalidation.html">IInvalidation</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isoBounds">isoBounds</a> : <a href="../../bounds/IBounds.html">IBounds</a>

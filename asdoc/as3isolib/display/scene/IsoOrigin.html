@@ -173,7 +173,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../primitive/IsoPrimitive.html#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">
    
-   Flag indicating that one or more of the IIsoDisplayObject's properties are invalidated and will be validated during the next render phase.</div>
+   Flag indicating if the scene is invalidated.</div>
 </td><td class="summaryTableOwnerCol"><a href="../primitive/IsoPrimitive.html">IsoPrimitive</a></td>
 </tr>
 <tr class="hideInheritedProperty">
@@ -447,6 +447,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoDisplayObject.html#getRenderData()">getRenderData</a>():<a href="../../data/RenderData.html">RenderData</a>
+</div>
+<div class="summaryTableDescription">
+   
+   Retrieves data for rendering the IIsoDisplayObject for blitting engines.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoDisplayObject.html">IsoDisplayObject</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="../../data/Node.html#getRootNode()">getRootNode</a>():<a href="../../data/INode.html">INode</a>
 </div>
 <div class="summaryTableDescription">
@@ -559,11 +569,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="../primitive/IsoPrimitive.html#render()">render</a>(recursive:Boolean = true):void</div>
+<a class="signatureLink" href="../../core/IsoContainer.html#render()">render</a>(recursive:Boolean = true):void</div>
 <div class="summaryTableDescription">
    
    Initiates the various validation processes in order to display the IPrimitive.</div>
-</td><td class="summaryTableOwnerCol"><a href="../primitive/IsoPrimitive.html">IsoPrimitive</a></td>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -634,6 +644,39 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription">
    Creates an array of interactive object events to check against during event proxying.</div>
 </td><td class="summaryTableOwnerCol"><a href="../../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoContainer.html#postRenderLogic()">postRenderLogic</a>():void</div>
+<div class="summaryTableDescription">
+   Performs any logic after executing actual rendering logic on the IIsoContainer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoContainer.html#preRenderLogic()">preRenderLogic</a>():void</div>
+<div class="summaryTableDescription">
+   Performs any logic prior to executing actual rendering logic on the IIsoContainer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../core/IsoContainer.html#renderChild()">renderChild</a>(child:<a href="../../core/IIsoContainer.html">IIsoContainer</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../core/IsoContainer.html">IsoContainer</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../primitive/IsoPrimitive.html#renderLogic()">renderLogic</a>(recursive:Boolean = true):void</div>
+<div class="summaryTableDescription">
+   
+   
+   Performs actual rendering logic on the IIsoContainer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../primitive/IsoPrimitive.html">IsoPrimitive</a></td>
 </tr>
 <tr class="hideInheritedProtectedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">

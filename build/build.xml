@@ -25,6 +25,7 @@
 										
 										as3isolib.core.ClassFactory
 										as3isolib.core.IFactory
+										as3isolib.core.IInvalidation
 										as3isolib.core.IIsoContainer
 										as3isolib.core.IIsoDisplayObject
 										as3isolib.core.IsoContainer
