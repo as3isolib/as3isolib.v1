@@ -302,6 +302,11 @@ package as3isolib.data
 		public function setChildIndex (child:INode, index:uint):void
 		{
 			var i:int = getChildIndex(child);
+			
+			// Don't bother if it's already at this index
+			if (i == index)
+				return;
+				
 			if (i > -1)
 			{
 				childrenArray.splice(i, 1); //remove it form the array
