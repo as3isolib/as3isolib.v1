@@ -32,7 +32,6 @@ package as3isolib.display.renderers
 	import as3isolib.bounds.IBounds;
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
-	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.display.scene.IIsoScene;
 	
 	import flash.utils.getTimer;
@@ -59,10 +58,10 @@ package as3isolib.display.renderers
 			
 			// NOTE - Flash player 10 only
 			// Using scene.children because they are in last display order, scene.displayListChildren are unordered and fully resorted every time!
-			var sortedChildren:Vector.<IIsoDisplayObject> = Vector.<IIsoDisplayObject>(scene.children);
+			//var sortedChildren:Vector.<IIsoDisplayObject> = Vector.<IIsoDisplayObject>(scene.children);
 			
 			// Flash player 9
-			//var sortedChildren:Array = scene.children.slice();
+			var sortedChildren:Array = scene.children.slice();
 			
 			// Ocean sort, from http://cadaver.homeftp.net/rants/sprite.htm
 			// Starting from offset 1, make sure [N] >= [N-1].  If not, keep pushing N back in the list until it's >= the new [N-1]
