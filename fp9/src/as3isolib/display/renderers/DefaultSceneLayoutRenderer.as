@@ -89,22 +89,26 @@ package as3isolib.display.renderers
 					 (!(boundsA.left >= boundsB.right) && // else, if A is _known not to be right of B_ and ...
 					  (boundsA.front <= boundsB.back))))) // if A is back of B, then process
 				{
+					// Leave objB where it is so the next iteration of the main loop has it intact for reuse
+					var tempObjB:IIsoDisplayObject = objB;
+					var tempBoundsB:IBounds;
+					
 					// This should be faster than 2 calls to splice(), since those 2 calls would shuffle all the way to the end of the Vector.
 					// This code only shifts the affected indexes
 					do
 					{
-						sortedChildren[j] = objB;
+						sortedChildren[j] = tempObjB;
 						--j;
 						if (0 == j)
 							break;
-						objB = sortedChildren[j - 1];
-						boundsB = objB.isoBounds;
+						tempObjB = sortedChildren[j - 1];
+						tempBoundsB = tempObjB.isoBounds;
 					}
-					while ((boundsA.top <= boundsB.bottom) || // if A is under B, then process
-				           (!(boundsA.bottom >= boundsB.top) && // else, if A is _known not to be over B_ and ...
-				            ((boundsA.right <= boundsB.left) || // if A is left of B, then process
-					         (!(boundsA.left >= boundsB.right) && // else, if A is _known not to be right of B_ and ...
-					          (boundsA.front <= boundsB.back))))) // if A is back of B, then process
+					while ((boundsA.top <= tempBoundsB.bottom) || // if A is under B, then process
+				           (!(boundsA.bottom >= tempBoundsB.top) && // else, if A is _known not to be over B_ and ...
+				            ((boundsA.right <= tempBoundsB.left) || // if A is left of B, then process
+					         (!(boundsA.left >= tempBoundsB.right) && // else, if A is _known not to be right of B_ and ...
+					          (boundsA.front <= tempBoundsB.back))))) // if A is back of B, then process
 					
 					//trace("moved", i, dumpBounds(boundsA), "to", j, dumpBounds(sortedChildren[j+1].isoBounds));
 					
@@ -112,8 +116,11 @@ package as3isolib.display.renderers
 					sortedChildren[j] = objA;
 					scene.setChildIndex(objA, j);
 				}
-				objB = objA;
-				boundsB = boundsA;
+				else
+				{
+					objB = objA;
+					boundsB = boundsA;
+				}
 			}
 			
 			// DEBUG OUTPUT
