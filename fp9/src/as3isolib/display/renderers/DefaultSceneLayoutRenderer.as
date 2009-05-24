@@ -93,12 +93,9 @@ package as3isolib.display.renderers
 				dependency[objA] = behind;
 			}
 
-			// Place the children into a sorted array, using dependency ordering
-			var sortedChildren:Array = [];
-			
-			// IIsoDisplayObject -> Boolean, true signifies it's already been put in the display list
+			// Set the childrens' depth, using dependency ordering
+			var depth:uint = 0;
 			var visited:Dictionary = new Dictionary();
-			
 			var place:Function = function(obj:IIsoDisplayObject):void
 			{
 				if (visited[obj])
@@ -107,20 +104,14 @@ package as3isolib.display.renderers
 				
 				for each(var inner:IIsoDisplayObject in dependency[obj])
 					place(inner);
-				sortedChildren.push(obj);
+					
+				scene.setChildIndex(obj, depth);
+				++depth;
 			};
 			
 			for each(var obj:IIsoDisplayObject in children)
 			{
 				place(obj);
-			}
-			
-			// Update the scene's ordering
-			for (i = 0; i < max; ++i)
-			{
-				var child:IIsoDisplayObject = IIsoDisplayObject(sortedChildren[i]);
-				if (child.depth != i)
-					scene.setChildIndex(child, i);
 			}
 
 			// DEBUG OUTPUT
