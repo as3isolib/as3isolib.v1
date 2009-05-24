@@ -53,20 +53,21 @@ package as3isolib.display.renderers
 		 */
 		public function renderScene (scene:IIsoScene):void
 		{
+			this.scene = scene;
 			var startTime:uint = getTimer();
-
+			
 			// Rewrite #2 by David Holz, dependency version (naive for now)
 			
-			// TODO - screen space subdivision to limit dependency scan
-			// TODO - cache dependencies between frames, only adjust invalidated objects, keeping old ordering as best as possible
 			
+			// TODO - cache dependencies between frames, only adjust invalidated objects, keeping old ordering as best as possible
 			// IIsoDisplayObject -> [obj that should be behind the key]
-			var dependency:Dictionary = new Dictionary();
+			dependency = new Dictionary();
 			
 			// For now, use the non-rearranging display list so that the dependency sort will tend to create similar output each pass
 			var children:Array = scene.displayListChildren;
 			
 			// Full naive cartesian scan, see what objects are behind child[i]
+			// TODO - screen space subdivision to limit dependency scan
 			var max:uint = children.length;
 			for (var i:uint = 0; i < max; ++i)
 			{
@@ -109,25 +110,14 @@ package as3isolib.display.renderers
 			// TODO - set the invalidated children first, then do a rescan to make sure everything else is where it needs to be, too?  probably need to order the invalidated children sets from low to high index
 			
 			// Set the childrens' depth, using dependency ordering
-			var depth:uint = 0;
-			var visited:Dictionary = new Dictionary();
-			var place:Function = function(obj:IsoDisplayObject):void
-			{
-				if (visited[obj])
-					return;
-				visited[obj] = true;
-				
-				for each(var inner:IsoDisplayObject in dependency[obj])
-					place(inner);
-					
-				scene.setChildIndex(obj, depth);
-				++depth;
-			};
-			
+			depth = 0;
 			for each(var obj:IsoDisplayObject in children)
 			{
 				place(obj);
 			}
+			
+			// Clear out temporary dictionary so we're not retaining memory between calls
+			visited = new Dictionary();
 
 			// DEBUG OUTPUT
 			
@@ -137,6 +127,28 @@ package as3isolib.display.renderers
 			
 			trace("scene layout render time", getTimer() - startTime, "ms (manual sort)");
 		}
+		
+		// It's faster to make class variables & a method, rather than to do a local function closure
+		private var depth:uint;
+		private var visited:Dictionary = new Dictionary();
+		private var scene:IIsoScene;
+		private var dependency:Dictionary;
+
+		/**
+		 * Dependency-ordered depth placement of the given objects and its dependencies.
+		 */
+		private function place(obj:IsoDisplayObject):void
+		{
+			if (visited[obj])
+				return;
+			visited[obj] = true;
+			
+			for each(var inner:IsoDisplayObject in dependency[obj])
+				place(inner);
+				
+			scene.setChildIndex(obj, depth);
+			++depth;
+		};
 		
 		//static private function dumpBounds(b:IBounds):String { return "[" + b.left + ".." + b.right + "," + b.back + ".." + b.front + "," + b.bottom + ".." + b.top + "]"; }
 	}
