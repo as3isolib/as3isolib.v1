@@ -33,6 +33,7 @@ package as3isolib.display.renderers
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.scene.IIsoScene;
+	import flash.utils.Dictionary;
 	
 	import flash.utils.getTimer;
 	
@@ -54,85 +55,83 @@ package as3isolib.display.renderers
 		{
 			var startTime:uint = getTimer();
 
-			// Rewrite by David Holz
+			// Rewrite #2 by David Holz, naive dependency version
 			
-			// NOTE - Flash player 10 only
-			// Using scene.children because they are in last display order, scene.displayListChildren are unordered and fully resorted every time!
-			//var sortedChildren:Vector.<IIsoDisplayObject> = Vector.<IIsoDisplayObject>(scene.children);
+			// IIsoDisplayObject -> [obj that should be behind the key]
+			var dependency:Dictionary = new Dictionary();
 			
-			// Flash player 9
-			var sortedChildren:Array = scene.children.slice();
+			var children:Array = scene.displayListChildren;
 			
-			// Ocean sort, from http://cadaver.homeftp.net/rants/sprite.htm
-			// Starting from offset 1, make sure [N] >= [N-1].  If not, keep pushing N back in the list until it's >= the new [N-1]
-			// This sort works best when there are minor changes to the depth ordering that need to be patched up
-			
-			// All of the aditional variables are to reduce the number of array accesses, which are all bounds checked by the VM.  Each removed array access lopped more time off the render.
-			var max:uint = sortedChildren.length;
-			var objB:IIsoDisplayObject = sortedChildren[0];
-			var boundsB:IBounds = objB.isoBounds;
-			for (var i:uint = 1; i < max; ++i)
+			// Full naive cartesian scan, see what objects are behind child[i]
+			var max:uint = children.length;
+			for (var i:uint = 0; i < max; ++i)
 			{
-				var j:uint = i;
+				var behind:Array = [];
 				
-				var objA:IIsoDisplayObject = sortedChildren[i];
+				var objA:IIsoDisplayObject = children[i];
 				var boundsA:IBounds = objA.isoBounds;
-				
-				// There are many instances where 2 blocks can be ordered A->B in one axis, and B->A in the other
-				// We need to determine a priority order for comparing, so that they won't just toggle getting behind each other from frame to frame.
-				// Also, these mutual behindednesses can lead to the painter's algorithm type of problems and break visual sorting order.
-				
-				// See if objA is behind objB, which would be out of place
-				if((boundsA.top <= boundsB.bottom) || // if A is under B, then process
-				   (!(boundsA.bottom >= boundsB.top) && // else, if A is _known not to be over B_ and ...
-				    ((boundsA.right <= boundsB.left) || // if A is left of B, then process
-					 (!(boundsA.left >= boundsB.right) && // else, if A is _known not to be right of B_ and ...
-					  (boundsA.front <= boundsB.back))))) // if A is back of B, then process
+
+				for (var j:uint = 0; j < max; ++j)
 				{
-					// Leave objB where it is so the next iteration of the main loop has it intact for reuse
-					var tempObjB:IIsoDisplayObject = objB;
-					var tempBoundsB:IBounds;
+					var objB:IIsoDisplayObject = children[j];
+					var boundsB:IBounds = objB.isoBounds;
 					
-					// This should be faster than 2 calls to splice(), since those 2 calls would shuffle all the way to the end of the Vector.
-					// This code only shifts the affected indexes
-					do
+					// See if B should go behind A
+					if (// Behind in any axis,
+					    ((boundsB.top <= boundsA.bottom) ||
+						 (boundsB.right <= boundsA.left) ||
+						 (boundsB.front <= boundsA.back))
+						&&
+						// but not in front in any other axis
+						!((boundsB.bottom >= boundsA.top) ||
+						  (boundsB.left >= boundsA.right) ||
+						  (boundsB.back >= boundsA.front)))
 					{
-						sortedChildren[j] = tempObjB;
-						--j;
-						if (0 == j)
-							break;
-						tempObjB = sortedChildren[j - 1];
-						tempBoundsB = tempObjB.isoBounds;
+						behind.push(objB);
 					}
-					while ((boundsA.top <= tempBoundsB.bottom) || // if A is under B, then process
-				           (!(boundsA.bottom >= tempBoundsB.top) && // else, if A is _known not to be over B_ and ...
-				            ((boundsA.right <= tempBoundsB.left) || // if A is left of B, then process
-					         (!(boundsA.left >= tempBoundsB.right) && // else, if A is _known not to be right of B_ and ...
-					          (boundsA.front <= tempBoundsB.back))))) // if A is back of B, then process
-					
-					//trace("moved", i, dumpBounds(boundsA), "to", j, dumpBounds(sortedChildren[j+1].isoBounds));
-					
-					// Update the display order of this moved object
-					sortedChildren[j] = objA;
-					scene.setChildIndex(objA, j);
 				}
-				else
-				{
-					objB = objA;
-					boundsB = boundsA;
-				}
+				dependency[objA] = behind;
+			}
+
+			// Place the children into a sorted array, using dependency ordering
+			var sortedChildren:Array = [];
+			
+			// IIsoDisplayObject -> Boolean, true signifies it's already been put in the display list
+			var visited:Dictionary = new Dictionary();
+			
+			var place:Function = function(obj:IIsoDisplayObject):void
+			{
+				if (visited[obj])
+					return;
+				visited[obj] = true;
+				
+				for each(var inner:IIsoDisplayObject in dependency[obj])
+					place(inner);
+				sortedChildren.push(obj);
+			};
+			
+			for each(var obj:IIsoDisplayObject in children)
+			{
+				place(obj);
 			}
 			
+			// Update the scene's ordering
+			for (i = 0; i < max; ++i)
+			{
+				var child:IIsoDisplayObject = IIsoDisplayObject(sortedChildren[i]);
+				if (child.depth != i)
+					scene.setChildIndex(child, i);
+			}
+
 			// DEBUG OUTPUT
 			
 			//trace("--------------------");
 			//for (i = 0; i < max; ++i)
-			//	trace(dumpBounds(sortedChildren[i].isoBounds));
+			//	trace(dumpBounds(sortedChildren[i].isoBounds), dependency[sortedChildren[i]].length);
 			
 			trace("scene layout render time", getTimer() - startTime, "ms (manual sort)");
 		}
 		
 		//static private function dumpBounds(b:IBounds):String { return "[" + b.left + ".." + b.right + "," + b.back + ".." + b.front + "," + b.bottom + ".." + b.top + "]"; }
-
 	}
 }
