@@ -88,22 +88,72 @@ package as3isolib.display.renderers
 		 */
 		public function renderScene (scene:IIsoScene):void
 		{
+			var startTime:uint = getTimer();
+			
 			if (!_targetBitmap)
 				return;
 			
-			var sortedChildren:Array = scene.displayListChildren.slice(); //make a copy of the children
-			sortedChildren.sort(isoDepthSort); //perform a secondary sort for any hittests
+			// Revamped by David Holz
+			// TODO - keep in sync with DefaultSceneLayoutRenderer
 			
-			var child:IIsoDisplayObject;
-			var i:uint;
-			var m:uint = sortedChildren.length;
-			while (i < m)
+			// NOTE - Flash player 10 only
+			// Using scene.children because they are in last display order, scene.displayListChildren are unordered and fully resorted every time!
+			var sortedChildren:Vector.<IIsoDisplayObject> = Vector.<IIsoDisplayObject>(scene.children);
+			
+			// Flash player 9
+			//var sortedChildren:Array = scene.children.slice();
+			
+			// Ocean sort, from http://cadaver.homeftp.net/rants/sprite.htm
+			// Starting from offset 1, make sure [N] >= [N-1].  If not, keep pushing N back in the list until it's >= the new [N-1]
+			// This sort works best when there are minor changes to the depth ordering that need to be patched up
+			
+			// All of the aditional variables are to reduce the number of array accesses, which are all bounds checked by the VM.  Each removed array access lopped more time off the render.
+			var max:uint = sortedChildren.length;
+			var objB:IIsoDisplayObject = sortedChildren[0];
+			var boundsB:IBounds = objB.isoBounds;
+			for (var i:uint = 1; i < max; ++i)
 			{
-				child = IIsoDisplayObject(sortedChildren[i]);
-				if (child.depth != i)
-					scene.setChildIndex(child, i);
+				var j:uint = i;
 				
-				i++;
+				var objA:IIsoDisplayObject = sortedChildren[i];
+				var boundsA:IBounds = objA.isoBounds;
+				
+				// There are many instances where 2 blocks can be ordered A->B in one axis, and B->A in the other
+				// We need to determine a priority order for comparing, so that they won't just toggle getting behind each other from frame to frame.
+				// Also, these mutual behindednesses can lead to the painter's algorithm type of problems and break visual sorting order.
+				
+				// See if objA is behind objB, which would be out of place
+				if((boundsA.top <= boundsB.bottom) || // if A is under B, then process
+				   (!(boundsA.bottom >= boundsB.top) && // else, if A is _known not to be over B_ and ...
+				    ((boundsA.right <= boundsB.left) || // if A is left of B, then process
+					 (!(boundsA.left >= boundsB.right) && // else, if A is _known not to be right of B_ and ...
+					  (boundsA.front <= boundsB.back))))) // if A is back of B, then process
+				{
+					// This should be faster than 2 calls to splice(), since those 2 calls would shuffle all the way to the end of the Vector.
+					// This code only shifts the affected indexes
+					do
+					{
+						sortedChildren[j] = objB;
+						--j;
+						if (0 == j)
+							break;
+						objB = sortedChildren[j - 1];
+						boundsB = objB.isoBounds;
+					}
+					while ((boundsA.top <= boundsB.bottom) || // if A is under B, then process
+				           (!(boundsA.bottom >= boundsB.top) && // else, if A is _known not to be over B_ and ...
+				            ((boundsA.right <= boundsB.left) || // if A is left of B, then process
+					         (!(boundsA.left >= boundsB.right) && // else, if A is _known not to be right of B_ and ...
+					          (boundsA.front <= boundsB.back))))) // if A is back of B, then process
+					
+					//trace("moved", i, dumpBounds(boundsA), "to", j, dumpBounds(sortedChildren[j+1].isoBounds));
+					
+					// Update the display order of this moved object
+					sortedChildren[j] = objA;
+					scene.setChildIndex(objA, j);
+				}
+				objB = objA;
+				boundsB = boundsA;
 			}
 			
 			var offsetMatrix:Matrix = new Matrix();
@@ -117,37 +167,8 @@ package as3isolib.display.renderers
 				_targetBitmap.bitmapData.dispose();
 				
 			_targetBitmap.bitmapData = sceneBitmapData;
-		}
-		
-		////////////////////////////////////////////////////
-		//	SORT
-		////////////////////////////////////////////////////
-		
-		private function isoDepthSort (childA:Object, childB:Object):int
-		{
-			var boundsA:IBounds = childA.isoBounds;
-			var boundsB:IBounds = childB.isoBounds;
 			
-			if (boundsA.right <= boundsB.left)
-				return -1;
-				
-			else if (boundsA.left >= boundsB.right)
-				return 1;
-			
-			else if (boundsA.front <= boundsB.back)
-				return -1;
-				
-			else if (boundsA.back >= boundsB.front)
-				return 1;
-				
-			else if (boundsA.top <= boundsB.bottom)
-				return -1;
-				
-			else if (boundsA.bottom >= boundsB.top)
-				return 1;
-			
-			else
-				return 0;
+			trace("scene layout render time", getTimer() - startTime, "ms");
 		}
 	}
 }
