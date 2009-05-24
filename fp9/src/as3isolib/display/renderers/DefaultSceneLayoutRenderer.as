@@ -30,8 +30,8 @@ SOFTWARE.
 package as3isolib.display.renderers
 {
 	import as3isolib.bounds.IBounds;
-	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
+	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.display.scene.IIsoScene;
 	import flash.utils.Dictionary;
 	
@@ -55,11 +55,15 @@ package as3isolib.display.renderers
 		{
 			var startTime:uint = getTimer();
 
-			// Rewrite #2 by David Holz, naive dependency version
+			// Rewrite #2 by David Holz, dependency version (naive for now)
+			
+			// TODO - screen space subdivision to limit dependency scan
+			// TODO - cache dependencies between frames, only adjust invalidated objects, keeping old ordering as best as possible
 			
 			// IIsoDisplayObject -> [obj that should be behind the key]
 			var dependency:Dictionary = new Dictionary();
 			
+			// For now, use the non-rearranging display list so that the dependency sort will tend to create similar output each pass
 			var children:Array = scene.displayListChildren;
 			
 			// Full naive cartesian scan, see what objects are behind child[i]
@@ -68,24 +72,31 @@ package as3isolib.display.renderers
 			{
 				var behind:Array = [];
 				
-				var objA:IIsoDisplayObject = children[i];
-				var boundsA:IBounds = objA.isoBounds;
+				var objA:IsoDisplayObject = children[i];
 
+				// TODO - direct access ("public var isoX" instead of "function get x") of the object's fields is a TON faster.
+				//   Even "final function get" doesn't inline it to direct access, yielding the same speed as plain "function get".
+				//   use namespaces to provide raw access?
+				//   rename interface class = IsoDisplayObject, concrete class = IsoDisplayObject_impl with public fields?
+				
+				//var rightA:Number = objA.isoX + objA.isoWidth;
+				//var frontA:Number = objA.isoY + objA.isoLength;
+				//var topA:Number = objA.isoZ + objA.isoHeight;
+
+				// TODO - getting bounds objects REALLY slows us down, too.  It creates a new one every time you ask for it!
+				var rightA:Number = objA.x + objA.width;
+				var frontA:Number = objA.y + objA.length;
+				var topA:Number = objA.z + objA.height;
+				
 				for (var j:uint = 0; j < max; ++j)
 				{
-					var objB:IIsoDisplayObject = children[j];
-					var boundsB:IBounds = objB.isoBounds;
+					var objB:IsoDisplayObject = children[j];
 					
 					// See if B should go behind A
-					if (// Behind in any axis,
-					    ((boundsB.top <= boundsA.bottom) ||
-						 (boundsB.right <= boundsA.left) ||
-						 (boundsB.front <= boundsA.back))
-						&&
-						// but not in front in any other axis
-						!((boundsB.bottom >= boundsA.top) ||
-						  (boundsB.left >= boundsA.right) ||
-						  (boundsB.back >= boundsA.front)))
+					// simplest possible check, interpenetrations also count as "behind", which does do a bit more work later, but the inner loop tradeoff for a faster check makes up for it
+					if ((objB.x < rightA) &&
+					    (objB.y < frontA) &&
+						(objB.z < topA))
 					{
 						behind.push(objB);
 					}
@@ -93,23 +104,27 @@ package as3isolib.display.renderers
 				dependency[objA] = behind;
 			}
 
+			trace("dependency scan time", getTimer() - startTime, "ms");
+			
+			// TODO - set the invalidated children first, then do a rescan to make sure everything else is where it needs to be, too?  probably need to order the invalidated children sets from low to high index
+			
 			// Set the childrens' depth, using dependency ordering
 			var depth:uint = 0;
 			var visited:Dictionary = new Dictionary();
-			var place:Function = function(obj:IIsoDisplayObject):void
+			var place:Function = function(obj:IsoDisplayObject):void
 			{
 				if (visited[obj])
 					return;
 				visited[obj] = true;
 				
-				for each(var inner:IIsoDisplayObject in dependency[obj])
+				for each(var inner:IsoDisplayObject in dependency[obj])
 					place(inner);
 					
 				scene.setChildIndex(obj, depth);
 				++depth;
 			};
 			
-			for each(var obj:IIsoDisplayObject in children)
+			for each(var obj:IsoDisplayObject in children)
 			{
 				place(obj);
 			}
