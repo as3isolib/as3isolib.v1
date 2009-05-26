@@ -104,7 +104,7 @@ package as3isolib.display.renderers
 				}
 				dependency[objA] = behind;
 			}
-
+			
 			trace("dependency scan time", getTimer() - startTime, "ms");
 			
 			// TODO - set the invalidated children first, then do a rescan to make sure everything else is where it needs to be, too?  probably need to order the invalidated children sets from low to high index
@@ -112,13 +112,12 @@ package as3isolib.display.renderers
 			// Set the childrens' depth, using dependency ordering
 			depth = 0;
 			for each(var obj:IsoDisplayObject in children)
-			{
-				place(obj);
-			}
+				if(true !== visited[obj])
+					place(obj);
 			
 			// Clear out temporary dictionary so we're not retaining memory between calls
 			visited = new Dictionary();
-
+			
 			// DEBUG OUTPUT
 			
 			//trace("--------------------");
@@ -133,20 +132,23 @@ package as3isolib.display.renderers
 		private var visited:Dictionary = new Dictionary();
 		private var scene:IIsoScene;
 		private var dependency:Dictionary;
-
+		
 		/**
 		 * Dependency-ordered depth placement of the given objects and its dependencies.
 		 */
 		private function place(obj:IsoDisplayObject):void
 		{
-			if (visited[obj])
-				return;
 			visited[obj] = true;
 			
 			for each(var inner:IsoDisplayObject in dependency[obj])
-				place(inner);
-				
-			scene.setChildIndex(obj, depth);
+				if(true !== visited[inner])
+					place(inner);
+			
+			if (depth != obj.depth)
+			{
+				scene.setChildIndex(obj, depth);
+				//trace(".");
+			}
 			++depth;
 		};
 		
