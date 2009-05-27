@@ -38,6 +38,7 @@ package as3isolib.display
 	import as3isolib.geom.Pt;
 	
 	import flash.display.DisplayObject;
+	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.geom.Point;
@@ -634,9 +635,7 @@ package as3isolib.display
 				_mask.graphics.endFill();
 			} */
 			
-			borderShape.graphics.clear();
-			borderShape.graphics.lineStyle(0);
-			borderShape.graphics.drawRect(0, 0, _w, _h);
+			drawBorder();
 			
 			//for testing only - adds crosshairs to view border
 			/* _border.graphics.moveTo(0, 0);
@@ -786,6 +785,48 @@ package as3isolib.display
 		
 		private var maskShape:Shape;
 		private var borderShape:Shape;
+		
+		/////////////////////////////////////////////////////////////////
+		//	SHOW BORDER
+		/////////////////////////////////////////////////////////////////
+		
+		private var _showBorder:Boolean = true;
+		
+		/**
+		 * @private
+		 */
+		[Bindable("showBorderChanged")]
+		public function get showBorder ():Boolean
+		{
+			return _showBorder;
+		}
+		
+		/**
+		 * Flag indicating if the view's border is visible.
+		 */
+		public function set showBorder (value:Boolean):void
+		{
+			if (_showBorder != value)
+			{
+				_showBorder = value;
+				drawBorder();
+			}
+		}
+		
+		/**
+		 * @private
+		 */
+		protected function drawBorder ():void
+		{
+			var g:Graphics = borderShape.graphics;
+			g.clear();
+			
+			if (showBorder)
+			{
+				g.lineStyle(0);
+				g.drawRect(0, 0, _w, _h);
+			}
+		}
 		
 		///////////////////////////////////////////////////////////////////////////////
 		//	CONSTRUCTOR
