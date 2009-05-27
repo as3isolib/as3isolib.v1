@@ -73,9 +73,7 @@ package as3isolib.graphics
 		public function SolidColorFill (color:uint, alpha:Number)
 		{
 			this.color = color;
-			this.alpha = alpha;
-			
-			
+			this.alpha = alpha;			
 		}
 		
 		/**

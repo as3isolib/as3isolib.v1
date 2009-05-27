@@ -144,23 +144,29 @@ package as3isolib.display.scene
 		/**
 		 * Constructor
 		 */
-		public function IsoOrigin ()
+		public function IsoOrigin (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 			
-			strokes =
-			[
-				new Stroke(0, 0xFF0000, 0.75),
-				new Stroke(0, 0x00FF00, 0.75),
-				new Stroke(0, 0x0000FF, 0.75)
-			];
-			
-			fills =
-			[
-				new SolidColorFill(0xFF0000, 0.75),
-				new SolidColorFill(0x00FF00, 0.75),
-				new SolidColorFill(0x0000FF, 0.75)
-			]
+			if (!descriptor || !descriptor.hasOwnProperty("strokes"))
+			{
+				strokes =
+				[
+					new Stroke(0, 0xFF0000, 0.75),
+					new Stroke(0, 0x00FF00, 0.75),
+					new Stroke(0, 0x0000FF, 0.75)
+				];
+			}
+				
+			if (!descriptor || !descriptor.hasOwnProperty("fills"))
+			{	
+				fills =
+				[
+					new SolidColorFill(0xFF0000, 0.75),
+					new SolidColorFill(0x00FF00, 0.75),
+					new SolidColorFill(0x0000FF, 0.75)
+				]
+			}
 		}
 		
 		/**

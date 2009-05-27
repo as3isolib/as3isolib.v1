@@ -40,9 +40,9 @@ package as3isolib.display.scene
 	 */
 	public class IsoHexGrid extends IsoGrid
 	{
-		public function IsoHexGrid ()
+		public function IsoHexGrid (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 		}
 		
 		/**

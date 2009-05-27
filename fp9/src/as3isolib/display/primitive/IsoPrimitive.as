@@ -304,13 +304,16 @@ package as3isolib.display.primitive
 		/**
 		 * Constructor
 		 */
-		public function IsoPrimitive ()
+		public function IsoPrimitive (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 			
-			width = DEFAULT_WIDTH;
-			length = DEFAULT_LENGTH;
-			height = DEFAULT_HEIGHT;
+			if (!descriptor)
+			{
+				width = DEFAULT_WIDTH;
+				length = DEFAULT_LENGTH;
+				height = DEFAULT_HEIGHT;
+			}
 		}
 		
 	}

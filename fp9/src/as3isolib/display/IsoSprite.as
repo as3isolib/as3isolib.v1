@@ -29,7 +29,6 @@ SOFTWARE.
 */
 package as3isolib.display
 {
-	import mx.core.IFactory;
 	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
 	
@@ -37,6 +36,8 @@ package as3isolib.display
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
+	
+	import mx.core.IFactory;
 	
 	use namespace as3isolib_internal;
 	
@@ -191,9 +192,9 @@ package as3isolib.display
 		/**
 		 * Constructor
 		 */
-		public function IsoSprite ()
+		public function IsoSprite (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 		}
 	}
 }

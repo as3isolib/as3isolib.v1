@@ -30,7 +30,6 @@ SOFTWARE.
 package as3isolib.core
 {
 	import as3isolib.bounds.IBounds;
-	import as3isolib.data.INode;
 	import as3isolib.data.RenderData;
 	
 	import flash.display.DisplayObject;

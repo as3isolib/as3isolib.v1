@@ -343,9 +343,9 @@ package as3isolib.display.primitive
 		/**
 		 * Constructor
 		 */
-		public function IsoHexBox ()
+		public function IsoHexBox (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 		}
 	}
 }

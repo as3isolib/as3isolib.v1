@@ -165,15 +165,18 @@ package as3isolib.display.scene
 		/**
 		 * Constructor
 		 */
-		public function IsoGrid ()
+		public function IsoGrid (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 			
-			showOrigin = true;
-			gridlines = new Stroke(0, 0xCCCCCC, 0.5);
-			
-			cellSize = 25;
-			setGridSize(5, 5);
+			if (!descriptor)
+			{
+				showOrigin = true;
+				gridlines = new Stroke(0, 0xCCCCCC, 0.5);
+				
+				cellSize = 25;
+				setGridSize(5, 5);
+			}
 		}
 		
 		private var _origin:IsoOrigin;

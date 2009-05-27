@@ -118,9 +118,9 @@ package as3isolib.display.primitive
 		/**
 		 * Constructor
 		 */
-		public function IsoPolygon ()
+		public function IsoPolygon (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 		}
 	}
 }

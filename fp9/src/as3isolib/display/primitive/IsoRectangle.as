@@ -93,11 +93,12 @@ package as3isolib.display.primitive
 		/**
 		 * Constructor
 		 */
-		public function IsoRectangle ()
+		public function IsoRectangle (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 			
-			width = length = height = 0;
+			if (!descriptor)
+				width = length = height = 0;
 		}
 	}
 }

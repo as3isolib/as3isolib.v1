@@ -38,7 +38,6 @@ package as3isolib.core
 	
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
-	import flash.events.Event;
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -720,12 +719,25 @@ package as3isolib.core
 		//	CONSTRUCTOR
 		/////////////////////////////////////////////////////////
 		
+		private function createObjectFromDescriptor (descriptor:Object):void
+		{
+			var prop:String;
+			for (prop in descriptor)
+			{
+				if (this.hasOwnProperty(prop))
+					this[prop] = descriptor[prop];
+			}
+		}
+		
 		/**
 		 * Constructor
 		 */
-		public function IsoDisplayObject ()
+		public function IsoDisplayObject (descriptor:Object = null)
 		{
 			super();
+			
+			if (descriptor)
+				createObjectFromDescriptor(descriptor);
 		}	
 	}
 }

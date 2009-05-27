@@ -45,9 +45,9 @@ package as3isolib.display.primitive
 		/**
 		 * Constructor
 		 */
-		public function IsoBox ()
+		public function IsoBox (descriptor:Object = null)
 		{
-			super();
+			super(descriptor);
 		}
 		
 		override public function set stroke (value:IStroke):void
