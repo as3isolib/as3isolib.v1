@@ -97,7 +97,8 @@ package as3isolib.display.renderers
 					// simplest possible check, interpenetrations also count as "behind", which does do a bit more work later, but the inner loop tradeoff for a faster check makes up for it
 					if ((objB.x < rightA) &&
 					    (objB.y < frontA) &&
-						(objB.z < topA))
+						(objB.z < topA) &&
+						(i !== j))
 					{
 						behind.push(objB);
 					}
