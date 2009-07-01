@@ -179,7 +179,26 @@ package as3isolib.display.primitive
 			g.moveTo(rbb.x, rbb.y);
 			fill = fills.length >= 2 ? IFill(fills[1]) : DEFAULT_FILL;
 			if (fill && styleType != RenderStyleType.WIREFRAME)
+			{
+				if (fill is IBitmapFill)
+				{
+					m = IBitmapFill(fill).matrix ? IBitmapFill(fill).matrix : new Matrix();
+					m.tx += lfb.x;
+					m.ty += lfb.y;
+					
+					if (!IBitmapFill(fill).repeat)
+					{
+						//calculate how to stretch fill for face
+						//this is not great OOP, sorry folks!
+						
+						
+					}
+					
+					IBitmapFill(fill).matrix = m;
+				}
+				
 				fill.begin(g);
+			}
 			
 			stroke = strokes.length >= 2 ? IStroke(strokes[1]) : DEFAULT_STROKE;
 			if (stroke)
