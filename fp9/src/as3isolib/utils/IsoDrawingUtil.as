@@ -247,13 +247,15 @@ package as3isolib.utils
 				
 				case IsoOrientation.XZ:
 				{
-					m.b = Math.atan(0.5);
+					m.b = Math.PI / 180 * 30;
+					//m.b = Math.atan(0.5);
 					break;
 				}
 				
 				case IsoOrientation.YZ:
 				{
-					m.b = Math.atan(-0.5);
+					m.b = Math.PI / 180 * -30;
+					//m.b = Math.atan(-0.5);
 					break;
 				}
 				

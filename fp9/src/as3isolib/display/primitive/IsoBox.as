@@ -32,10 +32,12 @@ package as3isolib.display.primitive
 	import as3isolib.enum.RenderStyleType;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
+	import as3isolib.graphics.IBitmapFill;
 	import as3isolib.graphics.IFill;
 	import as3isolib.graphics.IStroke;
 	
 	import flash.display.Graphics;
+	import flash.geom.Matrix;
 	
 	/**
 	 * 3D box primitive in isometric space.
@@ -140,7 +142,26 @@ package as3isolib.display.primitive
 			g.moveTo(lfb.x, lfb.y);
 			fill = fills.length >= 3 ? IFill(fills[2]) : DEFAULT_FILL;
 			if (fill && styleType != RenderStyleType.WIREFRAME)
+			{
+				if (fill is IBitmapFill)
+				{
+					var m:Matrix = IBitmapFill(fill).matrix ? IBitmapFill(fill).matrix : new Matrix();
+					m.tx += lfb.x;
+					m.ty += lfb.y;
+					
+					if (!IBitmapFill(fill).repeat)
+					{
+						//calculate how to stretch fill for face
+						//this is not great OOP, sorry folks!
+						
+						
+					}
+					
+					IBitmapFill(fill).matrix = m;
+				}
+				
 				fill.begin(g);
+			}
 			
 			stroke = strokes.length >= 3 ? IStroke(strokes[2]) : DEFAULT_STROKE;
 			if (stroke)
@@ -176,7 +197,23 @@ package as3isolib.display.primitive
 			g.moveTo(lbt.x, lbt.y);
 			fill = fills.length >= 1 ? IFill(fills[0]) : DEFAULT_FILL;
 			if (fill && styleType != RenderStyleType.WIREFRAME)
+			{
+				if (fill is IBitmapFill)
+				{
+					m = IBitmapFill(fill).matrix ? IBitmapFill(fill).matrix : new Matrix();
+					m.tx += lbt.x;
+					m.ty += lbt.y;
+					
+					if (!IBitmapFill(fill).repeat)
+					{
+						
+					}
+					
+					IBitmapFill(fill).matrix = m;
+				}
+				
 				fill.begin(g);
+			}
 			
 			stroke = strokes.length >= 1 ? IStroke(strokes[0]) : DEFAULT_STROKE;
 			if (stroke)

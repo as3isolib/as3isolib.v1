@@ -47,14 +47,14 @@ package as3isolib.geom
 		
 		static private var transformationObj:IAxonometricTransformation = new DefaultIsometricTransformation();
 		
-		/**
-		 * @private
-		 */
 		static public function get transformationObject ():IAxonometricTransformation
 		{
 			return transformationObj;
 		}
 		
+		/**
+		 * @private
+		 */
 		static public function set transformationObject (value:IAxonometricTransformation):void
 		{
 			if (value)

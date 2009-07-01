@@ -41,7 +41,7 @@ package as3isolib.graphics
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedSuperclassName;
 
-	public class BitmapFill implements IFill
+	public class BitmapFill implements IBitmapFill
 	{
 		///////////////////////////////////////////////////////////
 		//	CONSTRUCTOR
@@ -54,7 +54,7 @@ package as3isolib.graphics
 		 * @param orientation The expect orientation of the fill.  Valid values relate to the IsoOrientation constants.
 		 * @param matrix A user defined matrix for custom transformations.
 		 * @param colorTransform Used to assign additional custom color transformations to the fill.
-		 * @param repeat Flag indicating whether to repeat the fill.
+		 * @param repeat Flag indicating whether to repeat the fill.  If this is false, then the fill will be stretched.
 		 * @param smooth Flag indicating whether to smooth the fill.
 		 */
 		public function BitmapFill (source:Object, orientation:Object = null, matrix:Matrix = null, colorTransform:ColorTransform = null, repeat:Boolean = true, smooth:Boolean = false)
@@ -215,15 +215,41 @@ package as3isolib.graphics
 				bitmapData.colorTransform(bitmapData.rect, cTransform);
 		}
 		
+		private var matrixObject:Matrix;
+		
 		/**
 		 * The transformation matrix applied to the source relative to the isometric face.  This matrix is applied before the orientation adjustments.
 		 */
-		public var matrix:Matrix;
+		public function get matrix ():Matrix
+		{
+			return matrixObject;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set matrix (value:Matrix):void
+		{
+			matrixObject = value;
+		}
+		
+		private var bRepeat:Boolean;
 		
 		/**
 		 * A flag indicating whether the bitmap is repeated to fill the area.
 		 */
-		public var repeat:Boolean;
+		public function get repeat ():Boolean
+		{
+			return bRepeat;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set repeat (value:Boolean):void
+		{
+			bRepeat = value;
+		}
 		
 		/**
 		 * A flag indicating whether to smooth the bitmap data when filling with it.
@@ -240,12 +266,12 @@ package as3isolib.graphics
 		public function begin (target:Graphics):void
 		{
 			var m:Matrix = new Matrix();
-			if (matrix)
-				m.concat(matrix);
-			
 			if (_orientationMatrix)
 				m.concat(_orientationMatrix);
 				
+			if (matrix)
+				m.concat(matrix);
+			
 			target.beginBitmapFill(bitmapData, m, repeat, smooth);
 		}
 		
