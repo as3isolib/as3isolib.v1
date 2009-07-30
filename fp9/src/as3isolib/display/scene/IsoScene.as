@@ -316,13 +316,13 @@ package as3isolib.display.scene
 						sceneLayoutRenderer.renderScene(this);
 				}
 				
-				//apply styling
-				mainContainer.graphics.clear(); //should we do this here?
-				
+				//fix for bug #20 - http://code.google.com/p/as3isolib/issues/detail?id=20
 				var sceneRenderer:ISceneRenderer;
 				var factory:IFactory
-				if (stylingEnabled)
+				if (stylingEnabled && styleRendererFactories.length > 0)
 				{
+					mainContainer.graphics.clear();
+											
 					for each (factory in styleRendererFactories)
 					{
 						sceneRenderer = factory.newInstance();
