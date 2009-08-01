@@ -29,8 +29,10 @@ SOFTWARE.
 */
 package as3isolib.data
 {
-	import as3isolib.events.IsoEvent;
+	import __AS3__.vec.Vector;
+	
 	import as3isolib.core.as3isolib_internal;
+	import as3isolib.events.IsoEvent;
 	
 	import eDpLib.events.EventDispatcherProxy;
 	
@@ -215,15 +217,19 @@ package as3isolib.data
 			}
 		}
 		
-		[ArrayElementType("as3isolib.core.sceneGraph.INode")]
-		private var childrenArray:Array = [];
+		private var childrenArray:Vector.<INode> = new Vector.<INode>();
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function get children ():Array
 		{
-			return childrenArray;
+			var temp:Array = [];
+			var child:Object;
+			for each (child in childrenArray)
+				temp.push(child);
+				
+			return temp;
 		}
 		
 		/**
@@ -372,7 +378,7 @@ package as3isolib.data
 				Node(child).parentNode = null;
 				
 				//remove from children array
-				var i:int;
+				var i:uint;
 				for (i; i < childrenArray.length; i++)
 				{
 					if (child == childrenArray[i])
@@ -400,7 +406,7 @@ package as3isolib.data
 			for each (child in childrenArray)
 				Node(child).parentNode = null;
 			
-			childrenArray = [];
+			childrenArray = new Vector.<INode>();
 		}
 		
 		/**

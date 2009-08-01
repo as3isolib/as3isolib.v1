@@ -30,6 +30,8 @@ SOFTWARE.
 package as3isolib.display.scene
 {
 	
+	import __AS3__.vec.Vector;
+	
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.SceneBounds;
 	import as3isolib.core.IIsoDisplayObject;
@@ -251,14 +253,19 @@ package as3isolib.display.scene
 		 */
 		public var stylingEnabled:Boolean = true;
 		
-		private var styleRendererFactories:Array = [];
+		private var styleRendererFactories:Vector.<IFactory> = new Vector.<IFactory>();
 		
 		/**
 		 * @private
 		 */
 		public function get styleRenderers ():Array
 		{
-			return styleRendererFactories;
+			var temp:Array = [];
+			var factory:IFactory;
+			for each (factory in styleRendererFactories)
+				temp.push(factory);
+			
+			return temp;
 		}
 		
 		/**
@@ -266,20 +273,14 @@ package as3isolib.display.scene
 		 * If any value contained within the array is not of type IFactory, it will be ignored.
 		 */
 		public function set styleRenderers (value:Array):void
-		{			
+		{
 			if (value)
-			{
-				var temp:Array = [];
-				var obj:Object;
-				for each (obj in value)
-				{
-					if (obj is IFactory)
-						temp.push(obj);
-				}
-				
-				styleRendererFactories = temp;
-				bIsInvalidated = true;
-			}
+				styleRendererFactories = Vector.<IFactory>(value);
+			
+			else
+				styleRendererFactories = null;
+			
+			bIsInvalidated = true;
 		}
 		
 		///////////////////////////////////////////////////////////////////////////////

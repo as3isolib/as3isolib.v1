@@ -29,6 +29,8 @@ SOFTWARE.
 */
 package as3isolib.core
 {
+	import __AS3__.vec.Vector;
+	
 	import as3isolib.data.INode;
 	import as3isolib.data.Node;
 	import as3isolib.events.IsoEvent;
@@ -85,14 +87,19 @@ package as3isolib.core
 		//	DISPLAY LIST CHILDREN
 		////////////////////////////////////////////////////////////////////////
 		
-		protected var displayListChildrenArray:Array = [];
+		protected var displayListChildrenArray:Vector.<IIsoContainer> = new Vector.<IIsoContainer>();
 			
 		/**
 		 * @inheritDoc
 		 */
 		public function get displayListChildren ():Array
 		{
-			return displayListChildrenArray;
+			var temp:Array = [];
+			var child:IIsoContainer;
+			for each (child in displayListChildrenArray)
+				temp.push(child);
+			
+			return temp;
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -184,7 +191,7 @@ package as3isolib.core
 					mainContainer.removeChild(child.container);
 			}
 			
-			displayListChildrenArray = [];
+			displayListChildrenArray = new Vector.<IIsoContainer>();
 				
 			super.removeAllChildren();
 		}		
@@ -332,7 +339,6 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		[ClassUtil(ignore="true")]
 		public function get container ():Sprite
 		{
 			return mainContainer;

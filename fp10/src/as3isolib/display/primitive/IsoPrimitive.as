@@ -29,6 +29,8 @@ SOFTWARE.
 */
 package as3isolib.display.primitive
 {
+	import __AS3__.vec.Vector;
+	
 	import as3isolib.core.IsoDisplayObject;
 	import as3isolib.core.as3isolib_internal;
 	import as3isolib.enum.RenderStyleType;
@@ -127,15 +129,19 @@ package as3isolib.display.primitive
 		
 		static protected const DEFAULT_FILL:IFill = new SolidColorFill(0xFFFFFF, 1);
 		
-		private var fillsArray:Array = [];
+		private var fillsArray:Vector.<IFill> = new Vector.<IFill>();
 		
 		/**
 		 * @private
 		 */
-		[ArrayElementType("as3isolib.graphics.IFill")]
 		public function get fills ():Array
 		{
-			return fillsArray;
+			var temp:Array = [];
+			var f:IFill;
+			for each (f in fillsArray)
+				temp.push(f);
+			
+			return temp;
 		}
 		
 		/**
@@ -143,14 +149,16 @@ package as3isolib.display.primitive
 		 */
 		public function set fills (value:Array):void
 		{
-			if (fillsArray != value)
-			{
-				fillsArray = value;
-				invalidateStyles();
-				
-				if (autoUpdate)
-					render();
-			}
+			if (value)
+				fillsArray = Vector.<IFill>(value);
+			
+			else
+				fillsArray = new Vector.<IFill>();
+			
+			invalidateStyles();
+			
+			if (autoUpdate)
+				render();
 		}
 		
 			//	MAIN STROKE
@@ -163,7 +171,7 @@ package as3isolib.display.primitive
 		
 		public function set stroke (value:IStroke):void
 		{
-			strokes = [value];
+			strokes = [value, value, value, value, value, value];
 		}
 		
 			//	STROKES
@@ -171,15 +179,19 @@ package as3isolib.display.primitive
 		
 		static protected const DEFAULT_STROKE:IStroke = new Stroke(0, 0x000000);
 		
-		private var edgesArray:Array = [];
+		private var edgesArray:Vector.<IStroke> = new Vector.<IStroke>();
 		
 		/**
 		 * @private
 		 */
-		[ArrayElementType("as3isolib.graphics.IStroke")]
 		public function get strokes ():Array
 		{
-			return edgesArray;
+			var temp:Array = [];
+			var s:IStroke;
+			for each (s in edgesArray)
+				temp.push(s);
+			
+			return temp;
 		}
 		
 		/**
@@ -187,14 +199,16 @@ package as3isolib.display.primitive
 		 */
 		public function set strokes (value:Array):void
 		{
-			if (edgesArray != value)
-			{
-				edgesArray = value;
-				invalidateStyles();
-				
-				if (autoUpdate)
-					render();
-			}
+			if (value)
+				edgesArray = Vector.<IStroke>(value);
+			
+			else
+				edgesArray = new Vector.<IStroke>();
+			
+			invalidateStyles();
+			
+			if (autoUpdate)
+				render();
 		}
 		
 		/////////////////////////////////////////////////////////
@@ -290,8 +304,8 @@ package as3isolib.display.primitive
 		override public function clone ():*
 		{
 			var cloneInstance:IIsoPrimitive = super.clone() as IIsoPrimitive;
-			cloneInstance.fills = fillsArray;
-			cloneInstance.strokes = edgesArray
+			cloneInstance.fills = fills;
+			cloneInstance.strokes = strokes
 			cloneInstance.styleType = styleType;
 			
 			return cloneInstance;
