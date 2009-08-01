@@ -119,15 +119,17 @@ package as3isolib.core
 		//	BOUNDS
 		////////////////////////////////////////////////////////////////////////
 		
+		protected var isoBoundsObject:IBounds;
+		
 		/**
 		 * @inheritDoc
 		 */
 		public function get isoBounds ():IBounds
 		{
-			/* if (!_isoBounds)
-				_isoBounds =  */
+			if (!isoBoundsObject || isInvalidated)
+				isoBoundsObject = new PrimitiveBounds(this);
 			
-			return new PrimitiveBounds(this);
+			return isoBoundsObject;
 		}
 		
 		/**

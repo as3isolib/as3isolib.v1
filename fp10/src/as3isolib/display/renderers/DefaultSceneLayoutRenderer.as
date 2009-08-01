@@ -106,7 +106,7 @@ package as3isolib.display.renderers
 				dependency[objA] = behind;
 			}
 			
-			trace("dependency scan time", getTimer() - startTime, "ms");
+			//trace("dependency scan time", getTimer() - startTime, "ms");
 			
 			// TODO - set the invalidated children first, then do a rescan to make sure everything else is where it needs to be, too?  probably need to order the invalidated children sets from low to high index
 			
@@ -125,7 +125,7 @@ package as3isolib.display.renderers
 			//for (i = 0; i < max; ++i)
 			//	trace(dumpBounds(sortedChildren[i].isoBounds), dependency[sortedChildren[i]].length);
 			
-			trace("scene layout render time", getTimer() - startTime, "ms (manual sort)");
+			//trace("scene layout render time", getTimer() - startTime, "ms (manual sort)");
 		}
 		
 		// It's faster to make class variables & a method, rather than to do a local function closure
@@ -150,6 +150,7 @@ package as3isolib.display.renderers
 				scene.setChildIndex(obj, depth);
 				//trace(".");
 			}
+			
 			++depth;
 		};
 		
