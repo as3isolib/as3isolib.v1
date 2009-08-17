@@ -17,6 +17,7 @@
 			<arg line="-output '${bin.dir}/${swc.name}.swc'"/>
 			<arg line="-source-path ${src.dir}"/>
 			<arg line="-strict=true"/>
+			<arg line="-target-player=10.0.0"/>
 			<!--arg line="-include-namespaces ${manifest.uri}"/-->
 			<arg line="-namespace ${manifest.uri} ${manifest.xml}"/>
 			<arg line="-include-classes as3isolib.bounds.IBounds
