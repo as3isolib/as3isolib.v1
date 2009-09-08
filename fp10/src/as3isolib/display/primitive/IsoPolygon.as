@@ -64,7 +64,7 @@ package as3isolib.display.primitive
 			if (fill && styleType != RenderStyleType.WIREFRAME)
 				fill.begin(g);
 			
-			var stroke:IStroke = IStroke(strokes[0]);
+			var stroke:IStroke = strokes.length >= 1 ? IStroke(strokes[0]) : DEFAULT_STROKE;
 			if (stroke)
 				stroke.apply(g);
 			
