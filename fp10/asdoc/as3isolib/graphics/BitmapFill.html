@@ -1,344 +1,65 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="BitmapFill,as3isolib.graphics.BitmapFill,matrix,repeat,smooth,colorTransform,orientation,source,begin,clone,end" name="keywords">
-<title>as3isolib.graphics.BitmapFill</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../override.css" type="text/css"><meta name="keywords" content="BitmapFill,as3isolib.graphics.BitmapFill,alpha,alpha,caps,color,color,colorTransform,id,joints,matrix,matrix,miterLimit,orientation,repeat,repeat,scaleMode,smooth,source,usePixelHinting,weight,apply,apply,begin,begin,begin,clone,clone,clone,end,end,end"><title>as3isolib.graphics.BitmapFill</title></head><body><script language="javascript" type="text/javascript" src="../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../help.js"></script><script language="javascript" type="text/javascript" src="../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'BitmapFill - API Documentation';
 				var baseRef = '../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../index.html?as3isolib/graphics/BitmapFill.html&amp;as3isolib/graphics/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;BitmapFill</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class BitmapFill"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">as3isolib.graphics</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class BitmapFill</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Implements</td><td><a href="IFill.html">IFill</a></td>
-</tr>
-</table>
-<p></p>
-<p></p>
-<br>
-<hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#colorTransform">colorTransform</a> : ColorTransform<div class="summaryTableDescription">
-   A color transformation applied to the source object.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#matrix">matrix</a> : Matrix<div class="summaryTableDescription">
-   The transformation matrix applied to the source relative to the isometric face.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#orientation">orientation</a> : Object<div class="summaryTableDescription">
-   The planar orientation of fill relative to an isometric face.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#repeat">repeat</a> : Boolean<div class="summaryTableDescription">
-   A flag indicating whether the bitmap is repeated to fill the area.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#smooth">smooth</a> : Boolean<div class="summaryTableDescription">
-   A flag indicating whether to smooth the bitmap data when filling with it.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#source">source</a> : Object<div class="summaryTableDescription">
-   The source object for the bitmap fill.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-</table>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#BitmapFill()">BitmapFill</a>(source:Object, orientation:Object = null, matrix:Matrix = null, colorTransform:ColorTransform = null, repeat:Boolean = true, smooth:Boolean = false)</div>
-<div class="summaryTableDescription">
-   Constructor
-   
-   </div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#begin()">begin</a>(target:Graphics):void</div>
-<div class="summaryTableDescription">
-   
-   Initiates fill logic on target graphics.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#clone()">clone</a>():<a href="../graphics/IFill.html">IFill</a>
-</div>
-<div class="summaryTableDescription">
-   
-   Returns an exact copy of this IFill.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#end()">end</a>(target:Graphics):void</div>
-<div class="summaryTableDescription">
-   
-   Completes fill logic on the target graphics.</div>
-</td><td class="summaryTableOwnerCol">BitmapFill</td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="colorTransform"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">colorTransform</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>colorTransform:ColorTransform</code>&nbsp;&nbsp;[read-write]<p>
-   A color transformation applied to the source object.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get colorTransform():ColorTransform</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set colorTransform(value:ColorTransform):void</code>
-<br>
-</div>
-<a name="matrix"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">matrix</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var matrix:Matrix</code><p>
-   The transformation matrix applied to the source relative to the isometric face.  This matrix is applied before the orientation adjustments.
-   </p></div>
-<a name="orientation"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">orientation</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>orientation:Object</code>&nbsp;&nbsp;[read-write]<p>
-   The planar orientation of fill relative to an isometric face.  This can either be a string value enumerated in the IsoOrientation or a matrix.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get orientation():Object</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set orientation(value:Object):void</code>
-<br>
-</div>
-<a name="repeat"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">repeat</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var repeat:Boolean</code><p>
-   A flag indicating whether the bitmap is repeated to fill the area.
-   </p></div>
-<a name="smooth"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">smooth</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var smooth:Boolean</code><p>
-   A flag indicating whether to smooth the bitmap data when filling with it.
-   </p></div>
-<a name="source"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">source</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>source:Object</code>&nbsp;&nbsp;[read-write]<p>
-   The source object for the bitmap fill.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get source():Object</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set source(value:Object):void</code>
-<br>
-</div>
-<a name="constructorDetail"></a>
-<div class="detailSectionHeader">Constructor detail</div>
-<a name="BitmapFill()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">BitmapFill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function BitmapFill(source:Object, orientation:Object = null, matrix:Matrix = null, colorTransform:ColorTransform = null, repeat:Boolean = true, smooth:Boolean = false)</code><p>
-   Constructor
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">source</span>:Object</code> &mdash; The target that serves as the context for the fill. Any assignment to a BitmapData, DisplayObject, Class, and String (as a fully qualified class path) are valid.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">orientation</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; The expect orientation of the fill.  Valid values relate to the IsoOrientation constants.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">matrix</span>:Matrix</code> (default = <code>null</code>)<code></code> &mdash; A user defined matrix for custom transformations.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">colorTransform</span>:ColorTransform</code> (default = <code>null</code>)<code></code> &mdash; Used to assign additional custom color transformations to the fill.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">repeat</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; Flag indicating whether to repeat the fill.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">smooth</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating whether to smooth the fill.
-   </td>
-</tr>
-</table>
-</div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="begin()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">begin</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function begin(target:Graphics):void</code><p>
-   
-   Initiates fill logic on target graphics.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">target</span>:Graphics</code> &mdash; The target graphics object.
-   </td>
-</tr>
-</table>
-</div>
-<a name="clone()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function clone():<a href="../graphics/IFill.html">IFill</a></code><p>
-   
-   Returns an exact copy of this IFill.
-   
-   </p><p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../graphics/IFill.html">IFill</a></code></td>
-</tr>
-</table>
-</div>
-<a name="end()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">end</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function end(target:Graphics):void</code><p>
-   
-   Completes fill logic on the target graphics.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">target</span>:Graphics</code> &mdash; The target graphics object.
-   </td>
-</tr>
-</table>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../package-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../class-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../all-index-A.html" onclick="loadClassListFrame('../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../index.html?as3isolib/graphics/BitmapFill.html&amp;as3isolib/graphics/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">BitmapFill</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("BitmapFill"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">as3isolib.graphics</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  BitmapFill</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">BitmapFill  <img src="../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../as3isolib/graphics/IBitmapFill.html">IBitmapFill</a></td></tr></table><p></p><p></p><p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#colorTransform" class="signatureLink">colorTransform</a> : ColorTransform<div class="summaryTableDescription">
+		 A color transformation applied to the source object.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#matrix" class="signatureLink">matrix</a> : Matrix<div class="summaryTableDescription">
+		 The transformation matrix applied to the source relative to the isometric face.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#orientation" class="signatureLink">orientation</a> : Object<div class="summaryTableDescription">
+		 The planar orientation of fill relative to an isometric face.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#repeat" class="signatureLink">repeat</a> : Boolean<div class="summaryTableDescription">
+		 A flag indicating whether the bitmap is repeated to fill the area.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#smooth" class="signatureLink">smooth</a> : Boolean<div class="summaryTableDescription">
+		 A flag indicating whether to smooth the bitmap data when filling with it.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#source" class="signatureLink">source</a> : Object<div class="summaryTableDescription">
+		 The source object for the bitmap fill.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#BitmapFill()" class="signatureLink">BitmapFill</a>(source:Object, orientation:Object = null, matrix:Matrix = null, colorTransform:ColorTransform = null, repeat:Boolean = true, smooth:Boolean = false)</div><div class="summaryTableDescription">
+		 Constructor
+		 
+		 </div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#begin()" class="signatureLink">begin</a>(target:Graphics):void</div><div class="summaryTableDescription">
+		 
+		 Initiates fill logic on target graphics.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#clone()" class="signatureLink">clone</a>():<a href="../../as3isolib/graphics/IFill.html">IFill</a></div><div class="summaryTableDescription">
+		 
+		 Returns an exact copy of this IFill.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#end()" class="signatureLink">end</a>(target:Graphics):void</div><div class="summaryTableDescription">
+		 
+		 Completes fill logic on the target graphics.</div></td><td class="summaryTableOwnerCol">BitmapFill</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="colorTransform"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">colorTransform</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>colorTransform:ColorTransform</code><p></p><p></p><p>
+		 A color transformation applied to the source object.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get colorTransform():ColorTransform</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set colorTransform(value:ColorTransform):void</code><br/></div><a name="propertyDetail"></a><a name="matrix"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">matrix</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>matrix:Matrix</code><p></p><p></p><p>
+		 The transformation matrix applied to the source relative to the isometric face.  This matrix is applied before the orientation adjustments.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get matrix():Matrix</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set matrix(value:Matrix):void</code><br/></div><a name="propertyDetail"></a><a name="orientation"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">orientation</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>orientation:Object</code><p></p><p></p><p>
+		 The planar orientation of fill relative to an isometric face.  This can either be a string value enumerated in the IsoOrientation or a matrix.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get orientation():Object</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set orientation(value:Object):void</code><br/></div><a name="propertyDetail"></a><a name="repeat"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">repeat</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>repeat:Boolean</code><p></p><p></p><p>
+		 A flag indicating whether the bitmap is repeated to fill the area.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get repeat():Boolean</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set repeat(value:Boolean):void</code><br/></div><a name="propertyDetail"></a><a name="smooth"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">smooth</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public var smooth:Boolean</code><p></p><p></p><p>
+		 A flag indicating whether to smooth the bitmap data when filling with it.
+		 </p></div><a name="propertyDetail"></a><a name="source"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">source</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>source:Object</code><p></p><p></p><p>
+		 The source object for the bitmap fill.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get source():Object</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set source(value:Object):void</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="BitmapFill()"></a><a name="BitmapFill(Object,Object,flash.geom.Matrix,flash.geom.ColorTransform,Boolean,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">BitmapFill</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function BitmapFill(source:Object, orientation:Object = null, matrix:Matrix = null, colorTransform:ColorTransform = null, repeat:Boolean = true, smooth:Boolean = false)</code><p></p><p>
+		 Constructor
+		 
+		 </p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">source</span>:Object</code> &mdash; The target that serves as the context for the fill. Any assignment to a BitmapData, DisplayObject, Class, and String (as a fully qualified class path) are valid.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">orientation</span>:Object</code> (default = <code>null</code>)<code></code> &mdash; The expect orientation of the fill.  Valid values relate to the IsoOrientation constants.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">matrix</span>:Matrix</code> (default = <code>null</code>)<code></code> &mdash; A user defined matrix for custom transformations.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">colorTransform</span>:ColorTransform</code> (default = <code>null</code>)<code></code> &mdash; Used to assign additional custom color transformations to the fill.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">repeat</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; Flag indicating whether to repeat the fill.  If this is false, then the fill will be stretched.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">smooth</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating whether to smooth the fill.
+		 </td></tr></table></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="begin()"></a><a name="begin(flash.display.Graphics)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">begin</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function begin(target:Graphics):void</code><p></p><p></p><p>
+		 
+		 Initiates fill logic on target graphics.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:Graphics</code> &mdash; The target graphics object.
+		 </td></tr></table></p></div><a name="clone()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function clone():<a href="../../as3isolib/graphics/IFill.html">IFill</a></code><p></p><p></p><p>
+		 
+		 Returns an exact copy of this IFill.
+		 
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/graphics/IFill.html">IFill</a></code></td></tr></table></div><a name="end()"></a><a name="end(flash.display.Graphics)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">end</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function end(target:Graphics):void</code><p></p><p></p><p>
+		 
+		 Completes fill logic on the target graphics.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">target</span>:Graphics</code> &mdash; The target graphics object.
+		 </td></tr></table></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Wed Oct 7 2009, 03:38 PM -05:00  </center></div></body></html><!--<br/>Wed Oct 7 2009, 03:38 PM -05:00  -->

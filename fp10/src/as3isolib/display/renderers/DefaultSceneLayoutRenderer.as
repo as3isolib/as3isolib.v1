@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -29,12 +29,11 @@ SOFTWARE.
 */
 package as3isolib.display.renderers
 {
-	import as3isolib.bounds.IBounds;
-	import as3isolib.core.as3isolib_internal;
 	import as3isolib.core.IsoDisplayObject;
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.display.scene.IIsoScene;
-	import flash.utils.Dictionary;
 	
+	import flash.utils.Dictionary;
 	import flash.utils.getTimer;
 	
 	use namespace as3isolib_internal;
@@ -93,6 +92,9 @@ package as3isolib.display.renderers
 				{
 					var objB:IsoDisplayObject = children[j];
 					
+					if (collisionDetectionFunc)
+						collisionDetectionFunc.call(null, objA, objB);
+					
 					// See if B should go behind A
 					// simplest possible check, interpenetrations also count as "behind", which does do a bit more work later, but the inner loop tradeoff for a faster check makes up for it
 					if ((objB.x < rightA) &&
@@ -103,6 +105,7 @@ package as3isolib.display.renderers
 						behind.push(objB);
 					}
 				}
+				
 				dependency[objA] = behind;
 			}
 			
@@ -112,8 +115,8 @@ package as3isolib.display.renderers
 			
 			// Set the childrens' depth, using dependency ordering
 			depth = 0;
-			for each(var obj:IsoDisplayObject in children)
-				if(true !== visited[obj])
+			for each (var obj:IsoDisplayObject in children)
+				if (true !== visited[obj])
 					place(obj);
 			
 			// Clear out temporary dictionary so we're not retaining memory between calls
@@ -154,6 +157,26 @@ package as3isolib.display.renderers
 			++depth;
 		};
 		
-		//static private function dumpBounds(b:IBounds):String { return "[" + b.left + ".." + b.right + "," + b.back + ".." + b.front + "," + b.bottom + ".." + b.top + "]"; }
+		/////////////////////////////////////////////////////////////////
+		//	COLLISION DETECTION
+		/////////////////////////////////////////////////////////////////
+		
+		private var collisionDetectionFunc:Function = null;
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get collisionDetection ():Function
+		{
+			return collisionDetectionFunc;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set collisionDetection (value:Function):void
+		{
+			collisionDetectionFunc = value;
+		}		
 	}
 }

@@ -30,6 +30,7 @@
 	<component id="ISceneRenderer" class="as3isolib.display.renderers.ISceneRenderer"/>
 	<component id="IViewRenderer" class="as3isolib.display.renderers.IViewRenderer"/>
 	<!--component id="SceneBlittingRenderer" class="as3isolib.display.renderers.SceneBlittingRenderer"/-->
+	<component id="SimpleSceneLayoutRenderer" class="as3isolib.display.renderers.SimpleSceneLayoutRenderer"/>
 	<component id="ViewBoundsRenderer" class="as3isolib.display.renderers.ViewBoundsRenderer"/>
 	
 	<component id="IIsoScene" class="as3isolib.display.scene.IIsoScene"/>
@@ -38,6 +39,7 @@
 	<component id="IsoOrigin" class="as3isolib.display.scene.IsoOrigin"/>
 	<component id="IsoScene" class="as3isolib.display.scene.IsoScene"/>
 	
+	<component id="IsoGroup" class="as3isolib.display.IsoGroup"/>
 	<component id="IIsoView" class="as3isolib.display.IIsoView"/>
 	<component id="IsoSprite" class="as3isolib.display.IsoSprite"/>
 	<component id="IsoView" class="as3isolib.display.IsoView"/>

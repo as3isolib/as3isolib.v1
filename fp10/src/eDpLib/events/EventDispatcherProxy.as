@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -277,6 +277,7 @@ package eDpLib.events
 		protected function eventDelegateFunction (evt:Event):void
 		{
 			evt.stopImmediatePropagation(); //prevent from further bubbling up thru display list
+			
 			var pEvt:ProxyEvent = new ProxyEvent(proxy, evt);
 			pEvt.proxyTarget = proxyTarget;
 			

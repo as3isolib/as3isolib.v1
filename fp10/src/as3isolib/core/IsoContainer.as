@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -29,8 +29,6 @@ SOFTWARE.
 */
 package as3isolib.core
 {
-	import __AS3__.vec.Vector;
-	
 	import as3isolib.data.INode;
 	import as3isolib.data.Node;
 	import as3isolib.events.IsoEvent;
@@ -40,7 +38,7 @@ package as3isolib.core
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	
+
 	use namespace as3isolib_internal;
 	
 	/**
@@ -205,8 +203,50 @@ package as3isolib.core
 		protected function createChildren ():void
 		{
 			//overriden by subclasses
-			mainContainer = new Sprite();	
+			mainContainer = new Sprite();
+			mainContainer.addEventListener(Event.ADDED, mainContainer_addedHandler, false, 0, true);
+			mainContainer.addEventListener(Event.ADDED_TO_STAGE, mainContainer_addedToStageHandler, false, 0, true);
+			mainContainer.addEventListener(Event.REMOVED, container_removedHandler, false, 0, true);
+			mainContainer.addEventListener(Event.REMOVED_FROM_STAGE, mainContainer_removedFromStageHandler, false, 0, true);
+			
 			//mainContainer.cacheAsBitmap = true;		
+		}
+		
+		///////////////////////////////////////////////////////////////////////
+		//	DISPLAY LIST & STAGE LOGIC
+		///////////////////////////////////////////////////////////////////////
+		
+		private var bAddedToDisplayList:Boolean;
+		private var bAddedToStage:Boolean;
+		
+		public function get isAddedToDisplay ():Boolean
+		{
+			return bAddedToDisplayList;
+		}
+		
+		public function get isAddedToStage ():Boolean
+		{
+			return bAddedToStage;
+		}
+		
+		private function mainContainer_addedHandler (evt:Event):void
+		{
+			bAddedToDisplayList = true;
+		}
+		
+		private function mainContainer_addedToStageHandler (evt:Event):void
+		{
+			bAddedToStage = true;
+		}
+		
+		private function container_removedHandler (evt:Event):void
+		{
+			bAddedToDisplayList = false;
+		}
+		
+		private function mainContainer_removedFromStageHandler (evt:Event):void
+		{
+			bAddedToStage = true;
 		}
 		
 		/////////////////////////////////////////////////////////////////
@@ -298,6 +338,11 @@ package as3isolib.core
 			child.render(true);
 		}
 		
+		protected function child_changeHandler (evt:Event):void
+		{
+			bIsInvalidated = true;
+		}
+		
 		////////////////////////////////////////////////////////////////////////
 		//	EVENT DISPATCHER PROXY
 		////////////////////////////////////////////////////////////////////////
@@ -354,6 +399,9 @@ package as3isolib.core
 		public function IsoContainer()
 		{
 			super();
+			addEventListener(IsoEvent.CHILD_ADDED, child_changeHandler);
+			addEventListener(IsoEvent.CHILD_REMOVED, child_changeHandler);
+			
 			createChildren();
 			
 			proxyTarget = mainContainer;

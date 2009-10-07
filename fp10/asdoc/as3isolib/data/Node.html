@@ -1,829 +1,165 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="Node,as3isolib.data.Node,ownerObject,children,hasParent,numChildren,owner,parent,data,id,addChild,addChildAt,contains,getChildAt,getChildByID,getChildIndex,getDescendantNodes,getRootNode,removeAllChildren,removeChild,removeChildAt,removeChildByID,setChildIndex" name="keywords">
-<title>as3isolib.data.Node</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../override.css" type="text/css"><meta name="keywords" content="Node,as3isolib.data.Node,bitmapData,children,children,data,data,hasParent,hasParent,id,id,numChildren,numChildren,owner,owner,ownerObject,parent,parent,x,y,addChild,addChild,addChildAt,addChildAt,contains,contains,getChildAt,getChildAt,getChildByID,getChildByID,getChildIndex,getChildIndex,getDescendantNodes,getDescendantNodes,getRootNode,getRootNode,removeAllChildren,removeAllChildren,removeChild,removeChild,removeChildAt,removeChildAt,removeChildByID,removeChildByID,setChildIndex,setChildIndex"><title>as3isolib.data.Node</title></head><body><script language="javascript" type="text/javascript" src="../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../help.js"></script><script language="javascript" type="text/javascript" src="../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'Node - API Documentation';
 				var baseRef = '../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../index.html?as3isolib/data/Node.html&amp;as3isolib/data/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Node</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Node"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">as3isolib.data</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Node</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Node <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> <a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Implements</td><td><a href="INode.html">INode</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Subclasses</td><td><a href="../core/IsoContainer.html">IsoContainer</a></td>
-</tr>
-</table>
-<p></p>
-  A base hierachical data structure class.
-  <p></p>
-<br>
-<hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<div class="showHideLinks">
-<div class="hideInheritedProperty" id="hideInheritedProperty">
-<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
-</div>
-<div class="showInheritedProperty" id="showInheritedProperty">
-<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
-</div>
-</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#children">children</a> : Array<div class="summaryTableDescription">[read-only]
-   
-   An array representing the immediate child INodes.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#data">data</a> : Object<div class="summaryTableDescription">
-   
-   A generic data storage property.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#deleteQueueAfterUpdate">deleteQueueAfterUpdate</a> : Boolean = true<div class="summaryTableDescription">
-   A flag indicating if the queue is a one-time use, where other visual assets may not receive the same handlers.</div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#hasParent">hasParent</a> : Boolean<div class="summaryTableDescription">[read-only]
-   
-   A flag indicating if this INode has a parent node.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#id">id</a> : String<div class="summaryTableDescription">
-   
-   The identifier string.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#numChildren">numChildren</a> : uint<div class="summaryTableDescription">[read-only]
-   
-   Indicates how many child nodes fall underneath this node within a particular heirarchical structure.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#owner">owner</a> : Object<div class="summaryTableDescription">[read-only]
-   
-   The owner of this INode.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#parent">parent</a> : <a href="../data/INode.html">INode</a>
-<div class="summaryTableDescription">[read-only]
-   
-   The parent INode within the node heirarchy structure.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#proxy">proxy</a> : IEventDispatcher<div class="summaryTableDescription">
-   
-   Generally the IEventDispatcherProxy is indeed the proxy for the proxyTarget.</div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-<tr class="hideInheritedProperty">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#proxyTarget">proxyTarget</a> : IEventDispatcher<div class="summaryTableDescription">
-   
-   The target whose events are being redispatched by the proxy.</div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-</table>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<div class="showHideLinks">
-<div class="hideInheritedMethod" id="hideInheritedMethod">
-<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
-</div>
-<div class="showInheritedMethod" id="showInheritedMethod">
-<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
-</div>
-</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#Node()">Node</a>()</div>
-<div class="summaryTableDescription">
-   Constructor
-   </div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#addChild()">addChild</a>(child:<a href="INode.html">INode</a>):void</div>
-<div class="summaryTableDescription">
-   
-   Adds a child at the end of the display list.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#addChildAt()">addChildAt</a>(child:<a href="INode.html">INode</a>, index:uint):void</div>
-<div class="summaryTableDescription">
-   
-   Adds a child to the display list at the specified index.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#addEventListener()">addEventListener</a>(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0.0, useWeakReference:Boolean = false):void</div>
-<div class="summaryTableDescription">
-   </div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#contains()">contains</a>(value:<a href="INode.html">INode</a>):Boolean</div>
-<div class="summaryTableDescription">
-   
-   Determines if a particular INodes is an immediate child of this INode.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#dispatchEvent()">dispatchEvent</a>(event:Event):Boolean</div>
-<div class="summaryTableDescription">
-   </div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#getChildAt()">getChildAt</a>(index:uint):<a href="../data/INode.html">INode</a>
-</div>
-<div class="summaryTableDescription">
-   
-   Returns the child node at the given index.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#getChildByID()">getChildByID</a>(id:String):<a href="../data/INode.html">INode</a>
-</div>
-<div class="summaryTableDescription">
-   
-   Returns the child node with the given id.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#getChildIndex()">getChildIndex</a>(child:<a href="INode.html">INode</a>):int</div>
-<div class="summaryTableDescription">
-   
-   Returns the index of a given child node or -1 if the child doesn't exist within the node's hierarchy.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#getDescendantNodes()">getDescendantNodes</a>(includeBranches:Boolean = false):Array</div>
-<div class="summaryTableDescription">
-   
-   Retrieves the furthest descendant nodes within the node hierarchy.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#getRootNode()">getRootNode</a>():<a href="../data/INode.html">INode</a>
-</div>
-<div class="summaryTableDescription">
-   
-   Retrieves the top-most INode within this node hierarchy.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#hasEventListener()">hasEventListener</a>(type:String):Boolean</div>
-<div class="summaryTableDescription">
-   </div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#removeAllChildren()">removeAllChildren</a>():void</div>
-<div class="summaryTableDescription">
-   
-   removes all child INodes.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#removeChild()">removeChild</a>(child:<a href="INode.html">INode</a>):<a href="../data/INode.html">INode</a>
-</div>
-<div class="summaryTableDescription">
-   
-   Removes the specified child.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#removeChildAt()">removeChildAt</a>(index:uint):<a href="../data/INode.html">INode</a>
-</div>
-<div class="summaryTableDescription">
-   
-   Removes the child at the specified index.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#removeChildByID()">removeChildByID</a>(id:String):<a href="../data/INode.html">INode</a>
-</div>
-<div class="summaryTableDescription">
-   
-   Removes the child with the specified id.</div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#removeEventListener()">removeEventListener</a>(type:String, listener:Function, useCapture:Boolean = false):void</div>
-<div class="summaryTableDescription">
-   </div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setChildIndex()">setChildIndex</a>(child:<a href="INode.html">INode</a>, index:uint):void</div>
-<div class="summaryTableDescription">
-   
-   Moves a child node to the provided index
-   
-   </div>
-</td><td class="summaryTableOwnerCol">Node</td>
-</tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#willTrigger()">willTrigger</a>(type:String):Boolean</div>
-<div class="summaryTableDescription">
-   </div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-</table>
-</div>
-<a name="protectedMethodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Protected Methods</div>
-<div class="showHideLinks">
-<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
-<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Methods</a>
-</div>
-<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
-<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
-</div>
-</div>
-<table id="summaryTableProtectedMethod" class="summaryTable hideInheritedProtectedMethod" cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#generateEventTypes()">generateEventTypes</a>():Array</div>
-<div class="summaryTableDescription">
-   Creates an array of interactive object events to check against during event proxying.</div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-<tr class="hideInheritedProtectedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="../../eDpLib/events/EventDispatcherProxy.html#updateProxyListeners()">updateProxyListeners</a>():void</div>
-<div class="summaryTableDescription">
-   If a proxyTarget has not been set, then a queue of event handlers has been set up.</div>
-</td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="children"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">children</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>children:Array</code>&nbsp;&nbsp;[read-only]<p>
-   
-   An array representing the immediate child INodes.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get children():Array</code>
-<br>
-</div>
-<a name="data"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">data</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>data:Object</code>&nbsp;&nbsp;[read-write]<p>
-   
-   A generic data storage property.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get data():Object</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set data(value:Object):void</code>
-<br>
-</div>
-<a name="hasParent"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">hasParent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>hasParent:Boolean</code>&nbsp;&nbsp;[read-only]<p>
-   
-   A flag indicating if this INode has a parent node.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get hasParent():Boolean</code>
-<br>
-</div>
-<a name="id"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">id</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>id:String</code>&nbsp;&nbsp;[read-write]<p>
-   
-   The identifier string.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get id():String</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set id(value:String):void</code>
-<br>
-</div>
-<a name="numChildren"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">numChildren</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>numChildren:uint</code>&nbsp;&nbsp;[read-only]<p>
-   
-   Indicates how many child nodes fall underneath this node within a particular heirarchical structure.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get numChildren():uint</code>
-<br>
-</div>
-<a name="owner"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">owner</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>owner:Object</code>&nbsp;&nbsp;[read-only]<p>
-   
-   The owner of this INode.  By default this is the parent object, however more abstract relationships may exist.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get owner():Object</code>
-<br>
-</div>
-<a name="ownerObject"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">ownerObject</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>as3isolib_internal var ownerObject:Object</code>
-</div>
-<a name="parent"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">parent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>parent:<a href="../data/INode.html">INode</a></code>&nbsp;&nbsp;[read-only]<p>
-   
-   The parent INode within the node heirarchy structure.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get parent():<a href="../data/INode.html">INode</a></code>
-<br>
-</div>
-<a name="constructorDetail"></a>
-<div class="detailSectionHeader">Constructor detail</div>
-<a name="Node()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">Node</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function Node()</code><p>
-   Constructor
-   </p></div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="addChild()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">addChild</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function addChild(child:<a href="INode.html">INode</a>):void</code><p>
-   
-   Adds a child at the end of the display list.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">child</span>:<a href="INode.html">INode</a></code> &mdash; The INode to add this node's heirarchy.
-   </td>
-</tr>
-</table>
-</div>
-<a name="addChildAt()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">addChildAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function addChildAt(child:<a href="INode.html">INode</a>, index:uint):void</code><p>
-   
-   Adds a child to the display list at the specified index.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">child</span>:<a href="INode.html">INode</a></code> &mdash; The INode to add this node's heirarchy.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The target index to add the child.
-   </td>
-</tr>
-</table>
-</div>
-<a name="contains()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">contains</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function contains(value:<a href="INode.html">INode</a>):Boolean</code><p>
-   
-   Determines if a particular INodes is an immediate child of this INode.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">value</span>:<a href="INode.html">INode</a></code> &mdash; The INode to check for.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Boolean</code></td>
-</tr>
-</table>
-</div>
-<a name="getChildAt()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getChildAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getChildAt(index:uint):<a href="../data/INode.html">INode</a></code><p>
-   
-   Returns the child node at the given index.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The index of the child to retrieve.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../data/INode.html">INode</a></code></td>
-</tr>
-</table>
-</div>
-<a name="getChildByID()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getChildByID</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getChildByID(id:String):<a href="../data/INode.html">INode</a></code><p>
-   
-   Returns the child node with the given id.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">id</span>:String</code> &mdash; The id of the child to retrieve.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../data/INode.html">INode</a></code></td>
-</tr>
-</table>
-</div>
-<a name="getChildIndex()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getChildIndex</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getChildIndex(child:<a href="INode.html">INode</a>):int</code><p>
-   
-   Returns the index of a given child node or -1 if the child doesn't exist within the node's hierarchy.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">child</span>:<a href="INode.html">INode</a></code> &mdash; The INdode whose index is to be retreived.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>int</code> &mdash; int The child index or -1 if the child's parent is null.
-   </td>
-</tr>
-</table>
-</div>
-<a name="getDescendantNodes()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getDescendantNodes</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getDescendantNodes(includeBranches:Boolean = false):Array</code><p>
-   
-   Retrieves the furthest descendant nodes within the node hierarchy.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">includeBranches</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating that during each point of recursion adds descendant nodes.  If false, only leaf nodes are returned.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Array</code> &mdash; Array A flat array consisting of all possible descendant nodes.
-   </td>
-</tr>
-</table>
-</div>
-<a name="getRootNode()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getRootNode</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getRootNode():<a href="../data/INode.html">INode</a></code><p>
-   
-   Retrieves the top-most INode within this node hierarchy.
-   
-   </p><p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../data/INode.html">INode</a></code></td>
-</tr>
-</table>
-</div>
-<a name="removeAllChildren()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">removeAllChildren</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function removeAllChildren():void</code><p>
-   
-   removes all child INodes.
-   </p></div>
-<a name="removeChild()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">removeChild</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function removeChild(child:<a href="INode.html">INode</a>):<a href="../data/INode.html">INode</a></code><p>
-   
-   Removes the specified child.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">child</span>:<a href="INode.html">INode</a></code> &mdash; The INode to remove from the children hierarchy.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../data/INode.html">INode</a></code> &mdash; 
-                        INode The child that was removed.
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="removeChildAt()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">removeChildAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function removeChildAt(index:uint):<a href="../data/INode.html">INode</a></code><p>
-   
-   Removes the child at the specified index.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The INode's index to remove from the children hierarchy.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../data/INode.html">INode</a></code> &mdash; 
-                        INode The child that was removed.
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="removeChildByID()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">removeChildByID</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function removeChildByID(id:String):<a href="../data/INode.html">INode</a></code><p>
-   
-   Removes the child with the specified id.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">id</span>:String</code> &mdash; The INode's id to remove from the children hierarchy.
-   </td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../data/INode.html">INode</a></code> &mdash; 
-                        INode The child that was removed.
-   
-                        
-                     </td>
-</tr>
-</table>
-</div>
-<a name="setChildIndex()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setChildIndex</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setChildIndex(child:<a href="INode.html">INode</a>, index:uint):void</code><p>
-   
-   Moves a child node to the provided index
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">child</span>:<a href="INode.html">INode</a></code> &mdash; The child node whose index is to be changed.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The destination index to move the child node to.
-   </td>
-</tr>
-</table>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../package-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../class-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../all-index-A.html" onclick="loadClassListFrame('../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../index.html?as3isolib/data/Node.html&amp;as3isolib/data/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">Node</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Node"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">as3isolib.data</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  Node</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Node  <img src="../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> <a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a> <img src="../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../as3isolib/data/INode.html">INode</a></td></tr><tr><td class="classHeaderTableLabel">Subclasses</td><td> <a href="../../as3isolib/core/IsoContainer.html">IsoContainer</a></td></tr></table><p></p><p></p><p></p>
+	 A base hierachical data structure class.
+	 <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><div class="showHideLinks"><div id="hideInheritedProperty" class="hideInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(false,'Property');"><img class="showHideLinkImage" src="../../images/expanded.gif"> Hide Inherited Public Properties</a></div><div id="showInheritedProperty" class="showInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(true,'Property');"><img class="showHideLinkImage" src="../../images/collapsed.gif"> Show Inherited Public Properties</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#children" class="signatureLink">children</a> : Array<div class="summaryTableDescription">[read-only] 
+		 
+		 An array representing the immediate child INodes.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#data" class="signatureLink">data</a> : Object<div class="summaryTableDescription">
+		 
+		 A generic data storage property.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../eDpLib/events/EventDispatcherProxy.html#deleteQueueAfterUpdate" class="signatureLink">deleteQueueAfterUpdate</a> : Boolean = true<div class="summaryTableDescription">
+		 A flag indicating if the queue is a one-time use, where other visual assets may not receive the same handlers.</div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#hasParent" class="signatureLink">hasParent</a> : Boolean<div class="summaryTableDescription">[read-only] 
+		 
+		 A flag indicating if this INode has a parent node.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#id" class="signatureLink">id</a> : String<div class="summaryTableDescription">
+		 
+		 The identifier string.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#numChildren" class="signatureLink">numChildren</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 Indicates how many child nodes fall underneath this node within a particular heirarchical structure.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#owner" class="signatureLink">owner</a> : Object<div class="summaryTableDescription">[read-only] 
+		 
+		 The owner of this INode.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#parent" class="signatureLink">parent</a> : <a href="../../as3isolib/data/INode.html">INode</a><div class="summaryTableDescription">[read-only] 
+		 
+		 The parent INode within the node heirarchy structure.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../eDpLib/events/EventDispatcherProxy.html#proxy" class="signatureLink">proxy</a> : IEventDispatcher<div class="summaryTableDescription">
+		 
+		 Generally the IEventDispatcherProxy is indeed the proxy for the proxyTarget.</div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../eDpLib/events/EventDispatcherProxy.html#proxyTarget" class="signatureLink">proxyTarget</a> : IEventDispatcher<div class="summaryTableDescription">
+		 
+		 The target whose events are being redispatched by the proxy.</div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><div class="showHideLinks"><div id="hideInheritedMethod" class="hideInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(false,'Method');"><img class="showHideLinkImage" src="../../images/expanded.gif"> Hide Inherited Public Methods</a></div><div id="showInheritedMethod" class="showInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(true,'Method');"><img class="showHideLinkImage" src="../../images/collapsed.gif"> Show Inherited Public Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#Node()" class="signatureLink">Node</a>()</div><div class="summaryTableDescription">
+		 Constructor
+		 </div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#addChild()" class="signatureLink">addChild</a>(child:<a href="../../as3isolib/data/INode.html">INode</a>):void</div><div class="summaryTableDescription">
+		 
+		 Adds a child at the end of the display list.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#addChildAt()" class="signatureLink">addChildAt</a>(child:<a href="../../as3isolib/data/INode.html">INode</a>, index:uint):void</div><div class="summaryTableDescription">
+		 
+		 Adds a child to the display list at the specified index.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../eDpLib/events/EventDispatcherProxy.html#addEventListener()" class="signatureLink">addEventListener</a>(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0.0, useWeakReference:Boolean = false):void</div><div class="summaryTableDescription">
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#contains()" class="signatureLink">contains</a>(value:<a href="../../as3isolib/data/INode.html">INode</a>):Boolean</div><div class="summaryTableDescription">
+		 
+		 Determines if a particular INodes is an immediate child of this INode.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../eDpLib/events/EventDispatcherProxy.html#dispatchEvent()" class="signatureLink">dispatchEvent</a>(event:Event):Boolean</div><div class="summaryTableDescription">
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getChildAt()" class="signatureLink">getChildAt</a>(index:uint):<a href="../../as3isolib/data/INode.html">INode</a></div><div class="summaryTableDescription">
+		 
+		 Returns the child node at the given index.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getChildByID()" class="signatureLink">getChildByID</a>(id:String):<a href="../../as3isolib/data/INode.html">INode</a></div><div class="summaryTableDescription">
+		 
+		 Returns the child node with the given id.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getChildIndex()" class="signatureLink">getChildIndex</a>(child:<a href="../../as3isolib/data/INode.html">INode</a>):int</div><div class="summaryTableDescription">
+		 
+		 Returns the index of a given child node or -1 if the child doesn't exist within the node's hierarchy.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getDescendantNodes()" class="signatureLink">getDescendantNodes</a>(includeBranches:Boolean = false):Array</div><div class="summaryTableDescription">
+		 
+		 Retrieves the furthest descendant nodes within the node hierarchy.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getRootNode()" class="signatureLink">getRootNode</a>():<a href="../../as3isolib/data/INode.html">INode</a></div><div class="summaryTableDescription">
+		 
+		 Retrieves the top-most INode within this node hierarchy.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../eDpLib/events/EventDispatcherProxy.html#hasEventListener()" class="signatureLink">hasEventListener</a>(type:String):Boolean</div><div class="summaryTableDescription">
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeAllChildren()" class="signatureLink">removeAllChildren</a>():void</div><div class="summaryTableDescription">
+		 
+		 removes all child INodes.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeChild()" class="signatureLink">removeChild</a>(child:<a href="../../as3isolib/data/INode.html">INode</a>):<a href="../../as3isolib/data/INode.html">INode</a></div><div class="summaryTableDescription">
+		 
+		 Removes the specified child.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeChildAt()" class="signatureLink">removeChildAt</a>(index:uint):<a href="../../as3isolib/data/INode.html">INode</a></div><div class="summaryTableDescription">
+		 
+		 Removes the child at the specified index.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeChildByID()" class="signatureLink">removeChildByID</a>(id:String):<a href="../../as3isolib/data/INode.html">INode</a></div><div class="summaryTableDescription">
+		 
+		 Removes the child with the specified id.</div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../eDpLib/events/EventDispatcherProxy.html#removeEventListener()" class="signatureLink">removeEventListener</a>(type:String, listener:Function, useCapture:Boolean = false):void</div><div class="summaryTableDescription">
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#setChildIndex()" class="signatureLink">setChildIndex</a>(child:<a href="../../as3isolib/data/INode.html">INode</a>, index:uint):void</div><div class="summaryTableDescription">
+		 
+		 Moves a child node to the provided index
+		 
+		 </div></td><td class="summaryTableOwnerCol">Node</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../eDpLib/events/EventDispatcherProxy.html#willTrigger()" class="signatureLink">willTrigger</a>(type:String):Boolean</div><div class="summaryTableDescription">
+		 </div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr></table></div><a name="protectedMethodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Methods </div><div class="showHideLinks"><div id="hideInheritedProtectedMethod" class="hideInheritedProtectedMethod"><a class="showHideLink" href="#protectedMethodSummary" onclick="javascript:setInheritedVisible(false,'ProtectedMethod');"><img class="showHideLinkImage" src="../../images/expanded.gif"> Show Inherited Protected Methods</a></div><div id="showInheritedProtectedMethod" class="showInheritedProtectedMethod"><a class="showHideLink" href="#protectedMethodSummary" onclick="javascript:setInheritedVisible(true,'ProtectedMethod');"><img class="showHideLinkImage" src="../../images/collapsed.gif"> Show Inherited Protected Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable hideInheritedProtectedMethod" id="summaryTableProtectedMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../eDpLib/events/EventDispatcherProxy.html#generateEventTypes()" class="signatureLink">generateEventTypes</a>():Array</div><div class="summaryTableDescription">
+		 Creates an array of interactive object events to check against during event proxying.</div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr><tr class="hideInheritedProtectedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../eDpLib/events/EventDispatcherProxy.html#updateProxyListeners()" class="signatureLink">updateProxyListeners</a>():void</div><div class="summaryTableDescription">
+		 If a proxyTarget has not been set, then a queue of event handlers has been set up.</div></td><td class="summaryTableOwnerCol"><a href="../../eDpLib/events/EventDispatcherProxy.html">EventDispatcherProxy</a></td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="children"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">children</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>children:Array</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 An array representing the immediate child INodes.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get children():Array</code><br/></div><a name="propertyDetail"></a><a name="data"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">data</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>data:Object</code><p></p><p></p><p>
+		 
+		 A generic data storage property.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get data():Object</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set data(value:Object):void</code><br/></div><a name="propertyDetail"></a><a name="hasParent"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">hasParent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>hasParent:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 A flag indicating if this INode has a parent node.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get hasParent():Boolean</code><br/></div><a name="propertyDetail"></a><a name="id"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">id</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>id:String</code><p></p><p></p><p>
+		 
+		 The identifier string.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get id():String</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set id(value:String):void</code><br/></div><a name="propertyDetail"></a><a name="numChildren"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">numChildren</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>numChildren:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Indicates how many child nodes fall underneath this node within a particular heirarchical structure.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get numChildren():uint</code><br/></div><a name="propertyDetail"></a><a name="owner"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">owner</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>owner:Object</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 The owner of this INode.  By default this is the parent object, however more abstract relationships may exist.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get owner():Object</code><br/></div><a name="propertyDetail"></a><a name="ownerObject"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">ownerObject</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>as3isolib_internal var ownerObject:Object</code><p></p></div><a name="propertyDetail"></a><a name="parent"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">parent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>parent:<a href="../../as3isolib/data/INode.html">INode</a></code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 The parent INode within the node heirarchy structure.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get parent():<a href="../../as3isolib/data/INode.html">INode</a></code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="Node()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">Node</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function Node()</code><p></p><p>
+		 Constructor
+		 </p></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="addChild()"></a><a name="addChild(as3isolib.data.INode)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">addChild</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function addChild(child:<a href="../../as3isolib/data/INode.html">INode</a>):void</code><p></p><p></p><p>
+		 
+		 Adds a child at the end of the display list.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">child</span>:<a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; The INode to add this node's heirarchy.
+		 </td></tr></table></p></div><a name="addChildAt()"></a><a name="addChildAt(as3isolib.data.INode,uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">addChildAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function addChildAt(child:<a href="../../as3isolib/data/INode.html">INode</a>, index:uint):void</code><p></p><p></p><p>
+		 
+		 Adds a child to the display list at the specified index.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">child</span>:<a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; The INode to add this node's heirarchy.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The target index to add the child.
+		 </td></tr></table></p></div><a name="contains()"></a><a name="contains(as3isolib.data.INode)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">contains</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function contains(value:<a href="../../as3isolib/data/INode.html">INode</a>):Boolean</code><p></p><p></p><p>
+		 
+		 Determines if a particular INodes is an immediate child of this INode.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">value</span>:<a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; The INode to check for.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Boolean</code></td></tr></table></div><a name="getChildAt()"></a><a name="getChildAt(uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getChildAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function getChildAt(index:uint):<a href="../../as3isolib/data/INode.html">INode</a></code><p></p><p></p><p>
+		 
+		 Returns the child node at the given index.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The index of the child to retrieve.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/data/INode.html">INode</a></code></td></tr></table></div><a name="getChildByID()"></a><a name="getChildByID(String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getChildByID</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function getChildByID(id:String):<a href="../../as3isolib/data/INode.html">INode</a></code><p></p><p></p><p>
+		 
+		 Returns the child node with the given id.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">id</span>:String</code> &mdash; The id of the child to retrieve.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/data/INode.html">INode</a></code></td></tr></table></div><a name="getChildIndex()"></a><a name="getChildIndex(as3isolib.data.INode)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getChildIndex</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function getChildIndex(child:<a href="../../as3isolib/data/INode.html">INode</a>):int</code><p></p><p></p><p>
+		 
+		 Returns the index of a given child node or -1 if the child doesn't exist within the node's hierarchy.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">child</span>:<a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; The INdode whose index is to be retreived.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>int</code> &mdash; int The child index or -1 if the child's parent is null.
+		 </td></tr></table></div><a name="getDescendantNodes()"></a><a name="getDescendantNodes(Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getDescendantNodes</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function getDescendantNodes(includeBranches:Boolean = false):Array</code><p></p><p></p><p>
+		 
+		 Retrieves the furthest descendant nodes within the node hierarchy.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">includeBranches</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating that during each point of recursion adds descendant nodes.  If false, only leaf nodes are returned.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Array</code> &mdash; Array A flat array consisting of all possible descendant nodes.
+		 </td></tr></table></div><a name="getRootNode()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getRootNode</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function getRootNode():<a href="../../as3isolib/data/INode.html">INode</a></code><p></p><p></p><p>
+		 
+		 Retrieves the top-most INode within this node hierarchy.
+		 
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/data/INode.html">INode</a></code></td></tr></table></div><a name="removeAllChildren()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeAllChildren</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeAllChildren():void</code><p></p><p></p><p>
+		 
+		 removes all child INodes.
+		 </p></div><a name="removeChild()"></a><a name="removeChild(as3isolib.data.INode)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeChild</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeChild(child:<a href="../../as3isolib/data/INode.html">INode</a>):<a href="../../as3isolib/data/INode.html">INode</a></code><p></p><p></p><p>
+		 
+		 Removes the specified child.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">child</span>:<a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; The INode to remove from the children hierarchy.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; INode The child that was removed.
+		 </td></tr></table></div><a name="removeChildAt()"></a><a name="removeChildAt(uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeChildAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeChildAt(index:uint):<a href="../../as3isolib/data/INode.html">INode</a></code><p></p><p></p><p>
+		 
+		 Removes the child at the specified index.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The INode's index to remove from the children hierarchy.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; INode The child that was removed.
+		 </td></tr></table></div><a name="removeChildByID()"></a><a name="removeChildByID(String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeChildByID</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeChildByID(id:String):<a href="../../as3isolib/data/INode.html">INode</a></code><p></p><p></p><p>
+		 
+		 Removes the child with the specified id.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">id</span>:String</code> &mdash; The INode's id to remove from the children hierarchy.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; INode The child that was removed.
+		 </td></tr></table></div><a name="setChildIndex()"></a><a name="setChildIndex(as3isolib.data.INode,uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">setChildIndex</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function setChildIndex(child:<a href="../../as3isolib/data/INode.html">INode</a>, index:uint):void</code><p></p><p></p><p>
+		 
+		 Moves a child node to the provided index
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">child</span>:<a href="../../as3isolib/data/INode.html">INode</a></code> &mdash; The child node whose index is to be changed.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; The destination index to move the child node to.
+		 </td></tr></table></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Wed Oct 7 2009, 03:38 PM -05:00  </center></div></body></html><!--<br/>Wed Oct 7 2009, 03:38 PM -05:00  -->

@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -509,6 +509,18 @@ package as3isolib.display
 			}
 			
 			return false;
+		}
+		
+		public function getSceneByID (id:String):IIsoScene
+		{
+			var scene:IIsoScene;
+			for each (scene in scenesArray)
+			{
+				if (scene.id == id)
+					return scene;
+			}
+			
+			return null;
 		}
 		
 		/* public function getSceneAt (index:int):IIsoScene

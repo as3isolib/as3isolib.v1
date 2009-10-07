@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -34,6 +34,7 @@ package as3isolib.display.scene
 	
 	import as3isolib.bounds.IBounds;
 	import as3isolib.bounds.SceneBounds;
+	import as3isolib.core.ClassFactory;
 	import as3isolib.core.IIsoDisplayObject;
 	import as3isolib.core.IsoContainer;
 	import as3isolib.core.as3isolib_internal;
@@ -45,9 +46,8 @@ package as3isolib.display.scene
 	
 	import flash.display.DisplayObjectContainer;
 	
-	import mx.core.ClassFactory;
 	import mx.core.IFactory;
-	
+
 	use namespace as3isolib_internal;
 	
 	/**
@@ -222,24 +222,46 @@ package as3isolib.display.scene
 		 */
 		public var layoutEnabled:Boolean = true;
 		
-		private var layoutRendererFactory:IFactory;
+		private var bLayoutIsFactory:Boolean = true;//flag telling us whether we decided to persist an ISceneLayoutRenderer or using a Factory each time.
+		private var layoutObject:Object;
+		
+		/**
+		 * The object used to layout a scene's children.  This value can be either an IFactory or ISceneLayoutRenderer.
+		 * If the value is an IFactory, then a renderer is created and discarded on each render pass.  
+		 * If the value is an ISceneLayoutRenderer, then a renderer is created and stored.
+		 * This option infrequently rendered scenes to free up memeory by releasing the factory instance.
+		 * If this IsoScene is expected be invalidated frequently, then persisting an instance in memory might provide better performance.
+		 */
+		public function get layoutRenderer ():Object
+		{
+			return layoutObject;
+		}
 		
 		/**
 		 * @private
 		 */
-		public function get layoutRenderer ():IFactory
+		public function set layoutRenderer (value:Object):void
 		{
-			return layoutRendererFactory;
-		}
-		
-		/**
-		 * The factory used to create the ISceneLayoutRenderer responsible for the layout of the child objects.
-		 */
-		public function set layoutRenderer (value:IFactory):void
-		{
-			if (value && layoutRendererFactory != value)
+			if (!value)
 			{
-				layoutRendererFactory = value;
+				layoutObject = new ClassFactory(DefaultSceneLayoutRenderer);
+				
+				bLayoutIsFactory = true;
+				bIsInvalidated = true;
+			}
+			
+			if (value && layoutObject != value)
+			{
+				if (value is IFactory)
+					bLayoutIsFactory = true;
+				
+				else if (value is ISceneLayoutRenderer)
+					bLayoutIsFactory = false;
+				
+				else
+					throw new Error("value for layoutRenderer is not of type IFactory or ISceneLayoutRenderer");
+				
+				layoutObject = value;				
 				bIsInvalidated = true;
 			}
 		}
@@ -309,10 +331,15 @@ package as3isolib.display.scene
 			if (bIsInvalidated)
 			{
 				//render the layout first
-				var sceneLayoutRenderer:ISceneLayoutRenderer;
 				if (layoutEnabled)
 				{
-					sceneLayoutRenderer = layoutRendererFactory.newInstance();
+					var sceneLayoutRenderer:ISceneLayoutRenderer;
+					if (bLayoutIsFactory)
+						sceneLayoutRenderer = IFactory(layoutObject).newInstance();
+					
+					else
+						sceneLayoutRenderer = ISceneLayoutRenderer(layoutObject);
+					
 					if (sceneLayoutRenderer)
 						sceneLayoutRenderer.renderScene(this);
 				}
@@ -366,7 +393,7 @@ package as3isolib.display.scene
 		{
 			super();
 			
-			layoutRendererFactory = new ClassFactory(DefaultSceneLayoutRenderer);
+			layoutObject = new ClassFactory(DefaultSceneLayoutRenderer);
 		}
 	}
 }

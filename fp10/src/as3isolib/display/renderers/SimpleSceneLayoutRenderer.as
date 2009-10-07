@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -64,5 +64,27 @@ package as3isolib.display.renderers
 				i++;
 			}
 		}
+		
+		/////////////////////////////////////////////////////////////////
+		//	COLLISION DETECTION
+		/////////////////////////////////////////////////////////////////
+		
+		private var collisionDetectionFunc:Function = null;
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get collisionDetection ():Function
+		{
+			return collisionDetectionFunc;
+		}
+		
+		/**
+		 * @private
+		 */
+		public function set collisionDetection (value:Function):void
+		{
+			collisionDetectionFunc = value;
+		}	
 	}
 }

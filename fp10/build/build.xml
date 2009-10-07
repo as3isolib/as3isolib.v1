@@ -1,8 +1,17 @@
 <?xml version="1.0"?>
-<project name="${swc.name}" basedir="../" default="docs">
+<project name="${swc.name}" basedir="../" default="zip">
 
 	<!-- Define variables/paths used in this build script -->
 	<property file="./build/build.properties"/>
+	
+	<!-- Zip up src, docs and SWC and commit to SVN if possible -->
+	<target name="zip" depends="properties, lib, docs">
+		<zip destfile="${zip.dir}/as3isolib.zip" update="true">
+			<zipfileset dir="${src.dir}" prefix="src" excludes="**/*.svn, **/.DS_Store"/>
+			<zipfileset dir="${asdoc.dir}" prefix="asdocs" excludes="**/*.svn, **/.DS_Store"/>
+			<zipfileset dir="${bin.dir}" prefix="bin" excludes="**/*.svn, **/.DS_Store"/>
+		</zip>
+	</target>
 
 	<!-- Have you edited the properties file to make sure the paths are right on your system? -->
 	<target name="properties">
@@ -18,7 +27,7 @@
 			<arg line="-source-path ${src.dir}"/>
 			<arg line="-strict=true"/>
 			<arg line="-target-player=10.0.0"/>
-			<!--arg line="-include-namespaces ${manifest.uri}"/-->
+			<arg line="-include-namespaces ${manifest.uri}"/>
 			<arg line="-namespace ${manifest.uri} ${manifest.xml}"/>
 			<arg line="-include-classes as3isolib.bounds.IBounds
 										as3isolib.bounds.PrimitiveBounds
@@ -48,6 +57,7 @@
 										as3isolib.display.renderers.ISceneLayoutRenderer
 										as3isolib.display.renderers.ISceneRenderer
 										as3isolib.display.renderers.IViewRenderer
+										as3isolib.display.renderers.SimpleSceneLayoutRenderer
 										as3isolib.display.renderers.ViewBoundsRenderer
 										
 										as3isolib.display.scene.IIsoScene
@@ -55,6 +65,7 @@
 										as3isolib.display.scene.IsoOrigin
 										as3isolib.display.scene.IsoScene
 										
+										as3isolib.display.IsoGroup
 										as3isolib.display.IIsoView
 										as3isolib.display.IsoSprite
 										as3isolib.display.IsoView

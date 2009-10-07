@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -41,7 +41,7 @@ package as3isolib.geom.transformations
 		 * Constructor
 		 * 
 		 * @param projectValuesToAxonometricAxes A flag indicating whether to compute x, y, z, width, lenght, and height values to the axonometric axes or screen axes.
-		 * @param maintainZaxisRatio A flag indicating if the z axis values are to be adjusted to maintain proportions based on the x & axis values. 
+		 * @param maintainZaxisRatio A flag indicating if the z axis values are to be adjusted to maintain proportions based on the x &amp; axis values. 
 		 */
 		public function DefaultIsometricTransformation (projectValuesToAxonometricAxes:Boolean = false, maintainZAxisRatio:Boolean = false)
 		{

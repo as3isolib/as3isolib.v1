@@ -1,1054 +1,172 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="IsoView,as3isolib.display.IsoView,autoUpdate,limitRangeOfMotion,usePreciseValues,backgroundContainer,currentPt,currentZoom,foregroundContainer,height,isInvalidated,mainContainer,numScenes,scenes,size,width,clipContent,currentX,currentY,rangeOfMotionTarget,viewRenderers,addScene,addSceneAt,centerOnIso,centerOnPt,containsScene,getInvalidatedScenes,invalidatePosition,isoToLocal,localToIso,pan,postRenderLogic,preRenderLogic,removeAllScenes,removeScene,render,renderLogic,reset,setSize,validatePosition,zoom" name="keywords">
-<title>as3isolib.display.IsoView</title>
-</head>
-<body>
-<script type="text/javascript" language="javascript" src="../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../cookies.js"></script><script type="text/javascript" language="javascript">
-<!--
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../override.css" type="text/css"><meta name="keywords" content="IsoView,as3isolib.display.IsoView,actualSpriteObjects,actualSprites,autoUpdate,bSpritesInvalidated,backgroundContainer,clipContent,currentPt,currentPt,currentX,currentX,currentY,currentY,currentZoom,currentZoom,foregroundContainer,height,height,height,hostContainer,invalidatedChildren,isInvalidated,isInvalidated,isoBounds,length,limitRangeOfMotion,mainContainer,numScenes,numScenes,rangeOfMotionTarget,scenes,scenes,showBorder,size,sprites,usePreciseValues,viewRenderers,width,width,width,addSceneAt,addScene,centerOnIso,centerOnIso,centerOnPt,centerOnPt,containsScene,createChildren,getInvalidatedScenes,getSceneByID,invalidatePosition,invalidateSkins,invalidateSprites,isoToLocal,isoToLocal,localToIso,localToIso,pan,pan,postRenderLogic,preRenderLogic,removeAllScenes,removeScene,render,render,renderLogic,renderLogic,renderLogic,renderSprites,reset,reset,setSize,validatePosition,zoom,zoom"><title>as3isolib.display.IsoView</title></head><body><script language="javascript" type="text/javascript" src="../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../help.js"></script><script language="javascript" type="text/javascript" src="../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
 				asdocTitle = 'IsoView - API Documentation';
 				var baseRef = '../../';
 				window.onload = configPage;
 			--></script>
-<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
-<tr>
-<td align="left" class="titleTableTitle">API Documentation</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../all-classes.html')" href="../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../all-classes.html')" href="../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../index-list.html')" href="../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../index.html?as3isolib/display/IsoView.html&amp;as3isolib/display/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../images/logo.jpg"></td>
-</tr>
-<tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;IsoView</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
-</tr>
-<tr class="titleTableRow3">
-<td colspan="2">&nbsp;</td>
-</tr>
-</table>
-<script type="text/javascript" language="javascript">
-<!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class IsoView"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
---></script>
-<div class="MainContent">
-<table cellspacing="0" cellpadding="0" class="classHeaderTable">
-<tr>
-<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">as3isolib.display</a></td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class IsoView</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">IsoView <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../images/inherit-arrow.gif"> flash.display.Sprite</td>
-</tr>
-<tr>
-<td class="classHeaderTableLabel">Implements</td><td><a href="IIsoView.html">IIsoView</a></td>
-</tr>
-</table>
-<p></p>
-  IsoView is a default view port that provides basic panning and zooming functionality on a given IIsoScene.
-  <p></p>
-<br>
-<hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#autoUpdate">autoUpdate</a> : Boolean = false<div class="summaryTableDescription">
-   Flag indicating if property changes immediately trigger validation.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#backgroundContainer">backgroundContainer</a> : Sprite<div class="summaryTableDescription">[read-only]
-   The container for background elements.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#clipContent">clipContent</a> : Boolean<div class="summaryTableDescription">
-   Flag indicating where to allow content to visibly extend beyond the boundries of this IsoView.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentPt">currentPt</a> : <a href="../geom/Pt.html">Pt</a>
-<div class="summaryTableDescription">[read-only]
-   
-   This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentX">currentX</a> : Number<div class="summaryTableDescription">
-   
-   The current x value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentY">currentY</a> : Number<div class="summaryTableDescription">
-   
-   The current y value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#currentZoom">currentZoom</a> : Number<div class="summaryTableDescription">
-   
-   The current zoom factor applied to the child scene objects.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#foregroundContainer">foregroundContainer</a> : Sprite<div class="summaryTableDescription">[read-only]
-   The container for foreground elements.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#height">height</a> : Number<div class="summaryTableDescription">[read-only]
-   </div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#isInvalidated">isInvalidated</a> : Boolean<div class="summaryTableDescription">[read-only]
-   Flag indicating if the view is invalidated.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#limitRangeOfMotion">limitRangeOfMotion</a> : Boolean = true<div class="summaryTableDescription">
-   Flag to limit the range of motion.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#mainContainer">mainContainer</a> : Sprite<div class="summaryTableDescription">[read-only]
-   The main container whose children include the background container, the iso object container and the foreground container.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#numScenes">numScenes</a> : uint<div class="summaryTableDescription">[read-only]
-   
-   The number of scenes.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#rangeOfMotionTarget">rangeOfMotionTarget</a> : DisplayObject<div class="summaryTableDescription">
-   The target used to determine the range of motion when moving the <code>container</code>.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scenes">scenes</a> : Array<div class="summaryTableDescription">[read-only]
-   
-   An array of all child scenes.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#size">size</a> : Point<div class="summaryTableDescription">[read-only]
-   The current size of the IsoView.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#usePreciseValues">usePreciseValues</a> : Boolean = false<div class="summaryTableDescription">
-   Flag indicating if coordinate values are rounded to the nearest whole number or not.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#viewRenderers">viewRenderers</a> : Array<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#width">width</a> : Number<div class="summaryTableDescription">[read-only]
-   </div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-</table>
-</div>
-<a name="methodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Methods</div>
-<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#IsoView()">IsoView</a>()</div>
-<div class="summaryTableDescription">
-   Constructor
-   </div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#addScene()">addScene</a>(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#addSceneAt()">addSceneAt</a>(scene:<a href="scene/IIsoScene.html">IIsoScene</a>, index:int):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#centerOnIso()">centerOnIso</a>(iso:<a href="../core/IIsoDisplayObject.html">IIsoDisplayObject</a>):void</div>
-<div class="summaryTableDescription">
-   
-   Centers the IIsoView on a given IIsoDisplayObject within the current child scene objects.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#centerOnPt()">centerOnPt</a>(pt:<a href="../geom/Pt.html">Pt</a>, isIsometrc:Boolean = true):void</div>
-<div class="summaryTableDescription">
-   
-   Centers the IIsoView on a given pt within the current child scene objects.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#containsScene()">containsScene</a>(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):Boolean</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#getInvalidatedScenes()">getInvalidatedScenes</a>():Array</div>
-<div class="summaryTableDescription">
-   Convenience method for determining which scenes are invalidated.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#invalidatePosition()">invalidatePosition</a>():void</div>
-<div class="summaryTableDescription">
-   Flags the view as needing validation.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#isoToLocal()">isoToLocal</a>(isoPt:<a href="../geom/Pt.html">Pt</a>):Point</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#localToIso()">localToIso</a>(localPt:Point):<a href="../geom/Pt.html">Pt</a>
-</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#pan()">pan</a>(px:Number, py:Number):void</div>
-<div class="summaryTableDescription">
-   
-   Pans the child scene objects by a given amount in screen coordinate space.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#removeAllScenes()">removeAllScenes</a>():void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#removeScene()">removeScene</a>(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):<a href="scene/IIsoScene.html">IIsoScene</a>
-</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#render()">render</a>(recursive:Boolean = false):void</div>
-<div class="summaryTableDescription">
-   
-   Executes positional changes for background, scene and foreground objects.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#reset()">reset</a>():void</div>
-<div class="summaryTableDescription">
-   
-   Resets the child scene objects to be centered within the IIsoView and returns the zoom factor back to a normal value.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setSize()">setSize</a>(w:Number, h:Number):void</div>
-<div class="summaryTableDescription">
-   Set the size of the IsoView and repositions child scene objects, masks and borders (where applicable).</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#zoom()">zoom</a>(zFactor:Number):void</div>
-<div class="summaryTableDescription">
-   
-   Zooms the child scene objects by a given amount.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-</table>
-</div>
-<a name="protectedMethodSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Protected Methods</div>
-<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#postRenderLogic()">postRenderLogic</a>():void</div>
-<div class="summaryTableDescription">
-   Performs any logic after executing actual rendering logic on the view.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#preRenderLogic()">preRenderLogic</a>():void</div>
-<div class="summaryTableDescription">
-   Performs any logic prior to executing actual rendering logic on the view.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#renderLogic()">renderLogic</a>(recursive:Boolean = false):void</div>
-<div class="summaryTableDescription">
-   Performs actual rendering logic on the view.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#validatePosition()">validatePosition</a>():void</div>
-<div class="summaryTableDescription">
-   Calculates the positional changes and repositions the <code>container</code>.</div>
-</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-</table>
-</div>
-<a name="eventSummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Events</div>
-<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#event:as3isolib_move">as3isolib_move</a>
-</div>
-</td><td class="summaryTableDescription summaryTableCol">&nbsp;</td><td class="summaryTableOwnerCol">IsoView</td>
-</tr>
-</table>
-</div>
-<script type="text/javascript" language="javascript">
-<!--
-showHideInherited();
---></script>
-<div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="autoUpdate"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">autoUpdate</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var autoUpdate:Boolean = false</code><p>
-   Flag indicating if property changes immediately trigger validation.
-   </p></div>
-<a name="backgroundContainer"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">backgroundContainer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>backgroundContainer:Sprite</code>&nbsp;&nbsp;[read-only]<p>
-   The container for background elements.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get backgroundContainer():Sprite</code>
-<br>
-</div>
-<a name="clipContent"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">clipContent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>clipContent:Boolean</code>&nbsp;&nbsp;[read-write]<p>
-   Flag indicating where to allow content to visibly extend beyond the boundries of this IsoView.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get clipContent():Boolean</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set clipContent(value:Boolean):void</code>
-<br>
-</div>
-<a name="currentPt"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">currentPt</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>currentPt:<a href="../geom/Pt.html">Pt</a></code>&nbsp;&nbsp;[read-only]<p>
-   
-   This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.
-   </p><p>This property can be used as the source for data binding.</p>
-<span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentPt():<a href="../geom/Pt.html">Pt</a></code>
-<br>
-</div>
-<a name="currentX"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">currentX</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>currentX:Number</code>&nbsp;&nbsp;[read-write]<p>
-   
-   The current x value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.
-   This property is useful for targeting by tween engines.
-   
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentX():Number</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentX(value:Number):void</code>
-<br>
-</div>
-<a name="currentY"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">currentY</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>currentY:Number</code>&nbsp;&nbsp;[read-write]<p>
-   
-   The current y value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.
-   This property is useful for targeting by tween engines.
-   
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentY():Number</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentY(value:Number):void</code>
-<br>
-</div>
-<a name="currentZoom"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">currentZoom</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>currentZoom:Number</code>&nbsp;&nbsp;[read-write]<p>
-   
-   The current zoom factor applied to the child scene objects.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentZoom():Number</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentZoom(value:Number):void</code>
-<br>
-</div>
-<a name="foregroundContainer"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">foregroundContainer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>foregroundContainer:Sprite</code>&nbsp;&nbsp;[read-only]<p>
-   The container for foreground elements.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get foregroundContainer():Sprite</code>
-<br>
-</div>
-<a name="height"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">height</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>height:Number</code>&nbsp;&nbsp;[read-only]<p>
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get height():Number</code>
-<br>
-</div>
-<a name="isInvalidated"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">isInvalidated</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>isInvalidated:Boolean</code>&nbsp;&nbsp;[read-only]<p>
-   Flag indicating if the view is invalidated.  If true, validation will when explicity called.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isInvalidated():Boolean</code>
-<br>
-</div>
-<a name="limitRangeOfMotion"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">limitRangeOfMotion</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var limitRangeOfMotion:Boolean = true</code><p>
-   Flag to limit the range of motion.
-   
-   </p><p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../display/IsoView.html#rangeOfMotionTarget" target="">rangeOfMotionTarget</a>
-</div>
-</div>
-<a name="mainContainer"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">mainContainer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>mainContainer:Sprite</code>&nbsp;&nbsp;[read-only]<p>
-   The main container whose children include the background container, the iso object container and the foreground container.
-   
-   An IsoView's container structure is as follows:
-   IsoView
-     zoom container
-      main container
-       background container
-       iso scenes container
-       foreground container
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get mainContainer():Sprite</code>
-<br>
-</div>
-<a name="numScenes"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">numScenes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>numScenes:uint</code>&nbsp;&nbsp;[read-only]<p>
-   
-   The number of scenes.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get numScenes():uint</code>
-<br>
-</div>
-<a name="rangeOfMotionTarget"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">rangeOfMotionTarget</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>rangeOfMotionTarget:DisplayObject</code>&nbsp;&nbsp;[read-write]<p>
-   The target used to determine the range of motion when moving the <code>container</code>.
-   
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get rangeOfMotionTarget():DisplayObject</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set rangeOfMotionTarget(value:DisplayObject):void</code>
-<br>
-<p>
-<span class="label">See also</span>
-</p>
-<div class="seeAlso">
-<a href="../display/IsoView.html#limitRangeOfMotion" target="">limitRangeOfMotion</a>
-</div>
-</div>
-<a name="scenes"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">scenes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>scenes:Array</code>&nbsp;&nbsp;[read-only]<p>
-   
-   An array of all child scenes.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get scenes():Array</code>
-<br>
-</div>
-<a name="size"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">size</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>size:Point</code>&nbsp;&nbsp;[read-only]<p>
-   The current size of the IsoView.
-   Returns a Point whose x corresponds to the width and y corresponds to the height.
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get size():Point</code>
-<br>
-</div>
-<a name="usePreciseValues"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">usePreciseValues</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var usePreciseValues:Boolean = false</code><p>
-   Flag indicating if coordinate values are rounded to the nearest whole number or not.
-   </p></div>
-<a name="viewRenderers"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">viewRenderers</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>viewRenderers:Array</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get viewRenderers():Array</code>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set viewRenderers(value:Array):void</code>
-<br>
-</div>
-<a name="width"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">width</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>width:Number</code>&nbsp;&nbsp;[read-only]<p>
-   </p><span class="label">Implementation</span>
-<br>
-<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get width():Number</code>
-<br>
-</div>
-<a name="constructorDetail"></a>
-<div class="detailSectionHeader">Constructor detail</div>
-<a name="IsoView()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">IsoView</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function IsoView()</code><p>
-   Constructor
-   </p></div>
-<a name="methodDetail"></a>
-<div class="detailSectionHeader">Method detail</div>
-<a name="addScene()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">addScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function addScene(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">scene</span>:<a href="scene/IIsoScene.html">IIsoScene</a></code></td>
-</tr>
-</table>
-</div>
-<a name="addSceneAt()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">addSceneAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function addSceneAt(scene:<a href="scene/IIsoScene.html">IIsoScene</a>, index:int):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">scene</span>:<a href="scene/IIsoScene.html">IIsoScene</a></code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">index</span>:int</code></td>
-</tr>
-</table>
-</div>
-<a name="centerOnIso()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">centerOnIso</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function centerOnIso(iso:<a href="../core/IIsoDisplayObject.html">IIsoDisplayObject</a>):void</code><p>
-   
-   Centers the IIsoView on a given IIsoDisplayObject within the current child scene objects.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">iso</span>:<a href="../core/IIsoDisplayObject.html">IIsoDisplayObject</a></code> &mdash; The IIsoDisplayObject to pan and center on.
-   </td>
-</tr>
-</table>
-</div>
-<a name="centerOnPt()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">centerOnPt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function centerOnPt(pt:<a href="../geom/Pt.html">Pt</a>, isIsometrc:Boolean = true):void</code><p>
-   
-   Centers the IIsoView on a given pt within the current child scene objects.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">pt</span>:<a href="../geom/Pt.html">Pt</a></code> &mdash; The pt to pan and center on.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">isIsometrc</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; A flag indicating wether the pt parameter represents a pt in 3D isometric space or screen coordinates.
-   </td>
-</tr>
-</table>
-</div>
-<a name="containsScene()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">containsScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function containsScene(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):Boolean</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">scene</span>:<a href="scene/IIsoScene.html">IIsoScene</a></code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Boolean</code></td>
-</tr>
-</table>
-</div>
-<a name="getInvalidatedScenes()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getInvalidatedScenes</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getInvalidatedScenes():Array</code><p>
-   Convenience method for determining which scenes are invalidated.
-   </p><p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Array</code></td>
-</tr>
-</table>
-</div>
-<a name="invalidatePosition()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">invalidatePosition</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function invalidatePosition():void</code><p>
-   Flags the view as needing validation.
-   </p></div>
-<a name="isoToLocal()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">isoToLocal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function isoToLocal(isoPt:<a href="../geom/Pt.html">Pt</a>):Point</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">isoPt</span>:<a href="../geom/Pt.html">Pt</a></code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Point</code></td>
-</tr>
-</table>
-</div>
-<a name="localToIso()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">localToIso</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function localToIso(localPt:Point):<a href="../geom/Pt.html">Pt</a></code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">localPt</span>:Point</code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../geom/Pt.html">Pt</a></code></td>
-</tr>
-</table>
-</div>
-<a name="pan()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">pan</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function pan(px:Number, py:Number):void</code><p>
-   
-   Pans the child scene objects by a given amount in screen coordinate space.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">px</span>:Number</code> &mdash; The x value to pan by.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">py</span>:Number</code> &mdash; the y value to pan by.
-   
-   </td>
-</tr>
-</table>
-</div>
-<a name="postRenderLogic()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">postRenderLogic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected function postRenderLogic():void</code><p>
-   Performs any logic after executing actual rendering logic on the view.
-   </p></div>
-<a name="preRenderLogic()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">preRenderLogic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected function preRenderLogic():void</code><p>
-   Performs any logic prior to executing actual rendering logic on the view.
-   </p></div>
-<a name="removeAllScenes()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">removeAllScenes</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function removeAllScenes():void</code>
-</div>
-<a name="removeScene()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">removeScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function removeScene(scene:<a href="scene/IIsoScene.html">IIsoScene</a>):<a href="scene/IIsoScene.html">IIsoScene</a></code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">scene</span>:<a href="scene/IIsoScene.html">IIsoScene</a></code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="scene/IIsoScene.html">IIsoScene</a></code></td>
-</tr>
-</table>
-</div>
-<a name="render()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">render</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function render(recursive:Boolean = false):void</code><p>
-   
-   Executes positional changes for background, scene and foreground objects.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating if child scenes render on the view's validation.  Default value is <code>false</code>.
-   </td>
-</tr>
-</table>
-</div>
-<a name="renderLogic()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">renderLogic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected function renderLogic(recursive:Boolean = false):void</code><p>
-   Performs actual rendering logic on the view.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating if child scenes render on the view's validation.  Default value is <code>false</code>.
-   </td>
-</tr>
-</table>
-</div>
-<a name="reset()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function reset():void</code><p>
-   
-   Resets the child scene objects to be centered within the IIsoView and returns the zoom factor back to a normal value.
-   </p></div>
-<a name="setSize()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setSize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setSize(w:Number, h:Number):void</code><p>
-   Set the size of the IsoView and repositions child scene objects, masks and borders (where applicable).
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">w</span>:Number</code> &mdash; The width to resize to.
-   </td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">h</span>:Number</code> &mdash; The height to resize to.
-   </td>
-</tr>
-</table>
-</div>
-<a name="validatePosition()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">validatePosition</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected function validatePosition():void</code><p>
-   Calculates the positional changes and repositions the <code>container</code>.
-   </p></div>
-<a name="zoom()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">zoom</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function zoom(zFactor:Number):void</code><p>
-   
-   Zooms the child scene objects by a given amount.
-   
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">zFactor</span>:Number</code> &mdash; The positive non-zero value to scale the child scene objects by.  This corresponds to the child scene objects' containers' scaleX and scaleY properties.
-   </td>
-</tr>
-</table>
-</div>
-<div class="detailSectionHeader">Event detail</div>
-<a name="event:as3isolib_move"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">as3isolib_move</td><td class="detailHeaderType">event&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<span class="label">Event object type: </span><a href="../events/IsoEvent.html"><code>as3isolib.events.IsoEvent</code></a>
-<br>
-<p></p>
-</div>
-<br>
-<br>
-<hr>
-<br>
-<p></p>
-<center class="copyright"> 
-</center>
-</div>
-</body>
-</html>
-<!-- -->
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../package-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../class-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../all-index-A.html" onclick="loadClassListFrame('../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../index.html?as3isolib/display/IsoView.html&amp;as3isolib/display/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">IsoView</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IsoView"); titleBar_setSubNav(false,true,false,false,false,false,true,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">as3isolib.display</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  IsoView</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">IsoView  <img src="../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> flash.display.Sprite</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../as3isolib/display/IIsoView.html">IIsoView</a></td></tr></table><p></p><p></p><p></p>
+	 IsoView is a default view port that provides basic panning and zooming functionality on a given IIsoScene.
+	 <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#autoUpdate" class="signatureLink">autoUpdate</a> : Boolean = false<div class="summaryTableDescription">
+		 Flag indicating if property changes immediately trigger validation.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#backgroundContainer" class="signatureLink">backgroundContainer</a> : Sprite<div class="summaryTableDescription">[read-only] 
+		 The container for background elements.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#clipContent" class="signatureLink">clipContent</a> : Boolean<div class="summaryTableDescription">
+		 Flag indicating where to allow content to visibly extend beyond the boundries of this IsoView.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#currentPt" class="signatureLink">currentPt</a> : <a href="../../as3isolib/geom/Pt.html">Pt</a><div class="summaryTableDescription">[read-only] 
+		 
+		 This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#currentX" class="signatureLink">currentX</a> : Number<div class="summaryTableDescription">
+		 
+		 The current x value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#currentY" class="signatureLink">currentY</a> : Number<div class="summaryTableDescription">
+		 
+		 The current y value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#currentZoom" class="signatureLink">currentZoom</a> : Number<div class="summaryTableDescription">
+		 
+		 The current zoom factor applied to the child scene objects.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#foregroundContainer" class="signatureLink">foregroundContainer</a> : Sprite<div class="summaryTableDescription">[read-only] 
+		 The container for foreground elements.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#height" class="signatureLink">height</a> : Number<div class="summaryTableDescription">[override] [read-only] 
+		 </div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#isInvalidated" class="signatureLink">isInvalidated</a> : Boolean<div class="summaryTableDescription">[read-only] 
+		 Flag indicating if the view is invalidated.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#limitRangeOfMotion" class="signatureLink">limitRangeOfMotion</a> : Boolean = true<div class="summaryTableDescription">
+		 Flag to limit the range of motion.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#mainContainer" class="signatureLink">mainContainer</a> : Sprite<div class="summaryTableDescription">[read-only] 
+		 The main container whose children include the background container, the iso object container and the foreground container.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#numScenes" class="signatureLink">numScenes</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 The number of scenes.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#rangeOfMotionTarget" class="signatureLink">rangeOfMotionTarget</a> : DisplayObject<div class="summaryTableDescription">
+		 The target used to determine the range of motion when moving the container.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#scenes" class="signatureLink">scenes</a> : Array<div class="summaryTableDescription">[read-only] 
+		 
+		 An array of all child scenes.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#showBorder" class="signatureLink">showBorder</a> : Boolean<div class="summaryTableDescription">
+		 Flag indicating if the view's border is visible.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#size" class="signatureLink">size</a> : Point<div class="summaryTableDescription">[read-only] 
+		 The current size of the IsoView.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#usePreciseValues" class="signatureLink">usePreciseValues</a> : Boolean = false<div class="summaryTableDescription">
+		 Flag indicating if coordinate values are rounded to the nearest whole number or not.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#viewRenderers" class="signatureLink">viewRenderers</a> : Array<div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#width" class="signatureLink">width</a> : Number<div class="summaryTableDescription">[override] [read-only] 
+		 </div></td><td class="summaryTableOwnerCol">IsoView</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#IsoView()" class="signatureLink">IsoView</a>()</div><div class="summaryTableDescription">
+		 Constructor
+		 </div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#addScene()" class="signatureLink">addScene</a>(scene:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a>):void</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#addSceneAt()" class="signatureLink">addSceneAt</a>(scene:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a>, index:int):void</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#centerOnIso()" class="signatureLink">centerOnIso</a>(iso:<a href="../../as3isolib/core/IIsoDisplayObject.html">IIsoDisplayObject</a>):void</div><div class="summaryTableDescription">
+		 
+		 Centers the IIsoView on a given IIsoDisplayObject within the current child scene objects.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#centerOnPt()" class="signatureLink">centerOnPt</a>(pt:<a href="../../as3isolib/geom/Pt.html">Pt</a>, isIsometrc:Boolean = true):void</div><div class="summaryTableDescription">
+		 
+		 Centers the IIsoView on a given pt within the current child scene objects.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#containsScene()" class="signatureLink">containsScene</a>(scene:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a>):Boolean</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getInvalidatedScenes()" class="signatureLink">getInvalidatedScenes</a>():Array</div><div class="summaryTableDescription">
+		 Convenience method for determining which scenes are invalidated.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getSceneByID()" class="signatureLink">getSceneByID</a>(id:String):<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#invalidatePosition()" class="signatureLink">invalidatePosition</a>():void</div><div class="summaryTableDescription">
+		 Flags the view as needing validation.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#isoToLocal()" class="signatureLink">isoToLocal</a>(isoPt:<a href="../../as3isolib/geom/Pt.html">Pt</a>):Point</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#localToIso()" class="signatureLink">localToIso</a>(localPt:Point):<a href="../../as3isolib/geom/Pt.html">Pt</a></div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#pan()" class="signatureLink">pan</a>(px:Number, py:Number):void</div><div class="summaryTableDescription">
+		 
+		 Pans the child scene objects by a given amount in screen coordinate space.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeAllScenes()" class="signatureLink">removeAllScenes</a>():void</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeScene()" class="signatureLink">removeScene</a>(scene:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a>):<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#render()" class="signatureLink">render</a>(recursive:Boolean = false):void</div><div class="summaryTableDescription">
+		 
+		 Executes positional changes for background, scene and foreground objects.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#reset()" class="signatureLink">reset</a>():void</div><div class="summaryTableDescription">
+		 
+		 Resets the child scene objects to be centered within the IIsoView and returns the zoom factor back to a normal value.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#setSize()" class="signatureLink">setSize</a>(w:Number, h:Number):void</div><div class="summaryTableDescription">
+		 Set the size of the IsoView and repositions child scene objects, masks and borders (where applicable).</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#zoom()" class="signatureLink">zoom</a>(zFactor:Number):void</div><div class="summaryTableDescription">
+		 
+		 Zooms the child scene objects by a given amount.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr></table></div><a name="protectedMethodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Protected Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProtectedMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#postRenderLogic()" class="signatureLink">postRenderLogic</a>():void</div><div class="summaryTableDescription">
+		 Performs any logic after executing actual rendering logic on the view.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#preRenderLogic()" class="signatureLink">preRenderLogic</a>():void</div><div class="summaryTableDescription">
+		 Performs any logic prior to executing actual rendering logic on the view.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#renderLogic()" class="signatureLink">renderLogic</a>(recursive:Boolean = false):void</div><div class="summaryTableDescription">
+		 Performs actual rendering logic on the view.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#validatePosition()" class="signatureLink">validatePosition</a>():void</div><div class="summaryTableDescription">
+		 Calculates the positional changes and repositions the container.</div></td><td class="summaryTableOwnerCol">IsoView</td></tr></table></div><a name="eventSummary"></a><div class="summarySection"><div class="summaryTableTitle">Events</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableEvent"><tr><th>&nbsp;</th><th colspan="2">Event</th><th> Summary </th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#event:as3isolib_move" class="signatureLink">as3isolib_move</a></div></td><td class="summaryTableDescription summaryTableCol"></td><td class="summaryTableOwnerCol">IsoView</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="autoUpdate"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">autoUpdate</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>public var autoUpdate:Boolean = false</code><p></p><p></p><p>
+		 Flag indicating if property changes immediately trigger validation.
+		 </p></div><a name="propertyDetail"></a><a name="backgroundContainer"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">backgroundContainer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>backgroundContainer:Sprite</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 The container for background elements.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get backgroundContainer():Sprite</code><br/></div><a name="propertyDetail"></a><a name="clipContent"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">clipContent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>clipContent:Boolean</code><p></p><p></p><p>
+		 Flag indicating where to allow content to visibly extend beyond the boundries of this IsoView.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get clipContent():Boolean</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set clipContent(value:Boolean):void</code><br/></div><a name="propertyDetail"></a><a name="currentPt"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">currentPt</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>currentPt:<a href="../../as3isolib/geom/Pt.html">Pt</a></code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 This point is the coordinate position visually located at the center of the IIsoView relative to the scenes' host containers.
+		 </p><p>This property can be used as the source for data binding.</p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentPt():<a href="../../as3isolib/geom/Pt.html">Pt</a></code><br/></div><a name="propertyDetail"></a><a name="currentX"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">currentX</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>currentX:Number</code><p></p><p></p><p>
+		 
+		 The current x value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.
+		 This property is useful for targeting by tween engines.
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentX():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentX(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="currentY"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">currentY</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>currentY:Number</code><p></p><p></p><p>
+		 
+		 The current y value of the coordintate position visually located at the center of the IIsoView relative to the scenes' host containers.
+		 This property is useful for targeting by tween engines.
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentY():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentY(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="currentZoom"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">currentZoom</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>currentZoom:Number</code><p></p><p></p><p>
+		 
+		 The current zoom factor applied to the child scene objects.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get currentZoom():Number</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set currentZoom(value:Number):void</code><br/></div><a name="propertyDetail"></a><a name="foregroundContainer"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">foregroundContainer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>foregroundContainer:Sprite</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 The container for foreground elements.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get foregroundContainer():Sprite</code><br/></div><a name="propertyDetail"></a><a name="height"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">height</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>height:Number</code>&nbsp;&nbsp;[read-only] [override] <p></p><p></p><p>
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get height():Number</code><br/></div><a name="propertyDetail"></a><a name="isInvalidated"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">isInvalidated</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>isInvalidated:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 Flag indicating if the view is invalidated.  If true, validation will when explicity called.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get isInvalidated():Boolean</code><br/></div><a name="propertyDetail"></a><a name="limitRangeOfMotion"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">limitRangeOfMotion</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public var limitRangeOfMotion:Boolean = true</code><p></p><p></p><p>
+		 Flag to limit the range of motion.
+		 
+		 </p><p><span class="label">See also</span></p><div class="seeAlso"><a href="IsoView.html#rangeOfMotionTarget" target="">rangeOfMotionTarget</a></div></div><a name="propertyDetail"></a><a name="mainContainer"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">mainContainer</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>mainContainer:Sprite</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 The main container whose children include the background container, the iso object container and the foreground container.
+		 
+		 An IsoView's container structure is as follows:
+		 IsoView
+		 		zoom container
+		 			main container
+		 				background container
+		 				iso scenes container
+		 				foreground container
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get mainContainer():Sprite</code><br/></div><a name="propertyDetail"></a><a name="numScenes"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">numScenes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>numScenes:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 The number of scenes.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get numScenes():uint</code><br/></div><a name="propertyDetail"></a><a name="rangeOfMotionTarget"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">rangeOfMotionTarget</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>rangeOfMotionTarget:DisplayObject</code><p></p><p></p><p>
+		 The target used to determine the range of motion when moving the <code>container</code>.
+		 
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get rangeOfMotionTarget():DisplayObject</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set rangeOfMotionTarget(value:DisplayObject):void</code><br/><p><span class="label">See also</span></p><div class="seeAlso">limitRangeOfMotion</div></div><a name="propertyDetail"></a><a name="scenes"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">scenes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>scenes:Array</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 An array of all child scenes.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get scenes():Array</code><br/></div><a name="propertyDetail"></a><a name="showBorder"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">showBorder</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>showBorder:Boolean</code><p></p><p></p><p>
+		 Flag indicating if the view's border is visible.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get showBorder():Boolean</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set showBorder(value:Boolean):void</code><br/></div><a name="propertyDetail"></a><a name="size"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">size</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>size:Point</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 The current size of the IsoView.
+		 Returns a Point whose x corresponds to the width and y corresponds to the height.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get size():Point</code><br/></div><a name="propertyDetail"></a><a name="usePreciseValues"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">usePreciseValues</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public var usePreciseValues:Boolean = false</code><p></p><p></p><p>
+		 Flag indicating if coordinate values are rounded to the nearest whole number or not.
+		 </p></div><a name="propertyDetail"></a><a name="viewRenderers"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">viewRenderers</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>viewRenderers:Array</code><p></p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get viewRenderers():Array</code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set viewRenderers(value:Array):void</code><br/></div><a name="propertyDetail"></a><a name="width"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">width</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>width:Number</code>&nbsp;&nbsp;[read-only] [override] <p></p><p></p><p>
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get width():Number</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="IsoView()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">IsoView</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function IsoView()</code><p></p><p>
+		 Constructor
+		 </p></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="addScene()"></a><a name="addScene(as3isolib.display.scene.IIsoScene)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">addScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function addScene(scene:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a>):void</code><p></p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">scene</span>:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></code></td></tr></table></p></div><a name="addSceneAt()"></a><a name="addSceneAt(as3isolib.display.scene.IIsoScene,int)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">addSceneAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function addSceneAt(scene:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a>, index:int):void</code><p></p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">scene</span>:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></code></td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">index</span>:int</code></td></tr></table></p></div><a name="centerOnIso()"></a><a name="centerOnIso(as3isolib.core.IIsoDisplayObject)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">centerOnIso</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function centerOnIso(iso:<a href="../../as3isolib/core/IIsoDisplayObject.html">IIsoDisplayObject</a>):void</code><p></p><p></p><p>
+		 
+		 Centers the IIsoView on a given IIsoDisplayObject within the current child scene objects.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">iso</span>:<a href="../../as3isolib/core/IIsoDisplayObject.html">IIsoDisplayObject</a></code> &mdash; The IIsoDisplayObject to pan and center on.
+		 </td></tr></table></p></div><a name="centerOnPt()"></a><a name="centerOnPt(as3isolib.geom.Pt,Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">centerOnPt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function centerOnPt(pt:<a href="../../as3isolib/geom/Pt.html">Pt</a>, isIsometrc:Boolean = true):void</code><p></p><p></p><p>
+		 
+		 Centers the IIsoView on a given pt within the current child scene objects.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">pt</span>:<a href="../../as3isolib/geom/Pt.html">Pt</a></code> &mdash; The pt to pan and center on.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">isIsometrc</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; A flag indicating wether the pt parameter represents a pt in 3D isometric space or screen coordinates.
+		 </td></tr></table></p></div><a name="containsScene()"></a><a name="containsScene(as3isolib.display.scene.IIsoScene)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">containsScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function containsScene(scene:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a>):Boolean</code><p></p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">scene</span>:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Boolean</code></td></tr></table></div><a name="getInvalidatedScenes()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getInvalidatedScenes</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function getInvalidatedScenes():Array</code><p></p><p></p><p>
+		 Convenience method for determining which scenes are invalidated.
+		 </p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Array</code></td></tr></table></div><a name="getSceneByID()"></a><a name="getSceneByID(String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getSceneByID</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function getSceneByID(id:String):<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></code><p></p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">id</span>:String</code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></code></td></tr></table></div><a name="invalidatePosition()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">invalidatePosition</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function invalidatePosition():void</code><p></p><p></p><p>
+		 Flags the view as needing validation.
+		 </p></div><a name="isoToLocal()"></a><a name="isoToLocal(as3isolib.geom.Pt)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">isoToLocal</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function isoToLocal(isoPt:<a href="../../as3isolib/geom/Pt.html">Pt</a>):Point</code><p></p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">isoPt</span>:<a href="../../as3isolib/geom/Pt.html">Pt</a></code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Point</code></td></tr></table></div><a name="localToIso()"></a><a name="localToIso(flash.geom.Point)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">localToIso</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function localToIso(localPt:Point):<a href="../../as3isolib/geom/Pt.html">Pt</a></code><p></p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">localPt</span>:Point</code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/geom/Pt.html">Pt</a></code></td></tr></table></div><a name="pan()"></a><a name="pan(Number,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">pan</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function pan(px:Number, py:Number):void</code><p></p><p></p><p>
+		 
+		 Pans the child scene objects by a given amount in screen coordinate space.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">px</span>:Number</code> &mdash; The x value to pan by.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">py</span>:Number</code> &mdash; the y value to pan by.
+		 
+		 </td></tr></table></p></div><a name="postRenderLogic()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">postRenderLogic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> protected function postRenderLogic():void</code><p></p><p></p><p>
+		 Performs any logic after executing actual rendering logic on the view.
+		 </p></div><a name="preRenderLogic()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">preRenderLogic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> protected function preRenderLogic():void</code><p></p><p></p><p>
+		 Performs any logic prior to executing actual rendering logic on the view.
+		 </p></div><a name="removeAllScenes()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeAllScenes</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeAllScenes():void</code><p></p></div><a name="removeScene()"></a><a name="removeScene(as3isolib.display.scene.IIsoScene)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeScene</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeScene(scene:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a>):<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></code><p></p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">scene</span>:<a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../as3isolib/display/scene/IIsoScene.html">IIsoScene</a></code></td></tr></table></div><a name="render()"></a><a name="render(Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">render</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function render(recursive:Boolean = false):void</code><p></p><p></p><p>
+		 
+		 Executes positional changes for background, scene and foreground objects.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating if child scenes render on the view's validation.  Default value is <code>false</code>.
+		 </td></tr></table></p></div><a name="renderLogic()"></a><a name="renderLogic(Boolean)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">renderLogic</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> protected function renderLogic(recursive:Boolean = false):void</code><p></p><p></p><p>
+		 Performs actual rendering logic on the view.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">recursive</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Flag indicating if child scenes render on the view's validation.  Default value is <code>false</code>.
+		 </td></tr></table></p></div><a name="reset()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function reset():void</code><p></p><p></p><p>
+		 
+		 Resets the child scene objects to be centered within the IIsoView and returns the zoom factor back to a normal value.
+		 </p></div><a name="setSize()"></a><a name="setSize(Number,Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">setSize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function setSize(w:Number, h:Number):void</code><p></p><p></p><p>
+		 Set the size of the IsoView and repositions child scene objects, masks and borders (where applicable).
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">w</span>:Number</code> &mdash; The width to resize to.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">h</span>:Number</code> &mdash; The height to resize to.
+		 </td></tr></table></p></div><a name="validatePosition()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">validatePosition</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> protected function validatePosition():void</code><p></p><p></p><p>
+		 Calculates the positional changes and repositions the <code>container</code>.
+		 </p></div><a name="zoom()"></a><a name="zoom(Number)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">zoom</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function zoom(zFactor:Number):void</code><p></p><p></p><p>
+		 
+		 Zooms the child scene objects by a given amount.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">zFactor</span>:Number</code> &mdash; The positive non-zero value to scale the child scene objects by.  This corresponds to the child scene objects' containers' scaleX and scaleY properties.
+		 </td></tr></table></p></div><div class="detailSectionHeader"> Event Detail </div><a name="event:as3isolib_move"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">as3isolib_move</td><td class="detailHeaderType"> Event </td></tr></table><div class="detailBody"><span class="label">Event Object Type: </span><a href="../../as3isolib/events/IsoEvent.html"><code>as3isolib.events.IsoEvent</code></a><br/><p></p><p></p><p></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Wed Oct 7 2009, 03:38 PM -05:00  </center></div></body></html><!--<br/>Wed Oct 7 2009, 03:38 PM -05:00  -->

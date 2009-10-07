@@ -6,7 +6,7 @@ targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 2008 J.W.Opitz, All Rights Reserved.
+Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -49,7 +49,7 @@ package as3isolib.display.renderers
 		////////////////////////////////////////////////////
 		
 		/**
-		 * If a child's z <= 0 and drawAll = true the shadow will still be renderered.
+		 * If a child's z &lt;= 0 and drawAll = true the shadow will still be renderered.
 		 */
 		public var drawAll:Boolean = false;
 		
