@@ -29,6 +29,8 @@ SOFTWARE.
 */
 package as3isolib.core
 {
+	import __AS3__.vec.Vector;
+	
 	import as3isolib.data.INode;
 	import as3isolib.data.Node;
 	import as3isolib.events.IsoEvent;
