@@ -103,6 +103,7 @@
 		<exec executable="${asdoc.exe}" dir="${basedir}">
 			<arg line="-output ${asdoc.dir}"/>
 			<arg line="-doc-sources ${src.dir}"/>
+			<arg line="-target-player=10.0.0"/>
 		</exec>
 	</target>
 
