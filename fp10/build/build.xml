@@ -4,6 +4,13 @@
 	<!-- Define variables/paths used in this build script -->
 	<property file="./build/build.properties"/>
 	
+	<!-- Have you edited the properties file to make sure the paths are right on your system? -->
+	<target name="properties">
+		<fail unless="asdoc.exe">The "asdoc.exe" property must be set in build.properties.</fail>
+		<fail unless="compc.exe">The "compc.exe" property must be set in build.properties.</fail>
+		<fail unless="mxmlc.exe">The "mxmlc.exe" property must be set in build.properties.</fail>
+	</target>
+
 	<!-- Zip up src, docs and SWC and commit to SVN if possible -->
 	<target name="zip" depends="properties, lib, docs">
 		<zip destfile="${zip.dir}/as3isolib.zip" update="true">
@@ -13,13 +20,6 @@
 		</zip>
 	</target>
 
-	<!-- Have you edited the properties file to make sure the paths are right on your system? -->
-	<target name="properties">
-		<fail unless="asdoc.exe">The "asdoc.exe" property must be set in build.properties.</fail>
-		<fail unless="compc.exe">The "compc.exe" property must be set in build.properties.</fail>
-		<fail unless="mxmlc.exe">The "mxmlc.exe" property must be set in build.properties.</fail>
-	</target>
-	
 	<!-- Compile all of the classes under the "src" tree into a .swc file -->
 	<target name="lib" depends="properties">
 		<exec executable="${compc.exe}" dir="${basedir}">
