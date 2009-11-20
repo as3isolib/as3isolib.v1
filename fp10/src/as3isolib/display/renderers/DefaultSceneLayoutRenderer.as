@@ -92,7 +92,7 @@ package as3isolib.display.renderers
 				{
 					var objB:IsoDisplayObject = children[j];
 					
-					if (collisionDetectionFunc)
+					if (collisionDetectionFunc != null)
 						collisionDetectionFunc.call(null, objA, objB);
 					
 					// See if B should go behind A
