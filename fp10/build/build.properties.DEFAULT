@@ -1,0 +1,47 @@
+# -----------------------------------------------------------------
+# User-Defined Paths
+#
+# Modify these path values to reflect paths on your system
+# -----------------------------------------------------------------
+
+installation.dir = /Developer/Applications/Eclipse 3.4.2 & Flex 4/Adobe Flash Builder Plug-in Beta 2
+
+# The location of the Flex 2 SDK on your sytem.
+flexSDK.bin.dir = ${installation.dir}/sdks/4.0.0/bin
+flexSDK.lib.dir = ${installation.dir}/sdks/4.0.0/frameworks/libs
+
+# Note that the locale dir uses the {locale} token at the end to specify the directory
+# of language-specific files.  This is replaced by the compiler with the locale defined
+# by the locale property below.
+flexSDK.locale = en_US
+flexSDK.locale.dir = ${installation.dir}/sdks/4.0.0/frameworks/locale/{locale}
+
+asdoc.exe = ${flexSDK.bin.dir}/asdoc
+compc.exe = ${flexSDK.bin.dir}/compc
+mxmlc.exe = ${flexSDK.bin.dir}/mxmlc
+
+# The debug player is necessary here because it writes trace statements to a flashlog.txt
+# file.  This allows us to examine the .txt file and determine the status of unit tests
+# in an automated fashion.
+flashDebugPlayer.exe = ${installation.dir}/Player/mac/Flash Player
+
+# -----------------------------------------------------------------
+# File Names - DO NOT MODIFY
+# -----------------------------------------------------------------
+
+# swc names
+swc.name = as3isolib
+
+# manifest
+# manifest.uri = http://code.google.com/p/as3isolib/
+manifest.uri = http://www.as3isolib.com/
+manifest.xml = ${basedir}/build/manifest.xml
+
+# -----------------------------------------------------------------
+# Project Paths - DO NOT MODIFY
+# -----------------------------------------------------------------
+asdoc.dir = ${basedir}/asdoc
+bin.dir = ${basedir}/bin
+build.dir = ${basedir}/build
+src.dir = ${basedir}/src
+zip.dir = ${basedir}/download
