@@ -134,7 +134,7 @@ package as3isolib.display
 		 */
 		public function set currentY (value:Number):void
 		{
-			if (currentScreenPt.y != value);
+			if (currentScreenPt.y != value)
 			{
 				if (!targetScreenPt)
 					targetScreenPt = currentScreenPt.clone() as Pt;
