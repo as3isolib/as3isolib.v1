@@ -418,7 +418,7 @@ package eDpLib.events
 			}
 			
 			else
-				eventDispatcher.addEventListener(type, listener, useCapture);
+				eventDispatcher.removeEventListener(type, listener, useCapture);
 		}
 		
 		/**
