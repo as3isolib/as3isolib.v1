@@ -35,6 +35,7 @@ package eDpLib.events
 	import flash.events.IEventDispatcher;
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
+	import flash.utils.Dictionary;
 	
 	/**
 	 * EventDispatcherProxy provides a means for intercepting events on behalf of a target and redispatching them as the target of the event.
@@ -109,6 +110,8 @@ package eDpLib.events
 		public function EventDispatcherProxy ()
 		{
 			proxy = this;
+			
+			interceptedEventTypes = generateEventTypes();
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -195,10 +198,40 @@ package eDpLib.events
 		
 		/**
 		 * @private
+		 */
+		protected var interceptedEventHash:Dictionary = new Dictionary(true);
+		
+		/**
+		 * @private
 		 * 
 		 * An array of events to check against that could be dispatched from an interactive target.
 		 */
-		public var interceptedEventTypes:Array = generateEventTypes();
+		public function get interceptedEventTypes ():Array
+		{
+			var a:Array;
+			
+			var p:Object;
+			for (p in interceptedEventHash)
+				a.push(interceptedEventHash[p]);
+			
+			return a;
+		}
+		
+		//public var interceptedEventTypes:Array = generateEventTypes();
+		
+		/**
+		 * @private
+		 */
+		public function set interceptedEventTypes (value:Array):void
+		{
+			var hash:Dictionary = new Dictionary(true);
+			
+			var type:String;
+			for each (type in value)
+				hash[type] = type;
+				
+			interceptedEventHash = hash;
+		}
 		
 		/**
 		 * Creates an array of interactive object events to check against during event proxying.
@@ -256,14 +289,7 @@ package eDpLib.events
 		 */
 		private function checkForInteceptedEventType (type:String):Boolean
 		{
-			var evtType:String;
-			for each (evtType in interceptedEventTypes)
-			{
-				if (type == evtType)
-					return true;
-			}
-			
-			return false;
+			return interceptedEventHash.hasOwnProperty(type);
 		}
 		
 		/**
