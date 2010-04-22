@@ -29,6 +29,7 @@ SOFTWARE.
 */
 package as3isolib.display.primitive
 {
+	import as3isolib.core.as3isolib_internal;
 	import as3isolib.enum.IsoOrientation;
 	import as3isolib.geom.IsoMath;
 	import as3isolib.geom.Pt;
@@ -38,6 +39,8 @@ package as3isolib.display.primitive
 	
 	import flash.display.Graphics;
 	import flash.geom.Matrix;
+	
+	use namespace as3isolib_internal;
 	
 	/**
 	 * @private
