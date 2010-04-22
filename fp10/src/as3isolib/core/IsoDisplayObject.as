@@ -217,7 +217,7 @@ package as3isolib.core
 		 * 
 		 * The positional value based on the isometric x-axis.
 		 */
-		protected var isoX:Number = 0;
+		as3isolib_internal var isoX:Number = 0;
 		
 		/**
 		 * @private
@@ -268,7 +268,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		protected var isoY:Number = 0;
+		as3isolib_internal var isoY:Number = 0;
 		
 		/**
 		 * @private
@@ -319,7 +319,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		protected var isoZ:Number = 0;
+		as3isolib_internal var isoZ:Number = 0;
 		
 		/**
 		 * @private
@@ -392,7 +392,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		protected var isoWidth:Number = 0;
+		as3isolib_internal var isoWidth:Number = 0;
 		
 		/**
 		 * @private
@@ -437,7 +437,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		protected var isoLength:Number = 0;
+		as3isolib_internal var isoLength:Number = 0;
 		
 		/**
 		 * @private
@@ -482,7 +482,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		protected var isoHeight:Number = 0;
+		as3isolib_internal var isoHeight:Number = 0;
 		
 		/**
 		 * @private

@@ -12,6 +12,7 @@ package as3isolib.core
 {
 	import mx.core.IFactory;
 	
+	[Deprecated(replacement="mx.core.IFactory")]
 	/**
 	 * This interface is now deprecated.  This is an exact duplicate of mx.core.IFactory located in the Flex SDK by Adobe.
 	 * Developers are incouraged to use the mx.core.IFactory instead.

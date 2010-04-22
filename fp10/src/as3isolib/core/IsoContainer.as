@@ -248,7 +248,7 @@ package as3isolib.core
 		
 		private function mainContainer_removedFromStageHandler (evt:Event):void
 		{
-			bAddedToStage = true;
+			bAddedToStage = false;
 		}
 		
 		/////////////////////////////////////////////////////////////////
