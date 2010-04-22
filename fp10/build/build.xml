@@ -3,6 +3,7 @@
 
 	<!-- Define variables/paths used in this build script -->
 	<property file="./build/build.properties"/>
+	<taskdef resource="flexTasks.tasks" classpath="${sdk.ant}/flexTasks.jar"/>
 	
 	<!-- Have you edited the properties file to make sure the paths are right on your system? -->
 	<target name="properties">

@@ -4,21 +4,25 @@
 # Modify these path values to reflect paths on your system
 # -----------------------------------------------------------------
 
-installation.dir = /Developer/Applications/Eclipse 3.4.2 & Flex 4/Adobe Flash Builder Plug-in Beta 2
+# Installation directory
+flex = /Developer/Applications/Eclipse 3.4.2 & Flex 4/Adobe Flash Builder Plug-in Beta 2
 
-# The location of the Flex 2 SDK on your sytem.
-flexSDK.bin.dir = ${installation.dir}/sdks/4.0.0/bin
-flexSDK.lib.dir = ${installation.dir}/sdks/4.0.0/frameworks/libs
+# The location of the Flex SDK on your sytem.
+sdk = ${flex}/sdks/4.0.0
+sdk.bin = ${sdk}/bin
+sdk.lib = ${sdk}/frameworks/libs
+sdk.locale = ${sdk}/frameworks/locale/{locale}
+sdk.ant = ${sdk}/ant/lib
 
 # Note that the locale dir uses the {locale} token at the end to specify the directory
 # of language-specific files.  This is replaced by the compiler with the locale defined
 # by the locale property below.
-flexSDK.locale = en_US
-flexSDK.locale.dir = ${installation.dir}/sdks/4.0.0/frameworks/locale/{locale}
 
-asdoc.exe = ${flexSDK.bin.dir}/asdoc
-compc.exe = ${flexSDK.bin.dir}/compc
-mxmlc.exe = ${flexSDK.bin.dir}/mxmlc
+# Executables for ANT tasks
+asdoc.exe = ${sdk.bin}/asdoc
+compc.exe = ${sdk.bin}/compc
+mxmlc.exe = ${sdk.bin}/mxmlc
+
 
 # The debug player is necessary here because it writes trace statements to a flashlog.txt
 # file.  This allows us to examine the .txt file and determine the status of unit tests
