@@ -1,32 +1,32 @@
 /*
 
-as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist 
-in creating isometrically projected content (such as games and graphics) 
-targeted for the Flash player platform
+   as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist
+   in creating isometrically projected content (such as games and graphics)
+   targeted for the Flash player platform
 
-http://code.google.com/p/as3isolib/
+   http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
+   Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
+   Permission is hereby granted, free of charge, to any person obtaining a copy of
+   this software and associated documentation files (the "Software"), to deal in
+   the Software without restriction, including without limitation the rights to
+   use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+   of the Software, and to permit persons to whom the Software is furnished to do
+   so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
 
-*/
+ */
 package as3isolib.core
 {
 	import as3isolib.bounds.IBounds;
@@ -51,7 +51,7 @@ package as3isolib.core
 	 * Developers should not instantiate this class but rather extend it.
 	 */
 	public class IsoDisplayObject extends IsoContainer implements IIsoDisplayObject
-	{		
+	{
 		//////////////////////////////////////////////////////////////////
 		//	GET RENDER DATA
 		//////////////////////////////////////////////////////////////////
@@ -61,18 +61,18 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function getRenderData ():RenderData
+		public function getRenderData():RenderData
 		{
-			var r:Rectangle = mainContainer.getBounds(mainContainer);
-			if (isInvalidated || !cachedRenderData)
+			var r:Rectangle = mainContainer.getBounds( mainContainer );
+			if ( isInvalidated || !cachedRenderData )
 			{
 				var flag:Boolean = bRenderAsOrphan; //set to allow for rendering regardless of hierarchy
 				bRenderAsOrphan = true;
 				
-				render(true);
+				render( true );
 				
-				var bd:BitmapData = new BitmapData(r.width + 1, r.height + 1, true, 0x000000);
-				bd.draw(mainContainer, new Matrix(1, 0, 0, 1, -r.left, -r.top));
+				var bd:BitmapData = new BitmapData( r.width + 1, r.height + 1, true, 0x000000 );
+				bd.draw( mainContainer, new Matrix( 1, 0, 0, 1, -r.left, -r.top ) );
 				
 				var renderData:RenderData = new RenderData();
 				renderData.x = mainContainer.x + r.left;
@@ -101,7 +101,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		public function get isAnimated ():Boolean
+		public function get isAnimated():Boolean
 		{
 			return _isAnimated;
 		}
@@ -109,7 +109,7 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function set isAnimated (value:Boolean):void
+		public function set isAnimated( value:Boolean ):void
 		{
 			_isAnimated = value;
 			//mainContainer.cacheAsBitmap = value;
@@ -124,10 +124,10 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function get isoBounds ():IBounds
+		public function get isoBounds():IBounds
 		{
-			if (!isoBoundsObject || isInvalidated)
-				isoBoundsObject = new PrimitiveBounds(this);
+			if ( !isoBoundsObject || isInvalidated )
+				isoBoundsObject = new PrimitiveBounds( this );
 			
 			return isoBoundsObject;
 		}
@@ -135,9 +135,9 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function get screenBounds ():Rectangle
+		public function get screenBounds():Rectangle
 		{
-			var screenBounds:Rectangle = mainContainer.getBounds(mainContainer);				
+			var screenBounds:Rectangle = mainContainer.getBounds( mainContainer );
 			screenBounds.x += mainContainer.x;
 			screenBounds.y += mainContainer.y;
 			
@@ -147,13 +147,13 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function getBounds (targetCoordinateSpace:DisplayObject):Rectangle
+		public function getBounds( targetCoordinateSpace:DisplayObject ):Rectangle
 		{
 			var rect:Rectangle = screenBounds;
 			
-			var pt:Point = new Point(rect.x, rect.y);
-			pt = IIsoContainer(parent).container.localToGlobal(pt);
-			pt = targetCoordinateSpace.globalToLocal(pt);
+			var pt:Point = new Point( rect.x, rect.y );
+			pt = IIsoContainer( parent ).container.localToGlobal( pt );
+			pt = targetCoordinateSpace.globalToLocal( pt );
 			
 			rect.x = pt.x;
 			rect.y = pt.y;
@@ -161,19 +161,19 @@ package as3isolib.core
 			return rect;
 		}
 		
-		public function get inverseOriginX ():Number
+		public function get inverseOriginX():Number
 		{
-			return IsoMath.isoToScreen(new Pt(x + width, y + length, z)).x;
+			return IsoMath.isoToScreen( new Pt( x + width, y + length, z ) ).x;
 		}
 		
-		public function get inverseOriginY ():Number
+		public function get inverseOriginY():Number
 		{
-			return IsoMath.isoToScreen(new Pt(x + width, y + length, z)).y;
+			return IsoMath.isoToScreen( new Pt( x + width, y + length, z ) ).y;
 		}
 		
-			/////////////////////////////////////////////////////////
-			//	POSITION
-			/////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////
+		//	POSITION
+		/////////////////////////////////////////////////////////
 		
 		////////////////////////////////////////////////////////////////////////
 		//	X, Y, Z
@@ -182,7 +182,7 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function moveTo (x:Number, y:Number, z:Number):void
+		public function moveTo( x:Number, y:Number, z:Number ):void
 		{
 			this.x = x;
 			this.y = y;
@@ -192,7 +192,7 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function moveBy (x:Number, y:Number, z:Number):void
+		public function moveBy( x:Number, y:Number, z:Number ):void
 		{
 			this.x += x;
 			this.y += y;
@@ -214,7 +214,7 @@ package as3isolib.core
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * The positional value based on the isometric x-axis.
 		 */
 		as3isolib_internal var isoX:Number = 0;
@@ -227,8 +227,8 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		[Bindable("move")]
-		public function get x ():Number
+		[Bindable( "move" )]
+		public function get x():Number
 		{
 			return isoX;
 		}
@@ -236,19 +236,19 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function set x (value:Number):void
+		public function set x( value:Number ):void
 		{
-			if (!usePreciseValues)
-				value = Math.round(value);
+			if ( !usePreciseValues )
+				value = Math.round( value );
 			
-			if (isoX != value)
+			if ( isoX != value )
 			{
 				oldX = isoX;
 				
 				isoX = value;
 				invalidatePosition();
 				
-				if (autoUpdate)
+				if ( autoUpdate )
 					render();
 			}
 		}
@@ -256,9 +256,9 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function get screenX ():Number
+		public function get screenX():Number
 		{
-			return IsoMath.isoToScreen(new Pt(x, y, z)).x;
+			return IsoMath.isoToScreen( new Pt( x, y, z ) ).x;
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -278,8 +278,8 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		[Bindable("move")]
-		public function get y ():Number
+		[Bindable( "move" )]
+		public function get y():Number
 		{
 			return isoY;
 		}
@@ -287,19 +287,19 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function set y (value:Number):void
+		public function set y( value:Number ):void
 		{
-			if (!usePreciseValues)
-				value = Math.round(value);
+			if ( !usePreciseValues )
+				value = Math.round( value );
 			
-			if (isoY != value)
+			if ( isoY != value )
 			{
 				oldY = isoY;
 				
 				isoY = value;
 				invalidatePosition();
 				
-				if (autoUpdate)
+				if ( autoUpdate )
 					render();
 			}
 		}
@@ -307,9 +307,9 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function get screenY ():Number
+		public function get screenY():Number
 		{
-			return IsoMath.isoToScreen(new Pt(x, y, z)).y
+			return IsoMath.isoToScreen( new Pt( x, y, z ) ).y
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -329,8 +329,8 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		[Bindable("move")]
-		public function get z ():Number
+		[Bindable( "move" )]
+		public function get z():Number
 		{
 			return isoZ;
 		}
@@ -338,19 +338,19 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function set z (value:Number):void
+		public function set z( value:Number ):void
 		{
-			if (!usePreciseValues)
-				value = Math.round(value);
-				
-			if (isoZ != value)
+			if ( !usePreciseValues )
+				value = Math.round( value );
+			
+			if ( isoZ != value )
 			{
 				oldZ = isoZ;
 				
 				isoZ = value;
 				invalidatePosition();
 				
-				if (autoUpdate)
+				if ( autoUpdate )
 					render();
 			}
 		}
@@ -361,24 +361,24 @@ package as3isolib.core
 		
 		private var dist:Number;
 		
-		public function get distance ():Number
+		public function get distance():Number
 		{
 			return dist;
 		}
 		
-		public function set distance (value:Number):void
+		public function set distance( value:Number ):void
 		{
 			dist = value;
 		}
 		
-			/////////////////////////////////////////////////////////
-			//	GEOMETRY
-			/////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////
+		//	GEOMETRY
+		/////////////////////////////////////////////////////////
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function setSize (width:Number, length:Number, height:Number):void
+		public function setSize( width:Number, length:Number, height:Number ):void
 		{
 			this.width = width;
 			this.length = length;
@@ -402,8 +402,8 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		[Bindable("resize")]
-		public function get width ():Number
+		[Bindable( "resize" )]
+		public function get width():Number
 		{
 			return isoWidth;
 		}
@@ -411,21 +411,21 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function set width (value:Number):void
-		{	
-			if (!usePreciseValues)
-				value = Math.round(value);
-				
-			value = Math.abs(value);
+		public function set width( value:Number ):void
+		{
+			if ( !usePreciseValues )
+				value = Math.round( value );
 			
-			if (isoWidth != value)
+			value = Math.abs( value );
+			
+			if ( isoWidth != value )
 			{
 				oldWidth = isoWidth;
 				
 				isoWidth = value;
 				invalidateSize();
 				
-				if (autoUpdate)
+				if ( autoUpdate )
 					render();
 			}
 		}
@@ -447,8 +447,8 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		[Bindable("resize")]
-		public function get length ():Number
+		[Bindable( "resize" )]
+		public function get length():Number
 		{
 			return isoLength;
 		}
@@ -456,21 +456,21 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function set length (value:Number):void
+		public function set length( value:Number ):void
 		{
-			if (!usePreciseValues)
-				value = Math.round(value);
-				
-			value = Math.abs(value);
+			if ( !usePreciseValues )
+				value = Math.round( value );
 			
-			if (isoLength != value)
+			value = Math.abs( value );
+			
+			if ( isoLength != value )
 			{
 				oldLength = isoLength;
 				
 				isoLength = value;
 				invalidateSize();
 				
-				if (autoUpdate)
+				if ( autoUpdate )
 					render();
 			}
 		}
@@ -492,8 +492,8 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		[Bindable("resize")]
-		public function get height ():Number
+		[Bindable( "resize" )]
+		public function get height():Number
 		{
 			return isoHeight;
 		}
@@ -501,20 +501,20 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function set height (value:Number):void
+		public function set height( value:Number ):void
 		{
-			if (!usePreciseValues)
-				value = Math.round(value);
-				
-			value = Math.abs(value);	
-			if (isoHeight != value)
+			if ( !usePreciseValues )
+				value = Math.round( value );
+			
+			value = Math.abs( value );
+			if ( isoHeight != value )
 			{
 				oldHeight = isoHeight;
 				
 				isoHeight = value;
 				invalidateSize();
-							
-				if (autoUpdate)
+				
+				if ( autoUpdate )
 					render();
 			}
 		}
@@ -528,7 +528,7 @@ package as3isolib.core
 		/**
 		 * @private
 		 */
-		public function get renderAsOrphan ():Boolean
+		public function get renderAsOrphan():Boolean
 		{
 			return bRenderAsOrphan;
 		}
@@ -536,7 +536,7 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function set renderAsOrphan (value:Boolean):void
+		public function set renderAsOrphan( value:Boolean ):void
 		{
 			bRenderAsOrphan = value;
 		}
@@ -553,18 +553,18 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderLogic (recursive:Boolean = true):void
+		override protected function renderLogic( recursive:Boolean = true ):void
 		{
-			if (!hasParent && !renderAsOrphan)
+			if ( !hasParent && !renderAsOrphan )
 				return;
 			
-			if (bPositionInvalidated)
+			if ( bPositionInvalidated )
 			{
-				validatePosition();				
+				validatePosition();
 				bPositionInvalidated = false;
 			}
 			
-			if (bSizeInvalidated)
+			if ( bSizeInvalidated )
 			{
 				validateSize();
 				bSizeInvalidated = false;
@@ -573,7 +573,7 @@ package as3isolib.core
 			//set the flag back for the next time we invalidate the object
 			bInvalidateEventDispatched = false;
 			
-			super.renderLogic(recursive);
+			super.renderLogic( recursive );
 		}
 		
 		////////////////////////////////////////////////////////////////////////
@@ -584,17 +584,17 @@ package as3isolib.core
 		 * @inheritDoc
 		 */
 		/* override public function set includeInLayout (value:Boolean):void
-		{
-			super.includeInLayout = value;
-			if (includeInLayoutChanged)
-			{
-				if (!bInvalidateEventDispatched)
-				{
-					dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
-					bInvalidateEventDispatched = true;
-				}
-			}
-		} */
+		   {
+		   super.includeInLayout = value;
+		   if (includeInLayoutChanged)
+		   {
+		   if (!bInvalidateEventDispatched)
+		   {
+		   dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
+		   bInvalidateEventDispatched = true;
+		   }
+		   }
+		 } */
 		
 		/////////////////////////////////////////////////////////
 		//	VALIDATION
@@ -603,33 +603,33 @@ package as3isolib.core
 		/**
 		 * Takes the given 3D isometric coordinates and positions them in cartesian coordinates relative to the parent container.
 		 */
-		protected function validatePosition ():void
+		protected function validatePosition():void
 		{
-			var pt:Pt = new Pt(x, y, z);
-			IsoMath.isoToScreen(pt);
+			var pt:Pt = new Pt( x, y, z );
+			IsoMath.isoToScreen( pt );
 			
 			mainContainer.x = pt.x;
 			mainContainer.y = pt.y;
 			
-			var evt:IsoEvent = new IsoEvent(IsoEvent.MOVE, true);
+			var evt:IsoEvent = new IsoEvent( IsoEvent.MOVE, true );
 			evt.propName = "position";
-			evt.oldValue = {x:oldX, y:oldY, z:oldZ};
-			evt.newValue = {x:isoX, y:isoY, z:isoZ};
+			evt.oldValue = { x:oldX, y:oldY, z:oldZ };
+			evt.newValue = { x:isoX, y:isoY, z:isoZ };
 			
-			dispatchEvent(evt);
+			dispatchEvent( evt );
 		}
 		
 		/**
 		 * Takes the given 3D isometric sizes and performs the necessary rendering logic.
 		 */
-		protected function validateSize ():void
-		{			
-			var evt:IsoEvent = new IsoEvent(IsoEvent.RESIZE, true);
+		protected function validateSize():void
+		{
+			var evt:IsoEvent = new IsoEvent( IsoEvent.RESIZE, true );
 			evt.propName = "size";
-			evt.oldValue = {width:oldWidth, length:oldLength, height:oldHeight};
-			evt.newValue = {width:isoWidth, length:isoLength, height:isoHeight};
+			evt.oldValue = { width:oldWidth, length:oldLength, height:oldHeight };
+			evt.newValue = { width:isoWidth, length:isoLength, height:isoHeight };
 			
-			dispatchEvent(evt);
+			dispatchEvent( evt );
 		}
 		
 		/////////////////////////////////////////////////////////
@@ -638,7 +638,7 @@ package as3isolib.core
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * Flag indicated that an IsoEvent.INVALIDATE has already been dispatched, negating the need to dispatch another.
 		 */
 		as3isolib_internal var bInvalidateEventDispatched:Boolean = false;
@@ -656,13 +656,13 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function invalidatePosition ():void
+		public function invalidatePosition():void
 		{
 			bPositionInvalidated = true;
 			
-			if (!bInvalidateEventDispatched)
+			if ( !bInvalidateEventDispatched )
 			{
-				dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
+				dispatchEvent( new IsoEvent( IsoEvent.INVALIDATE ) );
 				bInvalidateEventDispatched = true;
 			}
 		}
@@ -670,13 +670,13 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function invalidateSize ():void
+		public function invalidateSize():void
 		{
 			bSizeInvalidated = true;
 			
-			if (!bInvalidateEventDispatched)
+			if ( !bInvalidateEventDispatched )
 			{
-				dispatchEvent(new IsoEvent(IsoEvent.INVALIDATE));
+				dispatchEvent( new IsoEvent( IsoEvent.INVALIDATE ) );
 				bInvalidateEventDispatched = true;
 			}
 		}
@@ -684,16 +684,16 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		override public function get isInvalidated ():Boolean
+		override public function get isInvalidated():Boolean
 		{
-			return (bPositionInvalidated || bSizeInvalidated);
+			return ( bPositionInvalidated || bSizeInvalidated );
 		}
 		
 		/////////////////////////////////////////////////////////
 		//	CREATE CHILDREN
 		/////////////////////////////////////////////////////////
 		
-		override protected function createChildren ():void
+		override protected function createChildren():void
 		{
 			super.createChildren();
 			
@@ -707,39 +707,39 @@ package as3isolib.core
 		/**
 		 * @inheritDoc
 		 */
-		public function clone ():*
+		public function clone():*
 		{
-			var CloneClass:Class = getDefinitionByName(getQualifiedClassName(this)) as Class;
+			var CloneClass:Class = getDefinitionByName( getQualifiedClassName( this ) ) as Class;
 			
 			var cloneInstance:IIsoDisplayObject = new CloneClass();
-			cloneInstance.setSize(isoWidth, isoLength, isoHeight);
+			cloneInstance.setSize( isoWidth, isoLength, isoHeight );
 			
 			return cloneInstance;
-		}	
+		}
 		
 		/////////////////////////////////////////////////////////
 		//	CONSTRUCTOR
 		/////////////////////////////////////////////////////////
 		
-		private function createObjectFromDescriptor (descriptor:Object):void
+		private function createObjectFromDescriptor( descriptor:Object ):void
 		{
 			var prop:String;
-			for (prop in descriptor)
+			for ( prop in descriptor )
 			{
-				if (this.hasOwnProperty(prop))
-					this[prop] = descriptor[prop];
+				if ( this.hasOwnProperty( prop ) )
+					this[ prop ] = descriptor[ prop ];
 			}
 		}
 		
 		/**
 		 * Constructor
 		 */
-		public function IsoDisplayObject (descriptor:Object = null)
+		public function IsoDisplayObject( descriptor:Object = null )
 		{
 			super();
 			
-			if (descriptor)
-				createObjectFromDescriptor(descriptor);
-		}	
+			if ( descriptor )
+				createObjectFromDescriptor( descriptor );
+		}
 	}
 }
