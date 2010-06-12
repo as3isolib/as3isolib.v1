@@ -67,9 +67,8 @@ package as3isolib.display.renderers
 			
 			// Full naive cartesian scan, see what objects are behind child[i]
 			// TODO - screen space subdivision to limit dependency scan
-			var i:uint;
 			var max:uint = children.length;
-			for (i; i < max; ++i)
+			for (var i:uint = 0; i < max; ++i)
 			{
 				var behind:Array = [];
 				
@@ -85,16 +84,11 @@ package as3isolib.display.renderers
 				//var topA:Number = objA.isoZ + objA.isoHeight;
 
 				// TODO - getting bounds objects REALLY slows us down, too.  It creates a new one every time you ask for it!
-				/*var rightA:Number = objA.x + objA.width;
+				var rightA:Number = objA.x + objA.width;
 				var frontA:Number = objA.y + objA.length;
-				var topA:Number = objA.z + objA.height;*/
+				var topA:Number = objA.z + objA.height;
 				
-				var rightA:Number = objA.isoX + objA.isoWidth;
-				var frontA:Number = objA.isoY + objA.isoLength;
-				var topA:Number = objA.isoZ + objA.isoHeight;
-				
-				var j:uint;
-				for (j; j < max; ++j)
+				for (var j:uint = 0; j < max; ++j)
 				{
 					var objB:IsoDisplayObject = children[j];
 					
@@ -103,9 +97,9 @@ package as3isolib.display.renderers
 					
 					// See if B should go behind A
 					// simplest possible check, interpenetrations also count as "behind", which does do a bit more work later, but the inner loop tradeoff for a faster check makes up for it
-					if ((objB.isoX < rightA) &&
-					    (objB.isoY < frontA) &&
-						(objB.isoZ < topA) &&
+					if ((objB.x < rightA) &&
+					    (objB.y < frontA) &&
+						(objB.z < topA) &&
 						(i !== j))
 					{
 						behind.push(objB);
@@ -121,13 +115,9 @@ package as3isolib.display.renderers
 			
 			// Set the childrens' depth, using dependency ordering
 			depth = 0;
-			
-			var obj:IsoDisplayObject;
-			for each (obj in children)
-			{
+			for each (var obj:IsoDisplayObject in children)
 				if (true !== visited[obj])
 					place(obj);
-			}
 			
 			// Clear out temporary dictionary so we're not retaining memory between calls
 			visited = new Dictionary();
@@ -154,13 +144,10 @@ package as3isolib.display.renderers
 		{
 			visited[obj] = true;
 			
-			var inner:IsoDisplayObject
-			for each(inner in dependency[obj])
-			{
-				if (true !== visited[inner])
+			for each(var inner:IsoDisplayObject in dependency[obj])
+				if(true !== visited[inner])
 					place(inner);
-			}
-				
+			
 			if (depth != obj.depth)
 			{
 				scene.setChildIndex(obj, depth);
