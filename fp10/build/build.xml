@@ -1,35 +1,80 @@
 <?xml version="1.0"?>
-<project name="${swc.name}" basedir="../" default="zip">
+<project name="${swc.name}"
+		 basedir="../"
+		 default="zip">
 
 	<!-- Define variables/paths used in this build script -->
 	<property file="./build/build.properties"/>
-	<taskdef resource="flexTasks.tasks" classpath="${sdk.ant}/flexTasks.jar"/>
-	
+
+	<taskdef resource="flexTasks.tasks"
+			 classpath="${sdk.ant}/flexTasks.jar"/>
+
 	<!-- Have you edited the properties file to make sure the paths are right on your system? -->
 	<target name="properties">
+
 		<fail unless="asdoc.exe">The "asdoc.exe" property must be set in build.properties.</fail>
+
 		<fail unless="compc.exe">The "compc.exe" property must be set in build.properties.</fail>
+
 		<fail unless="mxmlc.exe">The "mxmlc.exe" property must be set in build.properties.</fail>
 	</target>
 
+	<!-- Clean out bin & zip folder -->
+	<target name="clean"
+			depends="properties">
+
+		<delete includeemptydirs="true">
+
+			<fileset dir="${bin.dir}"
+					 includes="**/*"
+					 excludes="**/*.svn, **/.DS_Store"/>
+
+			<fileset dir="${zip.dir}"
+					 includes="**/*"
+					 excludes="**/*.svn, **/.DS_Store"/>
+		</delete>
+	</target>
+
 	<!-- Zip up src, docs and SWC and commit to SVN if possible -->
-	<target name="zip" depends="properties, lib, docs">
-		<zip destfile="${zip.dir}/as3isolib.zip" update="true">
-			<zipfileset dir="${src.dir}" prefix="src" excludes="**/*.svn, **/.DS_Store"/>
-			<zipfileset dir="${asdoc.dir}" prefix="asdocs" excludes="**/*.svn, **/.DS_Store"/>
-			<zipfileset dir="${bin.dir}" prefix="bin" excludes="**/*.svn, **/.DS_Store"/>
+	<target name="zip"
+			depends="properties, lib, docs, clean">
+
+		<zip destfile="${zip.dir}/${swc.name}.zip"
+			 update="true">
+
+			<zipfileset dir="${src.dir}"
+						prefix="src"
+						excludes="**/*.svn, **/.DS_Store"/>
+
+			<zipfileset dir="${asdoc.dir}"
+						prefix="asdocs"
+						excludes="**/*.svn, **/.DS_Store"/>
+
+			<zipfileset dir="${bin.dir}"
+						prefix="bin"
+						excludes="**/*.svn, **/.DS_Store"/>
 		</zip>
 	</target>
 
 	<!-- Compile all of the classes under the "src" tree into a .swc file -->
-	<target name="lib" depends="properties">
-		<exec executable="${compc.exe}" dir="${basedir}">
+	<target name="lib"
+			depends="properties, clean">
+
+		<exec executable="${compc.exe}"
+			  dir="${basedir}">
+
 			<arg line="-output '${bin.dir}/${swc.name}.swc'"/>
+
 			<arg line="-source-path ${src.dir}"/>
+
 			<arg line="-strict=true"/>
+
 			<arg line="-target-player=10.0.0"/>
+
 			<arg line="-include-namespaces ${manifest.uri}"/>
+
 			<arg line="-namespace ${manifest.uri} ${manifest.xml}"/>
+
 			<arg line="-include-classes as3isolib.bounds.IBounds
 										as3isolib.bounds.PrimitiveBounds
 										as3isolib.bounds.SceneBounds
@@ -98,12 +143,18 @@
 										eDpLib.events.ProxyEvent"/>
 		</exec>
 	</target>
-	
+
 	<!-- Generate asdocs from lib -->
-	<target name="docs" depends="properties, lib">
-		<exec executable="${asdoc.exe}" dir="${basedir}">
+	<target name="docs"
+			depends="properties, lib">
+
+		<exec executable="${asdoc.exe}"
+			  dir="${basedir}">
+
 			<arg line="-output ${asdoc.dir}"/>
+
 			<arg line="-doc-sources ${src.dir}"/>
+
 			<arg line="-target-player=10.0.0"/>
 		</exec>
 	</target>
