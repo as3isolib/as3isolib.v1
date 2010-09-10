@@ -1,32 +1,32 @@
 /*
 
-as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist 
-in creating isometrically projected content (such as games and graphics) 
-targeted for the Flash player platform
+   as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist
+   in creating isometrically projected content (such as games and graphics)
+   targeted for the Flash player platform
 
-http://code.google.com/p/as3isolib/
+   http://code.google.com/p/as3isolib/
 
-Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
+   Copyright (c) 2006 - 3000 J.W.Opitz, All Rights Reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
+   Permission is hereby granted, free of charge, to any person obtaining a copy of
+   this software and associated documentation files (the "Software"), to deal in
+   the Software without restriction, including without limitation the rights to
+   use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+   of the Software, and to permit persons to whom the Software is furnished to do
+   so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
 
-*/
+ */
 package eDpLib.events
 {
 	import flash.events.Event;
@@ -54,7 +54,7 @@ package eDpLib.events
 		/**
 		 * @private
 		 */
-		public function get proxyTarget ():IEventDispatcher
+		public function get proxyTarget():IEventDispatcher
 		{
 			return _proxyTarget;
 		}
@@ -62,10 +62,10 @@ package eDpLib.events
 		/**
 		 * @inheritDoc
 		 */
-		public function set proxyTarget (value:IEventDispatcher):void
+		public function set proxyTarget( value:IEventDispatcher ):void
 		{
-			if (_proxyTarget != value)
-			{				
+			if ( _proxyTarget != value )
+			{
 				_proxyTarget = value;
 				updateProxyListeners();
 			}
@@ -83,7 +83,7 @@ package eDpLib.events
 		/**
 		 * @private
 		 */
-		public function get proxy ():IEventDispatcher
+		public function get proxy():IEventDispatcher
 		{
 			return _proxy;
 		}
@@ -91,12 +91,12 @@ package eDpLib.events
 		/**
 		 * @inheritDoc
 		 */
-		public function set proxy (target:IEventDispatcher):void
+		public function set proxy( target:IEventDispatcher ):void
 		{
-			if (_proxy != target)
+			if ( _proxy != target )
 			{
 				_proxy = target;
-				eventDispatcher = new EventDispatcher(_proxy);
+				eventDispatcher = new EventDispatcher( _proxy );
 			}
 		}
 		
@@ -107,7 +107,7 @@ package eDpLib.events
 		/**
 		 * Constructor
 		 */
-		public function EventDispatcherProxy ()
+		public function EventDispatcherProxy()
 		{
 			proxy = this;
 			
@@ -120,55 +120,56 @@ package eDpLib.events
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * A hash table following a basic format:
-		 * 
+		 *
 		 * hash[eventType] = ListenerHash() - a collection of listener objects with some convenience methods.
 		 */
 		private var listenerHashTable:Object = {};
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * Adds a listener for a given event type.
 		 */
-		private function setListenerHashProperty (type:String, listener:Function):void
+		private function setListenerHashProperty( type:String, listener:Function ):void
 		{
 			var hash:ListenerHash;
-			if (!listenerHashTable.hasOwnProperty(type))
+			
+			if ( !listenerHashTable.hasOwnProperty( type ))
 			{
 				hash = new ListenerHash();
-				hash.addListener(listener);
+				hash.addListener( listener );
 				
-				listenerHashTable[type] = hash;
+				listenerHashTable[ type ] = hash;
 			}
 			
 			else
 			{
-				hash = ListenerHash(listenerHashTable[type]);
-				hash.addListener(listener);
+				hash = ListenerHash( listenerHashTable[ type ]);
+				hash.addListener( listener );
 			}
 		}
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * Checks to see if a particular event type has been set up within the hash table.
 		 */
-		private function hasListenerHashProperty (type:String):Boolean
+		private function hasListenerHashProperty( type:String ):Boolean
 		{
-			return listenerHashTable.hasOwnProperty(type);			
+			return listenerHashTable.hasOwnProperty( type );
 		}
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * Returns an array of listeners for a given event type.
 		 */
-		private function getListenersForEventType (type:String):Array
+		private function getListenersForEventType( type:String ):Array
 		{
-			if (listenerHashTable.hasOwnProperty(type))
-				return ListenerHash(listenerHashTable[type]).listeners;
+			if ( listenerHashTable.hasOwnProperty( type ))
+				return ListenerHash( listenerHashTable[ type ]).listeners;
 			
 			else
 				return [];
@@ -176,15 +177,15 @@ package eDpLib.events
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * Removes the listeners and the event type from the hash table.
 		 */
-		private function removeListenerHashProperty (type:String):Boolean
+		private function removeListenerHashProperty( type:String ):Boolean
 		{
-			if (listenerHashTable.hasOwnProperty(type))
+			if ( listenerHashTable.hasOwnProperty( type ))
 			{
-				listenerHashTable[type] = null;
-				delete listenerHashTable[type];
+				listenerHashTable[ type ] = null;
+				delete listenerHashTable[ type ];
 				
 				return true;
 			}
@@ -199,20 +200,21 @@ package eDpLib.events
 		/**
 		 * @private
 		 */
-		protected var interceptedEventHash:Dictionary = new Dictionary(true);
+		protected var interceptedEventHash:Dictionary = new Dictionary( true );
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * An array of events to check against that could be dispatched from an interactive target.
 		 */
-		public function get interceptedEventTypes ():Array
+		public function get interceptedEventTypes():Array
 		{
-			var a:Array;
+			var a:Array = [];
 			
 			var p:Object;
-			for (p in interceptedEventHash)
-				a.push(interceptedEventHash[p]);
+			
+			for ( p in interceptedEventHash )
+				a.push( interceptedEventHash[ p ]);
 			
 			return a;
 		}
@@ -222,28 +224,29 @@ package eDpLib.events
 		/**
 		 * @private
 		 */
-		public function set interceptedEventTypes (value:Array):void
+		public function set interceptedEventTypes( value:Array ):void
 		{
-			var hash:Dictionary = new Dictionary(true);
+			var hash:Dictionary = new Dictionary( true );
 			
 			var type:String;
-			for each (type in value)
-				hash[type] = type;
-				
+			
+			for each ( type in value )
+				hash[ type ] = type;
+			
 			interceptedEventHash = hash;
 		}
 		
 		/**
 		 * Creates an array of interactive object events to check against during event proxying.
 		 * To add more event types to check for, subclasses should override this.
-		 * 
+		 *
 		 * @return Array An array of event types.
 		 */
-		protected function generateEventTypes ():Array
+		protected function generateEventTypes():Array
 		{
 			var evtTypes:Array = [];
 			evtTypes.push
-			(
+				(
 				//REGULAR EVENTS
 				Event.ADDED,
 				Event.ADDED_TO_STAGE,
@@ -263,9 +266,9 @@ package eDpLib.events
 				
 				//MOUSE EVENTS
 				MouseEvent.CLICK,
-				MouseEvent.DOUBLE_CLICK, 
-				MouseEvent.MOUSE_DOWN, 
-				MouseEvent.MOUSE_MOVE, 
+				MouseEvent.DOUBLE_CLICK,
+				MouseEvent.MOUSE_DOWN,
+				MouseEvent.MOUSE_MOVE,
 				MouseEvent.MOUSE_OUT,
 				MouseEvent.MOUSE_OVER,
 				MouseEvent.MOUSE_UP,
@@ -276,44 +279,46 @@ package eDpLib.events
 				//KEYBOARD EVENTS
 				KeyboardEvent.KEY_DOWN,
 				KeyboardEvent.KEY_UP
-			);
-				
+				);
+			
 			return evtTypes;
 		}
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * For a given event type, check to see if it is intended for interception.
 		 * InteractiveObject event types will return true since the non-visual class that proxies the proxyTarget needs to dispatch those events on the target's behalf.
 		 */
-		private function checkForInteceptedEventType (type:String):Boolean
+		private function checkForInteceptedEventType( type:String ):Boolean
 		{
-			return interceptedEventHash.hasOwnProperty(type);
+			return interceptedEventHash.hasOwnProperty( type );
 		}
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * A generic event handler that stops event propogation of InteractiveObject event types.
 		 * Once stopped, it checks for listeners for the given event type and triggers them.
-		 * 
+		 *
 		 * Depending on specific developer needs, this method can be overridden by subclasses.
 		 */
-		protected function eventDelegateFunction (evt:Event):void
+		protected function eventDelegateFunction( evt:Event ):void
 		{
 			evt.stopImmediatePropagation(); //prevent from further bubbling up thru display list
 			
-			var pEvt:ProxyEvent = new ProxyEvent(proxy, evt);
+			var pEvt:ProxyEvent = new ProxyEvent( proxy, evt );
 			pEvt.proxyTarget = proxyTarget;
 			
 			var func:Function;
 			var listeners:Array;
-			if (hasListenerHashProperty(evt.type))
+			
+			if ( hasListenerHashProperty( evt.type ))
 			{
-				listeners = getListenersForEventType(evt.type);
-				for each (func in listeners)
-					func.call(this, pEvt);
+				listeners = getListenersForEventType( evt.type );
+				
+				for each ( func in listeners )
+					func.call( this, pEvt );
 			}
 		}
 		
@@ -323,16 +328,17 @@ package eDpLib.events
 		public var deleteQueueAfterUpdate:Boolean = true;
 		
 		/**
-		 * If a proxyTarget has not been set, then a queue of event handlers has been set up.  
+		 * If a proxyTarget has not been set, then a queue of event handlers has been set up.
 		 * Once the proxyTarget is created, it iterates through each queue item and assigns the listeners.
 		 */
-		protected function updateProxyListeners ():void
+		protected function updateProxyListeners():void
 		{
 			var queueItem:Object
-			for each (queueItem in _proxyTargetListenerQueue)
-				proxyTarget.addEventListener(queueItem.type, eventDelegateFunction, queueItem.useCapture, queueItem.priority, queueItem.useWeakReference);
-				
-			if (deleteQueueAfterUpdate)
+			
+			for each ( queueItem in _proxyTargetListenerQueue )
+				proxyTarget.addEventListener( queueItem.type, eventDelegateFunction, queueItem.useCapture, queueItem.priority, queueItem.useWeakReference );
+			
+			if ( deleteQueueAfterUpdate )
 				_proxyTargetListenerQueue = [];
 		}
 		
@@ -342,7 +348,7 @@ package eDpLib.events
 		
 		/**
 		 * @private
-		 * 
+		 *
 		 * A queue of events a proxy target will listen for and hand off to the proxy.
 		 */
 		private var _proxyTargetListenerQueue:Array = [];
@@ -355,88 +361,90 @@ package eDpLib.events
 		/**
 		 * @inheritDoc
 		 */
-		public function hasEventListener (type:String):Boolean
-		{			
-			if (checkForInteceptedEventType(type))
-			{
-				if (proxyTarget)				
-					return proxyTarget.hasEventListener(type);
-					
-				else 
-					return false;
-			}
-			
-			else
-				return eventDispatcher.hasEventListener(type);
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function willTrigger (type:String):Boolean
+		public function hasEventListener( type:String ):Boolean
 		{
-			if (checkForInteceptedEventType(type))
+			if ( checkForInteceptedEventType( type ))
 			{
-				if (proxyTarget)				
-					return proxyTarget.willTrigger(type);
-					
-				else 
-					return false;
-			}
-			
-			else
-				return eventDispatcher.willTrigger(type);
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function addEventListener (type:String, listener:Function, useCapture:Boolean = false, priority:int = 0.0, useWeakReference:Boolean = false):void
-		{
-			if (checkForInteceptedEventType(type))
-			{
-				setListenerHashProperty(type, listener);
+				if ( proxyTarget )
+					return proxyTarget.hasEventListener( type );
 				
-				if (proxyTarget)
-					proxyTarget.addEventListener(type, eventDelegateFunction, useCapture, priority, useWeakReference);
-					
+				else
+					return false;
+			}
+			
+			else
+				return eventDispatcher.hasEventListener( type );
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function willTrigger( type:String ):Boolean
+		{
+			if ( checkForInteceptedEventType( type ))
+			{
+				if ( proxyTarget )
+					return proxyTarget.willTrigger( type );
+				
+				else
+					return false;
+			}
+			
+			else
+				return eventDispatcher.willTrigger( type );
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function addEventListener( type:String, listener:Function, useCapture:Boolean = false, priority:int = 0.0, useWeakReference:Boolean = false ):void
+		{
+			if ( checkForInteceptedEventType( type ))
+			{
+				setListenerHashProperty( type, listener );
+				
+				if ( proxyTarget )
+					proxyTarget.addEventListener( type, eventDelegateFunction, useCapture, priority, useWeakReference );
+				
 				else
 				{
-					var queueItem:Object = {type:type, useCapture:useCapture, priority:priority, useWeakReference:useWeakReference};
-					_proxyTargetListenerQueue.push(queueItem);
+					var queueItem:Object = { type:type, useCapture:useCapture, priority:priority, useWeakReference:useWeakReference };
+					_proxyTargetListenerQueue.push( queueItem );
 				}
 			}
 			
 			else
-				eventDispatcher.addEventListener(type, listener, useCapture, priority, useWeakReference);
+				eventDispatcher.addEventListener( type, listener, useCapture, priority, useWeakReference );
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function removeEventListener (type:String, listener:Function, useCapture:Boolean = false):void
+		public function removeEventListener( type:String, listener:Function, useCapture:Boolean = false ):void
 		{
-			if (checkForInteceptedEventType(type))
+			if ( checkForInteceptedEventType( type ))
 			{
-				if (hasListenerHashProperty(type))
+				if ( hasListenerHashProperty( type ))
 				{
-					removeListenerHashProperty(type);
+					removeListenerHashProperty( type );
 					
-					if (proxyTarget)
-						proxyTarget.removeEventListener(type ,eventDelegateFunction, useCapture);
-						
+					if ( proxyTarget )
+						proxyTarget.removeEventListener( type, eventDelegateFunction, useCapture );
+					
 					else
 					{
 						var quequeItem:Object;
 						
 						var i:uint;
 						var l:uint = _proxyTargetListenerQueue.length;
-						for (i; i < l; i++)
+						
+						for ( i; i < l; i++ )
 						{
-							quequeItem = _proxyTargetListenerQueue[i];
-							if (quequeItem.type == type)
+							quequeItem = _proxyTargetListenerQueue[ i ];
+							
+							if ( quequeItem.type == type )
 							{
-								_proxyTargetListenerQueue.splice(i, 1);
+								_proxyTargetListenerQueue.splice( i, 1 );
 								return;
 							}
 						}
@@ -445,19 +453,19 @@ package eDpLib.events
 			}
 			
 			else
-				eventDispatcher.removeEventListener(type, listener, useCapture);
+				eventDispatcher.removeEventListener( type, listener, useCapture );
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		public function dispatchEvent (event:Event):Boolean
+		public function dispatchEvent( event:Event ):Boolean
 		{
-			if (event.bubbles || checkForInteceptedEventType(event.type))
-				return proxyTarget.dispatchEvent(new ProxyEvent(this, event));
-				
+			if ( event.bubbles || checkForInteceptedEventType( event.type ))
+				return proxyTarget.dispatchEvent( new ProxyEvent( this, event ));
+			
 			else
-				return eventDispatcher.dispatchEvent(event);
-		}	
+				return eventDispatcher.dispatchEvent( event );
+		}
 	}
 }
