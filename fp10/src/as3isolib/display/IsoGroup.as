@@ -141,6 +141,8 @@ package as3isolib.display
 		///////////////////////////////////////////////////////////////////////
 		//	ISO GROUP
 		///////////////////////////////////////////////////////////////////////
+      
+      public var renderer:ISceneLayoutRenderer = new SimpleSceneLayoutRenderer();
 		
 		/**
 		 * @inheritDoc
@@ -154,7 +156,8 @@ package as3isolib.display
 				if (!bSizeSetExplicitly)
 					calculateSizeFromChildren();
 				
-				var renderer:ISceneLayoutRenderer = new SimpleSceneLayoutRenderer();
+				if (!renderer)
+               renderer = new SimpleSceneLayoutRenderer();
 				renderer.renderScene(this);
 				
 				bIsInvalidated = false;
