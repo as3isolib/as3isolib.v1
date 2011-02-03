@@ -1,7 +1,7 @@
 /*
 
-as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist 
-in creating isometrically projected content (such as games and graphics) 
+as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist
+in creating isometrically projected content (such as games and graphics)
 targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
@@ -40,9 +40,9 @@ package as3isolib.display
 	import as3isolib.display.scene.IIsoScene;
 	
 	import flash.display.DisplayObjectContainer;
-
+	
 	use namespace as3isolib_internal;
-
+	
 	public class IsoGroup extends IsoDisplayObject implements IIsoScene
 	{
 		///////////////////////////////////////////////////////////////////////
@@ -52,9 +52,9 @@ package as3isolib.display
 		/**
 		 * Constructor
 		 */
-		public function IsoGroup (descriptor:Object = null)
+		public function IsoGroup( descriptor:Object = null )
 		{
-			super(descriptor);
+			super( descriptor );
 		}
 		
 		///////////////////////////////////////////////////////////////////////
@@ -64,7 +64,7 @@ package as3isolib.display
 		/**
 		 * @inheritDoc
 		 */
-		public function get hostContainer ():DisplayObjectContainer
+		public function get hostContainer():DisplayObjectContainer
 		{
 			return null;
 		}
@@ -72,7 +72,7 @@ package as3isolib.display
 		/**
 		 * @private
 		 */
-		public function set hostContainer (value:DisplayObjectContainer):void
+		public function set hostContainer( value:DisplayObjectContainer ):void
 		{
 			//do nothing
 		}
@@ -80,15 +80,16 @@ package as3isolib.display
 		/**
 		 * @inheritDoc
 		 */
-		public function get invalidatedChildren ():Array
+		public function get invalidatedChildren():Array
 		{
 			var a:Array;
 			
 			var child:IIsoDisplayObject;
-			for each (child in children)
+			
+			for each ( child in children )
 			{
-				if (child.isInvalidated)
-					a.push(child);
+				if ( child.isInvalidated )
+					a.push( child );
 			}
 			
 			return a;
@@ -97,9 +98,9 @@ package as3isolib.display
 		/**
 		 * @inheritDoc
 		 */
-		override public function get isoBounds ():IBounds
+		override public function get isoBounds():IBounds
 		{
-			return bSizeSetExplicitly ? new PrimitiveBounds(this) : new SceneBounds(this);
+			return bSizeSetExplicitly ? new PrimitiveBounds( this ) : new SceneBounds( this );
 		}
 		
 		///////////////////////////////////////////////////////////////////////
@@ -111,54 +112,55 @@ package as3isolib.display
 		/**
 		 * @inheritDoc
 		 */
-		override public function set width (value:Number):void
+		override public function set width( value:Number ):void
 		{
 			super.width = value;
 			
-			bSizeSetExplicitly = !isNaN(value);
+			bSizeSetExplicitly = !isNaN( value );
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		override public function set length (value:Number):void
+		override public function set length( value:Number ):void
 		{
 			super.length = value;
 			
-			bSizeSetExplicitly = !isNaN(value);
+			bSizeSetExplicitly = !isNaN( value );
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
-		override public function set height (value:Number):void
+		override public function set height( value:Number ):void
 		{
 			super.height = value;
 			
-			bSizeSetExplicitly = !isNaN(value);
+			bSizeSetExplicitly = !isNaN( value );
 		}
 		
 		///////////////////////////////////////////////////////////////////////
 		//	ISO GROUP
 		///////////////////////////////////////////////////////////////////////
-      
-      public var renderer:ISceneLayoutRenderer = new SimpleSceneLayoutRenderer();
+		
+		public var renderer:ISceneLayoutRenderer = new SimpleSceneLayoutRenderer();
 		
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderLogic (recursive:Boolean = true):void
+		override protected function renderLogic( recursive:Boolean = true ):void
 		{
-			super.renderLogic(recursive);
+			super.renderLogic( recursive );
 			
-			if (bIsInvalidated)
+			if ( bIsInvalidated )
 			{
-				if (!bSizeSetExplicitly)
+				if ( !bSizeSetExplicitly )
 					calculateSizeFromChildren();
 				
-				if (!renderer)
-               renderer = new SimpleSceneLayoutRenderer();
-				renderer.renderScene(this);
+				if ( !renderer )
+					renderer = new SimpleSceneLayoutRenderer();
+				
+				renderer.renderScene( this );
 				
 				bIsInvalidated = false;
 			}
@@ -167,9 +169,9 @@ package as3isolib.display
 		/**
 		 * @private
 		 */
-		protected function calculateSizeFromChildren ():void
+		protected function calculateSizeFromChildren():void
 		{
-			var b:IBounds = new SceneBounds(this);
+			var b:IBounds = new SceneBounds( this );
 			
 			isoWidth = b.width;
 			isoLength = b.length;
