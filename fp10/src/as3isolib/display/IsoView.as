@@ -282,8 +282,8 @@ package as3isolib.display
 			
 			if ( limitRangeOfMotion && romTarget )
 			{
-				var ndx:Number;
-				var ndy:Number;
+				var ndx:Number = 0;
+				var ndy:Number = 0;
 				
 				var rect:Rectangle = romTarget.getBounds( this );
 				var isROMBigger:Boolean = !romBoundsRect.containsRect( rect );
