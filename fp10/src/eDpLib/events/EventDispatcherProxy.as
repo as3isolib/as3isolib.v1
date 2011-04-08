@@ -180,12 +180,12 @@ package eDpLib.events
 		 *
 		 * Removes the listeners and the event type from the hash table.
 		 */
-		private function removeListenerHashProperty( type:String ):Boolean
+		private function removeListenerHashProperty( type:String, listener:Function ):Boolean
 		{
 			if ( listenerHashTable.hasOwnProperty( type ))
 			{
-				listenerHashTable[ type ] = null;
-				delete listenerHashTable[ type ];
+				var hash:ListenerHash = ListenerHash( listenerHashTable[ type ]);
+				hash.removeListener( listener );
 				
 				return true;
 			}
@@ -426,12 +426,12 @@ package eDpLib.events
 			{
 				if ( hasListenerHashProperty( type ))
 				{
-					removeListenerHashProperty( type );
+					removeListenerHashProperty( type, listener );
 					
-					if ( proxyTarget )
-						proxyTarget.removeEventListener( type, eventDelegateFunction, useCapture );
+					//if ( proxyTarget )
+					//	proxyTarget.removeEventListener( type, eventDelegateFunction, useCapture );
 					
-					else
+					if ( !proxyTarget )
 					{
 						var quequeItem:Object;
 						
