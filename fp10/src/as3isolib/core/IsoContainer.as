@@ -96,6 +96,7 @@ package as3isolib.core
 		{
 			var temp:Array = [];
 			var child:IIsoContainer;
+			
 			for each ( child in displayListChildrenArray )
 				temp.push( child );
 			
@@ -121,11 +122,13 @@ package as3isolib.core
 				if ( IIsoContainer( child ).includeInLayout )
 				{
 					displayListChildrenArray.push( child );
+					
 					if ( index > mainContainer.numChildren )
 						index = mainContainer.numChildren;
 					
 					//referencing explicit removal of child RTE - http://life.neophi.com/danielr/2007/06/rangeerror_error_2006_the_supp.html
 					var p:DisplayObjectContainer = IIsoContainer( child ).container.parent;
+					
 					if ( p && p != mainContainer )
 						p.removeChild( IIsoContainer( child ).container );
 					
@@ -166,10 +169,12 @@ package as3isolib.core
 		 */
 		override public function removeChildByID( id:String ):INode
 		{
-			var child:IIsoContainer = IIsoContainer( super.removeChildByID( id ) );
+			var child:IIsoContainer = IIsoContainer( super.removeChildByID( id ));
+			
 			if ( child && child.includeInLayout )
 			{
 				var i:int = displayListChildrenArray.indexOf( child );
+				
 				if ( i > -1 )
 					displayListChildrenArray.splice( i, 1 );
 				
@@ -185,6 +190,7 @@ package as3isolib.core
 		override public function removeAllChildren():void
 		{
 			var child:IIsoContainer;
+			
 			for each ( child in children )
 			{
 				if ( child.includeInLayout )
@@ -206,12 +212,24 @@ package as3isolib.core
 		{
 			//overriden by subclasses
 			mainContainer = new Sprite();
-			mainContainer.addEventListener( Event.ADDED, mainContainer_addedHandler, false, 0, true );
-			mainContainer.addEventListener( Event.ADDED_TO_STAGE, mainContainer_addedToStageHandler, false, 0, true );
-			mainContainer.addEventListener( Event.REMOVED, container_removedHandler, false, 0, true );
-			mainContainer.addEventListener( Event.REMOVED_FROM_STAGE, mainContainer_removedFromStageHandler, false, 0, true );
+			attachMainContainerEventListeners();
 		
 			//mainContainer.cacheAsBitmap = true;		
+		}
+		
+		/**
+		 * Attaches certain listener logic for adding and removing the main container from the stage and display list.
+		 * Subclasses of IsoContainer that explicitly set/override the mainContainer (e.g. IsoSprite) should call this class afterwards.
+		 */
+		protected function attachMainContainerEventListeners():void
+		{
+			if ( mainContainer )
+			{
+				mainContainer.addEventListener( Event.ADDED, mainContainer_addedHandler, false, 0, true );
+				mainContainer.addEventListener( Event.ADDED_TO_STAGE, mainContainer_addedToStageHandler, false, 0, true );
+				mainContainer.addEventListener( Event.REMOVED, mainContainer_removedHandler, false, 0, true );
+				mainContainer.addEventListener( Event.REMOVED_FROM_STAGE, mainContainer_removedFromStageHandler, false, 0, true );
+			}
 		}
 		
 		///////////////////////////////////////////////////////////////////////
@@ -242,7 +260,7 @@ package as3isolib.core
 			bAddedToStage = true;
 		}
 		
-		private function container_removedHandler( evt:Event ):void
+		private function mainContainer_removedHandler( evt:Event ):void
 		{
 			bAddedToDisplayList = false;
 		}
@@ -285,7 +303,7 @@ package as3isolib.core
 		 */
 		protected function preRenderLogic():void
 		{
-			dispatchEvent( new IsoEvent( IsoEvent.RENDER ) );
+			dispatchEvent( new IsoEvent( IsoEvent.RENDER ));
 		}
 		
 		/**
@@ -299,6 +317,7 @@ package as3isolib.core
 			{
 				var p:IIsoContainer = IIsoContainer( parentNode );
 				var i:int = p.displayListChildren.indexOf( this );
+				
 				if ( bIncludeInLayout )
 				{
 					if ( i == -1 )
@@ -319,6 +338,7 @@ package as3isolib.core
 			if ( recursive )
 			{
 				var child:IIsoContainer;
+				
 				for each ( child in children )
 					renderChild( child );
 			}
@@ -329,7 +349,7 @@ package as3isolib.core
 		 */
 		protected function postRenderLogic():void
 		{
-			dispatchEvent( new IsoEvent( IsoEvent.RENDER_COMPLETE ) );
+			dispatchEvent( new IsoEvent( IsoEvent.RENDER_COMPLETE ));
 		}
 		
 		protected function renderChild( child:IIsoContainer ):void
@@ -353,7 +373,7 @@ package as3isolib.core
 		{
 			//so we can make use of the bubbling events via the display list
 			if ( event.bubbles )
-				return proxyTarget.dispatchEvent( new ProxyEvent( this, event ) );
+				return proxyTarget.dispatchEvent( new ProxyEvent( this, event ));
 			
 			else
 				return super.dispatchEvent( event );

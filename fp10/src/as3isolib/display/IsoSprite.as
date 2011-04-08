@@ -182,9 +182,10 @@ package as3isolib.display
 		 */
 		override protected function createChildren():void
 		{
-			super.createChildren();
+			super.createChildren(); //this is redundant
 			
 			mainContainer = new MovieClip();
+			attachMainContainerEventListeners();
 		}
 		
 		////////////////////////////////////////////////////////////
