@@ -5,14 +5,15 @@
 # -----------------------------------------------------------------
 
 # Installation directory
-flex = /Developer/Applications/Eclipse 3.4.2 & Flex 4/Adobe Flash Builder Plug-in Beta 2
+flex = /Applications/Adobe Flash Builder 4.5
 
 # The location of the Flex SDK on your sytem.
-sdk = ${flex}/sdks/4.0.0
+sdk = ${flex}/sdks/4.5.1
 sdk.bin = ${sdk}/bin
 sdk.lib = ${sdk}/frameworks/libs
 sdk.locale = ${sdk}/frameworks/locale/{locale}
 sdk.ant = ${sdk}/ant/lib
+sdk.targetPlayerVersion = 10.2.0
 
 # Note that the locale dir uses the {locale} token at the end to specify the directory
 # of language-specific files.  This is replaced by the compiler with the locale defined
@@ -34,7 +35,7 @@ flashDebugPlayer.exe = ${installation.dir}/Player/mac/Flash Player
 # -----------------------------------------------------------------
 
 # swc names
-swc.name = as3isolib
+swc.name = as3isolib.v1.core
 
 # manifest
 # manifest.uri = http://code.google.com/p/as3isolib/

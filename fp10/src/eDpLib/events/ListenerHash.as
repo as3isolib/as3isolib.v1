@@ -1,7 +1,7 @@
 /*
 
-as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist 
-in creating isometrically projected content (such as games and graphics) 
+as3isolib - An open-source ActionScript 3.0 Isometric Library developed to assist
+in creating isometrically projected content (such as games and graphics)
 targeted for the Flash player platform
 
 http://code.google.com/p/as3isolib/
@@ -29,6 +29,7 @@ SOFTWARE.
 */
 package eDpLib.events
 {
+	
 	/**
 	 * @private
 	 */
@@ -42,42 +43,45 @@ package eDpLib.events
 		/**
 		 * @private
 		 */
-		public function addListener (listener:Function):void
+		public function addListener( listener:Function ):void
 		{
-			if (!contains(listener))
-				listeners.push(listener);
+			if ( !contains( listener ))
+				listeners.push( listener );
 		}
 		
 		/**
 		 * @private
 		 */
-		public function removeListener (listener:Function):void
+		public function removeListener( listener:Function ):void
 		{
-			if (contains(listener))
+			if ( contains( listener ))
 			{
 				var i:int;
 				var m:int = listeners.length;
-				while (i < m)
+				
+				while ( i < m )
 				{
-					if (listener == Function(listeners[i]))
+//					if ( listener == Function( listeners[ i ]))
+					if ( listener == listeners[ i ] as Function)
 						break;
 					
 					i++;
 				}
 				
-				listeners.splice(i, 1);
+				listeners.splice( i, 1 );
 			}
 		}
 		
 		/**
 		 * @private
 		 */
-		public function contains (listener:Function):Boolean
+		public function contains( listener:Function ):Boolean
 		{
 			var func:Function;
-			for each (func in listeners)
+			
+			for each ( func in listeners )
 			{
-				if (func == listener)
+				if ( func == listener )
 					return true;
 			}
 			

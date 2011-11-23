@@ -167,7 +167,7 @@ package as3isolib.data
 		/**
 		 * @inheritDoc
 		 */
-		[ClassUtil( ignore="true" )]
+		[ClassUtil( ignore = "true" )]
 		public function get parent():INode
 		{
 			return parentNode;
@@ -242,20 +242,14 @@ package as3isolib.data
 			}
 		}
 		
-		private var childrenArray:Vector.<INode> = new Vector.<INode>();
+		as3isolib_internal var childrenArray:Array = [];
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function get children():Array
 		{
-			var temp:Array = [];
-			var child:Object;
-			
-			for each ( child in childrenArray )
-				temp.push( child );
-			
-			return temp;
+			return childrenArray;
 		}
 		
 		/**
@@ -438,7 +432,7 @@ package as3isolib.data
 			for each ( child in childrenArray )
 				Node( child ).parentNode = null;
 			
-			childrenArray = new Vector.<INode>();
+			childrenArray.length = 0;
 		}
 		
 		/**

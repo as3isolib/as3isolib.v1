@@ -69,7 +69,7 @@
 
 			<arg line="-strict=true"/>
 
-			<arg line="-target-player=10.0.0"/>
+			<arg line="-target-player=${sdk.targetPlayerVersion}"/>
 
 			<arg line="-include-namespaces ${manifest.uri}"/>
 
@@ -155,7 +155,7 @@
 
 			<arg line="-doc-sources ${src.dir}"/>
 
-			<arg line="-target-player=10.0.0"/>
+			<arg line="-target-player=${sdk.targetPlayerVersion}"/>
 		</exec>
 	</target>
 
